@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using UIKit;
 
+using Facebook.CoreKit;
+
 namespace Drop.iOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
@@ -21,9 +23,16 @@ namespace Drop.iOS
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
 
+			Facebook.CoreKit.Settings.AppID = Constants.FACEBOOK_APP_ID;
+			Facebook.CoreKit.Settings.DisplayName = Constants.FACEBOOK_DISPLAY_NAME;
+
 			return true;
 		}
 
+		public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+		{
+			return ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
+		}
 		public override void OnResignActivation(UIApplication application)
 		{
 			// Invoked when the application is about to move from active to inactive state.
