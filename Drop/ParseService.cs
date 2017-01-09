@@ -42,13 +42,16 @@ namespace Drop
 
 		}
 
-		public static async Task<string> FacebookSignUp()
+		public static async Task<string> FacebookSignUp(string fbUserID, string accessToken, DateTime expiration)
 		{
-			UIViewController vc;
 			try
 			{
-				ParseUser user = await ParseFacebookUtils.LogInAsync(Constants.FACEBOOK_APP_ID, ParseFacebookUtils.AccessToken, DateTime.Now);
-				return "OK";
+				ParseUser user = await ParseFacebookUtils.LogInAsync(fbUserID, accessToken, expiration);
+
+				if (user == null)
+					return Constants.STR_STATUS_FAIL;
+				else
+					return Constants.STR_STATUS_SUCCESS;
 			}
 			catch (Exception e)
 			{

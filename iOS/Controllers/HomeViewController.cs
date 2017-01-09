@@ -4,9 +4,9 @@ using UIKit;
 
 namespace Drop.iOS
 {
-    public partial class HomeViewController : UIViewController
+    public partial class HomeViewController : BaseViewController
     {
-        public HomeViewController (IntPtr handle) : base (handle)
+        public HomeViewController (IntPtr handle) : base (handle, "HomeViewController")
         {
         }
     }

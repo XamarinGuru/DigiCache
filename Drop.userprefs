@@ -1,13 +1,11 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/LoginViewController.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Drop/ParseService.cs" Line="7" Column="16" />
-      <File FileName="Drop/Constants.cs" Line="10" Column="57" />
-      <File FileName="Drop/Model/User.cs" Line="12" Column="1" />
-      <File FileName="iOS/Controllers/LoginViewController.cs" Line="47" Column="1" />
-      <File FileName="iOS/AppDelegate.cs" Line="23" Column="15" />
+      <File FileName="iOS/Controllers/BaseViewController.cs" Line="45" Column="1" />
+      <File FileName="iOS/Controllers/HomeViewController.cs" Line="9" Column="87" />
+      <File FileName="iOS/Controllers/LoginViewController.cs" Line="35" Column="55" />
+      <File FileName="Drop/Constants.cs" Line="25" Column="64" />
       <File FileName="iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="iOS/Info.plist" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,11 +17,13 @@
             <Node name="Drop.Droid" expanded="True">
               <Node name="ComponentReferenceFolder" expanded="True" />
             </Node>
-            <Node name="Drop.iOS" expanded="True" selected="True">
-              <Node name="ComponentReferenceFolder" expanded="True" />
+            <Node name="Drop.iOS" expanded="True">
+              <Node name="Packages" expanded="True" />
               <Node name="Controllers" expanded="True">
+                <Node name="BaseViewController.cs" selected="True" />
                 <Node name="LoginViewController.cs" expanded="True" />
               </Node>
+              <Node name="Resources" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -37,13 +37,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/ViewController.cs" line="23" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="51" column="17" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/LoginViewController.cs" line="20" column="34" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/LoginViewController.cs" line="27" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="50" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="55" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/LoginViewController.cs" line="47" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/LoginViewController.cs" line="35" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/BaseViewController.cs" line="44" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

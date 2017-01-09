@@ -12,12 +12,11 @@
         <scene sceneID="cqw-PQ-y2q">
             <objects>
                 <navigationController id="Atd-eG-FWW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ag7-fu-vHJ" alpha="0.5">
+                    <navigationBar key="navigationBar" alpha="0.10000000000000001" contentMode="scaleToFill" id="ag7-fu-vHJ">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -31,7 +30,7 @@
         <!--Drop Something-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController" customClass="LoginViewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController" storyboardIdentifier="LoginViewController" restorationIdentifier="LoginViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -40,68 +39,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-tx-ZJJ" image="bg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-tx-ZJJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWG-4L-XGT" userLabel="FBLogin">
-                                <rect key="frame" x="38" y="242" width="300" height="50"/>
+                                <rect key="frame" x="37.5" y="242" width="300" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBE-Ac-vcx">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBE-Ac-vcx">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                        <color key="backgroundColor" red="0.18155768513679504" green="0.11327498406171799" blue="0.57310032844543457" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Sign-In Using Facebook" backgroundImage="bg_blue.png">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="ActionFBLogin:" destination="BYZ-38-t0r" id="7" eventType="touchUpInside"/>
+                                            <action selector="ActionFBLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7qU-Vh-8rC" image="icon_lock.png">
-                                        <rect key="frame" x="10" y="8" width="35" height="35"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon_lock.png" translatesAutoresizingMaskIntoConstraints="NO" id="7qU-Vh-8rC">
+                                        <rect key="frame" x="10" y="10.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7qU-Vh-8rC" secondAttribute="height" multiplier="1:1" id="4bA-9t-a4c"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="oBE-Ac-vcx" firstAttribute="leading" secondItem="FWG-4L-XGT" secondAttribute="leading" id="4u9-N6-qhx"/>
+                                    <constraint firstItem="oBE-Ac-vcx" firstAttribute="centerY" secondItem="FWG-4L-XGT" secondAttribute="centerY" id="0LE-NB-0EH"/>
+                                    <constraint firstItem="oBE-Ac-vcx" firstAttribute="width" secondItem="FWG-4L-XGT" secondAttribute="width" id="2cB-IK-v5m"/>
                                     <constraint firstItem="7qU-Vh-8rC" firstAttribute="centerY" secondItem="FWG-4L-XGT" secondAttribute="centerY" id="CH2-xB-eJP"/>
                                     <constraint firstItem="7qU-Vh-8rC" firstAttribute="height" secondItem="FWG-4L-XGT" secondAttribute="height" multiplier="0.6" id="RtJ-ry-xOq"/>
-                                    <constraint firstItem="oBE-Ac-vcx" firstAttribute="top" secondItem="FWG-4L-XGT" secondAttribute="top" id="Yu5-Yq-IbT"/>
                                     <constraint firstItem="7qU-Vh-8rC" firstAttribute="leading" secondItem="FWG-4L-XGT" secondAttribute="leading" constant="10" id="ZaP-Or-gG9"/>
                                     <constraint firstAttribute="width" secondItem="FWG-4L-XGT" secondAttribute="height" multiplier="6:1" id="e3W-tQ-FWQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="oBE-Ac-vcx" secondAttribute="trailing" id="llm-FW-VVZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="oBE-Ac-vcx" secondAttribute="bottom" id="p5E-Ac-NYs"/>
+                                    <constraint firstItem="oBE-Ac-vcx" firstAttribute="centerX" secondItem="FWG-4L-XGT" secondAttribute="centerX" id="qJv-Sp-ZSp"/>
+                                    <constraint firstItem="oBE-Ac-vcx" firstAttribute="height" secondItem="FWG-4L-XGT" secondAttribute="height" id="vE2-f8-4m8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i4x-DJ-nKl" userLabel="FBLogin">
-                                <rect key="frame" x="37" y="308" width="300" height="50"/>
+                                <rect key="frame" x="37.5" y="308.5" width="300" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCL-bv-0ia">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                        <color key="backgroundColor" red="0.18155768513679504" green="0.11327498406171799" blue="0.57310032844543457" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Sign-in Anonymously" backgroundImage="bg_orange.png">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="ActionAnonLogin:" destination="BYZ-38-t0r" id="23" eventType="touchUpInside"/>
+                                            <action selector="ActionAnonLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="23"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m2d-sQ-bMN" image="icon_smile.png">
-                                        <rect key="frame" x="10" y="8" width="35" height="35"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon_smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="m2d-sQ-bMN">
+                                        <rect key="frame" x="15" y="13" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="m2d-sQ-bMN" secondAttribute="height" multiplier="1:1" id="6ej-ZY-awc"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="m2d-sQ-bMN" firstAttribute="height" secondItem="i4x-DJ-nKl" secondAttribute="height" multiplier="0.5" id="GlO-AP-zJZ"/>
                                     <constraint firstAttribute="bottom" secondItem="WCL-bv-0ia" secondAttribute="bottom" id="aZQ-32-WdF"/>
@@ -115,57 +113,19 @@
                                     <constraint firstItem="WCL-bv-0ia" firstAttribute="top" secondItem="i4x-DJ-nKl" secondAttribute="top" id="uWD-v1-Cuw"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ni9-Gn-Img" userLabel="About" hidden="YES">
-                                <rect key="frame" x="37" y="375" width="300" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN9-t5-tbO">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                        <color key="backgroundColor" red="0.18155768513679504" green="0.11327498406171799" blue="0.57310032844543457" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="About The App">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections/>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XiY-4g-c6y">
-                                        <rect key="frame" x="10" y="8" width="35" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="XiY-4g-c6y" secondAttribute="height" multiplier="1:1" id="VpC-IZ-SsG"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="XiY-4g-c6y" firstAttribute="height" secondItem="Ni9-Gn-Img" secondAttribute="height" multiplier="0.7" id="7wb-Hb-f8v"/>
-                                    <constraint firstItem="oN9-t5-tbO" firstAttribute="leading" secondItem="Ni9-Gn-Img" secondAttribute="leading" id="P1b-V1-sZP"/>
-                                    <constraint firstAttribute="bottom" secondItem="oN9-t5-tbO" secondAttribute="bottom" id="Qma-Qa-Fh7"/>
-                                    <constraint firstItem="oN9-t5-tbO" firstAttribute="top" secondItem="Ni9-Gn-Img" secondAttribute="top" id="ZO5-qV-EUA"/>
-                                    <constraint firstAttribute="width" secondItem="Ni9-Gn-Img" secondAttribute="height" multiplier="6:1" id="k7d-VD-9bp"/>
-                                    <constraint firstItem="XiY-4g-c6y" firstAttribute="centerY" secondItem="Ni9-Gn-Img" secondAttribute="centerY" id="nCF-bK-MvW"/>
-                                    <constraint firstAttribute="trailing" secondItem="oN9-t5-tbO" secondAttribute="trailing" id="uGP-KC-hTm"/>
-                                    <constraint firstItem="XiY-4g-c6y" firstAttribute="leading" secondItem="Ni9-Gn-Img" secondAttribute="leading" constant="10" id="uU7-Ba-32t"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FWG-4L-XGT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.8" id="1bQ-FF-eZ5"/>
-                            <constraint firstItem="Ni9-Gn-Img" firstAttribute="width" secondItem="Ni9-Gn-Img" secondAttribute="height" multiplier="6:1" id="7cO-J7-UWd"/>
-                            <constraint firstItem="Ni9-Gn-Img" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DZV-eW-Tfx"/>
                             <constraint firstItem="FWG-4L-XGT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Faz-rO-QIY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nhv-tx-ZJJ" secondAttribute="bottom" id="Gcy-Qv-ny3"/>
-                            <constraint firstItem="Ni9-Gn-Img" firstAttribute="width" secondItem="Ni9-Gn-Img" secondAttribute="height" multiplier="6:1" id="N92-ld-uWj"/>
                             <constraint firstItem="FWG-4L-XGT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="PqF-Xl-Q9n"/>
-                            <constraint firstItem="Ni9-Gn-Img" firstAttribute="height" secondItem="FWG-4L-XGT" secondAttribute="height" id="Qp6-3H-eih"/>
-                            <constraint firstItem="Ni9-Gn-Img" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.2" id="TOU-xF-edZ"/>
                             <constraint firstItem="i4x-DJ-nKl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Uha-QX-kza"/>
                             <constraint firstItem="nhv-tx-ZJJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XOu-Eh-qxp"/>
                             <constraint firstItem="nhv-tx-ZJJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Xi8-qg-4Tx"/>
                             <constraint firstItem="FWG-4L-XGT" firstAttribute="width" secondItem="i4x-DJ-nKl" secondAttribute="width" id="d0m-Kz-OKA"/>
                             <constraint firstItem="i4x-DJ-nKl" firstAttribute="width" secondItem="i4x-DJ-nKl" secondAttribute="height" multiplier="6:1" id="gCw-tT-Wa5"/>
                             <constraint firstAttribute="trailing" secondItem="nhv-tx-ZJJ" secondAttribute="trailing" id="mUb-ti-TIQ"/>
-                            <constraint firstItem="Ni9-Gn-Img" firstAttribute="width" secondItem="FWG-4L-XGT" secondAttribute="width" id="mW5-fd-VcX"/>
                             <constraint firstItem="i4x-DJ-nKl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="n9e-Ab-MSy"/>
                             <constraint firstItem="FWG-4L-XGT" firstAttribute="height" secondItem="i4x-DJ-nKl" secondAttribute="height" id="ne8-im-taX"/>
                         </constraints>
@@ -175,42 +135,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.6" y="123.6882"/>
+            <point key="canvasLocation" x="65.21739" y="105.9783"/>
         </scene>
-        <!--About The App-->
-        <scene sceneID="y3h-LU-BMA">
-            <objects>
-                <viewController id="e6g-bD-43W" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DvZ-J5-NvV"/>
-                        <viewControllerLayoutGuide type="bottom" id="HBc-xC-hFm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="axK-IZ-LKA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5G7-W8-qe1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="HBc-xC-hFm" firstAttribute="top" secondItem="5G7-W8-qe1" secondAttribute="bottom" id="BL6-gz-Bcb"/>
-                            <constraint firstItem="5G7-W8-qe1" firstAttribute="top" secondItem="axK-IZ-LKA" secondAttribute="top" id="Wdp-S7-Zte"/>
-                            <constraint firstItem="5G7-W8-qe1" firstAttribute="leading" secondItem="axK-IZ-LKA" secondAttribute="leading" id="myc-JG-8EE"/>
-                            <constraint firstAttribute="trailing" secondItem="5G7-W8-qe1" secondAttribute="trailing" id="rEA-k6-tvS"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="About The App" id="e09-Jc-5rI"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XiO-JI-GlC" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="874" y="397"/>
-        </scene>
-        <!--About The App-->
+        <!--Drop Something-->
         <scene sceneID="6gb-wZ-z6s">
             <objects>
-                <viewController id="tKe-yu-Zpr" customClass="HomeViewController" sceneMemberID="viewController" storyboardIdentifier="HomeViewController" restorationIdentifier="HomeViewController">
+                <viewController restorationIdentifier="HomeViewController" storyboardIdentifier="HomeViewController" id="tKe-yu-Zpr" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jOV-JG-He6"/>
                         <viewControllerLayoutGuide type="bottom" id="2Ku-Qc-0Cb"/>
@@ -219,11 +149,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EM5-Hc-ifb" image="bg.png">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="EM5-Hc-ifb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvZ-rO-Jnv">
-                                <rect key="frame" x="157" y="457" width="46" height="30"/>
+                                <rect key="frame" x="142" y="318.5" width="91" height="30"/>
                                 <state key="normal" title="Home Button"/>
                             </button>
                         </subviews>
@@ -237,20 +167,20 @@
                             <constraint firstItem="wvZ-rO-Jnv" firstAttribute="centerX" secondItem="f8D-jf-bz5" secondAttribute="centerX" id="trf-MC-Sis"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="About The App" id="PuD-fh-a0r"/>
+                    <navigationItem key="navigationItem" title="Drop Something" id="PuD-fh-a0r"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KO-i6-NWB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="636" y="38"/>
+            <point key="canvasLocation" x="574" y="109"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Splash.png" width="640" height="1136"/>
         <image name="bg.png" width="640" height="1136"/>
-        <image name="bar_top.png" width="640" height="87"/>
+        <image name="bg_blue.png" width="481" height="84"/>
+        <image name="bg_orange.png" width="481" height="84"/>
         <image name="icon_lock.png" width="100" height="100"/>
         <image name="icon_smile.png" width="100" height="100"/>
-        <image name="bg_orange.png" width="481" height="84"/>
-        <image name="icon_blue.png" width="481" height="84"/>
+        <image name="Splash.png" width="640" height="1136"/>
+        <image name="bar_top.png" width="640" height="87"/>
     </resources>
 </document>
