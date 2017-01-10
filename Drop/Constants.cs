@@ -15,6 +15,7 @@ namespace Drop
 		//message
 		public const string STR_STATUS_SUCCESS = "success";
 		public const string STR_STATUS_FAIL = "fail";
+		public const string STR_UNKNOWN_USER = "unknown user";
 
 		public const string STR_LOADING = "Loading...";
 
@@ -41,12 +42,26 @@ namespace Drop
 		public const int TAG_COLLEPS_PASSWORD = 126;
 		public const int TAG_COLLEPS_EXPIRY = 190;
 
+		public const int TAG_DEFAILT_ICON1 = 11;
+		public const int TAG_DEFAILT_ICON2 = 12;
+		public const int TAG_DEFAILT_ICON3 = 13;
+		public const int TAG_DEFAILT_ICON4 = 14;
+		public const int TAG_DEFAILT_ICON5 = 15;
+
 		//table names
 		public const string STR_TABLE_DROP_ITEM = "DropItems";
 
+		public const string STR_FIELD_USERID = "userID";
 		public const string STR_FIELD_NAME = "name";
 		public const string STR_FIELD_DESCRIPTION = "description";
 		public const string STR_FIELD_TEXT = "text";
 		public const string STR_FIELD_EXPIRY = "expiry";
+
+		//defailt icon name
+		public const string STR_DEFAILT_ICON1 = "icon_drop1.png";
+		public const string STR_DEFAILT_ICON2 = "icon_drop2.png";
+		public const string STR_DEFAILT_ICON3 = "icon_drop3.png";
+		public const string STR_DEFAILT_ICON4 = "icon_drop4.png";
+		public const string STR_DEFAILT_ICON5 = "icon_drop5.png";
 	}
 }

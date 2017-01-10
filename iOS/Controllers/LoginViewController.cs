@@ -27,6 +27,7 @@ namespace Drop.iOS
 
 		partial void ActionAnonLogin(UIButton sender)
 		{
+			ParseService.Logout();
 			GoToHomeVC();
 		}
 
@@ -49,19 +50,56 @@ namespace Drop.iOS
 			{
 				return;
 			}
-			ParseLogin(result.Token);
+			LoginProcess(result.Token);
 		}
 
-		async void ParseLogin(AccessToken fbToken)
+		private void LoginProcess(AccessToken fbToken)
 		{
-			var userid = fbToken.UserID;
-			var token = fbToken.TokenString;
-			var expiration = NSDateToDateTime(fbToken.ExpirationDate);
+			AppSettings.UserFBID = fbToken.UserID;
 
 			ShowLoadingView(Constants.STR_LOGIN_LOADING);
-			var response = await ParseService.FacebookSignUp(userid, token, expiration);
-			HideLoadingView();
 
+			FacebookLoggedIn(fbToken.UserID);
+		}
+
+		private void FacebookLoggedIn(string userId)
+		{
+			var fields = "?fields=id,name,email,first_name,last_name,picture";
+			var request = new GraphRequest("/" + userId + fields, null, Facebook.CoreKit.AccessToken.CurrentAccessToken.TokenString, null, "GET");
+			var requestConnection = new GraphRequestConnection();
+			requestConnection.AddRequest(request, (connection, result, error) =>
+			{
+				if (error != null)
+				{
+					HideLoadingView();
+					//new UIAlertView("Error...", error.Description, null, "Ok", null).Show();
+					ShowMessageBox(Constants.STR_LOGIN_FAIL_TITLE, Constants.STR_LOGIN_FAIL_MSG);
+					return;
+				}
+
+				var userInfo = (NSDictionary)result;
+
+				var user = new User();
+
+				user.Firstname = userInfo["first_name"].ToString();
+				user.Lastname = userInfo["last_name"].ToString();
+				user.Email = userInfo["email"].ToString();
+				user.Password = userInfo["email"].ToString();
+
+				var tmp1 = (NSDictionary)userInfo["picture"];
+				var tmp2 = (NSDictionary)tmp1["data"];
+				user.PhotoURL = tmp2["url"].ToString();
+
+				ParseLogin(user);
+			});
+			requestConnection.Start();
+		}
+
+		private async void ParseLogin(User user)
+		{
+			var response = await ParseService.SignUp(user);
+
+			HideLoadingView();
 			if (response == Constants.STR_STATUS_SUCCESS)
 			{
 				GoToHomeVC();
@@ -70,37 +108,6 @@ namespace Drop.iOS
 				ShowMessageBox(Constants.STR_LOGIN_FAIL_TITLE, Constants.STR_LOGIN_FAIL_MSG);
 			}
 		}
-
-		//private void FacebookLoggedIn(string userId)
-		//{
-		//	ShowLoadingView("Getting some user data...");
-
-		//	var fields = "?fields=id,name,email,first_name,last_name,picture";
-		//	var request = new GraphRequest("/" + userId + fields, null, Facebook.CoreKit.AccessToken.CurrentAccessToken.TokenString, null, "GET");
-		//	var requestConnection = new GraphRequestConnection();
-		//	requestConnection.AddRequest(request, (connection, result, error) =>
-		//	{
-
-		//		if (error != null)
-		//		{
-		//			HideLoadingView();
-		//			new UIAlertView("Error...", error.Description, null, "Ok", null).Show();
-		//			new UIAlertView("Login Failed", "The social network login failed for your account", null, "Ok", null).Show();
-		//			return;
-		//		}
-
-		//		var userInfo = (NSDictionary)result;
-
-		//		var UserFirstName = userInfo["first_name"].ToString();
-		//		var UserLastName = userInfo["last_name"].ToString();
-		//		var UserEmail = userInfo["email"].ToString();
-
-		//		var tmp1 = (NSDictionary)userInfo["picture"];
-		//		var tmp2 = (NSDictionary)tmp1["data"];
-		//		var UserPhoto = tmp2["url"].ToString();
-		//	});
-		//	requestConnection.Start();
-		//}
 		#endregion
 	}
 }

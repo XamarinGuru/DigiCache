@@ -125,6 +125,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Core\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -153,6 +154,7 @@
     </Compile>
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="Core\AppSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">

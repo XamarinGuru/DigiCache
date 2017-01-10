@@ -422,33 +422,45 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_blue1.png" translatesAutoresizingMaskIntoConstraints="NO" id="5kE-2p-yPA">
                                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdX-va-ZjI">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdX-va-ZjI" tag="15">
                                                                         <rect key="frame" x="267" y="12" width="18" height="36"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="vdX-va-ZjI" secondAttribute="height" multiplier="1:2" id="SsN-QB-G2x"/>
                                                                         </constraints>
                                                                         <state key="normal" image="icon_drop5.png"/>
+                                                                        <connections>
+                                                                            <action selector="ActionDefailtIcon:" destination="7g1-MA-YFk" id="96" eventType="touchUpInside"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWC-Ae-iFx">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWC-Ae-iFx" tag="14">
                                                                         <rect key="frame" x="239" y="15" width="18" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="dWC-Ae-iFx" secondAttribute="height" multiplier="1:1.9" id="f1Q-q2-qGm"/>
                                                                         </constraints>
                                                                         <state key="normal" image="icon_drop4.png"/>
+                                                                        <connections>
+                                                                            <action selector="ActionDefailtIcon:" destination="7g1-MA-YFk" id="99" eventType="touchUpInside"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKE-g9-2AF">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKE-g9-2AF" tag="13">
                                                                         <rect key="frame" x="208" y="16" width="21" height="32"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="fKE-g9-2AF" secondAttribute="height" multiplier="1:1.5" id="aDA-We-uhC"/>
                                                                         </constraints>
                                                                         <state key="normal" image="icon_drop3.png"/>
+                                                                        <connections>
+                                                                            <action selector="ActionDefailtIcon:" destination="7g1-MA-YFk" id="98" eventType="touchUpInside"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y21-J8-hma" misplaced="YES">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y21-J8-hma" misplaced="YES" tag="11">
                                                                         <rect key="frame" x="146" y="16" width="21" height="32"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Y21-J8-hma" secondAttribute="height" multiplier="1:1.5" id="VGL-2p-dCj"/>
                                                                         </constraints>
                                                                         <state key="normal" image="icon_drop1.png"/>
+                                                                        <connections>
+                                                                            <action selector="ActionDefailtIcon:" destination="7g1-MA-YFk" id="95" eventType="touchUpInside"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Icons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFL-3t-YHR">
                                                                         <rect key="frame" x="10" y="0.0" width="107" height="60"/>
@@ -462,6 +474,9 @@
                                                                             <constraint firstAttribute="width" secondItem="zwl-Ma-fcO" secondAttribute="height" multiplier="1:1.5" id="OPf-KE-d7m"/>
                                                                         </constraints>
                                                                         <state key="normal" image="icon_drop2.png"/>
+                                                                        <connections>
+                                                                            <action selector="ActionDefailtIcon:" destination="7g1-MA-YFk" id="97" eventType="touchUpInside"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -505,6 +520,9 @@
                                                                             <constraint firstAttribute="width" secondItem="t0r-d6-vQF" secondAttribute="height" multiplier="1:1" id="AvV-Pm-DPj"/>
                                                                         </constraints>
                                                                         <state key="normal" image="icon_plus.png"/>
+                                                                        <connections>
+                                                                            <action selector="ActionCustomIcon:" destination="7g1-MA-YFk" id="100" eventType="touchUpInside"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Icons (Gallery or User Camera)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nl5-gJ-xM5">
                                                                         <rect key="frame" x="10" y="0.0" width="240" height="60"/>

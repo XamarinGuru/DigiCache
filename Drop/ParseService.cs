@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Parse;
 
@@ -23,20 +24,38 @@ namespace Drop
 			var userObject = new ParseUser()
 			{
 				Username = user.Email,
-				Password = user.Password,
-				Email = user.Email
+				Email = user.Email,
+				Password = user.Password
 			};
+
+			userObject["Firstname"] = user.Firstname;
+			userObject["Lastname"] = user.Lastname;
+			userObject["PhotoURL"] = user.PhotoURL;
 
 			try
 			{
 				await userObject.SignUpAsync();
-				return "OK";
+				return Constants.STR_STATUS_SUCCESS;
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.Message);
+				var response = await Login(user);
+				return response;
+			}
+		}
+
+		public static async Task<string> Login(User user)
+		{
+			try
+			{
+				var parseUser = await ParseUser.LogInAsync(user.Email, user.Password);
+				return Constants.STR_STATUS_SUCCESS;
 			}
 			catch (Exception e)
 			{
 				return e.Message;
 			}
-
 		}
 
 		public static async Task<string> FacebookSignUp(string fbUserID, string accessToken, DateTime expiration)
@@ -57,16 +76,21 @@ namespace Drop
 
 		}
 
+		public static void Logout()
+		{
+			ParseUser.LogOut();
+		}
+
 		public static async Task<string> AddDropItem(ParseItem item)
 		{
 			try
 			{
 				var dropItem = new ParseObject(Constants.STR_TABLE_DROP_ITEM);
 
+				dropItem[Constants.STR_FIELD_USERID] = ParseUser.CurrentUser == null ? Constants.STR_UNKNOWN_USER : ParseUser.CurrentUser.Username;
 				dropItem[Constants.STR_FIELD_NAME] = item.Name;
 				dropItem[Constants.STR_FIELD_DESCRIPTION] = item.Description;
 				dropItem[Constants.STR_FIELD_TEXT] = item.Text;
-
 				dropItem[Constants.STR_FIELD_EXPIRY] = DateTime.Now;
 
 				await dropItem.SaveAsync();

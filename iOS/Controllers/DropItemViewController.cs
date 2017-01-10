@@ -111,5 +111,36 @@ namespace Drop.iOS
 				ShowMessageBox(null, result);
 			//rootVC.SetCurrentPage(2);
 		}
+
+		partial void ActionDefailtIcon(UIButton sender)
+		{
+			string strIconName = "";
+			switch (sender.Tag)
+			{
+				case Constants.TAG_DEFAILT_ICON1:
+					strIconName = Constants.STR_DEFAILT_ICON1;
+					break;
+				case Constants.TAG_DEFAILT_ICON2:
+					strIconName = Constants.STR_DEFAILT_ICON2;
+					break;
+				case Constants.TAG_DEFAILT_ICON3:
+					strIconName = Constants.STR_DEFAILT_ICON3;
+					break;
+				case Constants.TAG_DEFAILT_ICON4:
+					strIconName = Constants.STR_DEFAILT_ICON4;
+					break;
+				case Constants.TAG_DEFAILT_ICON5:
+					strIconName = Constants.STR_DEFAILT_ICON5;
+					break;
+				default:
+					break;
+			}
+
+		}
+
+		partial void ActionCustomIcon(UIButton sender)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

@@ -66,6 +66,14 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionColleps (UIKit.UIButton sender);
 
+        [Action ("ActionCustomIcon:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionCustomIcon (UIKit.UIButton sender);
+
+        [Action ("ActionDefailtIcon:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionDefailtIcon (UIKit.UIButton sender);
+
         [Action ("ActionDropItem:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionDropItem (UIKit.UIButton sender);

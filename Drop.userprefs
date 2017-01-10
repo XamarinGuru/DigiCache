@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/DropItemViewController.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Drop/Constants.cs" Line="20" Column="3" />
-      <File FileName="Drop/ParseService.cs" Line="166" Column="6" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="103" Column="4" />
+      <File FileName="Drop/Constants.cs" Line="65" Column="40" />
+      <File FileName="Drop/ParseService.cs" Line="33" Column="43" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="143" Column="40" />
       <File FileName="Drop/Model/Item.cs" Line="44" Column="44" />
-      <File FileName="Drop/Model/User.cs" Line="9" Column="4" />
-      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="Drop/Model/User.cs" Line="14" Column="29" />
+      <File FileName="iOS/Controllers/LoginViewController.cs" Line="95" Column="30" />
+      <File FileName="iOS/Core/AppSettings.cs" Line="46" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,8 +21,10 @@
             </Node>
             <Node name="Drop.iOS" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="DropItemViewController.cs" expanded="True" selected="True" />
+                <Node name="DropItemViewController.cs" selected="True" />
               </Node>
+              <Node name="Core" expanded="True" />
+              <Node name="Resources" expanded="True" />
             </Node>
           </Node>
         </State>
