@@ -8,7 +8,6 @@ using CoreGraphics;
 
 namespace Drop.iOS
 {
-
 	public partial class BaseViewController : UIViewController
 	{
 		public BaseViewController(string title = "") : base()
@@ -22,27 +21,38 @@ namespace Drop.iOS
 
 		protected virtual void Init(string title)
 		{
-			this.NavigationController.NavigationBar.SetBackgroundImage(UIImage.FromFile("bar_top.png"), UIBarMetrics.Default);
-			this.NavigationController.View.BackgroundColor = UIColor.Clear;
-			this.NavigationController.NavigationBar.BackgroundColor = UIColor.Clear;
-			this.NavigationController.NavigationBar.ShadowImage = new UIImage();
-
 			NavigationItem.HidesBackButton = true;
+
+			var leftButton = new UIButton(new CGRect(0, 0, 60, 35));
+			leftButton.SetImage(UIImage.FromFile("btn_back.png"), UIControlState.Normal);
+			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
+			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
 
 			switch (title)
 			{
 				case Constants.STR_iOS_VCNAME_LOGIN:
-					break;
 				case Constants.STR_iOS_VCNAME_HOME:
 					NavigationItem.LeftBarButtonItem = null;
 					break;
+				case Constants.STR_iOS_VCNAME_ITEM:
+					break;
 			}
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+			NavigationController.NavigationBar.SetBackgroundImage(UIImage.FromFile("bar_top.png"), UIBarMetrics.Default);
+			NavigationController.View.BackgroundColor = UIColor.Clear;
+			NavigationController.NavigationBar.BackgroundColor = UIColor.Clear;
+			NavigationController.NavigationBar.ShadowImage = new UIImage();
 		}
 
 		public UIViewController GetVCWithIdentifier(string identifier)
 		{
 			UIStoryboard sb = UIStoryboard.FromName("Main", null);
-			UIViewController pvc = sb.InstantiateViewController(identifier);
+			var pvc = sb.InstantiateViewController(identifier) as UIViewController;
 			return pvc;
 		}
 

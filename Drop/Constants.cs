@@ -23,5 +23,17 @@ namespace Drop
 		//vc names
 		public const string STR_iOS_VCNAME_LOGIN = "LoginViewController";
 		public const string STR_iOS_VCNAME_HOME = "HomeViewController";
+		public const string STR_iOS_VCNAME_ITEM = "DropItemViewController";
+
+		//tag
+		public const int TAG_DROP_ITEM = 1;
+		public const int TAG_DROP_NEARBY = 2;
+		public const int TAG_DROP_SETTING = 3;
+
+		public const int TAG_COLLEPS_NAME = 185;
+		public const int TAG_COLLEPS_ICON = 125;
+		public const int TAG_COLLEPS_PERMISSION = 255;
+		public const int TAG_COLLEPS_PASSWORD = 126;
+		public const int TAG_COLLEPS_EXPIRY = 190;
 	}
 }

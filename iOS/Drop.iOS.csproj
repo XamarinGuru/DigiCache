@@ -132,9 +132,9 @@
       <DependentUpon>HomeViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BaseViewController.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
+    <Compile Include="Controllers\DropItemViewController.cs" />
+    <Compile Include="Controllers\DropItemViewController.designer.cs">
+      <DependentUpon>DropItemViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +159,32 @@
     <BundleResource Include="Resources\icon_smile.png" />
     <BundleResource Include="Resources\bg_orange.png" />
     <BundleResource Include="Resources\bg_blue.png" />
+    <BundleResource Include="Resources\btn_drop_item.png" />
+    <BundleResource Include="Resources\btn_drop_nearby.png" />
+    <BundleResource Include="Resources\bg_blue1.png" />
+    <BundleResource Include="Resources\bg_blue2.png" />
+    <BundleResource Include="Resources\bg_bottom_orange.png" />
+    <BundleResource Include="Resources\bg_textfield.png" />
+    <BundleResource Include="Resources\bg_tool_button.png" />
+    <BundleResource Include="Resources\btn_back.png" />
+    <BundleResource Include="Resources\icon_minus.png" />
+    <BundleResource Include="Resources\icon_plus.png" />
+    <BundleResource Include="Resources\bg_date.png" />
+    <BundleResource Include="Resources\bg_home_btn_content.png" />
+    <BundleResource Include="Resources\bg_home_btn.png" />
+    <BundleResource Include="Resources\bg_pw.png" />
+    <BundleResource Include="Resources\icon_check.png" />
+    <BundleResource Include="Resources\icon_drop_setting.png" />
+    <BundleResource Include="Resources\icon_drop1.png" />
+    <BundleResource Include="Resources\icon_drop2.png" />
+    <BundleResource Include="Resources\icon_drop3.png" />
+    <BundleResource Include="Resources\icon_drop4.png" />
+    <BundleResource Include="Resources\icon_drop5.png" />
+    <BundleResource Include="Resources\icon_share_fb.png" />
+    <BundleResource Include="Resources\icon_share_ins.png" />
+    <BundleResource Include="Resources\icon_share_mail.png" />
+    <BundleResource Include="Resources\icon_share_tw.png" />
+    <BundleResource Include="Resources\icon_uncheck.png" />
   </ItemGroup>
   <Import Project="..\Drop\Drop.projitems" Label="Shared" Condition="Exists('..\Drop\Drop.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

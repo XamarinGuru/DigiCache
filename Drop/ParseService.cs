@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Parse;
-using UIKit;
-
-using Facebook;
 
 namespace Drop
 {

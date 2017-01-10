@@ -14,8 +14,33 @@ namespace Drop.iOS
     [Register ("HomeViewController")]
     partial class HomeViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView dropContent { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint dropContentWidth { get; set; }
+
+        [Action ("ActionDrop:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionDrop (UIKit.UIButton sender);
+
+        [Action ("ActionHome:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionHome (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (dropContent != null) {
+                dropContent.Dispose ();
+                dropContent = null;
+            }
+
+            if (dropContentWidth != null) {
+                dropContentWidth.Dispose ();
+                dropContentWidth = null;
+            }
         }
     }
 }
