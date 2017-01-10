@@ -1,14 +1,12 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/DropItemViewController.cs">
     <Files>
-      <File FileName="iOS/Controllers/BaseViewController.cs" Line="28" Column="91" />
-      <File FileName="iOS/Controllers/HomeViewController.cs" Line="43" Column="23" />
-      <File FileName="Drop/Constants.cs" Line="26" Column="68" />
-      <File FileName="Drop/ParseService.cs" Line="42" Column="36" />
-      <File FileName="iOS/Controllers/LoginViewController.cs" Line="36" Column="55" />
-      <File FileName="iOS/Controllers/HomeViewController.designer.cs" Line="1" Column="1" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="11" Column="1" />
-      <File FileName="iOS/Controllers/DropItemViewController.designer.cs" Line="1" Column="1" />
+      <File FileName="Drop/Constants.cs" Line="20" Column="3" />
+      <File FileName="Drop/ParseService.cs" Line="166" Column="6" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="103" Column="4" />
+      <File FileName="Drop/Model/Item.cs" Line="44" Column="44" />
+      <File FileName="Drop/Model/User.cs" Line="9" Column="4" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,10 +19,8 @@
               <Node name="ComponentReferenceFolder" expanded="True" />
             </Node>
             <Node name="Drop.iOS" expanded="True">
-              <Node name="ComponentReferenceFolder" expanded="True" />
               <Node name="Controllers" expanded="True">
-                <Node name="BaseViewController.cs" selected="True" />
-                <Node name="DropItemViewController.cs" expanded="True" />
+                <Node name="DropItemViewController.cs" expanded="True" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -39,7 +35,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/ViewController.cs" line="23" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/DropItemViewController.cs" line="14" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

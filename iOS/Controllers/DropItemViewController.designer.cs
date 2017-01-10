@@ -36,6 +36,14 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextView txtDescription { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewExpiry { get; set; }
 
         [Outlet]
@@ -57,6 +65,10 @@ namespace Drop.iOS
         [Action ("ActionColleps:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionColleps (UIKit.UIButton sender);
+
+        [Action ("ActionDropItem:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionDropItem (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -83,6 +95,16 @@ namespace Drop.iOS
             if (heightPermission != null) {
                 heightPermission.Dispose ();
                 heightPermission = null;
+            }
+
+            if (txtDescription != null) {
+                txtDescription.Dispose ();
+                txtDescription = null;
+            }
+
+            if (txtName != null) {
+                txtName.Dispose ();
+                txtName = null;
             }
 
             if (viewExpiry != null) {

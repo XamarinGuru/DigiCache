@@ -57,13 +57,35 @@ namespace Drop
 
 		}
 
-		//static ParseObject GetTaskObject(int id)
-		//{
-		//	var query = from taskQuery in ParseObject.GetQuery("Task")
-		//				where taskQuery.Get<int>("ID") == id
-		//				select taskQuery;
-		//	return query.FirstOrDefaultAsync().GetAwaiter().GetResult();
-		//}
+		public static async Task<string> AddDropItem(ParseItem item)
+		{
+			try
+			{
+				var dropItem = new ParseObject(Constants.STR_TABLE_DROP_ITEM);
+
+				dropItem[Constants.STR_FIELD_NAME] = item.Name;
+				dropItem[Constants.STR_FIELD_DESCRIPTION] = item.Description;
+				dropItem[Constants.STR_FIELD_TEXT] = item.Text;
+
+				dropItem[Constants.STR_FIELD_EXPIRY] = DateTime.Now;
+
+				await dropItem.SaveAsync();
+			}
+			catch (Exception e)
+			{
+				return e.Message;
+			}
+
+			return Constants.STR_STATUS_SUCCESS;
+		}
+
+		static ParseObject GetTaskObject(int id)
+		{
+			var query = from taskQuery in ParseObject.GetQuery("Task")
+						where taskQuery.Get<int>("ID") == id
+						select taskQuery;
+			return query.FirstOrDefaultAsync().GetAwaiter().GetResult();
+		}
 
 		//public static TodoItem GetTask(int id)
 		//{

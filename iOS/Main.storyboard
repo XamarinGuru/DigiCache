@@ -1074,6 +1074,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="ActionAnonLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cYI-pe-TeF"/>
+                                                            <action selector="ActionDropItem:" destination="7g1-MA-YFk" id="76" eventType="touchUpInside"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1176,6 +1177,8 @@
                         <outlet property="heightPermission" destination="DnT-8K-Y30" id="name-outlet-DnT-8K-Y30"/>
                         <outlet property="heightIcon" destination="wzm-y4-nt2" id="name-outlet-wzm-y4-nt2"/>
                         <outlet property="heightName" destination="Vot-Jy-zW7" id="name-outlet-Vot-Jy-zW7"/>
+                        <outlet property="txtName" destination="OBR-Ie-Yy2" id="name-outlet-OBR-Ie-Yy2"/>
+                        <outlet property="txtDescription" destination="opE-bB-ECe" id="name-outlet-opE-bB-ECe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUd-Tf-Jyl" userLabel="First Responder" sceneMemberID="firstResponder"/>

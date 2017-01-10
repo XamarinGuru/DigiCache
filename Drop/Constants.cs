@@ -16,9 +16,14 @@ namespace Drop
 		public const string STR_STATUS_SUCCESS = "success";
 		public const string STR_STATUS_FAIL = "fail";
 
+		public const string STR_LOADING = "Loading...";
+
 		public const string STR_LOGIN_FAIL_TITLE = "Login Failed";
 		public const string STR_LOGIN_FAIL_MSG = "The social network login failed for your account";
 		public const string STR_LOGIN_LOADING = "Login...";
+
+
+		public const string STR_DROP_SUCCESS_MSG = "Dropped your item successfully.";
 
 		//vc names
 		public const string STR_iOS_VCNAME_LOGIN = "LoginViewController";
@@ -35,5 +40,13 @@ namespace Drop
 		public const int TAG_COLLEPS_PERMISSION = 255;
 		public const int TAG_COLLEPS_PASSWORD = 126;
 		public const int TAG_COLLEPS_EXPIRY = 190;
+
+		//table names
+		public const string STR_TABLE_DROP_ITEM = "DropItems";
+
+		public const string STR_FIELD_NAME = "name";
+		public const string STR_FIELD_DESCRIPTION = "description";
+		public const string STR_FIELD_TEXT = "text";
+		public const string STR_FIELD_EXPIRY = "expiry";
 	}
 }
