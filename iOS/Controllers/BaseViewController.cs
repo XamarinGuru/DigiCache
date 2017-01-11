@@ -148,7 +148,7 @@ namespace Drop.iOS
 			button.ImageView.BackgroundColor = UIColor.Clear;//UIColor.FromRGBA(22.0f / 255, 38.0f / 255, 75.0f / 255, 0.2f).CGColor;
 		}
 
-		protected byte[] ByteDataFromImage(UIImage image)
+		protected MediaFile ByteDataFromImage(UIImage image)
 		{
 			var imageData = image.AsJPEG(0.5f);
 			var fileBytes = new Byte[imageData.Length];
@@ -156,10 +156,10 @@ namespace Drop.iOS
 
 			var fileName = "Image_" + DateTime.Now.ToString("dd-mm-yy_hh-mm-ss") + ".png";
 
-			return fileBytes;
+			return new MediaFile(fileName, fileBytes);
 		}
 
-		protected byte[] ByteDataFromVideoURL(NSUrl mediaURL)
+		protected MediaFile ByteDataFromVideoURL(NSUrl mediaURL)
 		{
 			NSData videoData = NSData.FromUrl(mediaURL);
 			Byte[] fileBytes = new Byte[videoData.Length];
@@ -167,7 +167,7 @@ namespace Drop.iOS
 
 			var fileName = "Video_" + DateTime.Now.ToString("dd-mm-yy_hh-mm-ss") + ".mp4";
 
-			return fileBytes;
+			return new MediaFile(fileName, fileBytes);
 		}
 
 		protected UIImage rotateImage(UIImage sourceImage, float rotate)

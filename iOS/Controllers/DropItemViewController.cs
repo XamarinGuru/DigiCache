@@ -30,7 +30,6 @@ namespace Drop.iOS
 		void SetInitialSettings()
 		{
 			mMediaPicker = new UIImagePickerController();
-			//mMediaPicker.FinishedPickingMedia += PickupMediaFinishedHandler;
 			mMediaPicker.Canceled += PickupMediaCanceledHandler;
 
 			heightName.Constant = 0;
@@ -47,16 +46,9 @@ namespace Drop.iOS
 
 		private void SetInputBinding()
 		{
-			//this.SetBinding(() => ItemModel.Name, () => txtName.Text, BindingMode.TwoWay);
-			//this.SetBinding(() => ItemModel.Description, () => txtDescription.Text, BindingMode.TwoWay);
+			this.SetBinding(() => ItemModel.Name, () => txtName.Text, BindingMode.TwoWay);
+			this.SetBinding(() => ItemModel.Description, () => txtDescription.Text, BindingMode.TwoWay);
 
-			//this.SetBinding(() => txtName.Text, () => ItemModel.Name, BindingMode.OneWay);
-			//this.SetBinding(() => txtDescription.Text, () => ItemModel.Description, BindingMode.OneWay);
-			//this.SetBinding(() => mText, () => ItemModel.Text, BindingMode.OneWay);
-			//this.SetBinding(() => mText, () => ItemModel.Photo, BindingMode.OneWay);
-			//this.SetBinding(() => mText, () => ItemModel.Video, BindingMode.OneWay);
-			//this.SetBinding(() => mText, () => ItemModel.Other, BindingMode.OneWay);
-			//this.SetBinding(() => mText, () => ItemModel.Icon, BindingMode.OneWay);
 			//this.SetBinding(() => mText, () => ItemModel.Permission, BindingMode.OneWay);
 			//this.SetBinding(() => mText, () => ItemModel.Password, BindingMode.OneWay);
 			//this.SetBinding(() => mText, () => ItemModel.ExpiryDate, BindingMode.OneWay);
@@ -169,7 +161,13 @@ namespace Drop.iOS
 		async partial void ActionDropItem(UIButton sender)
 		{
 			ShowLoadingView(Constants.STR_LOADING);
+
+			var lResult = LocationHelper.GetLocationResult();
+			ItemModel.Location_Lat = lResult.Latitude;
+			ItemModel.Location_Lnt = lResult.Longitude;
+			
 			var result = await ParseService.AddDropItem(ItemModel.parseItem);
+
 			HideLoadingView();
 
 			if (result == Constants.STR_STATUS_SUCCESS)
@@ -191,7 +189,8 @@ namespace Drop.iOS
 
 				case Constants.INDEX_FROM_LIBRARY:
 					mMediaPicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-					mMediaPicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary | UIImagePickerControllerSourceType.Camera);
+					//mMediaPicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary | UIImagePickerControllerSourceType.Camera);
+					mMediaPicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
 					mMediaPicker.FinishedPickingMedia -= PickupMediaIconFinishedHandler;
 					mMediaPicker.FinishedPickingMedia -= PickupMediaAttachFinishedHandler;
 					mMediaPicker.FinishedPickingMedia += PickupMediaAttachFinishedHandler;
@@ -222,7 +221,7 @@ namespace Drop.iOS
 					mMediaPicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
 					mMediaPicker.FinishedPickingMedia -= PickupMediaIconFinishedHandler;
 					mMediaPicker.FinishedPickingMedia -= PickupMediaAttachFinishedHandler;
-					mMediaPicker.FinishedPickingMedia += PickupMediaAttachFinishedHandler;
+					mMediaPicker.FinishedPickingMedia += PickupMediaIconFinishedHandler;
 					NavigationController.PresentModalViewController(mMediaPicker, true);
 					break;
 
@@ -231,7 +230,7 @@ namespace Drop.iOS
 					mMediaPicker.MediaTypes = new string[] { UTType.Image };
 					mMediaPicker.FinishedPickingMedia -= PickupMediaIconFinishedHandler;
 					mMediaPicker.FinishedPickingMedia -= PickupMediaAttachFinishedHandler;
-					mMediaPicker.FinishedPickingMedia += PickupMediaAttachFinishedHandler;
+					mMediaPicker.FinishedPickingMedia += PickupMediaIconFinishedHandler;
 					NavigationController.PresentModalViewController(mMediaPicker, true);
 					break;
 			}
@@ -320,5 +319,29 @@ namespace Drop.iOS
 			mMediaPicker.DismissViewController(true, null);
 		}
 		#endregion
+	}
+
+	[Preserve]
+	static class PreserveEventsAndSettersHack
+	{
+		[Preserve]
+		static void Hack()
+		{
+			var l = new UILabel();
+			l.Text = l.Text + "";
+
+			var tf = new UITextField();
+			tf.Text = tf.Text + "";
+			tf.EditingChanged += delegate { };
+			tf.ValueChanged += delegate { };
+
+			var tv = new UITextView();
+			tv.Text = tv.Text + "";
+			tv.Changed += delegate { };
+
+			var vc = new UIViewController();
+			vc.Title = vc.Title + "";
+			vc.Editing = !vc.Editing;
+		}
 	}
 }

@@ -12,6 +12,8 @@ namespace Drop.iOS
 	{
 		// class-level declarations
 
+		public static LocationHelper MyLocationHelper = new LocationHelper();
+
 		public override UIWindow Window
 		{
 			get;

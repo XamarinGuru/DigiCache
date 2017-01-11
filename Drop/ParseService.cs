@@ -91,6 +91,12 @@ namespace Drop
 				dropItem[Constants.STR_FIELD_NAME] = item.Name;
 				dropItem[Constants.STR_FIELD_DESCRIPTION] = item.Description;
 				dropItem[Constants.STR_FIELD_TEXT] = item.Text;
+				dropItem[Constants.STR_FIELD_IMAGE] = item.Image == null ? null : new ParseFile(item.Image.fileName, item.Image.fileData);
+				dropItem[Constants.STR_FIELD_VIDEO] = item.Video == null ? null : new ParseFile(item.Video.fileName, item.Video.fileData);
+				dropItem[Constants.STR_FIELD_OTHER] = item.Other;
+				dropItem[Constants.STR_FIELD_ICON] = item.Icon == null ? null : new ParseFile(item.Icon.fileName, item.Icon.fileData);
+				dropItem[Constants.STR_FIELD_LOCATION_LNT] = item.Location_Lnt;
+				dropItem[Constants.STR_FIELD_LOCATION_LAT] = item.Location_Lat;
 				dropItem[Constants.STR_FIELD_EXPIRY] = DateTime.Now;
 
 				await dropItem.SaveAsync();

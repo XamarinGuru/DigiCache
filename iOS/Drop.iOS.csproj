@@ -156,6 +156,7 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Core\AppSettings.cs" />
+    <Compile Include="Core\LocationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">

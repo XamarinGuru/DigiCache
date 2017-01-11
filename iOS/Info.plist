@@ -71,5 +71,7 @@
 	<string>Drop needs to access your Camera to drop items</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Drop needs to access your Microphone to drop items</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Drop needs to access your GPS location to drop items</string>
 </dict>
 </plist>

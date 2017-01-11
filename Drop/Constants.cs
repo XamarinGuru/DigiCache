@@ -62,10 +62,16 @@ namespace Drop
 		//table names
 		public const string STR_TABLE_DROP_ITEM = "DropItems";
 
-		public const string STR_FIELD_USERID = "userID";
-		public const string STR_FIELD_NAME = "name";
-		public const string STR_FIELD_DESCRIPTION = "description";
-		public const string STR_FIELD_TEXT = "text";
+		public const string STR_FIELD_USERID = "UserID";
+		public const string STR_FIELD_NAME = "Name";
+		public const string STR_FIELD_DESCRIPTION = "Description";
+		public const string STR_FIELD_TEXT = "Text";
+		public const string STR_FIELD_IMAGE = "Image";
+		public const string STR_FIELD_VIDEO = "Video";
+		public const string STR_FIELD_OTHER = "Other";
+		public const string STR_FIELD_ICON = "Icon";
+		public const string STR_FIELD_LOCATION_LNT = "Location_Lnt";
+		public const string STR_FIELD_LOCATION_LAT = "Location_Lat";
 		public const string STR_FIELD_EXPIRY = "expiry";
 
 		//defailt icon name
