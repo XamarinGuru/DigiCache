@@ -43,7 +43,7 @@ namespace Drop.iOS
 					pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_ITEM);
 					break;
 				case Constants.TAG_DROP_NEARBY:
-					pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_HOME);
+					pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_NEARBY);
 					break;
 				case Constants.TAG_DROP_SETTING:
 					pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_HOME);

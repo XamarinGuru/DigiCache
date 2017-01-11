@@ -301,9 +301,9 @@ namespace Drop.iOS
 			try
 			{
 				var originalImage = e.Info[UIImagePickerController.OriginalImage] as UIImage;
-
+				var resizedImage = MaxResizeImage(originalImage);
 				imgDropIcon.Image = originalImage;
-				ItemModel.Icon = ByteDataFromImage(originalImage);
+				ItemModel.Icon = ByteDataFromImage(resizedImage);
 
 				mMediaPicker.DismissViewController(true, null);
 			}

@@ -109,13 +109,31 @@ namespace Drop
 			return Constants.STR_STATUS_SUCCESS;
 		}
 
-		static ParseObject GetTaskObject(int id)
+		public static IList<ParseItem> GetDropItems()
 		{
-			var query = from taskQuery in ParseObject.GetQuery("Task")
-						where taskQuery.Get<int>("ID") == id
-						select taskQuery;
-			return query.FirstOrDefaultAsync().GetAwaiter().GetResult();
+			List<ParseItem> results = new List<ParseItem>();
+			var query = ParseObject.GetQuery(Constants.STR_TABLE_DROP_ITEM).OrderBy("Name");
+			IEnumerable<ParseObject> drops = query.FindAsync().GetAwaiter().GetResult();
+			foreach (ParseObject drop in drops)
+			{
+				var dropItem = new ParseItem();
+				dropItem.Name = drop.Get<string>(Constants.STR_FIELD_NAME);
+				dropItem.Location_Lnt = drop.Get<double>(Constants.STR_FIELD_LOCATION_LNT);
+				dropItem.Location_Lat = drop.Get<double>(Constants.STR_FIELD_LOCATION_LAT);
+
+				dropItem.IconURL = drop.Get<ParseFile>(Constants.STR_FIELD_ICON).Url;
+
+				results.Add(dropItem);
+			}
+			return results;
 		}
+		//static ParseObject GetTaskObject(int id)
+		//{
+		//	var query = from taskQuery in ParseObject.GetQuery("Task")
+		//				where taskQuery.Get<int>("ID") == id
+		//				select taskQuery;
+		//	return query.FirstOrDefaultAsync().GetAwaiter().GetResult();
+		//}
 
 		//public static TodoItem GetTask(int id)
 		//{
@@ -135,23 +153,7 @@ namespace Drop
 		//	}
 		//}
 
-		//public static IList<TodoItem> GetTasks()
-		//{
-		//	List<TodoItem> results = new List<TodoItem>();
-		//	var query = ParseObject.GetQuery("Task").OrderBy("Name");
-		//	IEnumerable<ParseObject> tasks = query.FindAsync().GetAwaiter().GetResult();
-		//	foreach (ParseObject task in tasks)
-		//	{
-		//		results.Add(new TodoItem
-		//		{
-		//			ID = task.Get<int>("ID"),
-		//			Name = task.Get<string>("Name"),
-		//			Notes = task.Get<string>("Notes"),
-		//			Done = task.Get<bool>("Done")
-		//		});
-		//	}
-		//	return results;
-		//}
+
 
 		//static int SaveObject(ParseObject task, TodoItem item)
 		//{

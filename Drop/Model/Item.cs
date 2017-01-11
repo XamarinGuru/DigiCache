@@ -61,6 +61,7 @@ namespace Drop
 		public MediaFile Video { get; internal set; }
 		public string Other { get; internal set; }
 		public MediaFile Icon { get; internal set; }
+		public Uri IconURL { get; internal set; }
 		public double Location_Lnt { get; internal set; }
 		public double Location_Lat { get; internal set; }
 		public string Permission { get; internal set; }

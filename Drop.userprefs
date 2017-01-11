@@ -1,14 +1,14 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Info.plist">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/NearbyViewController.cs">
     <Files>
-      <File FileName="Drop/Model/Item.cs" Line="7" Column="15" />
-      <File FileName="Drop/Constants.cs" Line="74" Column="41" />
-      <File FileName="Drop/ParseService.cs" Line="102" Column="1" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="170" Column="4" />
-      <File FileName="iOS/Controllers/BaseViewController.cs" Line="9" Column="1" />
-      <File FileName="iOS/Core/LocationHelper.cs" Line="5" Column="19" />
-      <File FileName="iOS/AppDelegate.cs" Line="15" Column="72" />
-      <File FileName="iOS/Info.plist" />
+      <File FileName="Drop/Model/Item.cs" Line="53" Column="1" />
+      <File FileName="Drop/Constants.cs" Line="12" Column="3" />
+      <File FileName="Drop/ParseService.cs" Line="112" Column="46" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="167" Column="47" />
+      <File FileName="iOS/Controllers/BaseViewController.cs" Line="38" Column="41" />
+      <File FileName="iOS/Controllers/NearbyViewController.cs" Line="22" Column="4" />
+      <File FileName="iOS/Controllers/HomeViewController.cs" Line="46" Column="64" />
+      <File FileName="iOS/Main.cs" Line="21" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,9 +19,12 @@
             </Node>
             <Node name="Drop.Droid" expanded="True" />
             <Node name="Drop.iOS" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="ComponentReferenceFolder" expanded="True" />
+              <Node name="Packages" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="NearbyViewController.cs" selected="True" />
+              </Node>
               <Node name="Core" expanded="True" />
-              <Node name="Info.plist" selected="True" />
             </Node>
           </Node>
         </State>
@@ -32,11 +35,13 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Drop.Droid PreferredExecutionTarget="Android.Xamarin_Android_API_15" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/ViewController.cs" line="23" column="1" />
       <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="102" column="1" />
       <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="88" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/DropItemViewController.cs" line="166" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

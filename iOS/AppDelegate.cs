@@ -2,6 +2,7 @@
 using UIKit;
 
 using Facebook.CoreKit;
+using Google.Maps;
 
 namespace Drop.iOS
 {
@@ -24,6 +25,8 @@ namespace Drop.iOS
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
+
+			MapServices.ProvideAPIKey(Constants.GOOGLE_MAP_API_KEY);
 
 			Facebook.CoreKit.Settings.AppID = Constants.FACEBOOK_APP_ID;
 			Facebook.CoreKit.Settings.DisplayName = Constants.FACEBOOK_DISPLAY_NAME;

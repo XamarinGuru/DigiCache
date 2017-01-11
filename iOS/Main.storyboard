@@ -22,7 +22,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Csi-pe-Leq"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WFT-6b-t1z"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXo-dH-YPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -153,7 +153,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tkG-KC-w68">
-                                <rect key="frame" x="0.0" y="495" width="375" height="172"/>
+                                <rect key="frame" x="0.0" y="494.5" width="375" height="172.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_home_btn_content.png" translatesAutoresizingMaskIntoConstraints="NO" id="M88-hl-kPf">
                                         <rect key="frame" x="0.0" y="1" width="375" height="172"/>
@@ -241,6 +241,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KO-i6-NWB" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="721" y="106"/>
+        </scene>
+        <!--Drops Nearby-->
+        <scene sceneID="HgF-CO-kZu">
+            <objects>
+                <viewController id="bpn-Tq-AD2" sceneMemberID="viewController" customClass="NearbyViewController" storyboardIdentifier="NearbyViewController" restorationIdentifier="NearbyViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Tm-X5-68k"/>
+                        <viewControllerLayoutGuide type="bottom" id="v9i-Ug-mH6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vgD-t0-4Gd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Kf-mW-1oB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uud-Gp-TLL">
+                                <rect key="frame" x="37.5" y="66.5" width="300" height="534"/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0Kf-mW-1oB" secondAttribute="trailing" id="Mdq-lG-bFl"/>
+                            <constraint firstItem="0Kf-mW-1oB" firstAttribute="top" secondItem="vgD-t0-4Gd" secondAttribute="top" id="Mjl-RM-B0P"/>
+                            <constraint firstItem="v9i-Ug-mH6" firstAttribute="top" secondItem="0Kf-mW-1oB" secondAttribute="bottom" id="RxP-Ny-jZR"/>
+                            <constraint firstItem="uud-Gp-TLL" firstAttribute="centerX" secondItem="vgD-t0-4Gd" secondAttribute="centerX" id="gG1-xi-aAf"/>
+                            <constraint firstItem="uud-Gp-TLL" firstAttribute="width" secondItem="0Kf-mW-1oB" secondAttribute="width" multiplier="0.8" id="jtd-9n-meN"/>
+                            <constraint firstItem="0Kf-mW-1oB" firstAttribute="leading" secondItem="vgD-t0-4Gd" secondAttribute="leading" id="uWy-jx-IfN"/>
+                            <constraint firstItem="uud-Gp-TLL" firstAttribute="height" secondItem="0Kf-mW-1oB" secondAttribute="height" multiplier="0.8" id="wRS-O4-QJV"/>
+                            <constraint firstItem="uud-Gp-TLL" firstAttribute="centerY" secondItem="vgD-t0-4Gd" secondAttribute="centerY" id="wuH-8z-goE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Drops Nearby" id="6ks-aP-iRb"/>
+                    <connections>
+                        <outlet property="viewMapContent" destination="uud-Gp-TLL" id="name-outlet-uud-Gp-TLL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jqR-ch-20g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="721" y="785"/>
         </scene>
         <!--Drop Item-->
         <scene sceneID="N3C-GR-NPw">
@@ -340,7 +381,7 @@
                                                                         </constraints>
                                                                         <state key="normal" image="icon_plus.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionItem:" destination="7g1-MA-YFk" id="107" eventType="touchUpInside"/>
+                                                                            <action selector="ActionItem:" destination="7g1-MA-YFk" eventType="touchUpInside" id="107"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item to Drop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKr-5o-fHB">
@@ -491,7 +532,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWC-Ae-iFx">
-                                                                        <rect key="frame" x="239" y="15" width="18" height="33"/>
+                                                                        <rect key="frame" x="239" y="14" width="18" height="34"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="dWC-Ae-iFx" secondAttribute="height" multiplier="1:1.9" id="f1Q-q2-qGm"/>
                                                                         </constraints>
@@ -501,7 +542,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKE-g9-2AF">
-                                                                        <rect key="frame" x="208" y="16" width="21" height="32"/>
+                                                                        <rect key="frame" x="207" y="15" width="22" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="fKE-g9-2AF" secondAttribute="height" multiplier="1:1.5" id="aDA-We-uhC"/>
                                                                         </constraints>
@@ -510,8 +551,8 @@
                                                                             <action selector="ActionDefailtIcon:" destination="7g1-MA-YFk" eventType="touchUpInside" id="98"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y21-J8-hma" misplaced="YES">
-                                                                        <rect key="frame" x="146" y="16" width="21" height="32"/>
+                                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y21-J8-hma">
+                                                                        <rect key="frame" x="143" y="15" width="22" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Y21-J8-hma" secondAttribute="height" multiplier="1:1.5" id="VGL-2p-dCj"/>
                                                                         </constraints>
@@ -526,8 +567,8 @@
                                                                         <color key="textColor" red="0.69038057327270508" green="0.76462823152542114" blue="0.81462389230728149" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="highlightedColor" red="0.69038057327270508" green="0.76462823152542114" blue="0.81462389230728149" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwl-Ma-fcO" misplaced="YES" tag="12">
-                                                                        <rect key="frame" x="177" y="16" width="21" height="32"/>
+                                                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwl-Ma-fcO">
+                                                                        <rect key="frame" x="175" y="15" width="22" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="zwl-Ma-fcO" secondAttribute="height" multiplier="1:1.5" id="OPf-KE-d7m"/>
                                                                         </constraints>
@@ -627,7 +668,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nD-Wy-wbz" misplaced="YES">
-                                                        <rect key="frame" x="37" y="540" width="300" height="50"/>
+                                                        <rect key="frame" x="38" y="540" width="300" height="50"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Wv-fD-uop">
                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -666,7 +707,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySJ-kj-BXT" misplaced="YES">
-                                                        <rect key="frame" x="37" y="595" width="300" height="255"/>
+                                                        <rect key="frame" x="38" y="595" width="300" height="255"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGc-aW-bfx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
@@ -680,7 +721,7 @@
                                                                         <color key="textColor" red="0.69038057327270508" green="0.76462823152542114" blue="0.81462389230728149" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="highlightedColor" red="0.69038057327270508" green="0.76462823152542114" blue="0.81462389230728149" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwb-IG-mOV" tag="1">
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwb-IG-mOV">
                                                                         <rect key="frame" x="244" y="12" width="36" height="36"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Gwb-IG-mOV" secondAttribute="height" multiplier="1:1" id="niz-bE-j2V"/>
@@ -689,7 +730,7 @@
                                                                         <state key="normal" image="icon_uncheck.png"/>
                                                                         <state key="selected" image="icon_check.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" id="108" eventType="touchUpInside"/>
+                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" eventType="touchUpInside" id="108"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -720,13 +761,13 @@
                                                                         <color key="textColor" red="0.69038057327270508" green="0.76462823152542114" blue="0.81462389230728149" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQI-u9-ygG" tag="2">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQI-u9-ygG">
                                                                         <rect key="frame" x="244" y="12" width="36" height="36"/>
                                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                         <state key="normal" image="icon_uncheck.png"/>
                                                                         <state key="selected" image="icon_check.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" id="109" eventType="touchUpInside"/>
+                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" eventType="touchUpInside" id="109"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -749,13 +790,13 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_blue1.png" translatesAutoresizingMaskIntoConstraints="NO" id="hyW-nG-w4I">
                                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK2-rF-hbJ" tag="3">
+                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK2-rF-hbJ">
                                                                         <rect key="frame" x="244" y="12" width="36" height="36"/>
                                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                         <state key="normal" image="icon_uncheck.png"/>
                                                                         <state key="selected" image="icon_check.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" id="110" eventType="touchUpInside"/>
+                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" eventType="touchUpInside" id="110"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specific User  (Only in case of facebook login)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEe-Z3-nYR">
@@ -793,7 +834,7 @@
                                                                         </constraints>
                                                                         <state key="normal" image="icon_plus.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionAcessiblity:" destination="7g1-MA-YFk" id="111" eventType="touchUpInside"/>
+                                                                            <action selector="ActionAcessiblity:" destination="7g1-MA-YFk" eventType="touchUpInside" id="111"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acessiblity / Readable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFl-CT-s2B">
@@ -845,7 +886,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fy-dX-J38" misplaced="YES">
-                                                        <rect key="frame" x="37" y="860" width="300" height="50"/>
+                                                        <rect key="frame" x="38" y="860" width="300" height="50"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="SDN-rH-8x5">
                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -883,7 +924,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLf-Hl-t2g" misplaced="YES">
-                                                        <rect key="frame" x="37" y="915" width="300" height="125"/>
+                                                        <rect key="frame" x="38" y="915" width="300" height="125"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12r-Np-IMU">
                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
@@ -901,7 +942,7 @@
                                                                         <rect key="frame" x="39" y="0.0" width="87" height="60"/>
                                                                         <subviews>
                                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-Mk-hQB">
-                                                                                <rect key="frame" x="19" y="14" width="51" height="31"/>
+                                                                                <rect key="frame" x="19" y="15" width="51" height="31"/>
                                                                             </switch>
                                                                         </subviews>
                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -959,7 +1000,7 @@
                                                                         </constraints>
                                                                         <state key="normal" image="icon_plus.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionEligiblity:" destination="7g1-MA-YFk" id="112" eventType="touchUpInside"/>
+                                                                            <action selector="ActionEligiblity:" destination="7g1-MA-YFk" eventType="touchUpInside" id="112"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eligiblity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUx-9s-MKb">
@@ -998,7 +1039,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQH-GK-0S8" misplaced="YES">
-                                                        <rect key="frame" x="37" y="1050" width="300" height="50"/>
+                                                        <rect key="frame" x="38" y="1050" width="300" height="50"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="FMM-O2-8FR">
                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -1036,7 +1077,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4v-tA-bXp" misplaced="YES">
-                                                        <rect key="frame" x="37" y="1105" width="300" height="190"/>
+                                                        <rect key="frame" x="38" y="1105" width="300" height="190"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DA-eA-Mtv">
                                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
@@ -1087,7 +1128,7 @@
                                                                         </constraints>
                                                                         <state key="normal" image="icon_plus.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionShare:" destination="7g1-MA-YFk" id="113" eventType="touchUpInside"/>
+                                                                            <action selector="ActionShare:" destination="7g1-MA-YFk" eventType="touchUpInside" id="113"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Drop Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kku-gG-eqD">
@@ -1122,7 +1163,7 @@
                                                                         <state key="normal" image="icon_share_fb.png"/>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERK-I7-0M0">
-                                                                        <rect key="frame" x="92" y="9" width="42" height="42"/>
+                                                                        <rect key="frame" x="91" y="9" width="42" height="42"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="ERK-I7-0M0" secondAttribute="height" multiplier="1:1" id="ZE3-db-xPD"/>
                                                                         </constraints>
@@ -1133,7 +1174,7 @@
                                                                         <state key="normal" image="icon_share_mail.png"/>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ST6-pP-rug">
-                                                                        <rect key="frame" x="227" y="9" width="42" height="42"/>
+                                                                        <rect key="frame" x="226" y="9" width="42" height="42"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="ST6-pP-rug" secondAttribute="height" multiplier="1:1" id="fX6-HI-oUS"/>
                                                                         </constraints>
@@ -1179,7 +1220,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSf-ha-dok" misplaced="YES">
-                                                        <rect key="frame" x="37" y="1345" width="300" height="50"/>
+                                                        <rect key="frame" x="38" y="1345" width="300" height="50"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -1283,11 +1324,19 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1465"/>
                     <connections>
+                        <outlet property="btnDropImageSymbol" destination="EaW-4c-fWw" id="name-outlet-EaW-4c-fWw"/>
+                        <outlet property="btnDropOtherSymbol" destination="E54-7p-3Ab" id="name-outlet-E54-7p-3Ab"/>
+                        <outlet property="btnDropTextSymbol" destination="B8E-L6-PZm" id="name-outlet-B8E-L6-PZm"/>
+                        <outlet property="btnDropVideoSymbol" destination="CQC-PL-BNl" id="name-outlet-CQC-PL-BNl"/>
+                        <outlet property="btnEveryone" destination="Gwb-IG-mOV" id="name-outlet-Gwb-IG-mOV"/>
+                        <outlet property="btnSecificUser" destination="EK2-rF-hbJ" id="name-outlet-EK2-rF-hbJ"/>
                         <outlet property="heightExpiry" destination="9AA-E7-fWK" id="name-outlet-9AA-E7-fWK"/>
                         <outlet property="heightIcon" destination="wzm-y4-nt2" id="name-outlet-wzm-y4-nt2"/>
                         <outlet property="heightName" destination="Vot-Jy-zW7" id="name-outlet-Vot-Jy-zW7"/>
                         <outlet property="heightPassword" destination="XsM-RI-wCw" id="name-outlet-XsM-RI-wCw"/>
                         <outlet property="heightPermission" destination="DnT-8K-Y30" id="name-outlet-DnT-8K-Y30"/>
+                        <outlet property="imgDropIcon" destination="9xt-4q-8aj" id="name-outlet-9xt-4q-8aj"/>
+                        <outlet property="tnOnlyMe" destination="lQI-u9-ygG" id="name-outlet-lQI-u9-ygG"/>
                         <outlet property="txtDescription" destination="opE-bB-ECe" id="name-outlet-opE-bB-ECe"/>
                         <outlet property="txtName" destination="OBR-Ie-Yy2" id="name-outlet-OBR-Ie-Yy2"/>
                         <outlet property="viewExpiry" destination="l4v-tA-bXp" id="name-outlet-l4v-tA-bXp"/>
@@ -1295,14 +1344,6 @@
                         <outlet property="viewName" destination="Jhk-GM-QsC" id="name-outlet-Jhk-GM-QsC"/>
                         <outlet property="viewPassword" destination="BLf-Hl-t2g" id="name-outlet-BLf-Hl-t2g"/>
                         <outlet property="viewPermission" destination="ySJ-kj-BXT" id="name-outlet-ySJ-kj-BXT"/>
-                        <outlet property="btnEveryone" destination="Gwb-IG-mOV" id="name-outlet-Gwb-IG-mOV"/>
-                        <outlet property="tnOnlyMe" destination="lQI-u9-ygG" id="name-outlet-lQI-u9-ygG"/>
-                        <outlet property="btnSecificUser" destination="EK2-rF-hbJ" id="name-outlet-EK2-rF-hbJ"/>
-                        <outlet property="imgDropIcon" destination="9xt-4q-8aj" id="name-outlet-9xt-4q-8aj"/>
-                        <outlet property="btnDropTextSymbol" destination="B8E-L6-PZm" id="name-outlet-B8E-L6-PZm"/>
-                        <outlet property="btnDropOtherSymbol" destination="E54-7p-3Ab" id="name-outlet-E54-7p-3Ab"/>
-                        <outlet property="btnDropImageSymbol" destination="EaW-4c-fWw" id="name-outlet-EaW-4c-fWw"/>
-                        <outlet property="btnDropVideoSymbol" destination="CQC-PL-BNl" id="name-outlet-CQC-PL-BNl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUd-Tf-Jyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1353,4 +1394,7 @@
         <image name="btn_back.png" width="63" height="34"/>
         <image name="bg_date.png" width="115" height="56"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination" type="retina55"/>
+    </simulatedMetricsContainer>
 </document>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Foundation;
 using System.Collections.Generic;
 using CoreGraphics;
+using System.Drawing;
 
 namespace Drop.iOS
 {
@@ -35,6 +36,7 @@ namespace Drop.iOS
 					NavigationItem.LeftBarButtonItem = null;
 					break;
 				case Constants.STR_iOS_VCNAME_ITEM:
+				case Constants.STR_iOS_VCNAME_NEARBY:
 					break;
 			}
 		}
@@ -168,6 +170,27 @@ namespace Drop.iOS
 			var fileName = "Video_" + DateTime.Now.ToString("dd-mm-yy_hh-mm-ss") + ".mp4";
 
 			return new MediaFile(fileName, fileBytes);
+		}
+
+		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth = 30, float maxHeight = 30)
+		{
+			try
+			{
+				var sourceSize = sourceImage.Size;
+				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				if (maxResizeFactor > 1) return sourceImage;
+				var width = maxResizeFactor * sourceSize.Width;
+				var height = maxResizeFactor * sourceSize.Height;
+				UIGraphics.BeginImageContext(new SizeF((float)width, (float)height));
+				sourceImage.Draw(new RectangleF(0, 0, (float)width, (float)height));
+				var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+				UIGraphics.EndImageContext();
+				return resultImage;
+			}
+			catch
+			{
+				return null;
+			}
 		}
 
 		protected UIImage rotateImage(UIImage sourceImage, float rotate)
