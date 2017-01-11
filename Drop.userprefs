@@ -1,30 +1,26 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Drop/Model/Item.cs">
     <Files>
-      <File FileName="Drop/Constants.cs" Line="65" Column="40" />
-      <File FileName="Drop/ParseService.cs" Line="33" Column="43" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="143" Column="40" />
-      <File FileName="Drop/Model/Item.cs" Line="44" Column="44" />
-      <File FileName="Drop/Model/User.cs" Line="14" Column="29" />
-      <File FileName="iOS/Controllers/LoginViewController.cs" Line="95" Column="30" />
-      <File FileName="iOS/Core/AppSettings.cs" Line="46" Column="25" />
+      <File FileName="Drop/Constants.cs" Line="84" Column="26" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="206" Column="68" />
+      <File FileName="iOS/Controllers/BaseViewController.cs" Line="170" Column="1" />
+      <File FileName="Drop/Model/Item.cs" Line="50" Column="16" />
+      <File FileName="iOS/Main.cs" Line="5" Column="18" />
+      <File FileName="iOS/Info.plist" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Drop" expanded="True">
             <Node name="Drop" expanded="True">
-              <Node name="Model" expanded="True" />
-            </Node>
-            <Node name="Drop.Droid" expanded="True">
-              <Node name="ComponentReferenceFolder" expanded="True" />
-            </Node>
-            <Node name="Drop.iOS" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="DropItemViewController.cs" selected="True" />
+              <Node name="Model" expanded="True">
+                <Node name="Item.cs" selected="True" />
               </Node>
+            </Node>
+            <Node name="Drop.Droid" expanded="True" />
+            <Node name="Drop.iOS" expanded="True">
+              <Node name="Controllers" expanded="True" />
               <Node name="Core" expanded="True" />
-              <Node name="Resources" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -34,12 +30,12 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/ViewController.cs" line="23" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
+  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.588a0c4ca0db6bf2b5ac9a1a9456fdabb01e7629" />
 </Properties>

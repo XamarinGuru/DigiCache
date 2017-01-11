@@ -71,7 +71,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: sagiv daniel (VXWT9CF4J3)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -84,6 +84,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>dfe315be-d90c-4a26-99b6-c6b7e510c7ba</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -204,6 +205,14 @@
     <BundleResource Include="Resources\icon_share_mail.png" />
     <BundleResource Include="Resources\icon_share_tw.png" />
     <BundleResource Include="Resources\icon_uncheck.png" />
+    <BundleResource Include="Resources\icon_image_sel.png" />
+    <BundleResource Include="Resources\icon_image_unsel.png" />
+    <BundleResource Include="Resources\icon_link_sel.png" />
+    <BundleResource Include="Resources\icon_link_unsel.png" />
+    <BundleResource Include="Resources\icon_text_sel.png" />
+    <BundleResource Include="Resources\icon_text_unsel.png" />
+    <BundleResource Include="Resources\icon_video_sel.png" />
+    <BundleResource Include="Resources\icon_video_unsel.png" />
   </ItemGroup>
   <Import Project="..\Drop\Drop.projitems" Label="Shared" Condition="Exists('..\Drop\Drop.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

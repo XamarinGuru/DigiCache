@@ -26,6 +26,11 @@ namespace Drop
 
 		public const string STR_DROP_SUCCESS_MSG = "Dropped your item successfully.";
 
+		public const string STR_ATTACH_TITLE = "Select Attach File Type...";
+		public const string STR_CUSTOM_ICON_TITLE = "Customize your drop icon...";
+		public const string STR_ATTACH_TEXT_TITLE = "Describe to your drop.";
+		public const string STR_ATTACH_OTHER_TITLE = "Other link.";
+
 		//vc names
 		public const string STR_iOS_VCNAME_LOGIN = "LoginViewController";
 		public const string STR_iOS_VCNAME_HOME = "HomeViewController";
@@ -48,6 +53,12 @@ namespace Drop
 		public const int TAG_DEFAILT_ICON4 = 14;
 		public const int TAG_DEFAILT_ICON5 = 15;
 
+		public const int INDEX_TEXT = 0;
+		public const int INDEX_FROM_LIBRARY = 1;
+		public const int INDEX_FROM_CAMERA = 2;
+		public const int INDEX_OTHER = 3;
+
+
 		//table names
 		public const string STR_TABLE_DROP_ITEM = "DropItems";
 
@@ -63,5 +74,14 @@ namespace Drop
 		public const string STR_DEFAILT_ICON3 = "icon_drop3.png";
 		public const string STR_DEFAILT_ICON4 = "icon_drop4.png";
 		public const string STR_DEFAILT_ICON5 = "icon_drop5.png";
+
+		//
+		public static string[] TYPE_ATTACH = new[] { 	"Text", 
+														"Select Image & Video from Photo Library", 
+														"Take Image & Video from Camera",
+														"Other..." };
+		public static string[] TYPE_FROM_SOURCE = new[] {	"Select Icon from Photo Library",
+															"Take Icon from Camera" };
+		
 	}
 }

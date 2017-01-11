@@ -16,6 +16,30 @@ namespace Drop.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDropImageSymbol { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDropOtherSymbol { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDropTextSymbol { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDropVideoSymbol { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnEveryone { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnSecificUser { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightExpiry { get; set; }
 
         [Outlet]
@@ -33,6 +57,14 @@ namespace Drop.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightPermission { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imgDropIcon { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton tnOnlyMe { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -62,6 +94,10 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewPermission { get; set; }
 
+        [Action ("ActionAcessiblity:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionAcessiblity (UIKit.UIButton sender);
+
         [Action ("ActionColleps:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionColleps (UIKit.UIButton sender);
@@ -78,8 +114,54 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionDropItem (UIKit.UIButton sender);
 
+        [Action ("ActionEligiblity:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionEligiblity (UIKit.UIButton sender);
+
+        [Action ("ActionItem:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionItem (UIKit.UIButton sender);
+
+        [Action ("ActionPermission:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionPermission (UIKit.UIButton sender);
+
+        [Action ("ActionShare:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionShare (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
+            if (btnDropImageSymbol != null) {
+                btnDropImageSymbol.Dispose ();
+                btnDropImageSymbol = null;
+            }
+
+            if (btnDropOtherSymbol != null) {
+                btnDropOtherSymbol.Dispose ();
+                btnDropOtherSymbol = null;
+            }
+
+            if (btnDropTextSymbol != null) {
+                btnDropTextSymbol.Dispose ();
+                btnDropTextSymbol = null;
+            }
+
+            if (btnDropVideoSymbol != null) {
+                btnDropVideoSymbol.Dispose ();
+                btnDropVideoSymbol = null;
+            }
+
+            if (btnEveryone != null) {
+                btnEveryone.Dispose ();
+                btnEveryone = null;
+            }
+
+            if (btnSecificUser != null) {
+                btnSecificUser.Dispose ();
+                btnSecificUser = null;
+            }
+
             if (heightExpiry != null) {
                 heightExpiry.Dispose ();
                 heightExpiry = null;
@@ -103,6 +185,16 @@ namespace Drop.iOS
             if (heightPermission != null) {
                 heightPermission.Dispose ();
                 heightPermission = null;
+            }
+
+            if (imgDropIcon != null) {
+                imgDropIcon.Dispose ();
+                imgDropIcon = null;
+            }
+
+            if (tnOnlyMe != null) {
+                tnOnlyMe.Dispose ();
+                tnOnlyMe = null;
             }
 
             if (txtDescription != null) {

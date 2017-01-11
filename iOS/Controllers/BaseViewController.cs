@@ -91,6 +91,19 @@ namespace Drop.iOS
 			InvokeOnMainThread(() => { ShowMessageBox(title, message, "Ok", null, null); });
 		}
 
+		public void ShowTextFieldBox(string title, string cancelButton, string[] otherButtons, Action<string> callback)
+		{
+			var alertView = new UIAlertView(title, null, null, cancelButton, otherButtons);
+
+			alertView.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+
+			alertView.Clicked += (sender, e) =>
+			{
+				if (e.ButtonIndex == 1)
+					callback(alertView.GetTextField(0).Text);
+			};
+			alertView.Show();
+		}
 		protected bool TextFieldShouldReturn(UITextField textField)
 		{
 			textField.ResignFirstResponder();
@@ -133,6 +146,28 @@ namespace Drop.iOS
 			button.Layer.BackgroundColor = UIColor.Clear.CGColor;
 			button.ImageView.Image = new UIImage();
 			button.ImageView.BackgroundColor = UIColor.Clear;//UIColor.FromRGBA(22.0f / 255, 38.0f / 255, 75.0f / 255, 0.2f).CGColor;
+		}
+
+		protected byte[] ByteDataFromImage(UIImage image)
+		{
+			var imageData = image.AsJPEG(0.5f);
+			var fileBytes = new Byte[imageData.Length];
+			System.Runtime.InteropServices.Marshal.Copy(imageData.Bytes, fileBytes, 0, Convert.ToInt32(imageData.Length));
+
+			var fileName = "Image_" + DateTime.Now.ToString("dd-mm-yy_hh-mm-ss") + ".png";
+
+			return fileBytes;
+		}
+
+		protected byte[] ByteDataFromVideoURL(NSUrl mediaURL)
+		{
+			NSData videoData = NSData.FromUrl(mediaURL);
+			Byte[] fileBytes = new Byte[videoData.Length];
+			System.Runtime.InteropServices.Marshal.Copy(videoData.Bytes, fileBytes, 0, Convert.ToInt32(videoData.Length));
+
+			var fileName = "Video_" + DateTime.Now.ToString("dd-mm-yy_hh-mm-ss") + ".mp4";
+
+			return fileBytes;
 		}
 
 		protected UIImage rotateImage(UIImage sourceImage, float rotate)

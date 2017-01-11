@@ -65,5 +65,11 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Drop needs to access your Photo Library to drop items</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Drop needs to access your Camera to drop items</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Drop needs to access your Microphone to drop items</string>
 </dict>
 </plist>
