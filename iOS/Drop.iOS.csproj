@@ -165,6 +165,10 @@
     <Compile Include="Controllers\NearbyViewController.designer.cs">
       <DependentUpon>NearbyViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DropDetailViewController.cs" />
+    <Compile Include="Controllers\DropDetailViewController.designer.cs">
+      <DependentUpon>DropDetailViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">
@@ -226,6 +230,15 @@
     <BundleResource Include="Resources\icon_text_unsel.png" />
     <BundleResource Include="Resources\icon_video_sel.png" />
     <BundleResource Include="Resources\icon_video_unsel.png" />
+    <BundleResource Include="Resources\bg_colleps.png" />
+    <BundleResource Include="Resources\bg_drop_detail.png" />
+    <BundleResource Include="Resources\btn_right.png" />
+    <BundleResource Include="Resources\icon_audio.png" />
+    <BundleResource Include="Resources\icon_colleps.png" />
+    <BundleResource Include="Resources\icon_expend.png" />
+    <BundleResource Include="Resources\icon_favorite.png" />
+    <BundleResource Include="Resources\icon_link.png" />
+    <BundleResource Include="Resources\icon_video.png" />
   </ItemGroup>
   <Import Project="..\Drop\Drop.projitems" Label="Shared" Condition="Exists('..\Drop\Drop.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

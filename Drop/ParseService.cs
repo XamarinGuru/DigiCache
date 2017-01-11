@@ -73,7 +73,6 @@ namespace Drop
 			{
 				return e.Message;
 			}
-
 		}
 
 		public static void Logout()
@@ -118,10 +117,17 @@ namespace Drop
 			{
 				var dropItem = new ParseItem();
 				dropItem.Name = drop.Get<string>(Constants.STR_FIELD_NAME);
+				dropItem.Text = drop.Get<string>(Constants.STR_FIELD_TEXT);
 				dropItem.Location_Lnt = drop.Get<double>(Constants.STR_FIELD_LOCATION_LNT);
 				dropItem.Location_Lat = drop.Get<double>(Constants.STR_FIELD_LOCATION_LAT);
 
-				dropItem.IconURL = drop.Get<ParseFile>(Constants.STR_FIELD_ICON).Url;
+				ParseFile imageObject = drop.Get<ParseFile>(Constants.STR_FIELD_IMAGE);
+				ParseFile videoObject = drop.Get<ParseFile>(Constants.STR_FIELD_VIDEO);
+				ParseFile iconObject = drop.Get<ParseFile>(Constants.STR_FIELD_ICON);
+
+				dropItem.ImageURL = imageObject != null ? drop.Get<ParseFile>(Constants.STR_FIELD_IMAGE).Url : null;
+				dropItem.VideoURL = videoObject != null ? drop.Get<ParseFile>(Constants.STR_FIELD_VIDEO).Url : null;
+				dropItem.IconURL = iconObject != null ? drop.Get<ParseFile>(Constants.STR_FIELD_ICON).Url : null;
 
 				results.Add(dropItem);
 			}

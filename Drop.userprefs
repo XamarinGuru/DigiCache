@@ -1,14 +1,10 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/NearbyViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Drop/Constants.cs">
     <Files>
-      <File FileName="Drop/Model/Item.cs" Line="53" Column="1" />
-      <File FileName="Drop/Constants.cs" Line="12" Column="3" />
-      <File FileName="Drop/ParseService.cs" Line="112" Column="46" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="167" Column="47" />
-      <File FileName="iOS/Controllers/BaseViewController.cs" Line="38" Column="41" />
-      <File FileName="iOS/Controllers/NearbyViewController.cs" Line="22" Column="4" />
-      <File FileName="iOS/Controllers/HomeViewController.cs" Line="46" Column="64" />
-      <File FileName="iOS/Main.cs" Line="21" Column="1" />
+      <File FileName="iOS/Controllers/HomeViewController.cs" Line="55" Column="55" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="170" Column="36" />
+      <File FileName="Drop/Model/Item.cs" Line="43" Column="10" />
+      <File FileName="Drop/Constants.cs" Line="22" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,13 +12,13 @@
           <Node name="Drop" expanded="True">
             <Node name="Drop" expanded="True">
               <Node name="Model" expanded="True" />
+              <Node name="Constants.cs" selected="True" />
             </Node>
             <Node name="Drop.Droid" expanded="True" />
             <Node name="Drop.iOS" expanded="True">
               <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="Packages" expanded="True" />
               <Node name="Controllers" expanded="True">
-                <Node name="NearbyViewController.cs" selected="True" />
+                <Node name="DropDetailViewController.cs" expanded="True" />
               </Node>
               <Node name="Core" expanded="True" />
             </Node>
@@ -39,11 +35,11 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/ViewController.cs" line="23" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="102" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="88" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/DropItemViewController.cs" line="166" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="iOS/Controllers/NearbyViewController.cs" line="43" offsetX="754" offsetY="630" expression="drop.Location_Lat" liveUpdate="False" />
+    <Watch file="iOS/Controllers/NearbyViewController.cs" line="43" offsetX="756" offsetY="681" expression="drop.Location_Lnt" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
 </Properties>

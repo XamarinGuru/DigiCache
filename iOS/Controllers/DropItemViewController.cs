@@ -16,6 +16,7 @@ namespace Drop.iOS
 		{
 			ItemModel = new ItemModel();
 		}
+
         public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
@@ -160,6 +161,12 @@ namespace Drop.iOS
 
 		async partial void ActionDropItem(UIButton sender)
 		{
+			if (!ItemModel.IsValidDrop())
+			{
+				ShowMessageBox(null, Constants.STR_DROP_INVALID);
+				return;
+			}
+			
 			ShowLoadingView(Constants.STR_LOADING);
 
 			var lResult = LocationHelper.GetLocationResult();
@@ -234,7 +241,6 @@ namespace Drop.iOS
 					NavigationController.PresentModalViewController(mMediaPicker, true);
 					break;
 			}
-
 		}
 		#endregion
 

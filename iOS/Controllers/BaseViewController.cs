@@ -24,19 +24,28 @@ namespace Drop.iOS
 		{
 			NavigationItem.HidesBackButton = true;
 
-			var leftButton = new UIButton(new CGRect(0, 0, 60, 35));
+			var leftButton = new UIButton(new CGRect(0, 0, 65, 35));
 			leftButton.SetImage(UIImage.FromFile("btn_back.png"), UIControlState.Normal);
 			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
+
+			var rightButton = new UIButton(new CGRect(0, 0, 50, 35));
+			rightButton.SetImage(UIImage.FromFile("btn_right.png"), UIControlState.Normal);
+			rightButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem(rightButton);
 
 			switch (title)
 			{
 				case Constants.STR_iOS_VCNAME_LOGIN:
 				case Constants.STR_iOS_VCNAME_HOME:
 					NavigationItem.LeftBarButtonItem = null;
+					NavigationItem.RightBarButtonItem = null;
 					break;
 				case Constants.STR_iOS_VCNAME_ITEM:
 				case Constants.STR_iOS_VCNAME_NEARBY:
+					NavigationItem.RightBarButtonItem = null;
+					break;
+				case Constants.STR_iOS_VCNAME_DETAIL:
 					break;
 			}
 		}

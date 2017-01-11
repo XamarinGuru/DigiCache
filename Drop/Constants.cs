@@ -40,7 +40,7 @@ namespace Drop
 		public const string STR_iOS_VCNAME_HOME = "HomeViewController";
 		public const string STR_iOS_VCNAME_ITEM = "DropItemViewController";
 		public const string STR_iOS_VCNAME_NEARBY = "NearbyViewController";
-
+		public const string STR_iOS_VCNAME_DETAIL = "DropDetailViewController";
 		//tag
 		public const int TAG_DROP_ITEM = 1;
 		public const int TAG_DROP_NEARBY = 2;
