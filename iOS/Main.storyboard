@@ -1083,7 +1083,7 @@
                                                                         <state key="normal" image="icon_uncheck.png"/>
                                                                         <state key="selected" image="icon_check.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionCurrentLocation:" destination="7g1-MA-YFk" id="157" eventType="touchUpInside"/>
+                                                                            <action selector="ActionCurrentLocation:" destination="7g1-MA-YFk" eventType="touchUpInside" id="157"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current your location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGW-O3-M7s">
@@ -1195,11 +1195,9 @@
                                                             <constraint firstItem="a3q-Sy-bof" firstAttribute="centerX" secondItem="JDj-m7-PKR" secondAttribute="centerX" id="Hn2-i5-WFA"/>
                                                             <constraint firstItem="a3q-Sy-bof" firstAttribute="top" secondItem="JDj-m7-PKR" secondAttribute="top" id="TsP-JW-YEw"/>
                                                             <constraint firstAttribute="trailing" secondItem="a3q-Sy-bof" secondAttribute="trailing" id="Wmb-HO-cec"/>
-                                                            <constraint firstAttribute="height" constant="125" id="si8-Lm-Ipp">
-                                                                <variation key="heightClass=regular-widthClass=compact" constant="126"/>
-                                                            </constraint>
                                                             <constraint firstItem="JbH-ik-B1U" firstAttribute="width" secondItem="a3q-Sy-bof" secondAttribute="width" id="vjn-b1-LAa"/>
                                                             <constraint firstItem="a3q-Sy-bof" firstAttribute="leading" secondItem="JDj-m7-PKR" secondAttribute="leading" id="wMR-ct-tH0"/>
+                                                            <constraint firstAttribute="height" constant="126" id="ziP-PM-yDO"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nD-Wy-wbz" misplaced="YES">
@@ -1256,7 +1254,7 @@
                                                                         <color key="textColor" red="0.69038057327270508" green="0.76462823152542114" blue="0.81462389230728149" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="highlightedColor" red="0.69038057327270508" green="0.76462823152542114" blue="0.81462389230728149" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </label>
-                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwb-IG-mOV">
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwb-IG-mOV">
                                                                         <rect key="frame" x="244" y="12" width="36" height="36"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Gwb-IG-mOV" secondAttribute="height" multiplier="1:1" id="niz-bE-j2V"/>
@@ -1265,7 +1263,7 @@
                                                                         <state key="normal" image="icon_uncheck.png"/>
                                                                         <state key="selected" image="icon_check.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" eventType="touchUpInside" id="108"/>
+                                                                            <action selector="ActionVisibility:" destination="7g1-MA-YFk" eventType="touchUpInside" id="168"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1296,13 +1294,13 @@
                                                                         <color key="textColor" red="0.69038057327270508" green="0.76462823152542114" blue="0.81462389230728149" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQI-u9-ygG">
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQI-u9-ygG">
                                                                         <rect key="frame" x="244" y="12" width="36" height="36"/>
                                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                         <state key="normal" image="icon_uncheck.png"/>
                                                                         <state key="selected" image="icon_check.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" eventType="touchUpInside" id="109"/>
+                                                                            <action selector="ActionVisibility:" destination="7g1-MA-YFk" eventType="touchUpInside" id="167"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1325,13 +1323,13 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_blue1.png" translatesAutoresizingMaskIntoConstraints="NO" id="hyW-nG-w4I">
                                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK2-rF-hbJ">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK2-rF-hbJ">
                                                                         <rect key="frame" x="244" y="12" width="36" height="36"/>
                                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                         <state key="normal" image="icon_uncheck.png"/>
                                                                         <state key="selected" image="icon_check.png"/>
                                                                         <connections>
-                                                                            <action selector="ActionPermission:" destination="7g1-MA-YFk" eventType="touchUpInside" id="110"/>
+                                                                            <action selector="ActionVisibility:" destination="7g1-MA-YFk" eventType="touchUpInside" id="166"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specific User  (Only in case of facebook login)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEe-Z3-nYR">
@@ -1467,7 +1465,7 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_blue1.png" translatesAutoresizingMaskIntoConstraints="NO" id="bX7-27-FKA">
                                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                                                     </imageView>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="my password" textAlignment="center" minimumFontSize="17" background="bg_pw.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aj7-v4-GHT">
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" background="bg_pw.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aj7-v4-GHT">
                                                                         <rect key="frame" x="165" y="12" width="120" height="36"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -1478,6 +1476,9 @@
                                                                         <subviews>
                                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-Mk-hQB">
                                                                                 <rect key="frame" x="19" y="15" width="51" height="31"/>
+                                                                                <connections>
+                                                                                    <action selector="ActionPassword:" destination="7g1-MA-YFk" eventType="valueChanged" id="169"/>
+                                                                                </connections>
                                                                             </switch>
                                                                         </subviews>
                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -1868,26 +1869,28 @@
                         <outlet property="btnDropOtherSymbol" destination="E54-7p-3Ab" id="name-outlet-E54-7p-3Ab"/>
                         <outlet property="btnDropTextSymbol" destination="B8E-L6-PZm" id="name-outlet-B8E-L6-PZm"/>
                         <outlet property="btnDropVideoSymbol" destination="CQC-PL-BNl" id="name-outlet-CQC-PL-BNl"/>
-                        <outlet property="btnEveryone" destination="Gwb-IG-mOV" id="name-outlet-Gwb-IG-mOV"/>
-                        <outlet property="btnSecificUser" destination="EK2-rF-hbJ" id="name-outlet-EK2-rF-hbJ"/>
+                        <outlet property="btnVisibleEvery" destination="Gwb-IG-mOV" id="name-outlet-Gwb-IG-mOV"/>
+                        <outlet property="btnVisibleMe" destination="lQI-u9-ygG" id="name-outlet-lQI-u9-ygG"/>
+                        <outlet property="btnVisibleSpecific" destination="EK2-rF-hbJ" id="name-outlet-EK2-rF-hbJ"/>
                         <outlet property="heightExpiry" destination="9AA-E7-fWK" id="name-outlet-9AA-E7-fWK"/>
                         <outlet property="heightIcon" destination="wzm-y4-nt2" id="name-outlet-wzm-y4-nt2"/>
-                        <outlet property="heightLocation" destination="si8-Lm-Ipp" id="name-outlet-si8-Lm-Ipp"/>
                         <outlet property="heightName" destination="Vot-Jy-zW7" id="name-outlet-Vot-Jy-zW7"/>
                         <outlet property="heightPassword" destination="XsM-RI-wCw" id="name-outlet-XsM-RI-wCw"/>
                         <outlet property="heightPermission" destination="DnT-8K-Y30" id="name-outlet-DnT-8K-Y30"/>
                         <outlet property="imgDropIcon" destination="9xt-4q-8aj" id="name-outlet-9xt-4q-8aj"/>
-                        <outlet property="tnOnlyMe" destination="lQI-u9-ygG" id="name-outlet-lQI-u9-ygG"/>
+                        <outlet property="lblLocationLat" destination="nvP-Zn-fO6" id="name-outlet-nvP-Zn-fO6"/>
+                        <outlet property="lblLocationLog" destination="Td7-8C-RJe" id="name-outlet-Td7-8C-RJe"/>
                         <outlet property="txtDescription" destination="opE-bB-ECe" id="name-outlet-opE-bB-ECe"/>
                         <outlet property="txtName" destination="OBR-Ie-Yy2" id="name-outlet-OBR-Ie-Yy2"/>
+                        <outlet property="txtPassword" destination="Aj7-v4-GHT" id="name-outlet-Aj7-v4-GHT"/>
                         <outlet property="viewExpiry" destination="l4v-tA-bXp" id="name-outlet-l4v-tA-bXp"/>
                         <outlet property="viewIcon" destination="SCE-Wm-BrN" id="name-outlet-SCE-Wm-BrN"/>
                         <outlet property="viewLocation" destination="JDj-m7-PKR" id="name-outlet-JDj-m7-PKR"/>
                         <outlet property="viewName" destination="Jhk-GM-QsC" id="name-outlet-Jhk-GM-QsC"/>
                         <outlet property="viewPassword" destination="BLf-Hl-t2g" id="name-outlet-BLf-Hl-t2g"/>
                         <outlet property="viewPermission" destination="ySJ-kj-BXT" id="name-outlet-ySJ-kj-BXT"/>
-                        <outlet property="lblLocationLat" destination="nvP-Zn-fO6" id="name-outlet-nvP-Zn-fO6"/>
-                        <outlet property="lblLocationLog" destination="Td7-8C-RJe" id="name-outlet-Td7-8C-RJe"/>
+                        <outlet property="heightLocation" destination="ziP-PM-yDO" id="name-outlet-ziP-PM-yDO"/>
+                        <outlet property="txtExpireDate" destination="0go-Ui-f5a" id="name-outlet-0go-Ui-f5a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUd-Tf-Jyl" userLabel="First Responder" sceneMemberID="firstResponder"/>

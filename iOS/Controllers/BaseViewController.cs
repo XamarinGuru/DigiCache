@@ -116,6 +116,73 @@ namespace Drop.iOS
 			};
 			alertView.Show();
 		}
+
+		protected void SetDatePicker(UITextField field, UIDatePickerMode mode = UIDatePickerMode.Time, String format = "{0: MM/dd/yy}", bool futureDatesOnly = true, DateTime? minimumDateTime = null, bool changeOnEdit = false)
+		{
+			UIDatePicker picker = new UIDatePicker();
+			picker.Mode = UIDatePickerMode.Date;
+
+			if (minimumDateTime != null)
+			{
+				NSDate nsMinDateTime = ToNSDate((DateTime)minimumDateTime);
+				picker.MinimumDate = nsMinDateTime;
+			}
+			if (futureDatesOnly)
+			{
+				NSDate nsMinDateTime = ToNSDate(DateTime.Now);
+				//picker.SetDate
+				picker.MinimumDate = nsMinDateTime;
+			}
+
+			picker.ValueChanged += (object s, EventArgs e) =>
+			{
+				if (futureDatesOnly)
+				{
+					NSDate nsMinDateTime = ToNSDate(DateTime.Now);
+					picker.MinimumDate = nsMinDateTime;
+				}
+				if (changeOnEdit)
+				{
+					updateSetupDateTimePicker(field, picker.Date, format, s, e);
+				}
+			};
+
+			// Setup the toolbar
+			UIToolbar toolbar = new UIToolbar();
+			toolbar.BarStyle = UIBarStyle.Black;
+			toolbar.Translucent = true;
+			toolbar.SizeToFit();
+
+			// Create a 'done' button for the toolbar and add it to the toolbar
+			UIBarButtonItem doneButton = new UIBarButtonItem("Done", UIBarButtonItemStyle.Done, (s, e) =>
+			{
+				updateSetupDateTimePicker(field, picker.Date, format, s, e, true);
+			});
+
+			toolbar.SetItems(new UIBarButtonItem[] { doneButton }, true);
+
+			field.InputView = picker;
+			field.InputAccessoryView = toolbar;
+
+			field.ShouldChangeCharacters = new UITextFieldChange(delegate (UITextField textField, NSRange range, string replacementString)
+			{
+				return false;
+			});
+		}
+
+		private void updateSetupDateTimePicker(UITextField field, NSDate date, String format, object sender, EventArgs e, bool done = false)
+		{
+			var newDate = NSDateToDateTime(date);
+			var str = String.Format(format, newDate);
+
+			field.Text = str;
+			field.SendActionForControlEvents(UIControlEvent.ValueChanged);
+			if (done)
+			{
+				field.ResignFirstResponder();
+			}
+		}
+
 		protected bool TextFieldShouldReturn(UITextField textField)
 		{
 			textField.ResignFirstResponder();

@@ -51,5 +51,14 @@ namespace Drop.iOS
 				NSUserDefaults.StandardUserDefaults.SetString(value, userPhotoURL);
 			}
 		}
+		private const string userType = "userType";
+		public static int UserType
+		{
+			get { return (int)NSUserDefaults.StandardUserDefaults.IntForKey(userType); }
+			set
+			{
+				NSUserDefaults.StandardUserDefaults.SetInt(value, userType);
+			}
+		}
 	}
 }

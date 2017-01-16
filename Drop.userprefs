@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/DropItemViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/NearbyViewController.cs">
     <Files>
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="149" Column="1" />
-      <File FileName="iOS/Controllers/DropLocationViewController.cs" Line="75" Column="37" />
-      <File FileName="Drop/Constants.cs" Line="13" Column="41" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="70" Column="72" />
+      <File FileName="iOS/Controllers/BaseViewController.cs" Line="120" Column="18" />
+      <File FileName="iOS/Controllers/DropLocationViewController.cs" Line="68" Column="15" />
+      <File FileName="Drop/ParseService.cs" Line="101" Column="75" />
+      <File FileName="Drop/Model/Item.cs" Line="39" Column="17" />
+      <File FileName="iOS/Controllers/NearbyViewController.cs" Line="49" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,8 +18,7 @@
             <Node name="Drop.Droid" expanded="True" />
             <Node name="Drop.iOS" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="DropItemViewController.cs" selected="True" />
-                <Node name="DropLocationViewController.cs" expanded="True" />
+                <Node name="NearbyViewController.cs" selected="True" />
               </Node>
               <Node name="Core" expanded="True" />
               <Node name="ViewModel" expanded="True" />
@@ -34,8 +36,10 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/ViewController.cs" line="23" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/DropItemViewController.cs" line="149" column="1" />
-      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/DropLocationViewController.cs" line="45" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="103" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/Drop/ParseService.cs" line="87" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/DropItemViewController.cs" line="240" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/NearbyViewController.cs" line="42" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>

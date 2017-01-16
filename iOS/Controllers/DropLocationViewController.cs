@@ -65,7 +65,7 @@ namespace Drop.iOS
 
 			var lResult = LocationHelper.GetLocationResult();
 			if ((int)lResult.Latitude == 0 || (int)lResult.Longitude == 0)
-				SetMapPin(34.052235f, -118.243683f);
+				SetMapPin(Constants.LOCATION_AUSTRALIA[0], Constants.LOCATION_AUSTRALIA[1]);
 			else
 				SetMapPin(lResult.Latitude, lResult.Longitude);
 		}

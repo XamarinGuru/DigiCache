@@ -96,7 +96,9 @@ namespace Drop
 				dropItem[Constants.STR_FIELD_ICON] = item.Icon == null ? null : new ParseFile(item.Icon.fileName, item.Icon.fileData);
 				dropItem[Constants.STR_FIELD_LOCATION_LNT] = item.Location_Lnt;
 				dropItem[Constants.STR_FIELD_LOCATION_LAT] = item.Location_Lat;
-				dropItem[Constants.STR_FIELD_EXPIRY] = DateTime.Now;
+				dropItem[Constants.STR_FIELD_VISIBILITY] = item.Visibility;
+				dropItem[Constants.STR_FIELD_PASSWORD] = item.Password;
+				dropItem[Constants.STR_FIELD_EXPIRY] = DateTime.Parse(item.ExpiryDate);
 
 				await dropItem.SaveAsync();
 			}
@@ -116,10 +118,14 @@ namespace Drop
 			foreach (ParseObject drop in drops)
 			{
 				var dropItem = new ParseItem();
+
+				dropItem.Username = drop.Get<string>(Constants.STR_FIELD_USERID);
 				dropItem.Name = drop.Get<string>(Constants.STR_FIELD_NAME);
 				dropItem.Text = drop.Get<string>(Constants.STR_FIELD_TEXT);
 				dropItem.Location_Lnt = drop.Get<double>(Constants.STR_FIELD_LOCATION_LNT);
 				dropItem.Location_Lat = drop.Get<double>(Constants.STR_FIELD_LOCATION_LAT);
+				dropItem.Visibility = drop.Get<int>(Constants.STR_FIELD_VISIBILITY);
+				dropItem.Password = drop.Get<string>(Constants.STR_FIELD_PASSWORD);
 
 				ParseFile imageObject = drop.Get<ParseFile>(Constants.STR_FIELD_IMAGE);
 				ParseFile videoObject = drop.Get<ParseFile>(Constants.STR_FIELD_VIDEO);
@@ -129,9 +135,34 @@ namespace Drop
 				dropItem.VideoURL = videoObject != null ? drop.Get<ParseFile>(Constants.STR_FIELD_VIDEO).Url : null;
 				dropItem.IconURL = iconObject != null ? drop.Get<ParseFile>(Constants.STR_FIELD_ICON).Url : null;
 
-				results.Add(dropItem);
+				if (IsVisibility(dropItem))
+				{
+					results.Add(dropItem);
+				}
 			}
 			return results;
+		}
+
+		public static bool IsVisibility(ParseItem drop)
+		{
+			bool isVisible = false;
+			switch (drop.Visibility)
+			{
+				case Constants.TAG_VISIBLE_EVERY:
+					isVisible = true;
+					break;
+				case Constants.TAG_VISIBLE_SPECIFIC:
+					isVisible = ParseUser.CurrentUser == null ? false : true;
+					break;
+				case Constants.TAG_VISIBLE_ME:
+					isVisible = ParseUser.CurrentUser != null && ParseUser.CurrentUser.Username == drop.Username ? true : false;
+					break;
+				default:
+					isVisible = false;
+					break;
+			}
+
+			return isVisible;
 		}
 		//static ParseObject GetTaskObject(int id)
 		//{

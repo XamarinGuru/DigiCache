@@ -53,6 +53,8 @@ namespace Drop.iOS
 			viewPermission.Alpha = 0;
 			viewPassword.Alpha = 0;
 			viewExpiry.Alpha = 0;
+
+			SetDatePicker(txtExpireDate);
 		}
 
 
@@ -62,10 +64,14 @@ namespace Drop.iOS
 			this.SetBinding(() => ItemModel.Name, () => txtName.Text, BindingMode.TwoWay);
 			this.SetBinding(() => ItemModel.Description, () => txtDescription.Text, BindingMode.TwoWay);
 
-			//this.SetBinding(() => ItemModel.Location_Lat, () => lblLocationLat.Text, BindingMode.OneWay);
-			//this.SetBinding(() => ItemModel.Location_Lnt, () => lblLocationLog.Text, BindingMode.OneWay);
+			this.SetBinding(() => ItemModel.Password, () => txtPassword.Text, BindingMode.TwoWay);
+
+			this.SetBinding(() => ItemModel.ExpiryDate, () => txtExpireDate.Text, BindingMode.OneWay);
+			this.SetBinding(() => txtExpireDate.Text, () => ItemModel.ExpiryDate, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 			//this.SetBinding(() => mText, () => ItemModel.ExpiryDate, BindingMode.OneWay);
 		}
+
+
 
 		#region Actions
 		partial void ActionColleps(UIButton sender)
@@ -169,8 +175,8 @@ namespace Drop.iOS
 			}
 			else
 			{
-				ItemModel.Location_Lat = 0;
-				ItemModel.Location_Lnt = 0;
+				ItemModel.Location_Lat = Constants.LOCATION_AUSTRALIA[0];
+				ItemModel.Location_Lnt = Constants.LOCATION_AUSTRALIA[1];
 				lblLocationLat.Text = ItemModel.Location_Lat.ToString();
 				lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
 			}
@@ -183,15 +189,40 @@ namespace Drop.iOS
 			NavigationController.PushViewController(pvc, true);
 		}
 
-		partial void ActionPermission(UIButton sender)
+		partial void ActionVisibility(UIButton sender)
 		{
-			//throw new NotImplementedException();
+			btnVisibleEvery.Selected = false;
+			btnVisibleMe.Selected = false;
+			btnVisibleSpecific.Selected = false;
+
+			switch (sender.Tag)
+			{
+				case Constants.TAG_VISIBLE_EVERY:
+					btnVisibleEvery.Selected = true;
+					break;
+				case Constants.TAG_VISIBLE_ME:
+					btnVisibleMe.Selected = true;
+					break;
+				case Constants.TAG_VISIBLE_SPECIFIC:
+					btnVisibleSpecific.Selected = true;
+					break;
+			}
+
+			ItemModel.Visibility = (int)sender.Tag;
 		}
 
 		partial void ActionAcessiblity(UIButton sender)
 		{
 			//throw new NotImplementedException();
 		}
+
+		partial void ActionPassword(UISwitch sender)
+		{
+			txtPassword.Enabled = sender.On;
+			if (!sender.Selected)
+				txtPassword.Text = string.Empty;
+		}
+
 
 		partial void ActionEligiblity(UIButton sender)
 		{
@@ -214,10 +245,6 @@ namespace Drop.iOS
 			
 			ShowLoadingView(Constants.STR_LOADING);
 
-			//var lResult = LocationHelper.GetLocationResult();
-			//ItemModel.Location_Lat = lResult.Latitude;
-			//ItemModel.Location_Lnt = lResult.Longitude;
-			
 			var result = await ParseService.AddDropItem(ItemModel.parseItem);
 
 			HideLoadingView();
@@ -287,6 +314,8 @@ namespace Drop.iOS
 					break;
 			}
 		}
+
+
 		#endregion
 
 		#region functions

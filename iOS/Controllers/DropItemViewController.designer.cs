@@ -32,11 +32,15 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnEveryone { get; set; }
+        UIKit.UIButton btnVisibleEvery { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnSecificUser { get; set; }
+        UIKit.UIButton btnVisibleMe { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnVisibleSpecific { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -76,15 +80,19 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton tnOnlyMe { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextView txtDescription { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtExpireDate { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtPassword { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -146,13 +154,17 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionItem (UIKit.UIButton sender);
 
-        [Action ("ActionPermission:")]
+        [Action ("ActionPassword:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionPermission (UIKit.UIButton sender);
+        partial void ActionPassword (UIKit.UISwitch sender);
 
         [Action ("ActionShare:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionShare (UIKit.UIButton sender);
+
+        [Action ("ActionVisibility:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionVisibility (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -176,14 +188,19 @@ namespace Drop.iOS
                 btnDropVideoSymbol = null;
             }
 
-            if (btnEveryone != null) {
-                btnEveryone.Dispose ();
-                btnEveryone = null;
+            if (btnVisibleEvery != null) {
+                btnVisibleEvery.Dispose ();
+                btnVisibleEvery = null;
             }
 
-            if (btnSecificUser != null) {
-                btnSecificUser.Dispose ();
-                btnSecificUser = null;
+            if (btnVisibleMe != null) {
+                btnVisibleMe.Dispose ();
+                btnVisibleMe = null;
+            }
+
+            if (btnVisibleSpecific != null) {
+                btnVisibleSpecific.Dispose ();
+                btnVisibleSpecific = null;
             }
 
             if (heightExpiry != null) {
@@ -231,19 +248,24 @@ namespace Drop.iOS
                 lblLocationLog = null;
             }
 
-            if (tnOnlyMe != null) {
-                tnOnlyMe.Dispose ();
-                tnOnlyMe = null;
-            }
-
             if (txtDescription != null) {
                 txtDescription.Dispose ();
                 txtDescription = null;
             }
 
+            if (txtExpireDate != null) {
+                txtExpireDate.Dispose ();
+                txtExpireDate = null;
+            }
+
             if (txtName != null) {
                 txtName.Dispose ();
                 txtName = null;
+            }
+
+            if (txtPassword != null) {
+                txtPassword.Dispose ();
+                txtPassword = null;
             }
 
             if (viewExpiry != null) {

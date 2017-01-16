@@ -33,6 +33,7 @@ namespace Drop.iOS
 
 		private void GoToHomeVC()
 		{
+			//AppSettings.UserType = Constants.TAG_VISIBLE_EVERY;
 			var pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_HOME);
 			NavigationController.PushViewController(pvc, true);
 		}
@@ -55,7 +56,7 @@ namespace Drop.iOS
 
 		private void LoginProcess(AccessToken fbToken)
 		{
-			AppSettings.UserFBID = fbToken.UserID;
+			//AppSettings.UserFBID = fbToken.UserID;
 
 			ShowLoadingView(Constants.STR_LOGIN_LOADING);
 
@@ -85,10 +86,10 @@ namespace Drop.iOS
 				user.Lastname = userInfo["last_name"].ToString();
 				user.Email = userInfo["email"].ToString();
 				user.Password = userInfo["email"].ToString();
+				user.Type = Constants.TAG_VISIBLE_SPECIFIC;
 
 				var tmp1 = (NSDictionary)userInfo["picture"];
 				var tmp2 = (NSDictionary)tmp1["data"];
-				user.PhotoURL = tmp2["url"].ToString();
 
 				ParseLogin(user);
 			});
@@ -102,6 +103,7 @@ namespace Drop.iOS
 			HideLoadingView();
 			if (response == Constants.STR_STATUS_SUCCESS)
 			{
+				//AppSettings.UserType = Constants.TAG_VISIBLE_SPECIFIC;
 				GoToHomeVC();
 			}
 			else {

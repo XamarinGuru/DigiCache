@@ -14,6 +14,7 @@ namespace Drop.iOS
     {
 		private MapView mMapView;
 		private IList<ParseItem> mDrops;
+		private ParseItem mSelectedDrop;
 
         public NearbyViewController(IntPtr handle) : base(handle, Constants.STR_iOS_VCNAME_NEARBY)
 		{
@@ -24,9 +25,10 @@ namespace Drop.iOS
 			base.ViewDidLoad();
 
 			var lResult = LocationHelper.GetLocationResult();
-			var camera = CameraPosition.FromCamera(lResult.Latitude, lResult.Longitude, zoom: 7);
+			var camera = CameraPosition.FromCamera(lResult.Latitude, lResult.Longitude, zoom: 14);
 			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
 			mMapView.MyLocationEnabled = false;
+			mMapView.MapType = MapViewType.Satellite;
 			mMapView.Alpha = 0.9f;
 			mMapView.TappedMarker = ClickedDropItem;
 		}
@@ -55,9 +57,16 @@ namespace Drop.iOS
 
 		bool ClickedDropItem(MapView mapView, Marker marker)
 		{
-			DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
-			pvc.parseItem = mDrops[marker.ZIndex];
-			NavigationController.PushViewController(pvc, true);
+			mSelectedDrop = mDrops[marker.ZIndex];
+			if (mSelectedDrop.Password == string.Empty || mSelectedDrop.Password == null)
+			{
+				DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
+				pvc.parseItem = mSelectedDrop;
+				NavigationController.PushViewController(pvc, true);
+			}
+			else {
+				ShowTextFieldBox(Constants.STR_VERIFY_PASSWORD_TITLE, "Cancel", new[] { "OK" }, VerifyPassword);
+			}
 
 			return true;
 		}
@@ -89,6 +98,19 @@ namespace Drop.iOS
 			mMapView.Frame = new CGRect(0, 0, width, height);
 
 			viewMapContent.AddSubview(mMapView);
+		}
+
+		void VerifyPassword(string text)
+		{
+			if (mSelectedDrop.Password == text)
+			{
+				DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
+				pvc.parseItem = mSelectedDrop;
+				NavigationController.PushViewController(pvc, true);
+			}
+			else {
+				ShowMessageBox(null, Constants.STR_INVALID_PASSWORD_TITLE);
+			}
 		}
     }
 }

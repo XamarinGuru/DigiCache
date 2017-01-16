@@ -28,13 +28,16 @@ namespace Drop
 
 		public const string STR_DROPS_LOADING = "Retreving Drop Items...";
 
-		public const string STR_DROP_INVALID = "You should specify at least Name & icon to drop your item.";
+		public const string STR_DROP_INVALID = "You should specify at least Name & Icon & Location to drop your item.";
 		public const string STR_DROP_SUCCESS_MSG = "Dropped your item successfully.";
 
 		public const string STR_ATTACH_TITLE = "Select Attach File Type...";
 		public const string STR_CUSTOM_ICON_TITLE = "Customize your drop icon...";
 		public const string STR_ATTACH_TEXT_TITLE = "Describe to your drop.";
 		public const string STR_ATTACH_OTHER_TITLE = "Other link.";
+
+		public const string STR_VERIFY_PASSWORD_TITLE = "Require to access to this drop item.";
+		public const string STR_INVALID_PASSWORD_TITLE = "Invalid Password.";
 
 		//vc names
 		public const string STR_iOS_VCNAME_LOGIN = "LoginViewController";
@@ -66,6 +69,10 @@ namespace Drop
 		public const int INDEX_FROM_CAMERA = 2;
 		public const int INDEX_OTHER = 3;
 
+		public const int TAG_VISIBLE_EVERY = 0;
+		public const int TAG_VISIBLE_ME = 1;
+		public const int TAG_VISIBLE_SPECIFIC = 2;
+
 
 		//table names
 		public const string STR_TABLE_DROP_ITEM = "DropItems";
@@ -80,7 +87,9 @@ namespace Drop
 		public const string STR_FIELD_ICON = "Icon";
 		public const string STR_FIELD_LOCATION_LNT = "Location_Lnt";
 		public const string STR_FIELD_LOCATION_LAT = "Location_Lat";
-		public const string STR_FIELD_EXPIRY = "expiry";
+		public const string STR_FIELD_VISIBILITY = "Visibility";
+		public const string STR_FIELD_PASSWORD = "Password";
+		public const string STR_FIELD_EXPIRY = "Expiry";
 
 		//defailt icon name
 		public const string STR_DEFAILT_ICON1 = "icon_drop1.png";
@@ -96,6 +105,8 @@ namespace Drop
 														"Other..." };
 		public static string[] TYPE_FROM_SOURCE = new[] {	"Select Icon from Photo Library",
 															"Take Icon from Camera" };
+
+		public static double[] LOCATION_AUSTRALIA = new double[] { 35.2809f, 149.1300f };
 		
 	}
 }

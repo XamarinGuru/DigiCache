@@ -18,5 +18,6 @@
 		public string Email { get; internal set; }
 		public string Password { get; internal set; }
 		public string PhotoURL { get; internal set; }
+		public int Type { get; internal set; }
 	}
 }
