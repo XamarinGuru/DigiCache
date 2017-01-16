@@ -48,6 +48,10 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint heightLocation { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightName { get; set; }
 
         [Outlet]
@@ -61,6 +65,14 @@ namespace Drop.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgDropIcon { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblLocationLat { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblLocationLog { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -84,6 +96,10 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView viewLocation { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewName { get; set; }
 
         [Outlet]
@@ -102,9 +118,17 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionColleps (UIKit.UIButton sender);
 
+        [Action ("ActionCurrentLocation:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionCurrentLocation (UIKit.UIButton sender);
+
         [Action ("ActionCustomIcon:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionCustomIcon (UIKit.UIButton sender);
+
+        [Action ("ActionCustomLocation:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionCustomLocation (UIKit.UIButton sender);
 
         [Action ("ActionDefailtIcon:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -172,6 +196,11 @@ namespace Drop.iOS
                 heightIcon = null;
             }
 
+            if (heightLocation != null) {
+                heightLocation.Dispose ();
+                heightLocation = null;
+            }
+
             if (heightName != null) {
                 heightName.Dispose ();
                 heightName = null;
@@ -190,6 +219,16 @@ namespace Drop.iOS
             if (imgDropIcon != null) {
                 imgDropIcon.Dispose ();
                 imgDropIcon = null;
+            }
+
+            if (lblLocationLat != null) {
+                lblLocationLat.Dispose ();
+                lblLocationLat = null;
+            }
+
+            if (lblLocationLog != null) {
+                lblLocationLog.Dispose ();
+                lblLocationLog = null;
             }
 
             if (tnOnlyMe != null) {
@@ -215,6 +254,11 @@ namespace Drop.iOS
             if (viewIcon != null) {
                 viewIcon.Dispose ();
                 viewIcon = null;
+            }
+
+            if (viewLocation != null) {
+                viewLocation.Dispose ();
+                viewLocation = null;
             }
 
             if (viewName != null) {

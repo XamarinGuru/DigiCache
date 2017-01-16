@@ -43,6 +43,7 @@ namespace Drop.iOS
 					break;
 				case Constants.STR_iOS_VCNAME_ITEM:
 				case Constants.STR_iOS_VCNAME_NEARBY:
+				case Constants.STR_iOS_VCNAME_LOCATION:
 					NavigationItem.RightBarButtonItem = null;
 					break;
 				case Constants.STR_iOS_VCNAME_DETAIL:

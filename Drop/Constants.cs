@@ -11,6 +11,7 @@ namespace Drop
 		public const string FACEBOOK_DISPLAY_NAME = "Drop";
 
 		public const string GOOGLE_MAP_API_KEY = "AIzaSyAiBwRUm_KZDv_sp3eI7F8hxkePqDTvY20";
+		public const string GOOGLE_AUTO_FILL_URL = "https://maps.googleapis.com/maps/api/place/autocomplete/json";
 
 		public static string[] FB_PERMISSIONS = new[] { "public_profile", "email" };
 
@@ -27,7 +28,7 @@ namespace Drop
 
 		public const string STR_DROPS_LOADING = "Retreving Drop Items...";
 
-
+		public const string STR_DROP_INVALID = "You should specify at least Name & icon to drop your item.";
 		public const string STR_DROP_SUCCESS_MSG = "Dropped your item successfully.";
 
 		public const string STR_ATTACH_TITLE = "Select Attach File Type...";
@@ -41,6 +42,7 @@ namespace Drop
 		public const string STR_iOS_VCNAME_ITEM = "DropItemViewController";
 		public const string STR_iOS_VCNAME_NEARBY = "NearbyViewController";
 		public const string STR_iOS_VCNAME_DETAIL = "DropDetailViewController";
+		public const string STR_iOS_VCNAME_LOCATION = "DropLocationViewController";
 		//tag
 		public const int TAG_DROP_ITEM = 1;
 		public const int TAG_DROP_NEARBY = 2;
@@ -48,8 +50,9 @@ namespace Drop
 
 		public const int TAG_COLLEPS_NAME = 185;
 		public const int TAG_COLLEPS_ICON = 125;
+		public const int TAG_COLLEPS_LOCATION = 126;
 		public const int TAG_COLLEPS_PERMISSION = 255;
-		public const int TAG_COLLEPS_PASSWORD = 126;
+		public const int TAG_COLLEPS_PASSWORD = 127;
 		public const int TAG_COLLEPS_EXPIRY = 190;
 
 		public const int TAG_DEFAILT_ICON1 = 11;

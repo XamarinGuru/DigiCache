@@ -28,6 +28,14 @@ namespace Drop.iOS
 			SetInputBinding();
 		}
 
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+			lblLocationLat.Text = ItemModel.Location_Lat.ToString();
+			lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
+		}
+
 		void SetInitialSettings()
 		{
 			mMediaPicker = new UIImagePickerController();
@@ -35,23 +43,27 @@ namespace Drop.iOS
 
 			heightName.Constant = 0;
 			heightIcon.Constant = 0;
+			heightLocation.Constant = 0;
 			heightPermission.Constant = 0;
 			heightPassword.Constant = 0;
 			heightExpiry.Constant = 0;
 			viewName.Alpha = 0;
 			viewIcon.Alpha = 0;
+			viewLocation.Alpha = 0;
 			viewPermission.Alpha = 0;
 			viewPassword.Alpha = 0;
 			viewExpiry.Alpha = 0;
 		}
+
+
 
 		private void SetInputBinding()
 		{
 			this.SetBinding(() => ItemModel.Name, () => txtName.Text, BindingMode.TwoWay);
 			this.SetBinding(() => ItemModel.Description, () => txtDescription.Text, BindingMode.TwoWay);
 
-			//this.SetBinding(() => mText, () => ItemModel.Permission, BindingMode.OneWay);
-			//this.SetBinding(() => mText, () => ItemModel.Password, BindingMode.OneWay);
+			//this.SetBinding(() => ItemModel.Location_Lat, () => lblLocationLat.Text, BindingMode.OneWay);
+			//this.SetBinding(() => ItemModel.Location_Lnt, () => lblLocationLog.Text, BindingMode.OneWay);
 			//this.SetBinding(() => mText, () => ItemModel.ExpiryDate, BindingMode.OneWay);
 		}
 
@@ -74,6 +86,10 @@ namespace Drop.iOS
 				case Constants.TAG_COLLEPS_ICON:
 					heightIcon.Constant = constant;
 					viewIcon.Alpha = alpha;
+					break;
+				case Constants.TAG_COLLEPS_LOCATION:
+					heightLocation.Constant = constant;
+					viewLocation.Alpha = alpha;
 					break;
 				case Constants.TAG_COLLEPS_PERMISSION:
 					heightPermission.Constant = constant;
@@ -138,24 +154,53 @@ namespace Drop.iOS
 			actionSheet.ShowInView(this.View);
 		}
 
+		partial void ActionCurrentLocation(UIButton sender)
+		{
+			sender.Selected = !sender.Selected;
+
+			if (sender.Selected)
+			{
+				var lResult = LocationHelper.GetLocationResult();
+				ItemModel.Location_Lat = lResult.Latitude;
+				ItemModel.Location_Lnt = lResult.Longitude;
+
+				lblLocationLat.Text = ItemModel.Location_Lat.ToString();
+				lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
+			}
+			else
+			{
+				ItemModel.Location_Lat = 0;
+				ItemModel.Location_Lnt = 0;
+				lblLocationLat.Text = ItemModel.Location_Lat.ToString();
+				lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
+			}
+		}
+
+		partial void ActionCustomLocation(UIButton sender)
+		{
+			var pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_LOCATION) as DropLocationViewController;
+			pvc.ItemModel = this.ItemModel;
+			NavigationController.PushViewController(pvc, true);
+		}
+
 		partial void ActionPermission(UIButton sender)
 		{
-			throw new NotImplementedException();
+			//throw new NotImplementedException();
 		}
 
 		partial void ActionAcessiblity(UIButton sender)
 		{
-			throw new NotImplementedException();
+			//throw new NotImplementedException();
 		}
 
 		partial void ActionEligiblity(UIButton sender)
 		{
-			throw new NotImplementedException();
+			//throw new NotImplementedException();
 		}
 
 		partial void ActionShare(UIButton sender)
 		{
-			throw new NotImplementedException();
+			//throw new NotImplementedException();
 		}
 
 
@@ -169,9 +214,9 @@ namespace Drop.iOS
 			
 			ShowLoadingView(Constants.STR_LOADING);
 
-			var lResult = LocationHelper.GetLocationResult();
-			ItemModel.Location_Lat = lResult.Latitude;
-			ItemModel.Location_Lnt = lResult.Longitude;
+			//var lResult = LocationHelper.GetLocationResult();
+			//ItemModel.Location_Lat = lResult.Latitude;
+			//ItemModel.Location_Lnt = lResult.Longitude;
 			
 			var result = await ParseService.AddDropItem(ItemModel.parseItem);
 
@@ -319,6 +364,8 @@ namespace Drop.iOS
 				Console.WriteLine(ex.Message);
 			}
 		}
+
+
 
 		void PickupMediaCanceledHandler(object sender, EventArgs e)
 		{
