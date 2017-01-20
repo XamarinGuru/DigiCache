@@ -229,7 +229,7 @@ namespace Drop.iOS
 
 		protected MediaFile ByteDataFromImage(UIImage image)
 		{
-			var imageData = image.AsJPEG(0.5f);
+			var imageData = image.AsPNG();
 			var fileBytes = new Byte[imageData.Length];
 			System.Runtime.InteropServices.Marshal.Copy(imageData.Bytes, fileBytes, 0, Convert.ToInt32(imageData.Length));
 

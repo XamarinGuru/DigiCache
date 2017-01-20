@@ -128,29 +128,31 @@ namespace Drop.iOS
 
 		partial void ActionDefailtIcon(UIButton sender)
 		{
+			sender.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+
 			string strIconName = "";
 			switch (sender.Tag)
 			{
 				case Constants.TAG_DEFAILT_ICON1:
-					strIconName = Constants.STR_DEFAILT_ICON1;
+					strIconName = Constants.STR_DEFAILT_ICON6;
 					break;
 				case Constants.TAG_DEFAILT_ICON2:
-					strIconName = Constants.STR_DEFAILT_ICON2;
+					strIconName = Constants.STR_DEFAILT_ICON7;
 					break;
 				case Constants.TAG_DEFAILT_ICON3:
-					strIconName = Constants.STR_DEFAILT_ICON3;
+					strIconName = Constants.STR_DEFAILT_ICON8;
 					break;
 				case Constants.TAG_DEFAILT_ICON4:
-					strIconName = Constants.STR_DEFAILT_ICON4;
+					strIconName = Constants.STR_DEFAILT_ICON9;
 					break;
 				case Constants.TAG_DEFAILT_ICON5:
-					strIconName = Constants.STR_DEFAILT_ICON5;
+					strIconName = Constants.STR_DEFAILT_ICON10;
 					break;
 				default:
 					break;
 			}
 			imgDropIcon.Image = UIImage.FromFile(strIconName);
-			ItemModel.Icon = ByteDataFromImage(UIImage.FromFile(strIconName));
+			ItemModel.Icon = ByteDataFromImage(MaxResizeImage(imgDropIcon.Image));
 		}
 
 		partial void ActionCustomIcon(UIButton sender)
@@ -286,7 +288,7 @@ namespace Drop.iOS
 					break;
 
 				case Constants.INDEX_OTHER:
-					ShowTextFieldBox(Constants.STR_ATTACH_OTHER_TITLE, "Cancel", new[] { "OK" }, SetOther);
+					ShowTextFieldBox(Constants.STR_ATTACH_OTHER_TITLE, "Cancel", new[] { "OK" }, SetOtherLink);
 					break;
 			}
 
@@ -325,9 +327,9 @@ namespace Drop.iOS
 			btnDropTextSymbol.Selected = text != "" ? true : false;
 		}
 
-		void SetOther(string text)
+		void SetOtherLink(string text)
 		{
-			ItemModel.Other = text;
+			ItemModel.OtherLink = text;
 			btnDropOtherSymbol.Selected = text != "" ? true : false;
 		}
 		#endregion

@@ -32,13 +32,17 @@ namespace Drop.iOS
 		partial void ActionPlayVideo(UIButton sender)
 		{
 			if (parseItem.VideoURL != null)
-				UIApplication.SharedApplication.OpenUrl(new NSUrl(parseItem.Other.ToString()));
+			{
+				var strURL = parseItem.VideoURL.ToString();
+				var url = new NSUrl(strURL);
+				UIApplication.SharedApplication.OpenUrl(url);
+			}
 		}
 
 		partial void ActionGoToLink(UIButton sender)
 		{
-			if (parseItem.Other != null && parseItem.Other != "")
-				UIApplication.SharedApplication.OpenUrl(new NSUrl(parseItem.Other.ToString()));
+			if (parseItem.OtherLink != null && parseItem.OtherLink != "")
+				UIApplication.SharedApplication.OpenUrl(new NSUrl(parseItem.OtherLink));
 		}
 		#endregion
 	}

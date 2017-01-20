@@ -249,6 +249,14 @@
     <BundleResource Include="Resources\icon_link.png" />
     <BundleResource Include="Resources\icon_video.png" />
     <BundleResource Include="Resources\icon_location.png" />
+    <BundleResource Include="Resources\icon_drop6.png" />
+    <BundleResource Include="Resources\icon_drop7.png" />
+    <BundleResource Include="Resources\icon_drop8.png" />
+    <BundleResource Include="Resources\icon_drop9.png" />
+    <BundleResource Include="Resources\icon_drop10.png" />
+    <BundleResource Include="Resources\icon_drop11.png" />
+    <BundleResource Include="Resources\icon_drop12.png" />
+    <BundleResource Include="Resources\icon_drop13.png" />
   </ItemGroup>
   <Import Project="..\Drop\Drop.projitems" Label="Shared" Condition="Exists('..\Drop\Drop.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

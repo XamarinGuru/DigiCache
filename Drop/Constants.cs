@@ -83,7 +83,7 @@ namespace Drop
 		public const string STR_FIELD_TEXT = "Text";
 		public const string STR_FIELD_IMAGE = "Image";
 		public const string STR_FIELD_VIDEO = "Video";
-		public const string STR_FIELD_OTHER = "Other";
+		public const string STR_FIELD_OTHER_LINK = "Other_Link";
 		public const string STR_FIELD_ICON = "Icon";
 		public const string STR_FIELD_LOCATION_LNT = "Location_Lnt";
 		public const string STR_FIELD_LOCATION_LAT = "Location_Lat";
@@ -98,11 +98,17 @@ namespace Drop
 		public const string STR_DEFAILT_ICON4 = "icon_drop4.png";
 		public const string STR_DEFAILT_ICON5 = "icon_drop5.png";
 
+		public const string STR_DEFAILT_ICON6 = "icon_drop6.png";
+		public const string STR_DEFAILT_ICON7 = "icon_drop7.png";
+		public const string STR_DEFAILT_ICON8 = "icon_drop8.png";
+		public const string STR_DEFAILT_ICON9 = "icon_drop9.png";
+		public const string STR_DEFAILT_ICON10 = "icon_drop10.png";
+
 		//
 		public static string[] TYPE_ATTACH = new[] { 	"Text", 
 														"Select Image & Video from Photo Library", 
 														"Take Image & Video from Camera",
-														"Other..." };
+														"Other Link..." };
 		public static string[] TYPE_FROM_SOURCE = new[] {	"Select Icon from Photo Library",
 															"Take Icon from Camera" };
 

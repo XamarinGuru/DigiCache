@@ -136,10 +136,10 @@ namespace Drop.iOS
 			geoCoder.CancelGeocode();
 			geoCoder.ReverseGeocodeLocation(new CLLocation(ItemModel.Location_Lat, ItemModel.Location_Lnt), (placemarks, error) =>
 		   {
-			   var placemark = placemarks[0];
-
 			   try
 			   {
+				   var placemark = placemarks[0];
+
 				   var DName = placemark.Name;
 				   var Street = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.Street).ToString();
 				   var City = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.City).ToString();

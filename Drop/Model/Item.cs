@@ -31,7 +31,7 @@ namespace Drop
 		public string Name { get { return parseItem.Name; } set { parseItem.Name = value; } }
 		public string Description { get { return parseItem.Description; } set { parseItem.Description = value; } }
 		public string Text { get { return parseItem.Text; } set { parseItem.Text = value; } }
-		public string Other { get { return parseItem.Other; } set { parseItem.Other = value; } }
+		public string OtherLink { get { return parseItem.OtherLink; } set { parseItem.OtherLink = value; } }
 		public double Location_Lnt { get { return parseItem.Location_Lnt; } set { parseItem.Location_Lnt = value; } }
 		public double Location_Lat { get { return parseItem.Location_Lat; } set { parseItem.Location_Lat = value; } }
 		public int Visibility { get { return parseItem.Visibility; } set { parseItem.Visibility = value; } }
@@ -45,7 +45,9 @@ namespace Drop
 		{
 			if (Name == null || Name == "" || Icon == null || (Location_Lnt == 0 && Location_Lat == 0))
 				return false;
-			
+			//if (OtherLink != null || OtherLink != "" || !Uri.IsWellFormedUriString(OtherLink, UriKind.RelativeOrAbsolute))
+			//	return false;
+
 			return true;
 		}
 	}
@@ -67,7 +69,7 @@ namespace Drop
 		public string Name { get; internal set; }
 		public string Description { get; internal set; }
 		public string Text { get; internal set; }
-		public string Other { get; internal set; }
+		public string OtherLink { get; internal set; }
 		public double Location_Lnt { get; internal set; }
 		public double Location_Lat { get; internal set; }
 		public int Visibility { get; internal set; }

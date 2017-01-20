@@ -92,13 +92,13 @@ namespace Drop
 				dropItem[Constants.STR_FIELD_TEXT] = item.Text;
 				dropItem[Constants.STR_FIELD_IMAGE] = item.Image == null ? null : new ParseFile(item.Image.fileName, item.Image.fileData);
 				dropItem[Constants.STR_FIELD_VIDEO] = item.Video == null ? null : new ParseFile(item.Video.fileName, item.Video.fileData);
-				dropItem[Constants.STR_FIELD_OTHER] = item.Other;
+				dropItem[Constants.STR_FIELD_OTHER_LINK] = item.OtherLink;
 				dropItem[Constants.STR_FIELD_ICON] = item.Icon == null ? null : new ParseFile(item.Icon.fileName, item.Icon.fileData);
 				dropItem[Constants.STR_FIELD_LOCATION_LNT] = item.Location_Lnt;
 				dropItem[Constants.STR_FIELD_LOCATION_LAT] = item.Location_Lat;
 				dropItem[Constants.STR_FIELD_VISIBILITY] = item.Visibility;
 				dropItem[Constants.STR_FIELD_PASSWORD] = item.Password;
-				dropItem[Constants.STR_FIELD_EXPIRY] = DateTime.Parse(item.ExpiryDate);
+				dropItem[Constants.STR_FIELD_EXPIRY] = item.ExpiryDate == "" ? DateTime.Now : DateTime.Parse(item.ExpiryDate);
 
 				await dropItem.SaveAsync();
 			}
@@ -122,6 +122,7 @@ namespace Drop
 				dropItem.Username = drop.Get<string>(Constants.STR_FIELD_USERID);
 				dropItem.Name = drop.Get<string>(Constants.STR_FIELD_NAME);
 				dropItem.Text = drop.Get<string>(Constants.STR_FIELD_TEXT);
+				dropItem.OtherLink = drop.Get<string>(Constants.STR_FIELD_OTHER_LINK);
 				dropItem.Location_Lnt = drop.Get<double>(Constants.STR_FIELD_LOCATION_LNT);
 				dropItem.Location_Lat = drop.Get<double>(Constants.STR_FIELD_LOCATION_LAT);
 				dropItem.Visibility = drop.Get<int>(Constants.STR_FIELD_VISIBILITY);
