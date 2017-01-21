@@ -26,10 +26,83 @@ namespace Drop.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::AndroidHUD.Resource.Attribute.ahBarColor = global::Drop.Droid.Resource.Attribute.ahBarColor;
+			global::AndroidHUD.Resource.Attribute.ahBarLength = global::Drop.Droid.Resource.Attribute.ahBarLength;
+			global::AndroidHUD.Resource.Attribute.ahBarWidth = global::Drop.Droid.Resource.Attribute.ahBarWidth;
+			global::AndroidHUD.Resource.Attribute.ahCircleColor = global::Drop.Droid.Resource.Attribute.ahCircleColor;
+			global::AndroidHUD.Resource.Attribute.ahDelayMillis = global::Drop.Droid.Resource.Attribute.ahDelayMillis;
+			global::AndroidHUD.Resource.Attribute.ahRadius = global::Drop.Droid.Resource.Attribute.ahRadius;
+			global::AndroidHUD.Resource.Attribute.ahRimColor = global::Drop.Droid.Resource.Attribute.ahRimColor;
+			global::AndroidHUD.Resource.Attribute.ahRimWidth = global::Drop.Droid.Resource.Attribute.ahRimWidth;
+			global::AndroidHUD.Resource.Attribute.ahSpinSpeed = global::Drop.Droid.Resource.Attribute.ahSpinSpeed;
+			global::AndroidHUD.Resource.Attribute.ahText = global::Drop.Droid.Resource.Attribute.ahText;
+			global::AndroidHUD.Resource.Attribute.ahTextColor = global::Drop.Droid.Resource.Attribute.ahTextColor;
+			global::AndroidHUD.Resource.Attribute.ahTextSize = global::Drop.Droid.Resource.Attribute.ahTextSize;
+			global::AndroidHUD.Resource.Drawable.ic_errorstatus = global::Drop.Droid.Resource.Drawable.ic_errorstatus;
+			global::AndroidHUD.Resource.Drawable.ic_successstatus = global::Drop.Droid.Resource.Drawable.ic_successstatus;
+			global::AndroidHUD.Resource.Drawable.roundedbg = global::Drop.Droid.Resource.Drawable.roundedbg;
+			global::AndroidHUD.Resource.Drawable.roundedbgdark = global::Drop.Droid.Resource.Drawable.roundedbgdark;
+			global::AndroidHUD.Resource.Id.loadingImage = global::Drop.Droid.Resource.Id.loadingImage;
+			global::AndroidHUD.Resource.Id.loadingProgressBar = global::Drop.Droid.Resource.Id.loadingProgressBar;
+			global::AndroidHUD.Resource.Id.loadingProgressWheel = global::Drop.Droid.Resource.Id.loadingProgressWheel;
+			global::AndroidHUD.Resource.Id.textViewStatus = global::Drop.Droid.Resource.Id.textViewStatus;
+			global::AndroidHUD.Resource.Layout.loading = global::Drop.Droid.Resource.Layout.loading;
+			global::AndroidHUD.Resource.Layout.loadingimage = global::Drop.Droid.Resource.Layout.loadingimage;
+			global::AndroidHUD.Resource.Layout.loadingprogress = global::Drop.Droid.Resource.Layout.loadingprogress;
+			global::AndroidHUD.Resource.String.library_name = global::Drop.Droid.Resource.String.library_name;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel = global::Drop.Droid.Resource.Styleable.ProgressWheel;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarColor = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahBarColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarLength = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahBarLength;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahBarWidth = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahBarWidth;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahCircleColor = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahCircleColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahDelayMillis = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahDelayMillis;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRadius = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahRadius;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRimColor = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahRimColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahRimWidth = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahRimWidth;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahSpinSpeed = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahSpinSpeed;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahText;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::Drop.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
 		}
 		
 		public partial class Attribute
 		{
+			
+			// aapt resource value: 0x7f010003
+			public const int ahBarColor = 2130771971;
+			
+			// aapt resource value: 0x7f01000b
+			public const int ahBarLength = 2130771979;
+			
+			// aapt resource value: 0x7f01000a
+			public const int ahBarWidth = 2130771978;
+			
+			// aapt resource value: 0x7f010008
+			public const int ahCircleColor = 2130771976;
+			
+			// aapt resource value: 0x7f010007
+			public const int ahDelayMillis = 2130771975;
+			
+			// aapt resource value: 0x7f010009
+			public const int ahRadius = 2130771977;
+			
+			// aapt resource value: 0x7f010004
+			public const int ahRimColor = 2130771972;
+			
+			// aapt resource value: 0x7f010005
+			public const int ahRimWidth = 2130771973;
+			
+			// aapt resource value: 0x7f010006
+			public const int ahSpinSpeed = 2130771974;
+			
+			// aapt resource value: 0x7f010000
+			public const int ahText = 2130771968;
+			
+			// aapt resource value: 0x7f010001
+			public const int ahTextColor = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int ahTextSize = 2130771970;
 			
 			static Attribute()
 			{
@@ -41,11 +114,225 @@ namespace Drop.Droid
 			}
 		}
 		
+		public partial class Drawable
+		{
+			
+			// aapt resource value: 0x7f020000
+			public const int bar_top = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int bg = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int bg_blue = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int bg_blue1 = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int bg_blue2 = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int bg_bottom_orange = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int bg_colleps = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int bg_date = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int bg_drop_detail = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int bg_home_btn = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int bg_home_btn_content = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int bg_orange = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int bg_pw = 2130837516;
+			
+			// aapt resource value: 0x7f02000d
+			public const int bg_textfield = 2130837517;
+			
+			// aapt resource value: 0x7f02000e
+			public const int bg_tool_button = 2130837518;
+			
+			// aapt resource value: 0x7f02000f
+			public const int btn_back = 2130837519;
+			
+			// aapt resource value: 0x7f020010
+			public const int btn_drop_item = 2130837520;
+			
+			// aapt resource value: 0x7f020011
+			public const int btn_drop_nearby = 2130837521;
+			
+			// aapt resource value: 0x7f020012
+			public const int btn_right = 2130837522;
+			
+			// aapt resource value: 0x7f020013
+			public const int ic_errorstatus = 2130837523;
+			
+			// aapt resource value: 0x7f020014
+			public const int ic_successstatus = 2130837524;
+			
+			// aapt resource value: 0x7f020015
+			public const int icon_audio = 2130837525;
+			
+			// aapt resource value: 0x7f020016
+			public const int icon_check = 2130837526;
+			
+			// aapt resource value: 0x7f020017
+			public const int icon_colleps = 2130837527;
+			
+			// aapt resource value: 0x7f020018
+			public const int icon_drop1 = 2130837528;
+			
+			// aapt resource value: 0x7f020019
+			public const int icon_drop10 = 2130837529;
+			
+			// aapt resource value: 0x7f02001a
+			public const int icon_drop11 = 2130837530;
+			
+			// aapt resource value: 0x7f02001b
+			public const int icon_drop12 = 2130837531;
+			
+			// aapt resource value: 0x7f02001c
+			public const int icon_drop13 = 2130837532;
+			
+			// aapt resource value: 0x7f02001d
+			public const int icon_drop2 = 2130837533;
+			
+			// aapt resource value: 0x7f02001e
+			public const int icon_drop3 = 2130837534;
+			
+			// aapt resource value: 0x7f02001f
+			public const int icon_drop4 = 2130837535;
+			
+			// aapt resource value: 0x7f020020
+			public const int icon_drop5 = 2130837536;
+			
+			// aapt resource value: 0x7f020021
+			public const int icon_drop6 = 2130837537;
+			
+			// aapt resource value: 0x7f020022
+			public const int icon_drop7 = 2130837538;
+			
+			// aapt resource value: 0x7f020023
+			public const int icon_drop8 = 2130837539;
+			
+			// aapt resource value: 0x7f020024
+			public const int icon_drop9 = 2130837540;
+			
+			// aapt resource value: 0x7f020025
+			public const int icon_drop_setting = 2130837541;
+			
+			// aapt resource value: 0x7f020026
+			public const int icon_expend = 2130837542;
+			
+			// aapt resource value: 0x7f020027
+			public const int icon_favorite = 2130837543;
+			
+			// aapt resource value: 0x7f020028
+			public const int icon_image_sel = 2130837544;
+			
+			// aapt resource value: 0x7f020029
+			public const int icon_image_unsel = 2130837545;
+			
+			// aapt resource value: 0x7f02002a
+			public const int icon_link = 2130837546;
+			
+			// aapt resource value: 0x7f02002b
+			public const int icon_link_sel = 2130837547;
+			
+			// aapt resource value: 0x7f02002c
+			public const int icon_link_unsel = 2130837548;
+			
+			// aapt resource value: 0x7f02002d
+			public const int icon_location = 2130837549;
+			
+			// aapt resource value: 0x7f02002e
+			public const int icon_lock = 2130837550;
+			
+			// aapt resource value: 0x7f02002f
+			public const int icon_minus = 2130837551;
+			
+			// aapt resource value: 0x7f020030
+			public const int icon_plus = 2130837552;
+			
+			// aapt resource value: 0x7f020031
+			public const int icon_share_fb = 2130837553;
+			
+			// aapt resource value: 0x7f020032
+			public const int icon_share_ins = 2130837554;
+			
+			// aapt resource value: 0x7f020033
+			public const int icon_share_mail = 2130837555;
+			
+			// aapt resource value: 0x7f020034
+			public const int icon_share_tw = 2130837556;
+			
+			// aapt resource value: 0x7f020035
+			public const int icon_smile = 2130837557;
+			
+			// aapt resource value: 0x7f020036
+			public const int icon_text_sel = 2130837558;
+			
+			// aapt resource value: 0x7f020037
+			public const int icon_text_unsel = 2130837559;
+			
+			// aapt resource value: 0x7f020038
+			public const int icon_uncheck = 2130837560;
+			
+			// aapt resource value: 0x7f020039
+			public const int icon_video = 2130837561;
+			
+			// aapt resource value: 0x7f02003a
+			public const int icon_video_sel = 2130837562;
+			
+			// aapt resource value: 0x7f02003b
+			public const int icon_video_unsel = 2130837563;
+			
+			// aapt resource value: 0x7f02003c
+			public const int roundedbg = 2130837564;
+			
+			// aapt resource value: 0x7f02003d
+			public const int roundedbgdark = 2130837565;
+			
+			// aapt resource value: 0x7f02003e
+			public const int Splash = 2130837566;
+			
+			static Drawable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Drawable()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			// aapt resource value: 0x7f060002
+			public const int loadingImage = 2131099650;
+			
+			// aapt resource value: 0x7f060000
+			public const int loadingProgressBar = 2131099648;
+			
+			// aapt resource value: 0x7f060003
+			public const int loadingProgressWheel = 2131099651;
+			
+			// aapt resource value: 0x7f060004
+			public const int myButton = 2131099652;
+			
+			// aapt resource value: 0x7f060001
+			public const int textViewStatus = 2131099649;
 			
 			static Id()
 			{
@@ -61,7 +348,19 @@ namespace Drop.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int loading = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int loadingimage = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int loadingprogress = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int LoginActivity = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Main = 2130903044;
 			
 			static Layout()
 			{
@@ -73,30 +372,17 @@ namespace Drop.Droid
 			}
 		}
 		
-		public partial class Mipmap
-		{
-			
-			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
-			
-			static Mipmap()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Mipmap()
-			{
-			}
-		}
-		
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040002
+			public const int app_name = 2130968578;
+			
 			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			public const int hello = 2130968577;
 			
 			// aapt resource value: 0x7f040000
-			public const int hello = 2130968576;
+			public const int library_name = 2130968576;
 			
 			static String()
 			{
@@ -104,6 +390,86 @@ namespace Drop.Droid
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int MyTheme_Splash = 2131034112;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] ProgressWheel = new int[]
+			{
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973,
+					2130771974,
+					2130771975,
+					2130771976,
+					2130771977,
+					2130771978,
+					2130771979};
+			
+			// aapt resource value: 3
+			public const int ProgressWheel_ahBarColor = 3;
+			
+			// aapt resource value: 11
+			public const int ProgressWheel_ahBarLength = 11;
+			
+			// aapt resource value: 10
+			public const int ProgressWheel_ahBarWidth = 10;
+			
+			// aapt resource value: 8
+			public const int ProgressWheel_ahCircleColor = 8;
+			
+			// aapt resource value: 7
+			public const int ProgressWheel_ahDelayMillis = 7;
+			
+			// aapt resource value: 9
+			public const int ProgressWheel_ahRadius = 9;
+			
+			// aapt resource value: 4
+			public const int ProgressWheel_ahRimColor = 4;
+			
+			// aapt resource value: 5
+			public const int ProgressWheel_ahRimWidth = 5;
+			
+			// aapt resource value: 6
+			public const int ProgressWheel_ahSpinSpeed = 6;
+			
+			// aapt resource value: 0
+			public const int ProgressWheel_ahText = 0;
+			
+			// aapt resource value: 1
+			public const int ProgressWheel_ahTextColor = 1;
+			
+			// aapt resource value: 2
+			public const int ProgressWheel_ahTextSize = 2;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

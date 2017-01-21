@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace Drop.Droid
 {
-	[Activity(Label = "Drop", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity(Label = "Drop", Icon = "@mipmap/icon")]
 	public class MainActivity : Activity
 	{
 		int count = 1;
