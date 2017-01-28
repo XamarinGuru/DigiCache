@@ -47,6 +47,14 @@ namespace Drop
 		public const string STR_iOS_VCNAME_NEARBY = "NearbyViewController";
 		public const string STR_iOS_VCNAME_DETAIL = "DropDetailViewController";
 		public const string STR_iOS_VCNAME_LOCATION = "DropLocationViewController";
+
+		public const string STR_DROID_VCNAME_LOGIN = "LoginViewController";
+		public const string STR_DROID_VCNAME_HOME = "HomeViewController";
+		public const string STR_DROID_VCNAME_ITEM = "DropItemViewController";
+		public const string STR_DROID_VCNAME_NEARBY = "NearbyViewController";
+		public const string STR_DROID_VCNAME_DETAIL = "DropDetailViewController";
+		public const string STR_DROID_VCNAME_LOCATION = "DropLocationViewController";
+
 		//tag
 		public const int TAG_DROP_ITEM = 1;
 		public const int TAG_DROP_NEARBY = 2;
@@ -59,6 +67,14 @@ namespace Drop
 		public const int TAG_COLLEPS_PASSWORD = 127;
 		public const int TAG_COLLEPS_EXPIRY = 190;
 
+		public const int TAG_D_COLLEPS_NAME = 0;
+		public const int TAG_D_COLLEPS_ICON = 1;
+		public const int TAG_D_COLLEPS_LOCATION = 2;
+		public const int TAG_D_COLLEPS_PERMISSION = 3;
+		public const int TAG_D_COLLEPS_PASSWORD = 4;
+		public const int TAG_D_COLLEPS_EXPIRY = 5;
+		public const int TAG_D_COLLEPS_SHARE = 6;
+
 		public const int TAG_DEFAILT_ICON1 = 11;
 		public const int TAG_DEFAILT_ICON2 = 12;
 		public const int TAG_DEFAILT_ICON3 = 13;
@@ -69,6 +85,13 @@ namespace Drop
 		public const int INDEX_FROM_LIBRARY = 1;
 		public const int INDEX_FROM_CAMERA = 2;
 		public const int INDEX_OTHER = 3;
+
+		public const int INDEX_ANDROID_TEXT = 0;
+		public const int INDEX_ANDROID_IMAGE_FROM_LIBRARY = 1;
+		public const int INDEX_ANDROID_VIDEO_FROM_LIBRARY = 2;
+		public const int INDEX_ANDROID_IMAGE_FROM_CAMERA = 3;
+		public const int INDEX_ANDROID_VIDEO_FROM_CAMERA = 4;
+		public const int INDEX_ANDROID_OTHER = 5;
 
 		public const int TAG_VISIBLE_EVERY = 0;
 		public const int TAG_VISIBLE_ME = 1;
@@ -110,6 +133,14 @@ namespace Drop
 														"Select Image & Video from Photo Library", 
 														"Take Image & Video from Camera",
 														"Other Link..." };
+		
+		public static string[] TYPE_ATTACH_DROID = new[] {    "Text",
+														"Select Image from Photo Library",
+														"Select Video from Photo Library",
+														"Take Image from Camera",
+														"Take Video from Camera",
+														"Other Link..." };
+		
 		public static string[] TYPE_FROM_SOURCE = new[] {	"Select Icon from Photo Library",
 															"Take Icon from Camera" };
 

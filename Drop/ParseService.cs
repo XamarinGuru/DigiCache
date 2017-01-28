@@ -98,7 +98,7 @@ namespace Drop
 				dropItem[Constants.STR_FIELD_LOCATION_LAT] = item.Location_Lat;
 				dropItem[Constants.STR_FIELD_VISIBILITY] = item.Visibility;
 				dropItem[Constants.STR_FIELD_PASSWORD] = item.Password;
-				dropItem[Constants.STR_FIELD_EXPIRY] = item.ExpiryDate == "" ? DateTime.Now : DateTime.Parse(item.ExpiryDate);
+				dropItem[Constants.STR_FIELD_EXPIRY] = item.ExpiryDate == "" || item.ExpiryDate == null ? DateTime.Now : DateTime.Parse(item.ExpiryDate);
 
 				await dropItem.SaveAsync();
 			}

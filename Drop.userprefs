@@ -1,41 +1,28 @@
 ﻿<Properties StartupConfiguration="{2CF83F4E-FEB9-4A0F-8AF1-BC4C277019FC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Activities/LoginActivity.cs">
-    <Files>
-      <File FileName="Droid/Activities/BaseActivity.cs" Line="44" Column="7" />
-      <File FileName="Droid/Activities/LoginActivity.cs" Line="35" Column="21" />
-      <File FileName="Droid/obj/Debug/android/manifest/AndroidManifest.xml" Line="23" Column="61" />
-      <File FileName="Droid/Properties/AndroidManifest.xml" Line="1" Column="1" />
-      <File FileName="Droid/Resources/values/Strings.xml" Line="1" Column="1" />
-      <File FileName="Droid/Resources/values/style.axml" Line="3" Column="63" />
-      <File FileName="Components/facebookandroid-4.16.1.0/samples/HelloFacebookSample/HelloFacebookSample/HelloFacebookSampleActivity.cs" Line="38" Column="1" />
-      <File FileName="Components/facebookandroid-4.16.1.0/samples/HelloFacebookSample/HelloFacebookSample/Resources/values/strings.xml" Line="1" Column="1" />
-      <File FileName="Drop/Constants.cs" Line="17" Column="40" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="52" Y="34" Width="785" Height="955">
+        <Files>
+          <File FileName="iOS/Controllers/NearbyViewController.cs" Line="51" Column="22" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Drop" expanded="True">
             <Node name="Drop" expanded="True" />
             <Node name="Drop.Droid" expanded="True">
-              <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="Activities" expanded="True" />
-              <Node name="Properties" expanded="True" />
+              <Node name="Activities" expanded="True">
+                <Node name="HomeActivity.cs" selected="True" />
+              </Node>
+              <Node name="Dialogue" expanded="True" />
               <Node name="Resources" expanded="True">
-                <Node name="drawable" selected="True" />
                 <Node name="layout" expanded="True" />
-                <Node name="values" expanded="True" />
               </Node>
             </Node>
             <Node name="Drop.iOS" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Resources" expanded="True" />
-            </Node>
-          </Node>
-          <Node name="HelloFacebookSample" expanded="True">
-            <Node name="HelloFacebookSample" expanded="True">
-              <Node name="Resources" expanded="True">
-                <Node name="values" expanded="True" />
-              </Node>
             </Node>
           </Node>
         </State>
@@ -48,11 +35,15 @@
     <BreakpointStore>
       <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/ViewController.cs" line="23" column="1" />
       <Breakpoint file="/Volumes/work/Drop-Solennial/iOS/Controllers/DropLocationViewController.cs" line="75" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/Droid/Activities/DropItemActivity.cs" line="423" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/Droid/Activities/DropItemActivity.cs" line="426" column="20" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/Droid/Activities/DropItemActivity.cs" line="414" column="1" />
+      <Breakpoint file="/Volumes/work/Drop-Solennial/Droid/Activities/DropItemActivity.cs" line="440" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="iOS/Controllers/NearbyViewController.cs" line="43" offsetX="754" offsetY="630" expression="drop.Location_Lat" liveUpdate="False" />
     <Watch file="iOS/Controllers/NearbyViewController.cs" line="43" offsetX="756" offsetY="681" expression="drop.Location_Lnt" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.588a0c4ca0db6bf2b5ac9a1a9456fdabb01e7629" />
+  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.00FC445E-C791-4035-AE8C-E05422A3F85A" />
 </Properties>

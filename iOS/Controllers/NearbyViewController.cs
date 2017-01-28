@@ -35,24 +35,27 @@ namespace Drop.iOS
 
 		void GetDrops()
 		{
-			ShowLoadingView(Constants.STR_DROPS_LOADING);
-
-			mDrops = ParseService.GetDropItems();
-
-			for (int i = 0; i < mDrops.Count; i ++)
+			System.Threading.ThreadPool.QueueUserWorkItem(delegate
 			{
-				var drop = mDrops[i];
-				var iconData = NSData.FromUrl(new NSUrl(drop.IconURL.ToString()));
-				var marker = new Marker
-				{
-					Position = new CLLocationCoordinate2D(drop.Location_Lat, drop.Location_Lnt),
-					Map = mMapView,
-					Icon = UIImage.LoadFromData(iconData),
-					ZIndex = i
-				};
-			}
+				ShowLoadingView(Constants.STR_DROPS_LOADING);
 
-			HideLoadingView();
+				mDrops = ParseService.GetDropItems();
+
+				for (int i = 0; i < mDrops.Count; i++)
+				{
+					var drop = mDrops[i];
+					var iconData = NSData.FromUrl(new NSUrl(drop.IconURL.ToString()));
+					var marker = new Marker
+					{
+						Position = new CLLocationCoordinate2D(drop.Location_Lat, drop.Location_Lnt),
+						Map = mMapView,
+						Icon = UIImage.LoadFromData(iconData),
+						ZIndex = i
+					};
+				}
+
+				HideLoadingView();
+			});
 		}
 
 		bool ClickedDropItem(MapView mapView, Marker marker)
