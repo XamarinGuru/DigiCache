@@ -16,6 +16,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,7 +26,6 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+<AndroidSupportedAbis>armeabi-v7a;armeabi;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -145,7 +146,7 @@
     <Compile Include="Activities\DropLocationActivity.cs" />
     <Compile Include="Dialogue\TimeFormatDialog.cs" />
     <Compile Include="Activities\DropDetailActivity.cs" />
-    <Compile Include="Resources\layout\DropDetailLayout.cs" />
+    <Compile Include="Activities\PlayVideoActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -226,6 +227,9 @@
     <AndroidResource Include="Resources\Anim\toLeft.axml" />
     <AndroidResource Include="Resources\Anim\toRight.axml" />
     <AndroidResource Include="Resources\layout\NearbyLayout.axml" />
+    <AndroidResource Include="Resources\layout\DropDetailLayout.axml" />
+    <AndroidResource Include="Resources\drawable\item_colleps.axml" />
+    <AndroidResource Include="Resources\layout\PlayVideoLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">

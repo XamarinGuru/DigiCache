@@ -18,8 +18,7 @@
             android:layout_height="60dp"
             android:id="@+id/relativeLayout1"
             android:gravity="center_vertical"
-            android:background="@drawable/bar_top"
-            android:clipChildren="false">
+            android:background="@drawable/bar_top">
             <ImageView
                 android:src="@drawable/btn_back"
                 android:id="@+id/ActionBack"
@@ -28,7 +27,7 @@
                 android:layout_marginLeft="20dp" />
             <TextView
                 android:text="Drop Item"
-                android:id="@+id/textView1"
+                android:id="@+id/Video"
                 android:textColor="#ff000000"
                 android:textSize="18dp"
                 android:layout_width="wrap_content"
@@ -43,21 +42,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/linearLayout3">
-            <FrameLayout
-                android:id="@+id/map_place_box"
-                android:clickable="true"
+            <VideoView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_margin="20dp"
-                android:alpha="1">
-                <fragment
-                    android:id="@+id/map"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    class="com.google.android.gms.maps.SupportMapFragment" />
-            </FrameLayout>
+                android:layout_height="wrap_content"
+                android:id="@+id/videoView" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

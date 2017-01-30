@@ -31,6 +31,7 @@ namespace Drop.Droid
 			}, TaskScheduler.FromCurrentSynchronizationContext());
 
 			StartupWork.Start();
+			//StartDrop();
 		}
 
 		public void StartDrop()

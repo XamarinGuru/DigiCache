@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 using Android.App;
@@ -71,7 +72,7 @@ namespace Drop.Droid
 		protected MediaFile ByteDataFromImage(int resourceId)
 		{
 			var bitmap = BitmapFactory.DecodeResource(Resources, resourceId);
-			Bitmap newBitmap = scaleDown(bitmap, 50, true);
+			Bitmap newBitmap = scaleDown(bitmap, 100, true);
 
 			var stream = new MemoryStream();
 
@@ -83,88 +84,21 @@ namespace Drop.Droid
 			return new MediaFile(fileName, fileBytes);
 		}
 
-		//public override void OnActivityResult(int requestCode, int resultCode, Intent data)
-		//{
-		//	base.OnActivityResult(requestCode, resultCode, data);
-		//	try
-		//	{
-		//		if (resultCode == (int)Result.Ok)
-		//		{
-		//			Bitmap mewbm = NGetBitmap(data.Data);
+		protected Bitmap GetImageBitmapFromUrl(string url)
+		{
+			Bitmap imageBitmap = null;
 
-		//			Bitmap newBitmap = scaleDown(mewbm, 200, true);
-		//			using (var stream = new MemoryStream())
-		//			{
-		//				newBitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
-		//				bitmapByteData = stream.ToArray();
-		//			}
-		//			ExportBitmapAsPNG(GetRoundedCornerBitmap(newBitmap, 400));
-		//		}
-		//	}
-		//	catch (Exception err)
-		//	{
-		//		Toast.MakeText(Activity, err.ToString(), ToastLength.Long).Show();
-		//	}
-		//}
+			using (var webClient = new WebClient())
+			{
+				var imageBytes = webClient.DownloadData(url);
+				if (imageBytes != null && imageBytes.Length > 0)
+				{
+					imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+				}
+			}
 
-		//void ExportBitmapAsPNG(Bitmap bitmap)
-		//{
-		//	try
-		//	{
-		//		var sdCardPath = Android.OS.Environment.DataDirectory.AbsolutePath;
-		//		var filePath = System.IO.Path.Combine(sdCardPath, "data/goheja.gohejanitro/files/me.png");
-		//		var stream = new FileStream(filePath, FileMode.Create);
-
-		//		bitmap.Compress(Bitmap.CompressFormat.Png, 100, stream);// Bitmap.CompressFormat.Png, 100, stream);
-		//		stream.Close();
-		//		var s2 = new FileStream(filePath, FileMode.Open);
-
-		//		Bitmap bitmap2 = BitmapFactory.DecodeFile(filePath);
-		//		imgProfile.SetImageBitmap(bitmap2);
-		//		s2.Close();
-		//		GC.Collect();
-		//	}
-		//	catch (Exception err)
-		//	{
-		//		Toast.MakeText(Activity, err.ToString(), ToastLength.Long).Show();
-		//	}
-		//}
-		//private Bitmap NGetBitmap(Android.Net.Uri uriImage)
-		//{
-		//	Bitmap mBitmap = null;
-		//	mBitmap = MediaStore.Images.Media.GetBitmap(Activity.ContentResolver, uriImage);
-		//	return mBitmap;
-		//}
-		//private static Bitmap GetRoundedCornerBitmap(Bitmap bitmap, int pixels)
-		//{
-		//	Bitmap output = null;
-
-		//	try
-		//	{
-		//		output = Bitmap.CreateBitmap(bitmap.Width, bitmap.Height, Bitmap.Config.Argb8888);
-		//		Canvas canvas = new Canvas(output);
-
-		//		Color color = new Color(66, 66, 66);
-		//		Paint paint = new Paint();
-		//		Rect rect = new Rect(0, 0, bitmap.Width * 5 / 5, bitmap.Height * 5 / 5);
-		//		RectF rectF = new RectF(rect);
-		//		float roundPx = pixels;
-
-		//		paint.AntiAlias = true;
-		//		canvas.DrawARGB(0, 0, 0, 0);
-		//		paint.Color = color;
-		//		canvas.DrawRoundRect(rectF, roundPx, roundPx, paint);
-
-		//		paint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.SrcIn));
-		//		canvas.DrawBitmap(bitmap, rect, rect, paint);
-		//	}
-		//	catch
-		//	{
-		//		return null;
-		//	}
-
-		//	return output;
-		//}
+			return imageBitmap;
+		}
 
 		public static Bitmap scaleDown(Bitmap realImage, float maxImageSize, bool filter)
 		{

@@ -54,7 +54,7 @@ namespace Drop.Droid
 			ItemModel = new ItemModel();
 
 			SetUIVariablesAndActions();
-			SetInputBinding();
+			//SetInputBinding();
 		}
 
 		private void SetUIVariablesAndActions()
@@ -155,6 +155,10 @@ namespace Drop.Droid
 		}
 		async void ActionDropItem(object sender, EventArgs e)
 		{
+			ItemModel.Name = txtName.Text;
+			ItemModel.Description = txtDescription.Text;
+			ItemModel.Password = txtPassword.Text;
+
 			if (!ItemModel.IsValidDrop())
 			{
 				ShowMessageBox(null, Constants.STR_DROP_INVALID);
@@ -253,9 +257,8 @@ namespace Drop.Droid
 					file = await CrossMedia.Current.TakeVideoAsync(new Plugin.Media.Abstractions.StoreVideoOptions
 					{
 						Directory = "Drop",
+						Quality = Plugin.Media.Abstractions.VideoQuality.Medium,
 						Name = "Video_" + DateTime.Now.ToString("dd-mm-yy_hh-mm-ss") + ".mp4",
-						Quality = Plugin.Media.Abstractions.VideoQuality.Low,
-						CompressionQuality = 90
 					});
 				}
 

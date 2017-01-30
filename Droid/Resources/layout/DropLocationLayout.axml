@@ -36,6 +36,27 @@
                 android:layout_marginTop="8dp" />
         </RelativeLayout>
         <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/linearLayout9"
+            android:background="#ffd0cbcb">
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:imeOptions="actionSearch"
+                android:imeActionId="@+id/imeisearch"
+                android:hint="Search or Position Map"
+                android:id="@+id/txtSearchLocation"
+                android:background="@android:color/transparent"
+                android:inputType="text"
+                android:textColor="#ff000000"
+                android:textColorHint="#ff878787"
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+        <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
@@ -56,6 +77,47 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     class="com.google.android.gms.maps.SupportMapFragment" />
+                <RelativeLayout
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/relativeLayout2">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/linearLayout22"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/relativeLayout3"
+                            android:layout_weight="0.5">
+                            <ImageView
+                                android:background="@drawable/icon_drop1"
+                                android:id="@+id/iconMyLocation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true" />
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/linearLayout23"
+                            android:layout_weight="0.5" />
+                    </LinearLayout>
+                </RelativeLayout>
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>

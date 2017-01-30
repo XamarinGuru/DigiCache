@@ -42,7 +42,7 @@ namespace Drop.Droid
 
 			base.OnCreate(savedInstanceState);
 
-			SetContentView(Resource.Layout.DropLocationLayout);
+			SetContentView(Resource.Layout.NearbyLayout);
 
 			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
 
@@ -122,7 +122,11 @@ namespace Drop.Droid
 
 			var myLocation = GetGPSLocation();
 
-			CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(new LatLng(myLocation.Latitude, myLocation.Longitude), 11);
+			CameraUpdate cu_center;
+			if (myLocation != null)
+				cu_center = CameraUpdateFactory.NewLatLngZoom(new LatLng(myLocation.Latitude, myLocation.Longitude), 11);
+			else
+				cu_center = CameraUpdateFactory.NewLatLngZoom(new LatLng(Constants.LOCATION_AUSTRALIA[0], Constants.LOCATION_AUSTRALIA[1]), 11);
 
 			_map.MoveCamera(cu_center);
 		}
@@ -189,11 +193,12 @@ namespace Drop.Droid
 			Location currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
 			_locationManager.RemoveUpdates(this);
 
-			if (currentLocation == null)
-			{
-				currentLocation.Latitude = Constants.LOCATION_AUSTRALIA[0];
-				currentLocation.Longitude = Constants.LOCATION_AUSTRALIA[1];
-			}
+			//if (currentLocation == null)
+			//{
+			//	currentLocation = new Location();
+			//	currentLocation.Latitude = Constants.LOCATION_AUSTRALIA[0];
+			//	currentLocation.Longitude = Constants.LOCATION_AUSTRALIA[1];
+			//}
 			return currentLocation;
 		}
 		#endregion
@@ -210,9 +215,10 @@ namespace Drop.Droid
 
 			if (mSelectedDrop.Password == string.Empty || mSelectedDrop.Password == null)
 			{
-				//DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
-				//pvc.parseItem = mSelectedDrop;
-				//NavigationController.PushViewController(pvc, true);
+				var nextActivity = new Intent(this, typeof(DropDetailActivity));
+				Global.selectedDrop = mSelectedDrop;
+				StartActivity(nextActivity);
+				OverridePendingTransition(Resource.Animation.fromLeft, Resource.Animation.toRight);
 			}
 			else {
 				//MyInputDialog myDiag = MyInputDialog.newInstance(Constants.STR_VERIFY_PASSWORD_TITLE, VerifyPassword);
@@ -226,9 +232,10 @@ namespace Drop.Droid
 		{
 			if (mSelectedDrop.Password == text)
 			{
-				//DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
-				//pvc.parseItem = mSelectedDrop;
-				//NavigationController.PushViewController(pvc, true);
+				var nextActivity = new Intent(this, typeof(DropDetailActivity));
+				Global.selectedDrop = mSelectedDrop;
+				StartActivity(nextActivity);
+				OverridePendingTransition(Resource.Animation.fromLeft, Resource.Animation.toRight);
 			}
 			else {
 				ShowMessageBox(null, Constants.STR_INVALID_PASSWORD_TITLE);
