@@ -72,7 +72,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer: sagiv daniel (VXWT9CF4J3)</CodesignKey>
+    <CodesignKey>iPhone Developer: Mitchell Brownlie (AGUR9Z798Q)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -85,7 +85,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>dfe315be-d90c-4a26-99b6-c6b7e510c7ba</CodesignProvision>
+    <CodesignProvision>ee8132a9-e407-4d65-99d4-c79305add043</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -32,6 +32,18 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnModifyEvery { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnModifyMe { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnModifySpecific { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnVisibleEvery { get; set; }
 
         [Outlet]
@@ -53,6 +65,10 @@ namespace Drop.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint heightLocation { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint heightModify { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -108,6 +124,10 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView viewModify { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewName { get; set; }
 
         [Outlet]
@@ -118,17 +138,9 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewPermission { get; set; }
 
-        [Action ("ActionAcessiblity:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionAcessiblity (UIKit.UIButton sender);
-
         [Action ("ActionColleps:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionColleps (UIKit.UIButton sender);
-
-        [Action ("ActionCurrentLocation:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionCurrentLocation (UIKit.UIButton sender);
 
         [Action ("ActionCustomIcon:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -146,13 +158,13 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionDropItem (UIKit.UIButton sender);
 
-        [Action ("ActionEligiblity:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionEligiblity (UIKit.UIButton sender);
-
         [Action ("ActionItem:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionItem (UIKit.UIButton sender);
+
+        [Action ("ActionModify:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionModify (UIKit.UIButton sender);
 
         [Action ("ActionPassword:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -188,6 +200,21 @@ namespace Drop.iOS
                 btnDropVideoSymbol = null;
             }
 
+            if (btnModifyEvery != null) {
+                btnModifyEvery.Dispose ();
+                btnModifyEvery = null;
+            }
+
+            if (btnModifyMe != null) {
+                btnModifyMe.Dispose ();
+                btnModifyMe = null;
+            }
+
+            if (btnModifySpecific != null) {
+                btnModifySpecific.Dispose ();
+                btnModifySpecific = null;
+            }
+
             if (btnVisibleEvery != null) {
                 btnVisibleEvery.Dispose ();
                 btnVisibleEvery = null;
@@ -216,6 +243,11 @@ namespace Drop.iOS
             if (heightLocation != null) {
                 heightLocation.Dispose ();
                 heightLocation = null;
+            }
+
+            if (heightModify != null) {
+                heightModify.Dispose ();
+                heightModify = null;
             }
 
             if (heightName != null) {
@@ -281,6 +313,11 @@ namespace Drop.iOS
             if (viewLocation != null) {
                 viewLocation.Dispose ();
                 viewLocation = null;
+            }
+
+            if (viewModify != null) {
+                viewModify.Dispose ();
+                viewModify = null;
             }
 
             if (viewName != null) {

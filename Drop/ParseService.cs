@@ -97,6 +97,7 @@ namespace Drop
 				dropItem[Constants.STR_FIELD_LOCATION_LNT] = item.Location_Lnt;
 				dropItem[Constants.STR_FIELD_LOCATION_LAT] = item.Location_Lat;
 				dropItem[Constants.STR_FIELD_VISIBILITY] = item.Visibility;
+				dropItem[Constants.STR_FIELD_MODIFY] = item.Modify;
 				dropItem[Constants.STR_FIELD_PASSWORD] = item.Password;
 				dropItem[Constants.STR_FIELD_EXPIRY] = item.ExpiryDate == "" || item.ExpiryDate == null ? DateTime.Now : DateTime.Parse(item.ExpiryDate);
 
@@ -126,6 +127,7 @@ namespace Drop
 				dropItem.Location_Lnt = drop.Get<double>(Constants.STR_FIELD_LOCATION_LNT);
 				dropItem.Location_Lat = drop.Get<double>(Constants.STR_FIELD_LOCATION_LAT);
 				dropItem.Visibility = drop.Get<int>(Constants.STR_FIELD_VISIBILITY);
+				//dropItem.Modify = drop.Get<int>(Constants.STR_FIELD_MODIFY);
 				dropItem.Password = drop.Get<string>(Constants.STR_FIELD_PASSWORD);
 
 				ParseFile imageObject = drop.Get<ParseFile>(Constants.STR_FIELD_IMAGE);

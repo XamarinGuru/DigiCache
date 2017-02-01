@@ -22,6 +22,10 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint dropContentWidth { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView virtualDropContent { get; set; }
+
         [Action ("ActionDrop:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionDrop (UIKit.UIButton sender);
@@ -40,6 +44,11 @@ namespace Drop.iOS
             if (dropContentWidth != null) {
                 dropContentWidth.Dispose ();
                 dropContentWidth = null;
+            }
+
+            if (virtualDropContent != null) {
+                virtualDropContent.Dispose ();
+                virtualDropContent = null;
             }
         }
     }

@@ -35,6 +35,7 @@ namespace Drop
 		public double Location_Lnt { get { return parseItem.Location_Lnt; } set { parseItem.Location_Lnt = value; } }
 		public double Location_Lat { get { return parseItem.Location_Lat; } set { parseItem.Location_Lat = value; } }
 		public int Visibility { get { return parseItem.Visibility; } set { parseItem.Visibility = value; } }
+		public int Modify { get { return parseItem.Modify; } set { parseItem.Modify = value; } }
 		public string Password { get { return parseItem.Password; } set { parseItem.Password = value; } }
 		public string ExpiryDate { get { return parseItem.ExpiryDate; } set { parseItem.ExpiryDate = value; } }
 		public MediaFile Image { get { return parseItem.Image; } set { parseItem.Image = value; } }
@@ -73,6 +74,7 @@ namespace Drop
 		public double Location_Lnt { get; internal set; }
 		public double Location_Lat { get; internal set; }
 		public int Visibility { get; internal set; }
+		public int Modify { get; internal set; }
 		public string Password { get; internal set; }
 		public string ExpiryDate { get; internal set; }
 

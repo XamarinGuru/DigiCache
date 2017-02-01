@@ -24,12 +24,27 @@ namespace Drop.iOS
 		{
 			base.ViewDidLoad();
 
+			InitMapView();
+
+			GetDrops();
+		}
+
+		public override void ViewWillLayoutSubviews()
+		{
+			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
+			{
+				RepaintMap();
+			}
+		}
+
+		void InitMapView()
+		{
 			var lResult = LocationHelper.GetLocationResult();
-			var camera = CameraPosition.FromCamera(lResult.Latitude, lResult.Longitude, zoom: 14);
+			var camera = CameraPosition.FromCamera(lResult.Latitude, lResult.Longitude, zoom: 18);
 			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
 			mMapView.MyLocationEnabled = false;
 			mMapView.MapType = MapViewType.Satellite;
-			mMapView.Alpha = 0.9f;
+			mMapView.Alpha = 0.8f;
 			mMapView.TappedMarker = ClickedDropItem;
 		}
 
@@ -45,13 +60,17 @@ namespace Drop.iOS
 				{
 					var drop = mDrops[i];
 					var iconData = NSData.FromUrl(new NSUrl(drop.IconURL.ToString()));
-					var marker = new Marker
+
+					InvokeOnMainThread(() =>
 					{
-						Position = new CLLocationCoordinate2D(drop.Location_Lat, drop.Location_Lnt),
-						Map = mMapView,
-						Icon = UIImage.LoadFromData(iconData),
-						ZIndex = i
-					};
+						var marker = new Marker
+						{
+							Position = new CLLocationCoordinate2D(drop.Location_Lat, drop.Location_Lnt),
+							Map = mMapView,
+							Icon = UIImage.LoadFromData(iconData),
+							ZIndex = i
+						};
+					});
 				}
 
 				HideLoadingView();
@@ -72,20 +91,6 @@ namespace Drop.iOS
 			}
 
 			return true;
-		}
-
-		public override void ViewWillLayoutSubviews()
-		{
-			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
-			{
-				RepaintMap();
-			}
-		}
-
-		public override void ViewDidAppear(bool animated)
-		{
-			base.ViewDidAppear(animated);
-			GetDrops();
 		}
 
 		public void RepaintMap()

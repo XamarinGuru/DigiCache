@@ -46,12 +46,14 @@ namespace Drop.iOS
 			heightLocation.Constant = 0;
 			heightPermission.Constant = 0;
 			heightPassword.Constant = 0;
+			heightModify.Constant = 0;
 			heightExpiry.Constant = 0;
 			viewName.Alpha = 0;
 			viewIcon.Alpha = 0;
 			viewLocation.Alpha = 0;
 			viewPermission.Alpha = 0;
 			viewPassword.Alpha = 0;
+			viewModify.Alpha = 0;
 			viewExpiry.Alpha = 0;
 
 			SetDatePicker(txtExpireDate);
@@ -73,6 +75,7 @@ namespace Drop.iOS
 
 
 
+
 		#region Actions
 		partial void ActionColleps(UIButton sender)
 		{
@@ -81,7 +84,7 @@ namespace Drop.iOS
 			UIView.BeginAnimations("ds");
 			UIView.SetAnimationDuration(0.5f);
 
-			var constant = sender.Selected ? 0 : sender.Tag;
+			var constant = sender.Selected ? 0 : Constants.COLLEPS_HEIGHTS[sender.Tag - 1];
 			var alpha = sender.Selected ? 0 : 1;
 			switch (sender.Tag)
 			{
@@ -100,6 +103,10 @@ namespace Drop.iOS
 				case Constants.TAG_COLLEPS_PERMISSION:
 					heightPermission.Constant = constant;
 					viewPermission.Alpha = alpha;
+					break;
+				case Constants.TAG_COLLEPS_MODIFY:
+					heightModify.Constant = constant;
+					viewModify.Alpha = alpha;
 					break;
 				case Constants.TAG_COLLEPS_PASSWORD:
 					heightPassword.Constant = constant;
@@ -129,29 +136,7 @@ namespace Drop.iOS
 		partial void ActionDefailtIcon(UIButton sender)
 		{
 			sender.ImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
-
-			string strIconName = "";
-			switch (sender.Tag)
-			{
-				case Constants.TAG_DEFAILT_ICON1:
-					strIconName = Constants.STR_DEFAILT_ICON6;
-					break;
-				case Constants.TAG_DEFAILT_ICON2:
-					strIconName = Constants.STR_DEFAILT_ICON7;
-					break;
-				case Constants.TAG_DEFAILT_ICON3:
-					strIconName = Constants.STR_DEFAILT_ICON8;
-					break;
-				case Constants.TAG_DEFAILT_ICON4:
-					strIconName = Constants.STR_DEFAILT_ICON9;
-					break;
-				case Constants.TAG_DEFAILT_ICON5:
-					strIconName = Constants.STR_DEFAILT_ICON10;
-					break;
-				default:
-					break;
-			}
-			imgDropIcon.Image = UIImage.FromFile(strIconName);
+			imgDropIcon.Image = sender.ImageView.Image;
 			ItemModel.Icon = ByteDataFromImage(MaxResizeImage(imgDropIcon.Image));
 		}
 
@@ -162,27 +147,27 @@ namespace Drop.iOS
 			actionSheet.ShowInView(this.View);
 		}
 
-		partial void ActionCurrentLocation(UIButton sender)
-		{
-			sender.Selected = !sender.Selected;
+		//partial void ActionCurrentLocation(UIButton sender)
+		//{
+		//	sender.Selected = !sender.Selected;
 
-			if (sender.Selected)
-			{
-				var lResult = LocationHelper.GetLocationResult();
-				ItemModel.Location_Lat = lResult.Latitude;
-				ItemModel.Location_Lnt = lResult.Longitude;
+		//	if (sender.Selected)
+		//	{
+		//		var lResult = LocationHelper.GetLocationResult();
+		//		ItemModel.Location_Lat = lResult.Latitude;
+		//		ItemModel.Location_Lnt = lResult.Longitude;
 
-				lblLocationLat.Text = ItemModel.Location_Lat.ToString();
-				lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
-			}
-			else
-			{
-				ItemModel.Location_Lat = Constants.LOCATION_AUSTRALIA[0];
-				ItemModel.Location_Lnt = Constants.LOCATION_AUSTRALIA[1];
-				lblLocationLat.Text = ItemModel.Location_Lat.ToString();
-				lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
-			}
-		}
+		//		lblLocationLat.Text = ItemModel.Location_Lat.ToString();
+		//		lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
+		//	}
+		//	else
+		//	{
+		//		ItemModel.Location_Lat = Constants.LOCATION_AUSTRALIA[0];
+		//		ItemModel.Location_Lnt = Constants.LOCATION_AUSTRALIA[1];
+		//		lblLocationLat.Text = ItemModel.Location_Lat.ToString();
+		//		lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
+		//	}
+		//}
 
 		partial void ActionCustomLocation(UIButton sender)
 		{
@@ -197,25 +182,46 @@ namespace Drop.iOS
 			btnVisibleMe.Selected = false;
 			btnVisibleSpecific.Selected = false;
 
-			switch (sender.Tag)
-			{
-				case Constants.TAG_VISIBLE_EVERY:
-					btnVisibleEvery.Selected = true;
-					break;
-				case Constants.TAG_VISIBLE_ME:
-					btnVisibleMe.Selected = true;
-					break;
-				case Constants.TAG_VISIBLE_SPECIFIC:
-					btnVisibleSpecific.Selected = true;
-					break;
-			}
+			sender.Selected = true;
+
+			//switch (sender.Tag)
+			//{
+			//	case Constants.TAG_VISIBLE_EVERY:
+			//		btnVisibleEvery.Selected = true;
+			//		break;
+			//	case Constants.TAG_VISIBLE_ME:
+			//		btnVisibleMe.Selected = true;
+			//		break;
+			//	case Constants.TAG_VISIBLE_SPECIFIC:
+			//		btnVisibleSpecific.Selected = true;
+			//		break;
+			//}
 
 			ItemModel.Visibility = (int)sender.Tag;
 		}
 
-		partial void ActionAcessiblity(UIButton sender)
+		partial void ActionModify(UIButton sender)
 		{
-			//throw new NotImplementedException();
+			btnModifyEvery.Selected = false;
+			btnModifyMe.Selected = false;
+			btnModifySpecific.Selected = false;
+
+			sender.Selected = true;
+
+			//switch (sender.Tag)
+			//{
+			//	case Constants.TAG_VISIBLE_EVERY:
+			//		btnVisibleEvery.Selected = true;
+			//		break;
+			//	case Constants.TAG_VISIBLE_ME:
+			//		btnVisibleMe.Selected = true;
+			//		break;
+			//	case Constants.TAG_VISIBLE_SPECIFIC:
+			//		btnVisibleSpecific.Selected = true;
+			//		break;
+			//}
+
+			ItemModel.Modify = (int)sender.Tag;
 		}
 
 		partial void ActionPassword(UISwitch sender)
@@ -223,12 +229,6 @@ namespace Drop.iOS
 			txtPassword.Enabled = sender.On;
 			if (!sender.Selected)
 				txtPassword.Text = string.Empty;
-		}
-
-
-		partial void ActionEligiblity(UIButton sender)
-		{
-			//throw new NotImplementedException();
 		}
 
 		partial void ActionShare(UIButton sender)

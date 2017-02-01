@@ -27,7 +27,7 @@ namespace Drop
 		public const string STR_LOGIN_FAIL_MSG = "The social network login failed for your account";
 		public const string STR_LOGIN_LOADING = "Login...";
 
-		public const string STR_DROPS_LOADING = "Retreving Drop Items...";
+		public const string STR_DROPS_LOADING = "Retreving droped items...";
 
 		public const string STR_DROP_INVALID = "You should specify at least Name & Icon & Location to drop your item.";
 		public const string STR_DROP_SUCCESS_MSG = "Dropped your item successfully.";
@@ -60,12 +60,15 @@ namespace Drop
 		public const int TAG_DROP_NEARBY = 2;
 		public const int TAG_DROP_SETTING = 3;
 
-		public const int TAG_COLLEPS_NAME = 185;
-		public const int TAG_COLLEPS_ICON = 125;
-		public const int TAG_COLLEPS_LOCATION = 126;
-		public const int TAG_COLLEPS_PERMISSION = 255;
-		public const int TAG_COLLEPS_PASSWORD = 127;
-		public const int TAG_COLLEPS_EXPIRY = 190;
+		public const int TAG_COLLEPS_NAME = 1;
+		public const int TAG_COLLEPS_ICON = 2;
+		public const int TAG_COLLEPS_LOCATION = 3;
+		public const int TAG_COLLEPS_PERMISSION = 4;
+		public const int TAG_COLLEPS_MODIFY = 5;
+		public const int TAG_COLLEPS_PASSWORD = 6;
+		public const int TAG_COLLEPS_EXPIRY = 7;
+
+		public static int[] COLLEPS_HEIGHTS = new[] { 240, 125, 61, 190, 190, 61, 190 };
 
 		public const int TAG_D_COLLEPS_NAME = 0;
 		public const int TAG_D_COLLEPS_ICON = 1;
@@ -74,12 +77,6 @@ namespace Drop
 		public const int TAG_D_COLLEPS_PASSWORD = 4;
 		public const int TAG_D_COLLEPS_EXPIRY = 5;
 		public const int TAG_D_COLLEPS_SHARE = 6;
-
-		public const int TAG_DEFAILT_ICON1 = 11;
-		public const int TAG_DEFAILT_ICON2 = 12;
-		public const int TAG_DEFAILT_ICON3 = 13;
-		public const int TAG_DEFAILT_ICON4 = 14;
-		public const int TAG_DEFAILT_ICON5 = 15;
 
 		public const int INDEX_TEXT = 0;
 		public const int INDEX_FROM_LIBRARY = 1;
@@ -112,6 +109,7 @@ namespace Drop
 		public const string STR_FIELD_LOCATION_LNT = "Location_Lnt";
 		public const string STR_FIELD_LOCATION_LAT = "Location_Lat";
 		public const string STR_FIELD_VISIBILITY = "Visibility";
+		public const string STR_FIELD_MODIFY = "Modify";
 		public const string STR_FIELD_PASSWORD = "Password";
 		public const string STR_FIELD_EXPIRY = "Expiry";
 
@@ -145,6 +143,9 @@ namespace Drop
 															"Take Icon from Camera" };
 
 		public static double[] LOCATION_AUSTRALIA = new double[] { 35.2809f, 149.1300f };
+
+
+		public const int VISIBILITY_LIMITATIN_M = 20;
 		
 	}
 }

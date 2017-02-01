@@ -30,6 +30,10 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewMapContent { get; set; }
 
+        [Action ("ActionConfirmLocation:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionConfirmLocation (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (bgTableView != null) {

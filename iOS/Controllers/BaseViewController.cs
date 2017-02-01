@@ -6,11 +6,19 @@ using Foundation;
 using System.Collections.Generic;
 using CoreGraphics;
 using System.Drawing;
+using AVFoundation;
 
 namespace Drop.iOS
 {
 	public partial class BaseViewController : UIViewController
 	{
+		private AVCaptureSession captureSession;
+		private AVCaptureDeviceInput captureDeviceInput;
+		private AVCaptureStillImageOutput stillImageOutput;
+		private AVCaptureVideoPreviewLayer videoPreviewLayer;
+		private UIView contentView;
+
+
 		public BaseViewController(string title = "") : base()
 		{
 			Init(title);
@@ -51,6 +59,13 @@ namespace Drop.iOS
 			}
 		}
 
+		public override async void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+
+			await AuthorizeCameraUse();
+			SetupLiveCameraStream();
+		}
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
@@ -59,7 +74,92 @@ namespace Drop.iOS
 			NavigationController.View.BackgroundColor = UIColor.Clear;
 			NavigationController.NavigationBar.BackgroundColor = UIColor.Clear;
 			NavigationController.NavigationBar.ShadowImage = new UIImage();
+
+			NSNotificationCenter.DefaultCenter.AddObserver(new NSString("UIDeviceOrientationDidChangeNotification"), DeviceRotated);
+
+			if (captureSession != null && !captureSession.Running)
+				captureSession.StartRunning();
 		}
+
+		#region live camera background
+		private async Task AuthorizeCameraUse()
+		{
+			var authorizationStatus = AVCaptureDevice.GetAuthorizationStatus(AVMediaType.Video);
+
+			if (authorizationStatus != AVAuthorizationStatus.Authorized)
+			{
+				await AVCaptureDevice.RequestAccessForMediaTypeAsync(AVMediaType.Video);
+			}
+		}
+
+		public void SetupLiveCameraStream()
+		{
+			captureSession = new AVCaptureSession();
+
+			videoPreviewLayer = new AVCaptureVideoPreviewLayer(captureSession)
+			{
+				Frame = this.View.Frame
+			};
+
+			contentView = new UIView(this.View.Frame);
+			contentView.Layer.AddSublayer(videoPreviewLayer);
+
+			this.View.AddSubview(contentView);
+
+			this.View.SendSubviewToBack(contentView);
+
+			var captureDevice = AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
+			ConfigureCameraForDevice(captureDevice);
+			captureDeviceInput = AVCaptureDeviceInput.FromDevice(captureDevice);
+			captureSession.AddInput(captureDeviceInput);
+
+			var dictionary = new NSMutableDictionary();
+			dictionary[AVVideo.CodecKey] = new NSNumber((int)AVVideoCodec.JPEG);
+			stillImageOutput = new AVCaptureStillImageOutput()
+			{
+				OutputSettings = new NSDictionary()
+			};
+
+			captureSession.AddOutput(stillImageOutput);
+			captureSession.StartRunning();
+		}
+
+		private void ConfigureCameraForDevice(AVCaptureDevice device)
+		{
+			var error = new NSError();
+			if (device.IsFocusModeSupported(AVCaptureFocusMode.ContinuousAutoFocus))
+			{
+				device.LockForConfiguration(out error);
+				device.FocusMode = AVCaptureFocusMode.ContinuousAutoFocus;
+				device.UnlockForConfiguration();
+			}
+			else if (device.IsExposureModeSupported(AVCaptureExposureMode.ContinuousAutoExposure))
+			{
+				device.LockForConfiguration(out error);
+				device.ExposureMode = AVCaptureExposureMode.ContinuousAutoExposure;
+				device.UnlockForConfiguration();
+			}
+			else if (device.IsWhiteBalanceModeSupported(AVCaptureWhiteBalanceMode.ContinuousAutoWhiteBalance))
+			{
+				device.LockForConfiguration(out error);
+				device.WhiteBalanceMode = AVCaptureWhiteBalanceMode.ContinuousAutoWhiteBalance;
+				device.UnlockForConfiguration();
+			}
+		}
+		#endregion
+
+
+		private void DeviceRotated(NSNotification notification)
+		{
+			if (contentView != null)
+				contentView.Frame = this.View.Frame;
+
+			if (videoPreviewLayer != null)
+				videoPreviewLayer.Frame = this.View.Frame;
+		}
+
+
+
 
 		public UIViewController GetVCWithIdentifier(string identifier)
 		{

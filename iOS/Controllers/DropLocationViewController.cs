@@ -7,6 +7,7 @@ using MapKit;
 using CoreLocation;
 using System.Text;
 using AddressBook;
+using Google.Maps;
 
 namespace Drop.iOS
 {
@@ -14,7 +15,7 @@ namespace Drop.iOS
     {
 		public ItemModel ItemModel;
 
-		private MKMapView mMapView;
+		private MapView mMapView;
 
 		LocationPrediction objAutoCompleteLocationClass;
 		LocationAutoCompleteTableSource objLocationAutoCompleteTableSource;
@@ -41,10 +42,6 @@ namespace Drop.iOS
 
 		public override void ViewWillLayoutSubviews()
 		{
-			viewMapContent.LayoutIfNeeded();
-			viewMapContent.Layer.CornerRadius = 5;
-			viewMapContent.ClipsToBounds = true;
-
 			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
 			{
 				RepaintMap();
@@ -53,21 +50,41 @@ namespace Drop.iOS
 
 		void InitMapView()
 		{
-			mMapView = new MKMapView(RectangleF.Empty);
-			mMapView.ShowsUserLocation = false;
-			mMapView.ZoomEnabled = true;
-			mMapView.ScrollEnabled = true;
-			mMapView.MapType = MKMapType.Satellite;
-
-			var customDelegate = new CustomMapViewDelegate();
-			customDelegate.OnRegionChanged += TheMapView_OnRegionChanged;
-			mMapView.Delegate = customDelegate;
-
 			var lResult = LocationHelper.GetLocationResult();
-			if ((int)lResult.Latitude == 0 || (int)lResult.Longitude == 0)
-				SetMapPin(Constants.LOCATION_AUSTRALIA[0], Constants.LOCATION_AUSTRALIA[1]);
-			else
-				SetMapPin(lResult.Latitude, lResult.Longitude);
+			var camera = CameraPosition.FromCamera(lResult.Latitude, lResult.Longitude, zoom: 18);
+			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
+			mMapView.MyLocationEnabled = false;
+			mMapView.MapType = MapViewType.Satellite;
+			mMapView.Alpha = 0.8f;
+
+			mMapView.CameraPositionChanged += MapPinLocationChanged;
+		}
+
+		void MapPinLocationChanged(object sender, GMSCameraEventArgs e)
+		{
+			var lat = ((MapView)sender).Camera.Target.Latitude;
+			var lnt = ((MapView)sender).Camera.Target.Longitude;
+
+			var geoCoder = new CLGeocoder();
+			geoCoder.CancelGeocode();
+			geoCoder.ReverseGeocodeLocation(new CLLocation(lat, lnt), (placemarks, error) =>
+			{
+				try
+				{
+					var placemark = placemarks[0];
+
+					var DName = placemark.Name;
+					var Street = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.Street).ToString();
+					var City = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.City).ToString();
+					var State = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.State).ToString();
+					var PostalCode = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.Zip).ToString();
+					txtSearchBar.Text = Street + ", " + City + ", " + State + ", " + PostalCode;
+				}
+				catch (Exception ex)
+				{
+					txtSearchBar.Text = "Search or Position Map";
+				}
+		   });
 		}
 
 		async void SearchTextChanged(object sender, UISearchBarTextChangedEventArgs e)
@@ -126,57 +143,65 @@ namespace Drop.iOS
 			viewMapContent.AddSubview(mMapView);
 		}
 
-
-		public  void TheMapView_OnRegionChanged(object sender, MKMapViewChangeEventArgs e)
-		{
-			ItemModel.Location_Lat = mMapView.Region.Center.Latitude;
-			ItemModel.Location_Lnt = mMapView.Region.Center.Longitude;
-
-			var geoCoder = new CLGeocoder();
-			geoCoder.CancelGeocode();
-			geoCoder.ReverseGeocodeLocation(new CLLocation(ItemModel.Location_Lat, ItemModel.Location_Lnt), (placemarks, error) =>
-		   {
-			   try
-			   {
-				   var placemark = placemarks[0];
-
-				   var DName = placemark.Name;
-				   var Street = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.Street).ToString();
-				   var City = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.City).ToString();
-				   var State = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.State).ToString();
-				   var PostalCode = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.Zip).ToString();
-				   txtSearchBar.Text = Street + ", " + City + ", " + State + ", " + PostalCode;
-			   }
-			   catch (Exception ex)
-			   {
-				   txtSearchBar.Text = "Search or Position Map";
-			   }
-		   });
-
-		}
-
 		void SetMapPin(double lat, double lng)
 		{
 			InvokeOnMainThread(() =>
 			{
-				CLLocationCoordinate2D mapCenter = new CLLocationCoordinate2D(lat, lng);
-				MKCoordinateRegion mapRegion = MKCoordinateRegion.FromDistance(mapCenter, 1000, 1000);
-				mMapView.CenterCoordinate = mapCenter;
-				mMapView.Region = mapRegion;
+				var camera = CameraPosition.FromCamera(lat, lng, zoom: 18);
+				mMapView = MapView.FromCamera(RectangleF.Empty, camera);
 			});
 		}
 
-		public class CustomMapViewDelegate : MKMapViewDelegate
-		{
-			public event EventHandler<MKMapViewChangeEventArgs> OnRegionChanged;
 
-			public override void RegionChanged(MKMapView mapView, bool animated)
-			{
-				if (OnRegionChanged != null)
-				{
-					OnRegionChanged(mapView, new MKMapViewChangeEventArgs(animated));
-				}
-			}
+		//public  void TheMapView_OnRegionChanged(object sender, MKMapViewChangeEventArgs e)
+		//{
+		//	ItemModel.Location_Lat = mMapView.Region.Center.Latitude;
+		//	ItemModel.Location_Lnt = mMapView.Region.Center.Longitude;
+
+		//	var geoCoder = new CLGeocoder();
+		//	geoCoder.CancelGeocode();
+		//	geoCoder.ReverseGeocodeLocation(new CLLocation(ItemModel.Location_Lat, ItemModel.Location_Lnt), (placemarks, error) =>
+		//   {
+		//	   try
+		//	   {
+		//		   var placemark = placemarks[0];
+
+		//		   var DName = placemark.Name;
+		//		   var Street = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.Street).ToString();
+		//		   var City = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.City).ToString();
+		//		   var State = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.State).ToString();
+		//		   var PostalCode = placemark.AddressDictionary.ValueForKey(ABPersonAddressKey.Zip).ToString();
+		//		   txtSearchBar.Text = Street + ", " + City + ", " + State + ", " + PostalCode;
+		//	   }
+		//	   catch (Exception ex)
+		//	   {
+		//		   txtSearchBar.Text = "Search or Position Map";
+		//	   }
+		//   });
+
+		//}
+
+
+
+		//public class CustomMapViewDelegate : MKMapViewDelegate
+		//{
+		//	public event EventHandler<MKMapViewChangeEventArgs> OnRegionChanged;
+
+		//	public override void RegionChanged(MKMapView mapView, bool animated)
+		//	{
+		//		if (OnRegionChanged != null)
+		//		{
+		//			OnRegionChanged(mapView, new MKMapViewChangeEventArgs(animated));
+		//		}
+		//	}
+		//}
+
+		partial void ActionConfirmLocation(UIButton sender)
+		{
+			ItemModel.Location_Lat = mMapView.Camera.Target.Latitude;
+			ItemModel.Location_Lnt = mMapView.Camera.Target.Longitude;
+
+			NavigationController.PopViewController(true);
 		}
     }
 }

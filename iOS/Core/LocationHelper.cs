@@ -71,7 +71,7 @@ namespace Drop.iOS
 		{
 			if (LocationUpdated != null)
 			{
-				LocationUpdated(null, null);
+				LocationUpdated(sender, e);
 			}
 			UpdateLocation(e.Locations[e.Locations.Length - 1]);
 		}
