@@ -1,11 +1,13 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/BaseViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/HomeViewController.cs">
     <Files>
       <File FileName="iOS/Controllers/NearbyViewController.cs" Line="62" Column="72" />
-      <File FileName="iOS/Controllers/HomeViewController.cs" Line="93" Column="1" />
+      <File FileName="iOS/Controllers/HomeViewController.cs" Line="122" Column="4" />
       <File FileName="Drop/Constants.cs" Line="148" Column="47" />
       <File FileName="Droid/Activities/DropItemActivity.cs" Line="308" Column="32" />
       <File FileName="iOS/Controllers/BaseViewController.cs" Line="79" Column="4" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="234" Column="27" />
+      <File FileName="iOS/Info.plist" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,9 +20,9 @@
               <Node name="Activities" expanded="True" />
             </Node>
             <Node name="Drop.iOS" expanded="True">
+              <Node name="ComponentReferenceFolder" expanded="True" />
               <Node name="Controllers" expanded="True">
-                <Node name="BaseViewController.cs" selected="True" />
-                <Node name="DropItemViewController.cs" expanded="True" />
+                <Node name="HomeViewController.cs" selected="True" />
               </Node>
               <Node name="Core" expanded="True" />
             </Node>
@@ -35,5 +37,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.0c254cef12992243e6403d82f9ab07d40174217a" />
+  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.588a0c4ca0db6bf2b5ac9a1a9456fdabb01e7629" />
 </Properties>

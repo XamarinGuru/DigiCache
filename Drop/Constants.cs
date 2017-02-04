@@ -145,7 +145,8 @@ namespace Drop
 		public static double[] LOCATION_AUSTRALIA = new double[] { 35.2809f, 149.1300f };
 
 
-		public const int VISIBILITY_LIMITATIN_M = 20;
+		public const int VISIBILITY_LIMITATIN_M = 300;
+		public const int VDROP_MAX_SIZE = 100;
 		
 	}
 }

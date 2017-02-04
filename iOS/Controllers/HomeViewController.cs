@@ -5,6 +5,8 @@ using CoreGraphics;
 using System.Collections.Generic;
 using CoreLocation;
 
+using SDWebImage;
+
 namespace Drop.iOS
 {
     public partial class HomeViewController : BaseViewController
@@ -21,8 +23,20 @@ namespace Drop.iOS
 
 			dropContent.Transform = CGAffineTransform.MakeScale(0, 0);
 			dropContent.Alpha = 0;
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
 
 			GetDrops();
+		}
+
+		public override void ViewDidDisappear(bool animated)
+		{
+			base.ViewDidDisappear(animated);
+
+			LocationHelper.LocationUpdated -= LocationUpdated;
 		}
 
 		void GetDrops()
@@ -100,21 +114,22 @@ namespace Drop.iOS
 			foreach (UIView view in virtualDropContent.Subviews)
 				view.RemoveFromSuperview();
 			
-			var scale = Constants.VISIBILITY_LIMITATIN_M / (Constants.VISIBILITY_LIMITATIN_M - distance);
+			var scale = 1 - distance / Constants.VISIBILITY_LIMITATIN_M;
+
 			if (scale <= 0)
 				return;
-			
-			var iconData = NSData.FromUrl(new NSUrl(drop.IconURL.ToString()));
-			UIImage dropIcon = UIImage.LoadFromData(iconData);
 
-			UIImage scaledIcon = UIImage.FromImage(dropIcon.CGImage, (nfloat)scale / 2, dropIcon.Orientation);
+			var vdropSize = Constants.VDROP_MAX_SIZE * scale;
+			var posX = View.Frame.Size.Width / 2 - vdropSize / 2;
+			var posY = View.Frame.Size.Height / 2 - vdropSize / 2;
 
-			var posX = View.Frame.Size.Width / 2 - scaledIcon.Size.Width / 2;
-			var posY = View.Frame.Size.Height / 2 - scaledIcon.Size.Height / 2;
+			var realDrop = new UIImageView(new CGRect(posX, posY, vdropSize, vdropSize));
+			realDrop.SetImage(
+				url: new NSUrl(drop.IconURL.ToString()),
+				placeholder: UIImage.FromBundle("icon_drop1.png")
+			);
 
-			UIImageView realDrop = new UIImageView(scaledIcon);
-			realDrop.Frame = new CGRect(posX, posY, scaledIcon.Size.Width, scaledIcon.Size.Height);
-
+			realDrop.ContentMode = UIViewContentMode.ScaleAspectFill;
 
 			UILabel lblDistance = new UILabel(new CGRect(10, 100, 500, 100));
 			lblDistance.Text = distance.ToString();
