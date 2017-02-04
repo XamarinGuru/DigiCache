@@ -44,6 +44,10 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnShareColleps { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnVisibleEvery { get; set; }
 
         [Outlet]
@@ -84,6 +88,10 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint heightShare { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgDropIcon { get; set; }
 
         [Outlet]
@@ -93,6 +101,10 @@ namespace Drop.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblLocationLog { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField lblShare { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -137,6 +149,10 @@ namespace Drop.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewPermission { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView viewShare { get; set; }
 
         [Action ("ActionColleps:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -215,6 +231,11 @@ namespace Drop.iOS
                 btnModifySpecific = null;
             }
 
+            if (btnShareColleps != null) {
+                btnShareColleps.Dispose ();
+                btnShareColleps = null;
+            }
+
             if (btnVisibleEvery != null) {
                 btnVisibleEvery.Dispose ();
                 btnVisibleEvery = null;
@@ -265,6 +286,11 @@ namespace Drop.iOS
                 heightPermission = null;
             }
 
+            if (heightShare != null) {
+                heightShare.Dispose ();
+                heightShare = null;
+            }
+
             if (imgDropIcon != null) {
                 imgDropIcon.Dispose ();
                 imgDropIcon = null;
@@ -278,6 +304,11 @@ namespace Drop.iOS
             if (lblLocationLog != null) {
                 lblLocationLog.Dispose ();
                 lblLocationLog = null;
+            }
+
+            if (lblShare != null) {
+                lblShare.Dispose ();
+                lblShare = null;
             }
 
             if (txtDescription != null) {
@@ -333,6 +364,11 @@ namespace Drop.iOS
             if (viewPermission != null) {
                 viewPermission.Dispose ();
                 viewPermission = null;
+            }
+
+            if (viewShare != null) {
+                viewShare.Dispose ();
+                viewShare = null;
             }
         }
     }

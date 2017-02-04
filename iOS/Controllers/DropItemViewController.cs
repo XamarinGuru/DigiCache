@@ -48,6 +48,7 @@ namespace Drop.iOS
 			heightPassword.Constant = 0;
 			heightModify.Constant = 0;
 			heightExpiry.Constant = 0;
+			heightShare.Constant = 0;
 			viewName.Alpha = 0;
 			viewIcon.Alpha = 0;
 			viewLocation.Alpha = 0;
@@ -55,11 +56,13 @@ namespace Drop.iOS
 			viewPassword.Alpha = 0;
 			viewModify.Alpha = 0;
 			viewExpiry.Alpha = 0;
+			viewShare.Alpha = 0;
+
+			lblShare.TextColor = UIColor.Gray;
+			btnShareColleps.Enabled = false;
 
 			SetDatePicker(txtExpireDate);
 		}
-
-
 
 		private void SetInputBinding()
 		{
@@ -72,9 +75,6 @@ namespace Drop.iOS
 			this.SetBinding(() => txtExpireDate.Text, () => ItemModel.ExpiryDate, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
 			//this.SetBinding(() => mText, () => ItemModel.ExpiryDate, BindingMode.OneWay);
 		}
-
-
-
 
 		#region Actions
 		partial void ActionColleps(UIButton sender)
@@ -116,6 +116,10 @@ namespace Drop.iOS
 					heightExpiry.Constant = constant;
 					viewExpiry.Alpha = alpha;
 					break;
+				case Constants.TAG_COLLEPS_SHARE:
+					heightShare.Constant = constant;
+					viewShare.Alpha = alpha;
+					break;
 				default:
 					break;
 			}
@@ -147,28 +151,6 @@ namespace Drop.iOS
 			actionSheet.ShowInView(this.View);
 		}
 
-		//partial void ActionCurrentLocation(UIButton sender)
-		//{
-		//	sender.Selected = !sender.Selected;
-
-		//	if (sender.Selected)
-		//	{
-		//		var lResult = LocationHelper.GetLocationResult();
-		//		ItemModel.Location_Lat = lResult.Latitude;
-		//		ItemModel.Location_Lnt = lResult.Longitude;
-
-		//		lblLocationLat.Text = ItemModel.Location_Lat.ToString();
-		//		lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
-		//	}
-		//	else
-		//	{
-		//		ItemModel.Location_Lat = Constants.LOCATION_AUSTRALIA[0];
-		//		ItemModel.Location_Lnt = Constants.LOCATION_AUSTRALIA[1];
-		//		lblLocationLat.Text = ItemModel.Location_Lat.ToString();
-		//		lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
-		//	}
-		//}
-
 		partial void ActionCustomLocation(UIButton sender)
 		{
 			var pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_LOCATION) as DropLocationViewController;
@@ -184,19 +166,6 @@ namespace Drop.iOS
 
 			sender.Selected = true;
 
-			//switch (sender.Tag)
-			//{
-			//	case Constants.TAG_VISIBLE_EVERY:
-			//		btnVisibleEvery.Selected = true;
-			//		break;
-			//	case Constants.TAG_VISIBLE_ME:
-			//		btnVisibleMe.Selected = true;
-			//		break;
-			//	case Constants.TAG_VISIBLE_SPECIFIC:
-			//		btnVisibleSpecific.Selected = true;
-			//		break;
-			//}
-
 			ItemModel.Visibility = (int)sender.Tag;
 		}
 
@@ -207,19 +176,6 @@ namespace Drop.iOS
 			btnModifySpecific.Selected = false;
 
 			sender.Selected = true;
-
-			//switch (sender.Tag)
-			//{
-			//	case Constants.TAG_VISIBLE_EVERY:
-			//		btnVisibleEvery.Selected = true;
-			//		break;
-			//	case Constants.TAG_VISIBLE_ME:
-			//		btnVisibleMe.Selected = true;
-			//		break;
-			//	case Constants.TAG_VISIBLE_SPECIFIC:
-			//		btnVisibleSpecific.Selected = true;
-			//		break;
-			//}
 
 			ItemModel.Modify = (int)sender.Tag;
 		}
@@ -233,9 +189,20 @@ namespace Drop.iOS
 
 		partial void ActionShare(UIButton sender)
 		{
-			//throw new NotImplementedException();
+			var dropIcon = new UIImage(NSData.FromArray(ItemModel.Icon.fileData));
+			var dropContent = string.Format("Drop Name:\n" + ItemModel.Name + "\n\n" +
+											"Drop Description:\n" + ItemModel.Description + "\n\n" +
+			                                "Drop Location:\n http://maps.apple.com/?ll={0},{1}", ItemModel.Location_Lat, ItemModel.Location_Lnt);
+			NSObject[] activityItems = { dropIcon, NSObject.FromObject(dropContent) };
+			UIActivityViewController activityViewController = new UIActivityViewController(activityItems, null);
+			activityViewController.ExcludedActivityTypes = new NSString[] { };
+			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+			{
+				activityViewController.PopoverPresentationController.SourceView = View;
+				activityViewController.PopoverPresentationController.SourceRect = new CoreGraphics.CGRect((View.Bounds.Width / 2), (View.Bounds.Height / 4), 0, 0);
+			}
+			this.PresentViewController(activityViewController, true, null);
 		}
-
 
 		async partial void ActionDropItem(UIButton sender)
 		{
@@ -244,7 +211,7 @@ namespace Drop.iOS
 				ShowMessageBox(null, Constants.STR_DROP_INVALID);
 				return;
 			}
-			
+
 			ShowLoadingView(Constants.STR_LOADING);
 
 			var result = await ParseService.AddDropItem(ItemModel.parseItem);
@@ -252,9 +219,15 @@ namespace Drop.iOS
 			HideLoadingView();
 
 			if (result == Constants.STR_STATUS_SUCCESS)
+			{
 				ShowMessageBox(null, Constants.STR_DROP_SUCCESS_MSG);
+				lblShare.TextColor = UIColor.White;
+				btnShareColleps.Enabled = true;
+			}
 			else
+			{
 				ShowMessageBox(null, result);
+			}
 			//rootVC.SetCurrentPage(2);
 		}
 		#endregion
@@ -316,6 +289,7 @@ namespace Drop.iOS
 					break;
 			}
 		}
+
 
 
 		#endregion
@@ -395,8 +369,6 @@ namespace Drop.iOS
 				Console.WriteLine(ex.Message);
 			}
 		}
-
-
 
 		void PickupMediaCanceledHandler(object sender, EventArgs e)
 		{

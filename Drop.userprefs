@@ -1,13 +1,12 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/HomeViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/DropItemViewController.cs">
     <Files>
-      <File FileName="iOS/Controllers/NearbyViewController.cs" Line="62" Column="72" />
-      <File FileName="iOS/Controllers/HomeViewController.cs" Line="122" Column="4" />
-      <File FileName="Drop/Constants.cs" Line="148" Column="47" />
+      <File FileName="iOS/Controllers/HomeViewController.cs" Line="133" Column="1" />
+      <File FileName="Drop/Constants.cs" Line="70" Column="37" />
       <File FileName="Droid/Activities/DropItemActivity.cs" Line="308" Column="32" />
       <File FileName="iOS/Controllers/BaseViewController.cs" Line="79" Column="4" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="234" Column="27" />
-      <File FileName="iOS/Info.plist" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="205" Column="4" />
+      <File FileName="iOS/Controllers/DropItemViewController.designer.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,7 +21,7 @@
             <Node name="Drop.iOS" expanded="True">
               <Node name="ComponentReferenceFolder" expanded="True" />
               <Node name="Controllers" expanded="True">
-                <Node name="HomeViewController.cs" selected="True" />
+                <Node name="DropItemViewController.cs" expanded="True" selected="True" />
               </Node>
               <Node name="Core" expanded="True" />
             </Node>

@@ -30,7 +30,7 @@ namespace Drop
 		public const string STR_DROPS_LOADING = "Retreving droped items...";
 
 		public const string STR_DROP_INVALID = "You should specify at least Name & Icon & Location to drop your item.";
-		public const string STR_DROP_SUCCESS_MSG = "Dropped your item successfully.";
+		public const string STR_DROP_SUCCESS_MSG = "Dropped your item successfully.\n Please share your drop.";
 
 		public const string STR_ATTACH_TITLE = "Select Attach File Type...";
 		public const string STR_CUSTOM_ICON_TITLE = "Customize your drop icon...";
@@ -67,8 +67,9 @@ namespace Drop
 		public const int TAG_COLLEPS_MODIFY = 5;
 		public const int TAG_COLLEPS_PASSWORD = 6;
 		public const int TAG_COLLEPS_EXPIRY = 7;
+		public const int TAG_COLLEPS_SHARE = 8;
 
-		public static int[] COLLEPS_HEIGHTS = new[] { 240, 125, 61, 190, 190, 61, 190 };
+		public static int[] COLLEPS_HEIGHTS = new[] { 240, 125, 61, 190, 190, 61, 60, 60 };
 
 		public const int TAG_D_COLLEPS_NAME = 0;
 		public const int TAG_D_COLLEPS_ICON = 1;
