@@ -10,6 +10,7 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -69,10 +70,15 @@ namespace Drop.Droid
 			});
 		}
 
-		protected MediaFile ByteDataFromImage(int resourceId)
+		protected MediaFile ByteDataFromImage(ImageView imageView)
 		{
-			var bitmap = BitmapFactory.DecodeResource(Resources, resourceId);
-			Bitmap newBitmap = scaleDown(bitmap, 100, true);
+			imageView.BuildDrawingCache(true);
+			Bitmap bmap = imageView.GetDrawingCache(true);
+			imageView.SetImageBitmap(bmap);
+			Bitmap bitmap = Bitmap.CreateBitmap(imageView.GetDrawingCache(true));
+
+			//var bitmap = BitmapFactory.DecodeResource(Resources, resourceId);
+			Bitmap newBitmap = scaleDown(bitmap, 50, true);
 
 			var stream = new MemoryStream();
 

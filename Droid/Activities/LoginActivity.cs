@@ -1,17 +1,20 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Drop;
 using Org.Json;
+using Plugin.Share;
 using Xamarin.Facebook;
 using Xamarin.Facebook.Login;
 
@@ -115,7 +118,7 @@ namespace Drop.Droid
 			LoginManager.Instance.LogInWithReadPermissions(this, Constants.FB_PERMISSIONS);
 		}
 
-		void ActionLoginAnonymously(object sender, EventArgs e)
+		async void ActionLoginAnonymously(object sender, EventArgs e)
 		{
 			ParseService.Logout();
 			GoToHomeVC();

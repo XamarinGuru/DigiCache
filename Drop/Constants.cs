@@ -71,13 +71,13 @@ namespace Drop
 
 		public static int[] COLLEPS_HEIGHTS = new[] { 240, 125, 61, 190, 190, 61, 60, 60 };
 
-		public const int TAG_D_COLLEPS_NAME = 0;
-		public const int TAG_D_COLLEPS_ICON = 1;
-		public const int TAG_D_COLLEPS_LOCATION = 2;
-		public const int TAG_D_COLLEPS_PERMISSION = 3;
-		public const int TAG_D_COLLEPS_PASSWORD = 4;
-		public const int TAG_D_COLLEPS_EXPIRY = 5;
-		public const int TAG_D_COLLEPS_SHARE = 6;
+		//public const int TAG_D_COLLEPS_NAME = 0;
+		//public const int TAG_D_COLLEPS_ICON = 1;
+		//public const int TAG_D_COLLEPS_LOCATION = 2;
+		//public const int TAG_D_COLLEPS_PERMISSION = 3;
+		//public const int TAG_D_COLLEPS_PASSWORD = 4;
+		//public const int TAG_D_COLLEPS_EXPIRY = 5;
+		//public const int TAG_D_COLLEPS_SHARE = 6;
 
 		public const int INDEX_TEXT = 0;
 		public const int INDEX_FROM_LIBRARY = 1;

@@ -8,6 +8,7 @@ using Android.Animation;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.Locations;
 using Android.OS;
 using Android.Runtime;
@@ -30,7 +31,7 @@ namespace Drop.Droid
 
 		private ItemModel ItemModel { get; set; }
 
-		ImageView btnActionItem;
+		LinearLayout btnActionItem;
 
 		EditText txtName, txtDescription, txtPassword;
 
@@ -38,8 +39,12 @@ namespace Drop.Droid
 		ImageView imgDropIcon;
 
 		TextView lblLocationLat, lblLocationLog;
+		TextView lblShare;
 
-		CheckBox checkEveryone, checkOnlyMe, checkSpecificUser;
+		CheckBox checkVisibilityEveryone, checkVisibilityOnlyMe, checkVisibilitySpecificUser;
+		CheckBox checkModifyEveryone, checkModifyOnlyMe, checkModifySpecificUser;
+
+		LinearLayout ActionCollpseShare;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -54,7 +59,7 @@ namespace Drop.Droid
 			ItemModel = new ItemModel();
 
 			SetUIVariablesAndActions();
-			//SetInputBinding();
+			SetInputBinding();
 		}
 
 		private void SetUIVariablesAndActions()
@@ -74,21 +79,33 @@ namespace Drop.Droid
 			lblLocationLat = FindViewById<TextView>(Resource.Id.lblLocationLat);
 			lblLocationLog = FindViewById<TextView>(Resource.Id.lblLocationLog);
 
-			checkEveryone = FindViewById<CheckBox>(Resource.Id.ActionEveryone);
-			checkOnlyMe = FindViewById<CheckBox>(Resource.Id.ActionOnlyMe);
-			checkSpecificUser = FindViewById<CheckBox>(Resource.Id.ActionSpecificUser);
+			checkVisibilityEveryone = FindViewById<CheckBox>(Resource.Id.ActionVisibilityEveryone);
+			checkVisibilityOnlyMe = FindViewById<CheckBox>(Resource.Id.ActionVisibilityOnlyMe);
+			checkVisibilitySpecificUser = FindViewById<CheckBox>(Resource.Id.ActionVisibilitySpecificUser);
 
-			btnActionItem = FindViewById<ImageView>(Resource.Id.ActionItem);
+			checkModifyEveryone = FindViewById<CheckBox>(Resource.Id.ActionModifyEveryone);
+			checkModifyOnlyMe = FindViewById<CheckBox>(Resource.Id.ActionModifyOnlyMe);
+			checkModifySpecificUser = FindViewById<CheckBox>(Resource.Id.ActionModifySpecificUser);
+
+			btnActionItem = FindViewById<LinearLayout>(Resource.Id.ActionItem);
+
+			lblShare = FindViewById<TextView>(Resource.Id.lblShare);
+			lblShare.SetTextColor(Android.Graphics.Color.Gray);
+
+			ActionCollpseShare = FindViewById<LinearLayout>(Resource.Id.ActionCollpseShare);
 			#endregion
 
 			//Actions
-			FindViewById<ImageView>(Resource.Id.ActionCollpseName).Click += ActionCollpse;
-			FindViewById<ImageView>(Resource.Id.ActionCollpseIcon).Click += ActionCollpse;
-			FindViewById<ImageView>(Resource.Id.ActionCollpseLocation).Click += ActionCollpse;
-			FindViewById<ImageView>(Resource.Id.ActionCollpsePermission).Click += ActionCollpse;
-			FindViewById<ImageView>(Resource.Id.ActionCollpsePassword).Click += ActionCollpse;
-			FindViewById<ImageView>(Resource.Id.ActionCollpseExpire).Click += ActionCollpse;
-			FindViewById<ImageView>(Resource.Id.ActionCollpseShare).Click += ActionCollpse;
+			FindViewById<LinearLayout>(Resource.Id.ActionCollpseName).Click += ActionCollpse;
+			FindViewById<LinearLayout>(Resource.Id.ActionCollpseIcon).Click += ActionCollpse;
+			FindViewById<LinearLayout>(Resource.Id.ActionCollpseLocation).Click += ActionCollpse;
+			FindViewById<LinearLayout>(Resource.Id.ActionCollpsePermission).Click += ActionCollpse;
+			FindViewById<LinearLayout>(Resource.Id.ActionCollpsePassword).Click += ActionCollpse;
+			FindViewById<LinearLayout>(Resource.Id.ActionCollpseModify).Click += ActionCollpse;
+			FindViewById<LinearLayout>(Resource.Id.ActionCollpseExpire).Click += ActionCollpse;
+			FindViewById<LinearLayout>(Resource.Id.ActionCollpseShare).Click += ActionCollpse;
+
+			ActionCollpseShare.Enabled = false;
 
 			FindViewById(Resource.Id.ActionItem).Click += ActionItem;
 
@@ -97,22 +114,72 @@ namespace Drop.Droid
 			FindViewById(Resource.Id.ActionDefaultIcon3).Click += ActionDefaultIcon;
 			FindViewById(Resource.Id.ActionDefaultIcon4).Click += ActionDefaultIcon;
 			FindViewById(Resource.Id.ActionDefaultIcon5).Click += ActionDefaultIcon;
+			FindViewById(Resource.Id.ActionDefaultIcon6).Click += ActionDefaultIcon;
+			FindViewById(Resource.Id.ActionDefaultIcon7).Click += ActionDefaultIcon;
+			FindViewById(Resource.Id.ActionDefaultIcon8).Click += ActionDefaultIcon;
+			FindViewById(Resource.Id.ActionDefaultIcon9).Click += ActionDefaultIcon;
 
-			FindViewById(Resource.Id.ActionCurrentLocation).Click += ActionCurrentLocation;
 			FindViewById(Resource.Id.ActionCustomLocation).Click += ActionCustomLocation;
 
-			checkEveryone.Click += ActionVisibility;
-			checkOnlyMe.Click += ActionVisibility;
-			checkSpecificUser.Click += ActionVisibility;
+			FindViewById(Resource.Id.ActionShareFB).Click += ActionShare;
+			FindViewById(Resource.Id.ActionShareTW).Click += ActionShare;
+			FindViewById(Resource.Id.ActionShareEM).Click += ActionShare;
+			FindViewById(Resource.Id.ActionShareIN).Click += ActionShare;
+
+			checkVisibilityEveryone.Click += ActionVisibility;
+			checkVisibilityOnlyMe.Click += ActionVisibility;
+			checkVisibilitySpecificUser.Click += ActionVisibility;
+
+			checkModifyEveryone.Click += ActionModify;
+			checkModifyOnlyMe.Click += ActionModify;
+			checkModifySpecificUser.Click += ActionModify;
 
 			FindViewById(Resource.Id.ActionPassword).Click += ActionPassword;
-
 			FindViewById<LinearLayout>(Resource.Id.ActionDropItem).Click += ActionDropItem;
-
 			FindViewById(Resource.Id.ActionBack).Click += ActionBack;
+
+			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewName));
+			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewICON));
+			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewLocation));
+			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPermission));
+			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewModify));
+			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPassword));
+			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewExpiry));
+			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewShare));
+
+			var contentView = FindViewById<LinearLayout>(Resource.Id.contentView);
+			var childs = GetAllChildren(contentView);
+			for (int i = 0; i < childs.Count; i++)
+			{
+				if (childs[i] is EditText)
+				{
+					((EditText)childs[i]).TextChanged += (s, e) => { };
+				}
+			}
 		}
 
+		List<View> GetAllChildren(View view)
+		{
+			if (!(view is ViewGroup))
+			{
+				List<View> viewArrayList = new List<View>();
+				viewArrayList.Add(view);
+				return viewArrayList;
+			}
 
+			List<View> result = new List<View>();
+
+			ViewGroup vg = (ViewGroup)view;
+			for (int i = 0; i < vg.ChildCount; i++)
+			{
+				View child = vg.GetChildAt(i);
+				List<View> viewArrayList = new List<View>();
+				viewArrayList.Add(view);
+				viewArrayList.AddRange(GetAllChildren(child));
+				result.AddRange(viewArrayList);
+			}
+			return result;
+		}
 
 		private void SetInputBinding()
 		{
@@ -126,27 +193,30 @@ namespace Drop.Droid
 		#region Actions
 		void ActionCollpse(object sender, EventArgs e)
 		{
-			switch (int.Parse(((ImageView)sender).Tag.ToString()))
+			switch (int.Parse(((LinearLayout)sender).Tag.ToString()))
 			{
-				case Constants.TAG_D_COLLEPS_NAME:
+				case Constants.TAG_COLLEPS_NAME:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewName));
 					break;
-				case Constants.TAG_D_COLLEPS_ICON:
+				case Constants.TAG_COLLEPS_ICON:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewICON));
 					break;
-				case Constants.TAG_D_COLLEPS_LOCATION:
+				case Constants.TAG_COLLEPS_LOCATION:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewLocation));
 					break;
-				case Constants.TAG_D_COLLEPS_PERMISSION:
+				case Constants.TAG_COLLEPS_PERMISSION:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPermission));
 					break;
-				case Constants.TAG_D_COLLEPS_PASSWORD:
+				case Constants.TAG_COLLEPS_MODIFY:
+					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewModify));
+					break;
+				case Constants.TAG_COLLEPS_PASSWORD:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPassword));
 					break;
-				case Constants.TAG_D_COLLEPS_EXPIRY:
+				case Constants.TAG_COLLEPS_EXPIRY:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewExpiry));
 					break;
-				case Constants.TAG_D_COLLEPS_SHARE:
+				case Constants.TAG_COLLEPS_SHARE:
 					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewShare));
 					break;
 				default:
@@ -155,9 +225,9 @@ namespace Drop.Droid
 		}
 		async void ActionDropItem(object sender, EventArgs e)
 		{
-			ItemModel.Name = txtName.Text;
-			ItemModel.Description = txtDescription.Text;
-			ItemModel.Password = txtPassword.Text;
+			//ItemModel.Name = txtName.Text;
+			//ItemModel.Description = txtDescription.Text;
+			//ItemModel.Password = txtPassword.Text;
 
 			if (!ItemModel.IsValidDrop())
 			{
@@ -172,9 +242,15 @@ namespace Drop.Droid
 			HideLoadingView();
 
 			if (result == Constants.STR_STATUS_SUCCESS)
+			{
 				ShowMessageBox(null, Constants.STR_DROP_SUCCESS_MSG);
+				lblShare.SetTextColor(Android.Graphics.Color.White);
+				ActionCollpseShare.Enabled = true;
+			}
 			else
+			{
 				ShowMessageBox(null, result);
+			}
 		}
 
 		void ActionItem(object sender, EventArgs e)
@@ -196,7 +272,8 @@ namespace Drop.Droid
 			switch (e.Item.ItemId)
 			{
 				case Constants.INDEX_ANDROID_TEXT:
-					//CrossMedia.Current.PickPhotoAsync();
+					MyInputDialog dropTextDialog = MyInputDialog.newInstance(Constants.STR_ATTACH_TEXT_TITLE, SetDropText);
+					dropTextDialog.Show(FragmentManager, "Diag");
 					break;
 				case Constants.INDEX_ANDROID_IMAGE_FROM_LIBRARY:
 					SelectAttachFile("library", "image");
@@ -211,9 +288,24 @@ namespace Drop.Droid
 					SelectAttachFile("camera", "video");
 					break;
 				case Constants.INDEX_ANDROID_OTHER:
+					MyInputDialog dropLinkDialog = MyInputDialog.newInstance(Constants.STR_ATTACH_OTHER_TITLE, SetOtherLink);
+					dropLinkDialog.Show(FragmentManager, "Diag");
 					break;
 			}
 		}
+
+		void SetDropText(string text)
+		{
+			ItemModel.Text = text;
+			btnDropTextSymbol.SetImageResource(Resource.Drawable.icon_text_sel);
+		}
+
+		void SetOtherLink(string text)
+		{
+			ItemModel.OtherLink = text;
+			btnDropLinkSymbol.SetImageResource(Resource.Drawable.icon_link_sel);
+		}
+
 		async void SelectAttachFile(string fromWhere, string type)
 		{
 			Plugin.Media.Abstractions.MediaFile file = null;
@@ -279,33 +371,11 @@ namespace Drop.Droid
 			}
 		}
 
-
 		void ActionDefaultIcon(object sender, EventArgs e)
 		{
-			int strIconName = 0;
-			switch (int.Parse(((ImageView)sender).Tag.ToString()))
-			{
-				case Constants.TAG_DEFAILT_ICON1:
-					strIconName = Resource.Drawable.icon_drop6;
-					break;
-				case Constants.TAG_DEFAILT_ICON2:
-					strIconName = Resource.Drawable.icon_drop7;
-					break;
-				case Constants.TAG_DEFAILT_ICON3:
-					strIconName = Resource.Drawable.icon_drop8;
-					break;
-				case Constants.TAG_DEFAILT_ICON4:
-					strIconName = Resource.Drawable.icon_drop9;
-					break;
-				case Constants.TAG_DEFAILT_ICON5:
-					strIconName = Resource.Drawable.icon_drop10;
-					break;
-				default:
-					break;
-			}
-			imgDropIcon.SetImageResource(strIconName);
+			imgDropIcon.SetImageDrawable(((ImageView)sender).Drawable);
 
-			ItemModel.Icon = ByteDataFromImage(strIconName);
+			ItemModel.Icon = ByteDataFromImage(imgDropIcon);
 		}
 
 		void ActionCurrentLocation(object sender, EventArgs e)
@@ -350,13 +420,24 @@ namespace Drop.Droid
 
 		void ActionVisibility(object sender, EventArgs e)
 		{
-			checkEveryone.Checked = false;
-			checkOnlyMe.Checked = false;
-			checkSpecificUser.Checked = false;
+			checkVisibilityEveryone.Checked = false;
+			checkVisibilityOnlyMe.Checked = false;
+			checkVisibilitySpecificUser.Checked = false;
 
 			((CheckBox)sender).Checked = true;
 
 			ItemModel.Visibility = int.Parse(((CheckBox)sender).Tag.ToString());
+		}
+
+		void ActionModify(object sender, EventArgs e)
+		{
+			checkModifyEveryone.Checked = false;
+			checkModifyOnlyMe.Checked = false;
+			checkModifySpecificUser.Checked = false;
+
+			((CheckBox)sender).Checked = true;
+
+			ItemModel.Modify = int.Parse(((CheckBox)sender).Tag.ToString());
 		}
 
 		void ActionPassword(object sender, EventArgs e)
@@ -364,6 +445,36 @@ namespace Drop.Droid
 			txtPassword.Enabled = ((CheckBox)sender).Checked;
 			if (!((CheckBox)sender).Checked)
 				txtPassword.Text = string.Empty;
+		}
+
+		void ActionShare(object sender, EventArgs e)
+		{
+			Bitmap bitmap = BitmapFactory.DecodeByteArray(ItemModel.Icon.fileData, 0, ItemModel.Icon.fileData.Length);
+
+			//Bitmap bitmap = BitmapFactory.DecodeResource(Resources, Resource.Drawable.icon_drop9);
+
+			var tempFilename = "test.png";
+			var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+			var filePath = System.IO.Path.Combine(sdCardPath, tempFilename);
+			using (var os = new FileStream(filePath, FileMode.Create))
+			{
+				bitmap.Compress(Bitmap.CompressFormat.Png, 100, os);
+			}
+			bitmap.Dispose();
+
+			var imageUri = Android.Net.Uri.Parse($"file://{sdCardPath}/{tempFilename}");
+			var sharingIntent = new Intent();
+			sharingIntent.SetAction(Intent.ActionSend);
+			sharingIntent.SetType("image/*");
+
+			var dropContent = string.Format("Drop Name:\n" + ItemModel.Name + "\n\n" +
+											"Drop Description:\n" + ItemModel.Description + "\n\n" +
+											"Drop Location:\n http://maps.google.com/?ll={0},{1}", ItemModel.Location_Lat, ItemModel.Location_Lnt);
+			
+			sharingIntent.PutExtra(Intent.ExtraText, dropContent);
+			sharingIntent.PutExtra(Intent.ExtraStream, imageUri);
+			sharingIntent.AddFlags(ActivityFlags.GrantReadUriPermission);
+			StartActivity(Intent.CreateChooser(sharingIntent, "Share your drop."));
 		}
 
 		void ActionBack(object sender, EventArgs e)

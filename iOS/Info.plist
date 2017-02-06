@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>Drop</string>
+	<string>Drop Something</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.solennial.drop</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.0.2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>

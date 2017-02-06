@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Drop.Droid</RootNamespace>
     <AssemblyName>Drop.Droid</AssemblyName>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -132,6 +132,12 @@
     <Reference Include="Xamarin.GooglePlayServices.Maps">
       <HintPath>..\packages\Xamarin.GooglePlayServices.Maps.29.0.0.2\lib\MonoAndroid41\Xamarin.GooglePlayServices.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Share.Abstractions">
+      <HintPath>..\packages\Plugin.Share.3.0.1\lib\MonoAndroid10\Plugin.Share.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Share">
+      <HintPath>..\packages\Plugin.Share.3.0.1\lib\MonoAndroid10\Plugin.Share.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -230,6 +236,7 @@
     <AndroidResource Include="Resources\layout\DropDetailLayout.axml" />
     <AndroidResource Include="Resources\drawable\item_colleps.axml" />
     <AndroidResource Include="Resources\layout\PlayVideoLayout.axml" />
+    <AndroidResource Include="Resources\drawable\appicon.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">
@@ -242,6 +249,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="facebookandroid">
       <Version>4.16.1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="SharePlugin">
+      <Version>3.0.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
