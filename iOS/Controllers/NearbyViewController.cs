@@ -40,7 +40,7 @@ namespace Drop.iOS
 		void InitMapView()
 		{
 			var lResult = LocationHelper.GetLocationResult();
-			var camera = CameraPosition.FromCamera(lResult.Latitude, lResult.Longitude, zoom: 18);
+			var camera = CameraPosition.FromCamera(lResult.Latitude, lResult.Longitude, zoom: Constants.MAP_ZOOM_LEVEL);
 			mMapView = MapView.FromCamera(RectangleF.Empty, camera);
 			mMapView.MyLocationEnabled = false;
 			mMapView.MapType = MapViewType.Satellite;

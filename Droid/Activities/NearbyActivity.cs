@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using Android;
 using Android.App;
@@ -75,10 +76,12 @@ namespace Drop.Droid
 					MarkerOptions markerOpt = new MarkerOptions();
 					markerOpt.SetPosition(new LatLng(drop.Location_Lat, drop.Location_Lnt));
 
-					URL iconUri = new URL(drop.IconURL.ToString());
-					var stream = iconUri.OpenConnection().InputStream;
-					Bitmap bmp = BitmapFactory.DecodeStream(stream);
-					markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(bmp));
+					var metrics = Resources.DisplayMetrics;
+					var wScreen = metrics.WidthPixels;
+					                       
+					Bitmap bmp = GetImageBitmapFromUrl(drop.IconURL.ToString());
+					Bitmap newBitmap = scaleDown(bmp, wScreen / 15, true);
+					markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
 
 					RunOnUiThread(() =>
 					{
@@ -124,7 +127,7 @@ namespace Drop.Droid
 
 			CameraUpdate cu_center;
 			if (myLocation != null)
-				cu_center = CameraUpdateFactory.NewLatLngZoom(new LatLng(myLocation.Latitude, myLocation.Longitude), 11);
+				cu_center = CameraUpdateFactory.NewLatLngZoom(new LatLng(myLocation.Latitude, myLocation.Longitude), Constants.MAP_ZOOM_LEVEL);
 			else
 				cu_center = CameraUpdateFactory.NewLatLngZoom(new LatLng(Constants.LOCATION_AUSTRALIA[0], Constants.LOCATION_AUSTRALIA[1]), 11);
 
@@ -193,12 +196,6 @@ namespace Drop.Droid
 			Location currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
 			_locationManager.RemoveUpdates(this);
 
-			//if (currentLocation == null)
-			//{
-			//	currentLocation = new Location();
-			//	currentLocation.Latitude = Constants.LOCATION_AUSTRALIA[0];
-			//	currentLocation.Longitude = Constants.LOCATION_AUSTRALIA[1];
-			//}
 			return currentLocation;
 		}
 		#endregion
@@ -270,5 +267,34 @@ namespace Drop.Droid
 				alert.Show();
 			});
 		}
+
+		#region get map icon
+		protected Bitmap GetImageBitmapFromUrl(string url)
+		{
+			Bitmap imageBitmap = null;
+
+			using (var webClient = new WebClient())
+			{
+				var imageBytes = webClient.DownloadData(url);
+				if (imageBytes != null && imageBytes.Length > 0)
+				{
+					imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+				}
+			}
+
+			return imageBitmap;
+		}
+
+		public static Bitmap scaleDown(Bitmap realImage, float maxImageSize, bool filter)
+		{
+			float ratio = Math.Min((float)maxImageSize / realImage.Width, (float)maxImageSize / realImage.Height);
+			int width = (int)Math.Round((float)ratio * realImage.Width);
+			int height = (int)Math.Round((float)ratio * realImage.Height);
+
+			Bitmap newBitmap = Bitmap.CreateScaledBitmap(realImage, width, height, filter);
+			return newBitmap;
+		}
+
+		#endregion
 	}
 }

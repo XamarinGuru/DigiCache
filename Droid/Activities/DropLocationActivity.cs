@@ -44,7 +44,7 @@ namespace Drop.Droid
 
 			txtSearchLocation = FindViewById<AutoCompleteTextView>(Resource.Id.txtSearchLocation);
 
-			FindViewById(Resource.Id.ActionBack).Click += delegate 
+			FindViewById(Resource.Id.ActionConfirm).Click += delegate
 			{
 				Intent myIntent = new Intent(this, typeof(DropItemActivity));
 				myIntent.PutExtra("Latitude", _currentLocation.Latitude);
@@ -52,6 +52,12 @@ namespace Drop.Droid
 				SetResult(Result.Ok, myIntent);
 				//Finish();
 
+				base.OnBackPressed();
+				OverridePendingTransition(Resource.Animation.fromRight, Resource.Animation.toLeft);
+			};
+
+			FindViewById(Resource.Id.ActionBack).Click += delegate 
+			{
 				base.OnBackPressed();
 				OverridePendingTransition(Resource.Animation.fromRight, Resource.Animation.toLeft);
 			};
@@ -115,7 +121,7 @@ namespace Drop.Droid
 
 			var myLocation = GetGPSLocation();
 
-			CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(new LatLng(myLocation.Latitude, myLocation.Longitude), 11);
+			CameraUpdate cu_center = CameraUpdateFactory.NewLatLngZoom(new LatLng(myLocation.Latitude, myLocation.Longitude), Constants.MAP_ZOOM_LEVEL);
 
 			_map.MoveCamera(cu_center);
 		}

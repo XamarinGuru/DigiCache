@@ -148,6 +148,9 @@ namespace Drop
 
 		public const int VISIBILITY_LIMITATIN_M = 300;
 		public const int VDROP_MAX_SIZE = 100;
+		public const int MDROP_MAX_SIZE = 30;
+
+		public const int MAP_ZOOM_LEVEL = 18;
 		
 	}
 }

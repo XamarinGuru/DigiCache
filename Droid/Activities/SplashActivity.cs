@@ -9,7 +9,7 @@ namespace Drop.Droid
 {
 	[Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
 
-	public class SplashActivity : BaseActivity
+	public class SplashActivity : Activity
 	{
 		public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
 		{
@@ -36,15 +36,15 @@ namespace Drop.Droid
 
 		public void StartDrop()
 		{
-			ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
-			NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
-			bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
+			//ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+			//NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
+			//bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
 
-			if (!isOnline)
-			{
-				ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
-				return;
-			}
+			//if (!isOnline)
+			//{
+			//	ShowMessageBox("No internet connection", "Oops!No internet connection... Pls try again later", true);
+			//	return;
+			//}
 
 			StartActivity(new Intent(this, typeof(LoginActivity)));
 		}

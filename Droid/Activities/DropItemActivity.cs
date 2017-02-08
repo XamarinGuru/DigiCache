@@ -21,13 +21,10 @@ using Plugin.Media;
 namespace Drop.Droid
 {
 	[Activity(Label = "DropItemActivity")]
-	public class DropItemActivity : BaseActivity, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback
+	public class DropItemActivity : BaseActivity, ActivityCompat.IOnRequestPermissionsResultCallback
 	{
 		const int Location_Request_Code = 0;
 		const int HomeFragment_Id = 0;
-
-		Location _currentLocation;
-		LocationManager _locationManager;
 
 		private ItemModel ItemModel { get; set; }
 
@@ -51,8 +48,6 @@ namespace Drop.Droid
 			base.OnCreate(savedInstanceState);
 
 			SetContentView(Resource.Layout.DropItemActivity);
-
-			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
 
 			CrossMedia.Current.Initialize();
 
@@ -225,10 +220,6 @@ namespace Drop.Droid
 		}
 		async void ActionDropItem(object sender, EventArgs e)
 		{
-			//ItemModel.Name = txtName.Text;
-			//ItemModel.Description = txtDescription.Text;
-			//ItemModel.Password = txtPassword.Text;
-
 			if (!ItemModel.IsValidDrop())
 			{
 				ShowMessageBox(null, Constants.STR_DROP_INVALID);
@@ -378,28 +369,6 @@ namespace Drop.Droid
 			ItemModel.Icon = ByteDataFromImage(imgDropIcon);
 		}
 
-		void ActionCurrentLocation(object sender, EventArgs e)
-		{
-			var checkBox = sender as CheckBox;
-			checkBox.Selected = !checkBox.Selected;
-
-			if (checkBox.Selected)
-			{
-				var lResult = GetGPSLocation();
-				ItemModel.Location_Lat = lResult.Latitude;
-				ItemModel.Location_Lnt = lResult.Longitude;
-				lblLocationLat.Text = "Lat: " + ItemModel.Location_Lat.ToString("F2");
-				lblLocationLog.Text = "Log: " + ItemModel.Location_Lnt.ToString("F2");
-			}
-			else
-			{
-				ItemModel.Location_Lat = Constants.LOCATION_AUSTRALIA[0];
-				ItemModel.Location_Lnt = Constants.LOCATION_AUSTRALIA[1];
-				lblLocationLat.Text = "Lat: " + ItemModel.Location_Lat.ToString("F2");
-				lblLocationLog.Text = "Log: " + ItemModel.Location_Lnt.ToString("F2");
-			}
-		}
-
 		private void ActionCustomLocation(object sender, EventArgs e)
 		{
 			var nextActivity = new Intent(this, typeof(DropLocationActivity));
@@ -450,8 +419,6 @@ namespace Drop.Droid
 		void ActionShare(object sender, EventArgs e)
 		{
 			Bitmap bitmap = BitmapFactory.DecodeByteArray(ItemModel.Icon.fileData, 0, ItemModel.Icon.fileData.Length);
-
-			//Bitmap bitmap = BitmapFactory.DecodeResource(Resources, Resource.Drawable.icon_drop9);
 
 			var tempFilename = "test.png";
 			var sdCardPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
@@ -522,78 +489,5 @@ namespace Drop.Droid
 			};
 			return animator;
 		}
-
-		#region current location
-		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-		{
-			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-			switch (requestCode)
-			{
-				case Location_Request_Code:
-					{
-						if (grantResults.Length > 0 && grantResults[0] == (int)Permission.Granted)
-						{
-							//SetMyLocationOnMap(true);
-						}
-						else {
-							//SetMyLocationOnMap(false);
-						}
-						return;
-					}
-			}
-		}
-
-		public void OnLocationChanged(Location location)
-		{
-			_currentLocation = location;
-		}
-
-		public void OnProviderDisabled(string provider)
-		{
-
-			using (var alert = new AlertDialog.Builder(this))
-			{
-				alert.SetTitle("Please enable GPS");
-				alert.SetMessage("Enable GPS in order to get your current location.");
-
-				alert.SetPositiveButton("Enable", (senderAlert, args) =>
-				{
-					Intent intent = new Intent(global::Android.Provider.Settings.ActionLocationSourceSettings);
-					StartActivity(intent);
-				});
-
-				alert.SetNegativeButton("Continue", (senderAlert, args) =>
-				{
-					alert.Dispose();
-				});
-
-				Dialog dialog = alert.Create();
-				dialog.Show();
-			}
-		}
-
-		public void OnProviderEnabled(string provider)
-		{
-			_currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
-		}
-
-		public void OnStatusChanged(string provider, Availability status, Bundle extras)
-		{
-		}
-
-		private Location GetGPSLocation()
-		{
-			_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
-			_currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
-			_locationManager.RemoveUpdates(this);
-
-			if (_currentLocation == null)
-			{
-				_currentLocation.Latitude = Constants.LOCATION_AUSTRALIA[0];
-				_currentLocation.Longitude = Constants.LOCATION_AUSTRALIA[1];
-			}
-			return _currentLocation;
-		}
-		#endregion
 	}
 }

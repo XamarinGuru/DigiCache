@@ -5,272 +5,285 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
-        android:background="@drawable/bg">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/linearLayout2"
-            android:background="@drawable/bar_top"
-            android:gravity="center">
-            <TextView
-                android:text="Drop Something"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView1"
-                android:textColor="#ff000000"
-                android:textSize="18dp" />
-        </LinearLayout>
+        android:id="@+id/relativeLayout4">
         <LinearLayout
             android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
+            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/linearLayout3"
-            android:gravity="bottom">
-            <RelativeLayout
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/relativeLayout3"
-                android:layout_weight="1">
-                <LinearLayout
-                    android:orientation="horizontal"
+                android:layout_height="60dp"
+                android:id="@+id/linearLayout2"
+                android:background="@drawable/bar_top"
+                android:gravity="center">
+                <TextView
+                    android:text="Drop Something"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView1"
+                    android:textColor="#ff000000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout3"
+                android:gravity="bottom">
+                <RelativeLayout
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout4"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="center">
-                    <RelativeLayout
+                    android:id="@+id/relativeLayout3"
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:minWidth="25px"
                         android:minHeight="25px"
-                        android:id="@+id/relativeLayout2"
-                        android:gravity="bottom"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clipChildren="true">
-                        <ImageView
-                            android:id="@+id/aniBgView"
-                            android:scaleType="fitCenter"
-                            android:adjustViewBounds="true"
-                            android:src="@drawable/bg_home_btn_content"
+                        android:id="@+id/linearLayout4"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/relativeLayout2"
+                            android:gravity="bottom"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true" />
+                            android:clipChildren="true">
+                            <ImageView
+                                android:id="@+id/aniBgView"
+                                android:scaleType="fitCenter"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/bg_home_btn_content"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true" />
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:id="@+id/aniContentView"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignTop="@id/aniBgView"
+                                android:layout_alignLeft="@id/aniBgView"
+                                android:layout_alignRight="@id/aniBgView"
+                                android:layout_width="match_parent"
+                                android:layout_alignBottom="@id/aniBgView">
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:minWidth="25px"
+                                    android:minHeight="25px"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/linearLayout9"
+                                    android:layout_weight="1">
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/linearLayout12"
+                                        android:layout_weight="0.7" />
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/linearLayout13"
+                                        android:layout_weight="1">
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:minWidth="25px"
+                                            android:minHeight="25px"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:id="@+id/linearLayout15"
+                                            android:layout_weight="0.6" />
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:minWidth="25px"
+                                            android:minHeight="25px"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:id="@+id/ActionDropItem"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:tag="1">
+                                            <ImageView
+                                                android:src="@drawable/btn_drop_item"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/imageView3" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/linearLayout14"
+                                        android:layout_weight="0.3" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:minWidth="25px"
+                                    android:minHeight="25px"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/linearLayout10"
+                                    android:layout_weight="0.7">
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/linearLayout17"
+                                        android:layout_weight="0.3" />
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/ActionDropNearby"
+                                        android:layout_weight="2"
+                                        android:gravity="center"
+                                        android:baselineAligned="false"
+                                        android:tag="2">
+                                        <ImageView
+                                            android:src="@drawable/btn_drop_nearby"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/imageView4" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/linearLayout19"
+                                        android:layout_weight="1.5" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:minWidth="25px"
+                                    android:minHeight="25px"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/linearLayout11"
+                                    android:layout_weight="1.1">
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/linearLayout20"
+                                        android:layout_weight="0.7" />
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/linearLayout21"
+                                        android:layout_weight="1">
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:minWidth="25px"
+                                            android:minHeight="25px"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:id="@+id/ActionDropSetting"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:tag="3">
+                                            <ImageView
+                                                android:src="@drawable/icon_drop_setting"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/imageView5" />
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:orientation="horizontal"
+                                            android:minWidth="25px"
+                                            android:minHeight="25px"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:id="@+id/linearLayout23"
+                                            android:layout_weight="0.6" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:id="@+id/linearLayout22"
+                                        android:layout_weight="0.3" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout5"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="bottom">
                         <LinearLayout
                             android:orientation="horizontal"
                             android:minWidth="25px"
                             android:minHeight="25px"
-                            android:id="@+id/aniContentView"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:id="@+id/linearLayout6"
+                            android:layout_weight="1" />
+                        <ImageView
+                            android:src="@drawable/bg_home_btn"
+                            android:id="@+id/ActionHome"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignTop="@id/aniBgView"
-                            android:layout_alignLeft="@id/aniBgView"
-                            android:layout_alignRight="@id/aniBgView"
-                            android:layout_width="match_parent"
-                            android:layout_alignBottom="@id/aniBgView">
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:minWidth="25px"
-                                android:minHeight="25px"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/linearLayout9"
-                                android:layout_weight="1">
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:minWidth="25px"
-                                    android:minHeight="25px"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/linearLayout12"
-                                    android:layout_weight="0.7" />
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/linearLayout13"
-                                    android:layout_weight="1">
-                                    <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:minWidth="25px"
-                                        android:minHeight="25px"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:id="@+id/linearLayout15"
-                                        android:layout_weight="0.6" />
-                                    <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:minWidth="25px"
-                                        android:minHeight="25px"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:id="@+id/ActionDropItem"
-                                        android:layout_weight="1"
-                                        android:gravity="center"
-                                        android:tag="1">
-                                        <ImageView
-                                            android:src="@drawable/btn_drop_item"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/imageView3" />
-                                    </LinearLayout>
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:minWidth="25px"
-                                    android:minHeight="25px"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/linearLayout14"
-                                    android:layout_weight="0.3" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:minWidth="25px"
-                                android:minHeight="25px"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/linearLayout10"
-                                android:layout_weight="0.7">
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:minWidth="25px"
-                                    android:minHeight="25px"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/linearLayout17"
-                                    android:layout_weight="0.3" />
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:minWidth="25px"
-                                    android:minHeight="25px"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/ActionDropNearby"
-                                    android:layout_weight="2"
-                                    android:gravity="center"
-                                    android:baselineAligned="false"
-                                    android:tag="2">
-                                    <ImageView
-                                        android:src="@drawable/btn_drop_nearby"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/imageView4" />
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:minWidth="25px"
-                                    android:minHeight="25px"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/linearLayout19"
-                                    android:layout_weight="1.5" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:minWidth="25px"
-                                android:minHeight="25px"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/linearLayout11"
-                                android:layout_weight="1.1">
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:minWidth="25px"
-                                    android:minHeight="25px"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/linearLayout20"
-                                    android:layout_weight="0.7" />
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/linearLayout21"
-                                    android:layout_weight="1">
-                                    <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:minWidth="25px"
-                                        android:minHeight="25px"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:id="@+id/ActionDropSetting"
-                                        android:layout_weight="1"
-                                        android:gravity="center"
-                                        android:tag="3">
-                                        <ImageView
-                                            android:src="@drawable/icon_drop_setting"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/imageView5" />
-                                    </LinearLayout>
-                                    <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:minWidth="25px"
-                                        android:minHeight="25px"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:id="@+id/linearLayout23"
-                                        android:layout_weight="0.6" />
-                                </LinearLayout>
-                                <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:minWidth="25px"
-                                    android:minHeight="25px"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0dp"
-                                    android:id="@+id/linearLayout22"
-                                    android:layout_weight="0.3" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </RelativeLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout5"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="bottom">
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/linearLayout6"
-                        android:layout_weight="1" />
-                    <ImageView
-                        android:src="@drawable/bg_home_btn"
-                        android:id="@+id/ActionHome"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:adjustViewBounds="true" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/linearLayout7"
-                        android:layout_weight="1" />
-                </LinearLayout>
-            </RelativeLayout>
+                            android:layout_weight="0.7"
+                            android:adjustViewBounds="true" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:id="@+id/linearLayout7"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/dropContent"
+            android:gravity="center" />
+    </RelativeLayout>
 </LinearLayout>

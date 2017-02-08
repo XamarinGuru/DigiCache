@@ -28,15 +28,27 @@ namespace Drop.Droid
 	{
 		ICallbackManager callbackManager;
 
+		LayoutInflater controlInflater = null;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 
-			SetContentView(Resource.Layout.LoginActivity);
+			//SetContentView(Resource.Layout.LoginActivity);
+			InitUISettings();
 
 			InitFBSettings();
+		}
 
-			InitUISettings();
+		void InitUISettings()
+		{
+			controlInflater = LayoutInflater.From(BaseContext);
+			var viewControl = controlInflater.Inflate(Resource.Layout.LoginActivity, null);
+			var layoutParamsControl = new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent);
+			this.AddContentView(viewControl, layoutParamsControl);
+
+			FindViewById<LinearLayout>(Resource.Id.ActionLoginUsingFacebook).Click += ActionLoginUsingFacebook;
+			FindViewById<LinearLayout>(Resource.Id.ActionLoginAnonymously).Click += ActionLoginAnonymously;
 		}
 
 		void InitFBSettings()
@@ -106,11 +118,7 @@ namespace Drop.Droid
 			StartActivity(mainActivity);
 		}
 
-		void InitUISettings()
-		{
-			FindViewById<LinearLayout>(Resource.Id.ActionLoginUsingFacebook).Click += ActionLoginUsingFacebook;
-			FindViewById<LinearLayout>(Resource.Id.ActionLoginAnonymously).Click += ActionLoginAnonymously;
-		}
+
 
 		#region actions
 		void ActionLoginUsingFacebook(object sender, EventArgs e)

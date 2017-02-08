@@ -62,63 +62,117 @@
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/linearLayout3">
-            <FrameLayout
-                android:id="@+id/map_place_box"
-                android:clickable="true"
+            android:id="@+id/linearLayout3"
+            android:clipChildren="true">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
+                android:layout_height="0dp"
+                android:id="@+id/linearLayout24"
                 android:layout_margin="20dp"
-                android:alpha="1">
-                <fragment
-                    android:id="@+id/map"
+                android:layout_weight="5"
+                android:clipChildren="true">
+                <FrameLayout
+                    android:id="@+id/map_place_box"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:alpha="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    class="com.google.android.gms.maps.SupportMapFragment" />
-                <RelativeLayout
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/relativeLayout2">
+                    android:clipChildren="true">
                     <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/linearLayout22"
-                        android:gravity="center"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true">
+                        android:id="@+id/linearLayout25"
+                        android:clipChildren="true"
+                        android:clipToPadding="true"
+                        android:layoutMode="clipBounds">
                         <RelativeLayout
                             android:minWidth="25px"
                             android:minHeight="25px"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:id="@+id/relativeLayout3"
-                            android:layout_weight="0.5">
+                            android:layout_height="match_parent"
+                            android:id="@+id/relativeLayout4">
+                            <fragment
+                                android:id="@+id/map"
+                                class="com.google.android.gms.maps.SupportMapFragment"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
                             <ImageView
-                                android:background="@drawable/icon_drop1"
-                                android:id="@+id/iconMyLocation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_centerHorizontal="true" />
+                                android:src="@drawable/item_round_corner"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/imageView1" />
                         </RelativeLayout>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/relativeLayout2">
                         <LinearLayout
-                            android:orientation="horizontal"
+                            android:orientation="vertical"
                             android:minWidth="25px"
                             android:minHeight="25px"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:id="@+id/linearLayout23"
-                            android:layout_weight="0.5" />
-                    </LinearLayout>
-                </RelativeLayout>
-            </FrameLayout>
+                            android:layout_height="match_parent"
+                            android:id="@+id/linearLayout22"
+                            android:gravity="center"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true">
+                            <RelativeLayout
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:id="@+id/relativeLayout3"
+                                android:layout_weight="0.5">
+                                <ImageView
+                                    android:background="@drawable/icon_drop4"
+                                    android:id="@+id/iconMyLocation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true" />
+                            </RelativeLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:id="@+id/linearLayout23"
+                                android:layout_weight="0.5" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/ActionConfirm"
+                android:background="@drawable/bg_blue"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:text="Confirm Location"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView2"
+                    android:textColor="#ffffffff"
+                    android:gravity="center" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

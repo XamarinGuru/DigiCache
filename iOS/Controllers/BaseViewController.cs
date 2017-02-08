@@ -349,12 +349,12 @@ namespace Drop.iOS
 			return new MediaFile(fileName, fileBytes);
 		}
 
-		public UIImage MaxResizeImage(UIImage sourceImage, float maxWidth = 30, float maxHeight = 30)
+		public UIImage MaxResizeImage(UIImage sourceImage)
 		{
 			try
 			{
 				var sourceSize = sourceImage.Size;
-				var maxResizeFactor = Math.Max(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+				var maxResizeFactor = Math.Max(Constants.MDROP_MAX_SIZE / sourceSize.Width, Constants.MDROP_MAX_SIZE / sourceSize.Height);
 				if (maxResizeFactor > 1) return sourceImage;
 				var width = maxResizeFactor * sourceSize.Width;
 				var height = maxResizeFactor * sourceSize.Height;
