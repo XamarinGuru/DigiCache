@@ -1,41 +1,22 @@
 ﻿<Properties StartupConfiguration="{2CF83F4E-FEB9-4A0F-8AF1-BC4C277019FC}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Activities/NearbyActivity.cs">
     <Files>
-      <File FileName="Droid/Activities/HomeActivity.cs" Line="319" Column="1" />
-      <File FileName="Droid/Activities/BaseActivity.cs" Line="246" Column="4" />
-      <File FileName="Droid/Activities/DropItemActivity.cs" Line="369" Column="30" />
-      <File FileName="iOS/Controllers/BaseViewController.cs" Line="357" Column="105" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="360" Column="34" />
+      <File FileName="Droid/Activities/NearbyActivity.cs" Line="103" Column="4" />
+      <File FileName="Droid/Activities/HomeActivity.cs" Line="232" Column="1" />
+      <File FileName="Droid/Activities/BaseActivity.cs" Line="26" Column="62" />
+      <File FileName="Droid/Properties/AndroidManifest.xml" Line="24" Column="112" />
+      <File FileName="Droid/Activities/DropLocationActivity.cs" Line="42" Column="44" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Drop" expanded="True">
-            <Node name="Drop" expanded="True" />
-            <Node name="Drop.Droid" expanded="True">
-              <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="Activities" expanded="True">
-                <Node name="HomeActivity.cs" selected="True" />
-              </Node>
-              <Node name="Properties" expanded="True" />
-              <Node name="Resources" expanded="True" />
-            </Node>
-            <Node name="Drop.iOS" expanded="True">
-              <Node name="Controllers" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Drop.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.06157df6bb041820" />
+  <MonoDevelop.Ide.ItemProperties.Drop.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.101:5555" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="435" column="1" />
-      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="431" column="1" />
-      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="423" column="35" />
-      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="402" column="1" />
+      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="297" column="1" />
+      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="293" column="1" />
+      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="285" column="35" />
+      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="271" column="1" />
+      <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/NearbyActivity.cs" line="86" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -23,8 +23,11 @@ using Java.Net;
 namespace Drop.Droid
 {
 	[Activity(Label = "NearbyActivity")]
-	public class NearbyActivity : FragmentActivity, IOnMapReadyCallback, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback, GoogleMap.IOnMarkerClickListener
+	public class NearbyActivity : FragmentActivity, TextureView.ISurfaceTextureListener, IOnMapReadyCallback, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback, GoogleMap.IOnMarkerClickListener
 	{
+		Android.Hardware.Camera _camera;
+		TextureView textureCamera;
+
 		const int Location_Request_Code = 0;
 
 		LocationManager _locationManager;
@@ -55,6 +58,48 @@ namespace Drop.Droid
 				base.OnBackPressed();
 				OverridePendingTransition(Resource.Animation.fromRight, Resource.Animation.toLeft);
 			};
+
+			textureCamera = FindViewById<TextureView>(Resource.Id.textureCamera);
+			textureCamera.SurfaceTextureListener = this;
+		}
+		public void OnSurfaceTextureAvailable(SurfaceTexture surface, int w, int h)
+		{
+			_camera = Android.Hardware.Camera.Open();
+
+			textureCamera.LayoutParameters = new RelativeLayout.LayoutParams(w, h);
+
+			try
+			{
+				_camera.SetPreviewTexture(surface);
+
+				var display = this.WindowManager.DefaultDisplay;
+				if (display.Rotation == SurfaceOrientation.Rotation0)
+					_camera.SetDisplayOrientation(90);
+				else
+					_camera.SetDisplayOrientation(180);
+				
+				_camera.StartPreview();
+
+			}
+			catch (Java.IO.IOException ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+		}
+
+		public void OnSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height)
+		{
+		}
+
+		public void OnSurfaceTextureUpdated(SurfaceTexture surface)
+		{
+		}
+		public bool OnSurfaceTextureDestroyed(SurfaceTexture surface)
+		{
+			_camera.StopPreview();
+			_camera.Release();
+
+			return true;
 		}
 
 		void GetDrops()
@@ -294,6 +339,7 @@ namespace Drop.Droid
 			Bitmap newBitmap = Bitmap.CreateScaledBitmap(realImage, width, height, filter);
 			return newBitmap;
 		}
+
 
 		#endregion
 	}

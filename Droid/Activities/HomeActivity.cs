@@ -1,117 +1,4 @@
 ﻿
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using Android.Animation;
-//using Android.App;
-//using Android.Content;
-//using Android.OS;
-//using Android.Runtime;
-//using Android.Views;
-//using Android.Widget;
-
-//namespace Drop.Droid
-//{
-//	[Activity(Label = "HomeActivity")]
-//	public class HomeActivity : BaseActivity
-//	{
-//		ImageView aniBgView;
-//		LinearLayout aniContentView;
-
-//		int nInitialAniviewHeight;
-
-//		protected override void OnCreate(Bundle savedInstanceState)
-//		{
-//			base.OnCreate(savedInstanceState);
-
-//			SetContentView(Resource.Layout.HomeActivity);
-
-//			SetUIVariablesAndActions();
-//		}
-
-//		private void SetUIVariablesAndActions()
-//		{
-//			#region UI Variables
-//			aniBgView = FindViewById<ImageView>(Resource.Id.aniBgView);
-//			aniContentView = FindViewById<LinearLayout>(Resource.Id.aniContentView);
-//			#endregion
-
-//			nInitialAniviewHeight = aniBgView.Height;
-
-//			#region Actions
-//			FindViewById<ImageView>(Resource.Id.ActionHome).Click += ActionHome;
-//			FindViewById<LinearLayout>(Resource.Id.ActionDropItem).Click += ActionDrop;
-//			FindViewById<LinearLayout>(Resource.Id.ActionDropNearby).Click += ActionDrop;
-//			FindViewById<LinearLayout>(Resource.Id.ActionDropSetting).Click += ActionDrop;
-//			#endregion
-//		}
-
-//		void ActionHome(object sender, EventArgs e)
-//		{
-//			HomeButtonAnimation(aniBgView);
-//			HomeButtonAnimation(aniContentView);
-//		}
-
-//		void ActionDrop(object sender, EventArgs e)
-//		{
-//			Intent dropAC = new Intent(); 
-//			switch (int.Parse(((LinearLayout)sender).Tag.ToString()))
-//			{
-//				case Constants.TAG_DROP_ITEM:
-//					dropAC = new Intent(this, typeof(DropItemActivity));
-//					break;
-//				case Constants.TAG_DROP_NEARBY:
-//					dropAC = new Intent(this, typeof(NearbyActivity));
-//					break;
-//				case Constants.TAG_DROP_SETTING:
-//					dropAC = new Intent(this, typeof(NearbyActivity));
-//					break;
-//				default:
-//					break;
-//			}
-
-//			StartActivity(dropAC);
-//		}
-
-//		void HomeButtonAnimation(View aniView)
-//		{
-//			if (aniView.Visibility.Equals(ViewStates.Gone))
-//			{
-//				aniView.Visibility = ViewStates.Visible;
-
-//				ValueAnimator mAnimator = slideAnimator(0, nInitialAniviewHeight, aniView);
-//				mAnimator.Start();
-//			}
-//			else {
-//				nInitialAniviewHeight = aniView.Height;
-
-//				ValueAnimator mAnimator = slideAnimator(nInitialAniviewHeight, 0, aniView);
-//				mAnimator.Start();
-//				mAnimator.AnimationEnd += (object IntentSender, EventArgs arg) =>
-//				{
-//					aniView.Visibility = ViewStates.Gone;
-//				};
-//			}
-//		}
-
-//		private ValueAnimator slideAnimator(int start, int end, View content)
-//		{
-//			ValueAnimator animator = ValueAnimator.OfInt(start, end);
-//			animator.Update += (object sender, ValueAnimator.AnimatorUpdateEventArgs e) =>
-//			{
-//				var value = (int)animator.AnimatedValue;
-//				ViewGroup.LayoutParams layoutParams = content.LayoutParameters;
-//				layoutParams.Height = value;
-//				content.LayoutParameters = layoutParams;
-//			};
-//			return animator;
-//		}
-//	}
-//}
-
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -158,15 +45,7 @@ namespace Drop.Droid
 			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
 
 			var config = ImageLoaderConfiguration.CreateDefault(ApplicationContext);
-			// Initialize ImageLoader with configuration.
 			ImageLoader.Instance.Init(config);
-			//string[] PermissionsLocation =
-			//{
-			//	Manifest.Permission.AccessCoarseLocation,
-			//	Manifest.Permission.AccessFineLocation
-			//};
-			////Explain to the user why we need to read the contacts
-			//ActivityCompat.RequestPermissions(this, PermissionsLocation, Location_Request_Code);
 
 			SetUIVariablesAndActions();
 		}
@@ -207,6 +86,8 @@ namespace Drop.Droid
 					RunOnUiThread(() =>
 					{
 						_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
+						Location currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
+						OnLocationChanged(currentLocation);
 					});
 			});
 		}
@@ -296,20 +177,20 @@ namespace Drop.Droid
 
 		void VisibleDrop(ParseItem drop, double distance)
 		{
-			//foreach (UIView view in virtualDropContent.Subviews)
-			//	view.RemoveFromSuperview();
+			RelativeLayout virtualDropContent = FindViewById<RelativeLayout>(Resource.Id.dropContent);
+			if (virtualDropContent.ChildCount > 0)
+				virtualDropContent.RemoveAllViews();
 
 			var scale = 1 - distance / Constants.VISIBILITY_LIMITATIN_M;
 
 			if (scale <= 0)
 				return;
 
-			RelativeLayout virtualDropContent = FindViewById<RelativeLayout>(Resource.Id.dropContent);
 			ImageView realDrop = new ImageView(this);
 
 			RelativeLayout.LayoutParams rParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, RelativeLayout.LayoutParams.WrapContent);
 			rParams.AddRule(LayoutRules.CenterInParent);
-			realDrop.SetScaleType(ImageView.ScaleType.Center);
+			realDrop.SetScaleType(ImageView.ScaleType.FitCenter);
 			realDrop.LayoutParameters = rParams;
 
 			ImageLoader imageLoader = ImageLoader.Instance;
@@ -317,26 +198,14 @@ namespace Drop.Droid
 
 			virtualDropContent.AddView(realDrop);
 
+			var metrics = Resources.DisplayMetrics;
+			var VDROP_MAX_SIZE = metrics.WidthPixels / 5;
 
+			var vdropSize = VDROP_MAX_SIZE * scale;
 
-			//var vdropSize = Constants.VDROP_MAX_SIZE * scale;
-			//var posX = View.Frame.Size.Width / 2 - vdropSize / 2;
-			//var posY = View.Frame.Size.Height / 2 - vdropSize / 2;
-
-			//var realDrop = new UIImageView(new CGRect(posX, posY, vdropSize, vdropSize));
-			//realDrop.SetImage(
-			//	url: new NSUrl(drop.IconURL.ToString()),
-			//	placeholder: UIImage.FromBundle("icon_drop1.png")
-			//);
-
-			//realDrop.ContentMode = UIViewContentMode.ScaleAspectFill;
-
-			//UILabel lblDistance = new UILabel(new CGRect(10, 100, 500, 100));
-			//lblDistance.Text = distance.ToString();
-			//lblDistance.TextColor = UIColor.Red;
-
-			//virtualDropContent.AddSubview(realDrop);
-			//virtualDropContent.AddSubview(lblDistance);
+			RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int)vdropSize, (int)vdropSize);
+			realDrop.LayoutParameters = layoutParams;
+			realDrop.RequestLayout();
 		}
 
 		#region current location
@@ -406,13 +275,6 @@ namespace Drop.Droid
 		{
 		}
 
-		//private void GetGPSLocation()
-		//{
-		//	_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
-		//	Location currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
-		//	_locationManager.RemoveUpdates(this);
-		//	return currentLocation;
-		//}
 		#endregion
 
 	}

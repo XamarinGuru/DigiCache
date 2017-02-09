@@ -23,6 +23,8 @@ namespace Drop.Droid
 	[Activity(Label = "DropItemActivity")]
 	public class DropItemActivity : BaseActivity, ActivityCompat.IOnRequestPermissionsResultCallback
 	{
+		LayoutInflater controlInflater = null;
+
 		const int Location_Request_Code = 0;
 		const int HomeFragment_Id = 0;
 
@@ -47,7 +49,7 @@ namespace Drop.Droid
 		{
 			base.OnCreate(savedInstanceState);
 
-			SetContentView(Resource.Layout.DropItemActivity);
+			//SetContentView(Resource.Layout.DropItemActivity);
 
 			CrossMedia.Current.Initialize();
 
@@ -59,6 +61,11 @@ namespace Drop.Droid
 
 		private void SetUIVariablesAndActions()
 		{
+			controlInflater = LayoutInflater.From(BaseContext);
+			var viewControl = controlInflater.Inflate(Resource.Layout.DropItemActivity, null);
+			var layoutParamsControl = new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent);
+			this.AddContentView(viewControl, layoutParamsControl);
+
 			#region UI Variables
 			txtName = FindViewById<EditText>(Resource.Id.txtName);
 			txtDescription = FindViewById<EditText>(Resource.Id.txtDescription);

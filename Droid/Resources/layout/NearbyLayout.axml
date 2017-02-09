@@ -5,59 +5,69 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout1"
-        android:background="@drawable/bg">
-        <RelativeLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/relativeLayout1"
-            android:gravity="center_vertical"
-            android:background="@drawable/bar_top"
-            android:clipChildren="false">
-            <ImageView
-                android:src="@drawable/btn_back"
-                android:id="@+id/ActionBack"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
-            <TextView
-                android:text="Drop Item"
-                android:id="@+id/textView1"
-                android:textColor="#ff000000"
-                android:textSize="18dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp" />
-        </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout2">
+        <TextureView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textureCamera" />
         <LinearLayout
             android:orientation="vertical"
-            android:minWidth="25px"
-            android:minHeight="25px"
+            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/linearLayout3">
-            <FrameLayout
-                android:id="@+id/map_place_box"
-                android:clickable="true"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/relativeLayout1"
+                android:gravity="center_vertical"
+                android:background="@drawable/bar_top"
+                android:clipChildren="false">
+                <ImageView
+                    android:src="@drawable/btn_back"
+                    android:id="@+id/ActionBack"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp" />
+                <TextView
+                    android:text="Drop Item"
+                    android:id="@+id/textView1"
+                    android:textColor="#ff000000"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp" />
+            </RelativeLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_margin="20dp"
-                android:alpha="1">
-                <fragment
-                    android:id="@+id/map"
+                android:id="@+id/linearLayout3">
+                <FrameLayout
+                    android:id="@+id/map_place_box"
+                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    class="com.google.android.gms.maps.SupportMapFragment" />
-            </FrameLayout>
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:layout_margin="20dp"
+                    android:alpha="1">
+                    <fragment
+                        android:id="@+id/map"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        class="com.google.android.gms.maps.SupportMapFragment" />
+                </FrameLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

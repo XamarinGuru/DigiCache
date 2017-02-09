@@ -21,5 +21,5 @@
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.READ_CALENDAR" />
 	<uses-permission android:name="android.permission.WRITE_CALENDAR" />
-	<application android:label="Drop Something" android:icon="@drawable/appicon" android:hardwareAccelerated="false" android:largeHeap="true"></application>
+	<application android:label="Drop Something" android:icon="@drawable/appicon" android:hardwareAccelerated="true" android:largeHeap="true"></application>
 </manifest>
