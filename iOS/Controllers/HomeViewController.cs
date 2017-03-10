@@ -21,8 +21,8 @@ namespace Drop.iOS
 		{
 			base.ViewDidLoad();
 
-			dropContent.Transform = CGAffineTransform.MakeScale(0, 0);
-			dropContent.Alpha = 0;
+			//dropContent.Transform = CGAffineTransform.MakeScale(0, 0);
+			//dropContent.Alpha = 0;
 		}
 
 		public override void ViewWillAppear(bool animated)
@@ -58,8 +58,8 @@ namespace Drop.iOS
 
 		partial void ActionHome(UIButton sender)
 		{
-			var scale = sender.Selected ? 0 : 1;
-			var alpha = sender.Selected ? 0 : 1;
+			var scale = sender.Selected ? 1 : 0;
+			var alpha = sender.Selected ? 1 : 0;
 
 			UIView.Animate(0.3f, 0, UIViewAnimationOptions.Autoreverse | UIViewAnimationOptions.CurveEaseOut, () =>
 		    {

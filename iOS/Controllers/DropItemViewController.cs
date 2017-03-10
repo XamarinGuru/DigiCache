@@ -3,6 +3,7 @@ using System;
 using UIKit;
 using GalaSoft.MvvmLight.Helpers;
 using MobileCoreServices;
+using CoreLocation;
 
 namespace Drop.iOS
 {
@@ -32,8 +33,8 @@ namespace Drop.iOS
 		{
 			base.ViewWillAppear(animated);
 
-			lblLocationLat.Text = ItemModel.Location_Lat.ToString();
-			lblLocationLog.Text = ItemModel.Location_Lnt.ToString();
+			lblLocationLat.Text = ItemModel.Location_Lat.ToString("F6");
+			lblLocationLog.Text = ItemModel.Location_Lnt.ToString("F6");
 		}
 
 		void SetInitialSettings()
@@ -48,7 +49,6 @@ namespace Drop.iOS
 			heightPassword.Constant = 0;
 			heightModify.Constant = 0;
 			heightExpiry.Constant = 0;
-			heightShare.Constant = 0;
 			viewName.Alpha = 0;
 			viewIcon.Alpha = 0;
 			viewLocation.Alpha = 0;
@@ -56,10 +56,6 @@ namespace Drop.iOS
 			viewPassword.Alpha = 0;
 			viewModify.Alpha = 0;
 			viewExpiry.Alpha = 0;
-			viewShare.Alpha = 0;
-
-			lblShare.TextColor = UIColor.Gray;
-			btnShareColleps.Enabled = false;
 
 			SetDatePicker(txtExpireDate);
 		}
@@ -115,10 +111,6 @@ namespace Drop.iOS
 				case Constants.TAG_COLLEPS_EXPIRY:
 					heightExpiry.Constant = constant;
 					viewExpiry.Alpha = alpha;
-					break;
-				case Constants.TAG_COLLEPS_SHARE:
-					heightShare.Constant = constant;
-					viewShare.Alpha = alpha;
 					break;
 				default:
 					break;
@@ -187,12 +179,61 @@ namespace Drop.iOS
 				txtPassword.Text = string.Empty;
 		}
 
-		partial void ActionShare(UIButton sender)
+		partial void ActionDropItem(UIButton sender)
+		{
+			if (!ItemModel.IsValidDrop())
+			{
+				ShowMessageBox(null, Constants.STR_DROP_INVALID);
+				return;
+			}
+
+			var currentLocation = LocationHelper.GetLocationResult();
+			CLLocation dLocation = new CLLocation(ItemModel.Location_Lat, ItemModel.Location_Lnt);
+			CLLocation cLocation = new CLLocation(currentLocation.Latitude, currentLocation.Longitude);
+			var distance = dLocation.DistanceFrom(cLocation);
+
+			if (distance > Constants.PURCHASE_DISTANCE)
+			{
+				PurchasePopUp pPopup = PurchasePopUp.Create(Constants.PURCHASE_TYPE.DROP);
+				pPopup.PopUp(true, DropPurchase);
+				return;
+			}
+
+			CreateDrop(ItemModel.parseItem);
+		}
+
+		#endregion
+
+		async void CreateDrop(ParseItem dropData)
+		{
+			ShowLoadingView(Constants.STR_LOADING);
+
+			var result = await ParseService.AddDropItem(dropData);
+
+			HideLoadingView();
+
+			if (result == Constants.STR_STATUS_SUCCESS)
+			{
+				SuccessPopUp cpuv = SuccessPopUp.Create();
+				cpuv.PopUp(true, ShareDropLocation, Back);
+			}
+			else
+			{
+				ShowMessageBox(null, result);
+			}
+		}
+
+		void DropPurchase()
+		{
+			//throw new NotImplementedException();
+		}
+
+		void ShareDropLocation()
 		{
 			var dropIcon = new UIImage(NSData.FromArray(ItemModel.Icon.fileData));
 			var dropContent = string.Format("Drop Name:\n" + ItemModel.Name + "\n\n" +
 											"Drop Description:\n" + ItemModel.Description + "\n\n" +
-			                                "Drop Location:\n http://maps.apple.com/?ll={0},{1}", ItemModel.Location_Lat, ItemModel.Location_Lnt);
+											"Drop Location:\n http://maps.apple.com/?ll={0},{1}", ItemModel.Location_Lat, ItemModel.Location_Lnt);
 			NSObject[] activityItems = { dropIcon, NSObject.FromObject(dropContent) };
 			UIActivityViewController activityViewController = new UIActivityViewController(activityItems, null);
 			activityViewController.ExcludedActivityTypes = new NSString[] { };
@@ -201,36 +242,13 @@ namespace Drop.iOS
 				activityViewController.PopoverPresentationController.SourceView = View;
 				activityViewController.PopoverPresentationController.SourceRect = new CoreGraphics.CGRect((View.Bounds.Width / 2), (View.Bounds.Height / 4), 0, 0);
 			}
-			this.PresentViewController(activityViewController, true, null);
+			this.PresentViewController(activityViewController, true, Back);
 		}
 
-		async partial void ActionDropItem(UIButton sender)
+		void Back()
 		{
-			if (!ItemModel.IsValidDrop())
-			{
-				ShowMessageBox(null, Constants.STR_DROP_INVALID);
-				return;
-			}
-
-			ShowLoadingView(Constants.STR_LOADING);
-
-			var result = await ParseService.AddDropItem(ItemModel.parseItem);
-
-			HideLoadingView();
-
-			if (result == Constants.STR_STATUS_SUCCESS)
-			{
-				ShowMessageBox(null, Constants.STR_DROP_SUCCESS_MSG);
-				lblShare.TextColor = UIColor.White;
-				btnShareColleps.Enabled = true;
-			}
-			else
-			{
-				ShowMessageBox(null, result);
-			}
-			//rootVC.SetCurrentPage(2);
+			NavigationController.PopViewController(true);
 		}
-		#endregion
 
 		#region delegate
 		void SelectedAttachType(object sender, UIButtonEventArgs e)
@@ -289,8 +307,6 @@ namespace Drop.iOS
 					break;
 			}
 		}
-
-
 
 		#endregion
 

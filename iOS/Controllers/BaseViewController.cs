@@ -32,15 +32,10 @@ namespace Drop.iOS
 		{
 			NavigationItem.HidesBackButton = true;
 
-			var leftButton = new UIButton(new CGRect(0, 0, 65, 35));
-			leftButton.SetImage(UIImage.FromFile("btn_back.png"), UIControlState.Normal);
+			var leftButton = new UIButton(new CGRect(0, 0, 40, 40));
+			leftButton.SetImage(UIImage.FromFile("icon_back.png"), UIControlState.Normal);
 			leftButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(leftButton);
-
-			var rightButton = new UIButton(new CGRect(0, 0, 50, 35));
-			rightButton.SetImage(UIImage.FromFile("btn_right.png"), UIControlState.Normal);
-			rightButton.TouchUpInside += (sender, e) => NavigationController.PopViewController(true);
-			NavigationItem.RightBarButtonItem = new UIBarButtonItem(rightButton);
 
 			switch (title)
 			{
@@ -63,14 +58,14 @@ namespace Drop.iOS
 		{
 			base.ViewDidLoad();
 
-			await AuthorizeCameraUse();
-			SetupLiveCameraStream();
+			//await AuthorizeCameraUse();
+			//SetupLiveCameraStream();
 		}
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
 
-			NavigationController.NavigationBar.SetBackgroundImage(UIImage.FromFile("bar_top.png"), UIBarMetrics.Default);
+			NavigationController.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
 			NavigationController.View.BackgroundColor = UIColor.Clear;
 			NavigationController.NavigationBar.BackgroundColor = UIColor.Clear;
 			NavigationController.NavigationBar.ShadowImage = new UIImage();

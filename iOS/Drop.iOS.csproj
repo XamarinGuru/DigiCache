@@ -19,7 +19,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution: Mitchell Brownlie (JKX5B6F97T)</CodesignKey>
+    <CodesignKey>iPhone Developer: Mitchell Brownlie (AGUR9Z798Q)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
     <MtouchUseSGen>true</MtouchUseSGen>
@@ -30,7 +30,7 @@
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>9ceb63d1-fa7e-48d5-a7a5-bcef8b7978cd</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -133,6 +133,9 @@
     <Reference Include="Plugin.Share">
       <HintPath>..\packages\Plugin.Share.3.0.1\lib\Xamarin.iOS10\Plugin.Share.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.InAppPurchase-Unified">
+      <HintPath>..\Components\xamarin.inapppurchase-2.8\lib\ios-unified\Xamarin.InAppPurchase-Unified.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -147,6 +150,8 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="ViewModel\PurchasePopUp.xib" />
+    <InterfaceDefinition Include="ViewModel\SuccessPopUp.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -188,6 +193,14 @@
     <Compile Include="ViewModel\LocationPrediction.cs" />
     <Compile Include="ViewModel\LocationAutoCompleteTableSource.cs" />
     <Compile Include="ViewModel\RestRequest.cs" />
+    <Compile Include="ViewModel\PurchasePopUp.cs" />
+    <Compile Include="ViewModel\PurchasePopUp.designer.cs">
+      <DependentUpon>PurchasePopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SuccessPopUp.cs" />
+    <Compile Include="ViewModel\SuccessPopUp.designer.cs">
+      <DependentUpon>SuccessPopUp.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">
@@ -212,6 +225,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="SharePlugin">
       <Version>3.0.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="xamarin.inapppurchase">
+      <Version>2.8</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
@@ -275,6 +292,26 @@
     <BundleResource Include="Resources\icon_drop11.png" />
     <BundleResource Include="Resources\icon_drop12.png" />
     <BundleResource Include="Resources\icon_drop13.png" />
+    <BundleResource Include="Resources\icon_back.png" />
+    <BundleResource Include="Resources\icon_logo.png" />
+    <BundleResource Include="Resources\icon_symbol_ano.png" />
+    <BundleResource Include="Resources\icon_symbol_fb.png" />
+    <BundleResource Include="Resources\bg_btn_blue.png" />
+    <BundleResource Include="Resources\bg_btn_white.png" />
+    <BundleResource Include="Resources\bg_btn_green.png" />
+    <BundleResource Include="Resources\bg_main_content.png" />
+    <BundleResource Include="Resources\border_gray.png" />
+    <BundleResource Include="Resources\icon_star.png" />
+    <BundleResource Include="Resources\bg_info_box.png" />
+    <BundleResource Include="Resources\bg_border_green.png" />
+    <BundleResource Include="Resources\icon_seperator.png" />
+    <BundleResource Include="Resources\icon_underline_green.png" />
+    <BundleResource Include="Resources\bg_btn_purchase.png" />
+    <BundleResource Include="Resources\bg_popup.png" />
+    <BundleResource Include="Resources\icon_purchase.png" />
+    <BundleResource Include="Resources\bg_popup_success.png" />
+    <BundleResource Include="Resources\icon_cancel.png" />
+    <BundleResource Include="Resources\icon_share.png" />
   </ItemGroup>
   <Import Project="..\Drop\Drop.projitems" Label="Shared" Condition="Exists('..\Drop\Drop.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

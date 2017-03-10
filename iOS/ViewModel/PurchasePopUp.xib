@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="PurchasePopUp" id="1" customClass="PurchasePopUp">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9l-ga-n5P" misplaced="YES">
+                    <rect key="frame" x="9.5" y="195" width="356" height="277"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_popup.png" translatesAutoresizingMaskIntoConstraints="NO" id="vcl-25-trR" misplaced="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="355.5" height="277"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're Too Far Away." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIQ-5d-o6f" misplaced="YES">
+                            <rect key="frame" x="46.5" y="45" width="263" height="35"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to be within 15m to drop  on this location." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-6l-z4o" misplaced="YES">
+                            <rect key="frame" x="54.5" y="98.5" width="248" height="38.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave a cache anywhere in the world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKs-Ma-jDs" misplaced="YES">
+                            <rect key="frame" x="46" y="149.5" width="263" height="20"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHY-3j-ZhG" misplaced="YES">
+                            <rect key="frame" x="27" y="196.5" width="302" height="50.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="LHY-3j-ZhG" secondAttribute="height" multiplier="6:1" id="oKF-5O-nwb"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <state key="normal" backgroundImage="bg_btn_purchase.png">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ActionPurchase:" destination="1" eventType="touchUpInside" id="4"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_purchase.png" translatesAutoresizingMaskIntoConstraints="NO" id="FxV-Ig-JVa" misplaced="YES">
+                            <rect key="frame" x="37.5" y="207" width="27.5" height="30.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="FxV-Ig-JVa" secondAttribute="height" multiplier="42:47" id="Ll8-A0-wU3"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy A Distance Cache Drop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeZ-as-9oH" misplaced="YES">
+                            <rect key="frame" x="65.5" y="212" width="259" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbC-Eb-kYv" misplaced="YES">
+                            <rect key="frame" x="311" y="18" width="19" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="rbC-Eb-kYv" secondAttribute="height" multiplier="1:1" id="Ffd-XN-7OM"/>
+                            </constraints>
+                            <state key="normal" image="icon_cancel.png"/>
+                            <connections>
+                                <action selector="ActionClose:" destination="1" id="7" eventType="touchUpInside"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="vcl-25-trR" secondAttribute="bottom" id="0a7-Ez-4KG"/>
+                        <constraint firstItem="vcl-25-trR" firstAttribute="top" secondItem="M9l-ga-n5P" secondAttribute="top" id="1GZ-qE-Ov9"/>
+                        <constraint firstItem="LHY-3j-ZhG" firstAttribute="centerX" secondItem="M9l-ga-n5P" secondAttribute="centerX" id="3sZ-OJ-4qw"/>
+                        <constraint firstItem="WIQ-5d-o6f" firstAttribute="centerX" secondItem="M9l-ga-n5P" secondAttribute="centerX" id="5vY-WB-GaW"/>
+                        <constraint firstItem="rbC-Eb-kYv" firstAttribute="centerY" secondItem="M9l-ga-n5P" secondAttribute="centerY" multiplier="0.2" id="DNm-jT-cBG"/>
+                        <constraint firstItem="rbC-Eb-kYv" firstAttribute="centerX" secondItem="M9l-ga-n5P" secondAttribute="centerX" multiplier="1.8" id="F1w-Mv-pfz"/>
+                        <constraint firstItem="xeZ-as-9oH" firstAttribute="trailing" secondItem="LHY-3j-ZhG" secondAttribute="trailing" constant="-5" id="HlK-DO-TOW"/>
+                        <constraint firstAttribute="width" secondItem="M9l-ga-n5P" secondAttribute="height" multiplier="9:7" id="LCJ-Zw-1g0"/>
+                        <constraint firstItem="OKs-Ma-jDs" firstAttribute="centerX" secondItem="M9l-ga-n5P" secondAttribute="centerX" id="OnO-dK-nX7"/>
+                        <constraint firstItem="FxV-Ig-JVa" firstAttribute="height" secondItem="LHY-3j-ZhG" secondAttribute="height" multiplier="0.6" id="PYp-28-ZZv"/>
+                        <constraint firstItem="FxV-Ig-JVa" firstAttribute="leading" secondItem="LHY-3j-ZhG" secondAttribute="leading" constant="10" id="TMa-7T-dSa"/>
+                        <constraint firstAttribute="trailing" secondItem="vcl-25-trR" secondAttribute="trailing" id="XHj-1i-Jf8"/>
+                        <constraint firstItem="vcl-25-trR" firstAttribute="leading" secondItem="M9l-ga-n5P" secondAttribute="leading" id="XT9-no-mNs"/>
+                        <constraint firstItem="OKs-Ma-jDs" firstAttribute="centerY" secondItem="M9l-ga-n5P" secondAttribute="centerY" multiplier="1.15" id="ZCg-a8-6sp"/>
+                        <constraint firstItem="T5c-6l-z4o" firstAttribute="centerY" secondItem="M9l-ga-n5P" secondAttribute="centerY" multiplier="0.85" id="cmW-CV-q4I"/>
+                        <constraint firstItem="xeZ-as-9oH" firstAttribute="centerY" secondItem="LHY-3j-ZhG" secondAttribute="centerY" id="ePI-aY-knP"/>
+                        <constraint firstItem="WIQ-5d-o6f" firstAttribute="centerY" secondItem="M9l-ga-n5P" secondAttribute="centerY" multiplier="0.45" id="hKe-52-mkL"/>
+                        <constraint firstItem="LHY-3j-ZhG" firstAttribute="width" secondItem="M9l-ga-n5P" secondAttribute="width" multiplier="0.85" id="hc4-IQ-4Fm"/>
+                        <constraint firstItem="rbC-Eb-kYv" firstAttribute="height" secondItem="M9l-ga-n5P" secondAttribute="height" multiplier="0.07" id="iZY-Or-Avo"/>
+                        <constraint firstItem="xeZ-as-9oH" firstAttribute="leading" secondItem="FxV-Ig-JVa" secondAttribute="trailing" id="kKh-dA-j3F"/>
+                        <constraint firstItem="FxV-Ig-JVa" firstAttribute="centerY" secondItem="LHY-3j-ZhG" secondAttribute="centerY" id="uYm-7e-NYm"/>
+                        <constraint firstItem="T5c-6l-z4o" firstAttribute="centerX" secondItem="M9l-ga-n5P" secondAttribute="centerX" id="uk9-IK-KGH"/>
+                        <constraint firstItem="LHY-3j-ZhG" firstAttribute="centerY" secondItem="M9l-ga-n5P" secondAttribute="centerY" multiplier="1.6" id="w8z-e0-Fek"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="M9l-ga-n5P" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="605-gN-gRv"/>
+                <constraint firstItem="M9l-ga-n5P" firstAttribute="width" secondItem="1" secondAttribute="width" multiplier="0.95" id="NQY-Bn-aLp"/>
+                <constraint firstItem="M9l-ga-n5P" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="QC6-y1-Brt"/>
+            </constraints>
+            <connections>
+                <outlet property="lblBtnTitle" destination="xeZ-as-9oH" id="name-outlet-xeZ-as-9oH"/>
+                <outlet property="lblDescription1" destination="T5c-6l-z4o" id="name-outlet-T5c-6l-z4o"/>
+                <outlet property="lblDescription2" destination="OKs-Ma-jDs" id="name-outlet-OKs-Ma-jDs"/>
+                <outlet property="lblTitle" destination="WIQ-5d-o6f" id="name-outlet-WIQ-5d-o6f"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_btn_purchase.png" width="480" height="90"/>
+        <image name="bg_popup.png" width="698" height="536"/>
+        <image name="icon_cancel.png" width="44" height="44"/>
+        <image name="icon_purchase.png" width="42" height="44"/>
+        <image name="Splash.png" width="750" height="1334"/>
+        <image name="bg.png" width="640" height="1136"/>
+        <image name="bar_top.png" width="640" height="87"/>
+        <image name="icon_lock.png" width="100" height="100"/>
+        <image name="icon_smile.png" width="100" height="100"/>
+        <image name="bg_orange.png" width="481" height="84"/>
+        <image name="bg_blue.png" width="481" height="84"/>
+        <image name="btn_drop_item.png" width="37" height="35"/>
+        <image name="btn_drop_nearby.png" width="25" height="40"/>
+        <image name="bg_blue1.png" width="541" height="101"/>
+        <image name="bg_blue2.png" width="541" height="101"/>
+        <image name="bg_bottom_orange.png" width="640" height="66"/>
+        <image name="bg_textfield.png" width="481" height="152"/>
+        <image name="bg_tool_button.png" width="481" height="103"/>
+        <image name="btn_back.png" width="63" height="34"/>
+        <image name="icon_minus.png" width="54" height="12"/>
+        <image name="icon_plus.png" width="46" height="46"/>
+        <image name="bg_date.png" width="115" height="56"/>
+        <image name="bg_home_btn_content.png" width="672" height="346"/>
+        <image name="bg_home_btn.png" width="172" height="90"/>
+        <image name="bg_pw.png" width="217" height="56"/>
+        <image name="icon_check.png" width="67" height="67"/>
+        <image name="icon_drop_setting.png" width="31" height="28"/>
+        <image name="icon_drop1.png" width="33" height="48"/>
+        <image name="icon_drop2.png" width="34" height="49"/>
+        <image name="icon_drop3.png" width="34" height="49"/>
+        <image name="icon_drop4.png" width="30" height="53"/>
+        <image name="icon_drop5.png" width="28" height="56"/>
+        <image name="icon_share_fb.png" width="65" height="65"/>
+        <image name="icon_share_ins.png" width="65" height="65"/>
+        <image name="icon_share_mail.png" width="65" height="65"/>
+        <image name="icon_share_tw.png" width="65" height="65"/>
+        <image name="icon_uncheck.png" width="67" height="67"/>
+        <image name="icon_image_sel.png" width="100" height="100"/>
+        <image name="icon_image_unsel.png" width="100" height="100"/>
+        <image name="icon_link_sel.png" width="100" height="100"/>
+        <image name="icon_link_unsel.png" width="100" height="100"/>
+        <image name="icon_text_sel.png" width="100" height="100"/>
+        <image name="icon_text_unsel.png" width="100" height="100"/>
+        <image name="icon_video_sel.png" width="100" height="100"/>
+        <image name="icon_video_unsel.png" width="100" height="100"/>
+        <image name="bg_colleps.png" width="539" height="58"/>
+        <image name="bg_drop_detail.png" width="574" height="851"/>
+        <image name="btn_right.png" width="76" height="58"/>
+        <image name="icon_audio.png" width="46" height="46"/>
+        <image name="icon_colleps.png" width="20" height="17"/>
+        <image name="icon_expend.png" width="19" height="17"/>
+        <image name="icon_favorite.png" width="31" height="31"/>
+        <image name="icon_link.png" width="46" height="46"/>
+        <image name="icon_video.png" width="46" height="46"/>
+        <image name="icon_location.png" width="30" height="106"/>
+        <image name="icon_drop6.png" width="160" height="160"/>
+        <image name="icon_drop7.png" width="160" height="160"/>
+        <image name="icon_drop8.png" width="160" height="160"/>
+        <image name="icon_drop9.png" width="160" height="160"/>
+        <image name="icon_drop10.png" width="160" height="160"/>
+        <image name="icon_drop11.png" width="160" height="160"/>
+        <image name="icon_drop12.png" width="160" height="160"/>
+        <image name="icon_drop13.png" width="160" height="160"/>
+        <image name="icon_back.png" width="168" height="168"/>
+        <image name="icon_logo.png" width="260" height="296"/>
+        <image name="icon_symbol_ano.png" width="56" height="66"/>
+        <image name="icon_symbol_fb.png" width="72" height="152"/>
+        <image name="bg_btn_blue.png" width="490" height="118"/>
+        <image name="bg_btn_white.png" width="490" height="118"/>
+        <image name="bg_btn_green.png" width="584" height="120"/>
+        <image name="bg_main_content.png" width="608" height="140"/>
+        <image name="border_gray.png" width="568" height="80"/>
+        <image name="icon_star.png" width="46" height="46"/>
+        <image name="bg_info_box.png" width="588" height="164"/>
+        <image name="bg_border_green.png" width="62" height="62"/>
+        <image name="icon_seperator.png" width="2" height="76"/>
+        <image name="icon_underline_green.png" width="278" height="2"/>
+        <image name="bg_popup_success.png" width="698" height="700"/>
+        <image name="icon_share.png" width="86" height="86"/>
+    </resources>
+</document>

@@ -27,15 +27,15 @@ namespace Drop
 		public const string STR_LOGIN_FAIL_MSG = "The social network login failed for your account";
 		public const string STR_LOGIN_LOADING = "Login...";
 
-		public const string STR_DROPS_LOADING = "Retreving droped items...";
+		public const string STR_DROPS_LOADING = "Retreving nearby items...";
 
 		public const string STR_DROP_INVALID = "You should specify at least Name & Icon & Location to drop your item.";
-		public const string STR_DROP_SUCCESS_MSG = "Dropped your item successfully.\n Please share your drop.";
+		public const string STR_DROP_SUCCESS_MSG = "Item successfully dropped.";
 
 		public const string STR_ATTACH_TITLE = "Select Attach File Type...";
 		public const string STR_CUSTOM_ICON_TITLE = "Customize your drop icon...";
-		public const string STR_ATTACH_TEXT_TITLE = "Describe to your drop.";
-		public const string STR_ATTACH_OTHER_TITLE = "Other link.";
+		public const string STR_ATTACH_TEXT_TITLE = "Drop Text.";
+		public const string STR_ATTACH_OTHER_TITLE = "Link / URL.";
 
 		public const string STR_VERIFY_PASSWORD_TITLE = "Require to access to this drop item.";
 		public const string STR_INVALID_PASSWORD_TITLE = "Invalid Password.";
@@ -67,9 +67,8 @@ namespace Drop
 		public const int TAG_COLLEPS_MODIFY = 5;
 		public const int TAG_COLLEPS_PASSWORD = 6;
 		public const int TAG_COLLEPS_EXPIRY = 7;
-		public const int TAG_COLLEPS_SHARE = 8;
 
-		public static int[] COLLEPS_HEIGHTS = new[] { 240, 125, 61, 190, 190, 61, 60, 60 };
+		public static int[] COLLEPS_HEIGHTS = new[] { 175, 130, 60, 150, 150, 60, 60 };
 
 		//public const int TAG_D_COLLEPS_NAME = 0;
 		//public const int TAG_D_COLLEPS_ICON = 1;
@@ -129,19 +128,19 @@ namespace Drop
 
 		//
 		public static string[] TYPE_ATTACH = new[] { 	"Text", 
-														"Select Image & Video from Photo Library", 
-														"Take Image & Video from Camera",
-														"Other Link..." };
+														"Photo Library", 
+														"Camera",
+														"Link / URL" };
 		
 		public static string[] TYPE_ATTACH_DROID = new[] {    "Text",
-														"Select Image from Photo Library",
-														"Select Video from Photo Library",
-														"Take Image from Camera",
-														"Take Video from Camera",
-														"Other Link..." };
+														"Photo Library",
+														"Photo Library",
+														"Camera",
+														"Camera",
+														"Link / URL" };
 		
-		public static string[] TYPE_FROM_SOURCE = new[] {	"Select Icon from Photo Library",
-															"Take Icon from Camera" };
+		public static string[] TYPE_FROM_SOURCE = new[] {	"Photo Library",
+															"Camera" };
 
 		public static double[] LOCATION_AUSTRALIA = new double[] { 35.2809f, 149.1300f };
 
@@ -151,6 +150,36 @@ namespace Drop
 		public const int MDROP_MAX_SIZE = 30;
 
 		public const int MAP_ZOOM_LEVEL = 18;
-		
+
+
+
+		public enum PURCHASE_TYPE
+		{
+			DROP,
+			VIEW,
+			EXPIRY
+		}
+
+		public const int PURCHASE_DISTANCE = 50;
+		public static string[] PURCHASE_TITLE = new string[]{
+			"You're Too Far Away.",
+			"You're Too Far Away.",
+			"That Date Wont work!"
+		};
+		public static string[] PURCHASE_DESCRIPTION1 = new string[] {
+			"You need to be within 15m \nto drop on this location.",
+			"You need to be within 15m \nto view this cache.",
+			"You can only leave a cache for \n12 months."
+		};
+		public static string[] PURCHASE_DESCRIPTION2 = new string[] {
+			"Leave a cache anywhere in the world",
+			"Look inside a distance cache",
+			"Make your DigiCache Last forever!"
+		};
+		public static string[] PURCHASE_BUTTON = new string[] {
+			"Buy A Distance Cache Drop",
+			"Buy One Sneak Peak",
+			"Buy A Forever Cache"
+		};
 	}
 }

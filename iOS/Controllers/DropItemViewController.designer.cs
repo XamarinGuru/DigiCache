@@ -44,10 +44,6 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnShareColleps { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnVisibleEvery { get; set; }
 
         [Outlet]
@@ -88,10 +84,6 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.NSLayoutConstraint heightShare { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgDropIcon { get; set; }
 
         [Outlet]
@@ -104,11 +96,7 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField lblShare { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView txtDescription { get; set; }
+        UIKit.UITextField txtDescription { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -150,10 +138,6 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView viewPermission { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView viewShare { get; set; }
-
         [Action ("ActionColleps:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionColleps (UIKit.UIButton sender);
@@ -185,10 +169,6 @@ namespace Drop.iOS
         [Action ("ActionPassword:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionPassword (UIKit.UISwitch sender);
-
-        [Action ("ActionShare:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionShare (UIKit.UIButton sender);
 
         [Action ("ActionVisibility:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -229,11 +209,6 @@ namespace Drop.iOS
             if (btnModifySpecific != null) {
                 btnModifySpecific.Dispose ();
                 btnModifySpecific = null;
-            }
-
-            if (btnShareColleps != null) {
-                btnShareColleps.Dispose ();
-                btnShareColleps = null;
             }
 
             if (btnVisibleEvery != null) {
@@ -286,11 +261,6 @@ namespace Drop.iOS
                 heightPermission = null;
             }
 
-            if (heightShare != null) {
-                heightShare.Dispose ();
-                heightShare = null;
-            }
-
             if (imgDropIcon != null) {
                 imgDropIcon.Dispose ();
                 imgDropIcon = null;
@@ -304,11 +274,6 @@ namespace Drop.iOS
             if (lblLocationLog != null) {
                 lblLocationLog.Dispose ();
                 lblLocationLog = null;
-            }
-
-            if (lblShare != null) {
-                lblShare.Dispose ();
-                lblShare = null;
             }
 
             if (txtDescription != null) {
@@ -364,11 +329,6 @@ namespace Drop.iOS
             if (viewPermission != null) {
                 viewPermission.Dispose ();
                 viewPermission = null;
-            }
-
-            if (viewShare != null) {
-                viewShare.Dispose ();
-                viewShare = null;
             }
         }
     }
