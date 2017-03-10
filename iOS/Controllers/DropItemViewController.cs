@@ -175,8 +175,20 @@ namespace Drop.iOS
 		partial void ActionPassword(UISwitch sender)
 		{
 			txtPassword.Enabled = sender.On;
-			if (!sender.Selected)
+			if (!sender.On)
 				txtPassword.Text = string.Empty;
+		}
+
+		partial void ActionNoExpiry(UISwitch sender)
+		{
+			//txtExpireDate.Enabled = sender.On;
+			//if (!sender.Selected)
+			//	txtExpireDate.Text = string.Empty;
+			if (sender.On)
+			{
+				PurchasePopUp pPopup = PurchasePopUp.Create(Constants.PURCHASE_TYPE.EXPIRY);
+				pPopup.PopUp(true, ExpiryPurchase);
+			}
 		}
 
 		partial void ActionDropItem(UIButton sender)
@@ -228,6 +240,11 @@ namespace Drop.iOS
 			//throw new NotImplementedException();
 		}
 
+		void ExpiryPurchase()
+		{
+			
+		}
+
 		void ShareDropLocation()
 		{
 			var dropIcon = new UIImage(NSData.FromArray(ItemModel.Icon.fileData));
@@ -249,6 +266,8 @@ namespace Drop.iOS
 		{
 			NavigationController.PopViewController(true);
 		}
+
+
 
 		#region delegate
 		void SelectedAttachType(object sender, UIButtonEventArgs e)

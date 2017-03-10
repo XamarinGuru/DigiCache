@@ -166,6 +166,10 @@ namespace Drop.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionModify (UIKit.UIButton sender);
 
+        [Action ("ActionNoExpiry:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ActionNoExpiry (UIKit.UISwitch sender);
+
         [Action ("ActionPassword:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ActionPassword (UIKit.UISwitch sender);

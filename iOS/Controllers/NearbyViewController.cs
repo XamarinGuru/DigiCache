@@ -82,15 +82,35 @@ namespace Drop.iOS
 			mSelectedDrop = mDrops[marker.ZIndex];
 			if (mSelectedDrop.Password == string.Empty || mSelectedDrop.Password == null)
 			{
-				DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
-				pvc.parseItem = mSelectedDrop;
-				NavigationController.PushViewController(pvc, true);
+				var currentLocation = LocationHelper.GetLocationResult();
+				CLLocation dLocation = new CLLocation(mSelectedDrop.Location_Lat, mSelectedDrop.Location_Lnt);
+				CLLocation cLocation = new CLLocation(currentLocation.Latitude, currentLocation.Longitude);
+				var distance = dLocation.DistanceFrom(cLocation);
+
+				if (distance > Constants.PURCHASE_DISTANCE)
+				{
+					PurchasePopUp pPopup = PurchasePopUp.Create(Constants.PURCHASE_TYPE.VIEW);
+					pPopup.PopUp(true, OpenPurchase);
+				}
+				else
+				{
+					DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
+					pvc.parseItem = mSelectedDrop;
+					NavigationController.PushViewController(pvc, true);
+				}
 			}
 			else {
 				ShowTextFieldBox(Constants.STR_VERIFY_PASSWORD_TITLE, "Cancel", new[] { "OK" }, VerifyPassword);
 			}
 
 			return true;
+		}
+
+		void OpenPurchase()
+		{
+			//DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
+			//pvc.parseItem = mSelectedDrop;
+			//NavigationController.PushViewController(pvc, true);
 		}
 
 		public void RepaintMap()

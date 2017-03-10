@@ -1,25 +1,22 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/DropItemViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Drop/Constants.cs">
     <Files>
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="37" Column="64" />
-      <File FileName="Drop/Constants.cs" Line="163" Column="43" />
-      <File FileName="iOS/Controllers/DropLocationViewController.cs" Line="41" Column="41" />
-      <File FileName="iOS/Controllers/BaseViewController.cs" Line="37" Column="92" />
-      <File FileName="iOS/ViewModel/PurchasePopUp.cs" Line="98" Column="20" />
-      <File FileName="iOS/Controllers/DropDetailViewController.cs" Line="47" Column="15" />
-      <File FileName="iOS/ViewModel/SuccessPopUp.cs" Line="45" Column="36" />
-      <File FileName="iOS/Controllers/HomeViewController.cs" Line="94" Column="3" />
-      <File FileName="iOS/Core/LocationHelper.cs" Line="88" Column="19" />
+      <File FileName="Drop/Constants.cs" Line="71" Column="80" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="243" Column="8" />
+      <File FileName="iOS/Controllers/NearbyViewController.cs" Line="114" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Drop" expanded="True">
+            <Node name="Drop" expanded="True">
+              <Node name="Constants.cs" selected="True" />
+            </Node>
             <Node name="Drop.iOS" expanded="True">
               <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="Controllers" expanded="True">
-                <Node name="DropItemViewController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Core" expanded="True" />
+              <Node name="ViewModel" expanded="True" />
             </Node>
           </Node>
         </State>

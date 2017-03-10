@@ -68,7 +68,7 @@ namespace Drop
 		public const int TAG_COLLEPS_PASSWORD = 6;
 		public const int TAG_COLLEPS_EXPIRY = 7;
 
-		public static int[] COLLEPS_HEIGHTS = new[] { 175, 130, 60, 150, 150, 60, 60 };
+		public static int[] COLLEPS_HEIGHTS = new[] { 175, 130, 60, 150, 150, 60, 130 };
 
 		//public const int TAG_D_COLLEPS_NAME = 0;
 		//public const int TAG_D_COLLEPS_ICON = 1;
