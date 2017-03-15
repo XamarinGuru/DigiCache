@@ -70,6 +70,11 @@ namespace Drop.iOS
 
 		partial void ActionModifyItems(UIButton sender)
 		{
+			if (!parseItem.IsModifyByUser())
+			{
+				ShowMessageBox(null, Constants.STR_MODIFY_DENY_MSG);
+				return;
+			}
 			DropItemViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_ITEM) as DropItemViewController;
 			pvc.ItemModel.parseItem = parseItem;
 			NavigationController.PushViewController(pvc, true);

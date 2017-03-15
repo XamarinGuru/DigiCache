@@ -46,7 +46,6 @@ namespace Drop.iOS
 			else if (product.ProductIdentifier == Constants.PURCHASE_ID[(int)Constants.PURCHASE_TYPE.EXPIRY])
 			{
 				SetNoExpiry();
-
 			}
 		}
 
@@ -110,10 +109,13 @@ namespace Drop.iOS
 			if (ItemModel.parseItem != null)
 			{
 				if (ItemModel.parseItem.IconURL != null)
+				{
 					imgDropIcon.SetImage(
 						url: new NSUrl(ItemModel.parseItem.IconURL.ToString()),
 						placeholder: UIImage.FromBundle("icon_vendor.jpg")
 					);
+					ItemModel.Icon = ByteDataFromImage(MaxResizeImage(UIImage.LoadFromData(NSData.FromUrl(new NSUrl(ItemModel.parseItem.IconURL.ToString())))));
+				}
 
 				btnVisibleEvery.Selected = false;
 				btnVisibleMe.Selected = false;
@@ -320,7 +322,7 @@ namespace Drop.iOS
 			if (dropData._pObject == null)
 				result = await ParseService.AddDropItem(dropData);
 			else
-				result = await ParseService.UpdateFavorite(dropData);
+				result = await ParseService.UpdateDrop(dropData);
 
 			HideLoadingView();
 

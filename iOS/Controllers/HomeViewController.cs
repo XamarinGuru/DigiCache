@@ -107,10 +107,13 @@ namespace Drop.iOS
 			{
 				var drop = mDrops[i];
 
+				if (!drop.IsVisibilityByUser())
+					continue;
+
 				CLLocation pointB = new CLLocation(drop.Location_Lat, drop.Location_Lnt);
 				var distanceToB = pointB.DistanceFrom(currentLocation);
 
-				if (distanceToB < Constants.VISIBILITY_LIMITATIN_M)
+				if (distanceToB < Constants.PURCHASE_DISTANCE)
 					VisibleDrop(drop, currentLocation);
 			}
 		}

@@ -37,6 +37,8 @@ namespace Drop
 		public const string STR_ATTACH_TEXT_TITLE = "Drop Text.";
 		public const string STR_ATTACH_OTHER_TITLE = "Link / URL.";
 
+		public const string STR_MODIFY_DENY_MSG = "You can't modify this drop.";
+
 		public const string STR_VERIFY_PASSWORD_TITLE = "Require to access to this drop item.";
 		public const string STR_INVALID_PASSWORD_TITLE = "Invalid Password.";
 
@@ -103,9 +105,10 @@ namespace Drop
 		public const int TAG_VISIBLE_SPECIFIC = 2;
 
 
-		//table names
+		//parse table names
 		public const string STR_TABLE_DROP_ITEM = "DropItems";
 
+		//parse field names
 		public const string STR_FIELD_USERID = "UserID";
 		public const string STR_FIELD_NAME = "Name";
 		public const string STR_FIELD_DESCRIPTION = "Description";
@@ -136,32 +139,38 @@ namespace Drop
 		public const string STR_DEFAILT_ICON10 = "icon_drop10.png";
 
 		//
-		public static string[] TYPE_ATTACH = new[] { 	"Text", 
-														"Photo Library", 
+		public static string[] TYPE_ATTACH = new[] {    "Text",
+														"Photo Library",
 														"Camera",
 														"Link / URL" };
-		
+
 		public static string[] TYPE_ATTACH_DROID = new[] {    "Text",
 														"Photo Library",
 														"Photo Library",
 														"Camera",
 														"Camera",
 														"Link / URL" };
-		
-		public static string[] TYPE_FROM_SOURCE = new[] {	"Photo Library",
+
+		public static string[] TYPE_FROM_SOURCE = new[] {   "Photo Library",
 															"Camera" };
 
 		public static double[] LOCATION_AUSTRALIA = new double[] { 35.2809f, 149.1300f };
 
 
-		public const int VISIBILITY_LIMITATIN_M = 300;
 		public const int VDROP_MAX_SIZE = 100;
 		public const int MDROP_MAX_SIZE = 30;
 
 		public const int MAP_ZOOM_LEVEL = 18;
 
 
+		public enum VISIVILITY_TYPE
+		{
+			EVERYONE,
+			ONLY_ME,
+			SPECIAL_USER
+		}
 
+		#region in-app purchase
 		public enum PURCHASE_TYPE
 		{
 			DROP,
@@ -169,15 +178,13 @@ namespace Drop
 			EXPIRY
 		}
 
+		public const int PURCHASE_DISTANCE = 300;
 
 		public static string[] PURCHASE_ID = new string[]{
 			"DropDistantCache",
 			"OpenDistantCache",
 			"NoExpiryDrop"
 		};
-
-
-		public const int PURCHASE_DISTANCE = 300;
 		public static string[] PURCHASE_TITLE = new string[]{
 			"You're Too Far Away.",
 			"You're Too Far Away.",
@@ -198,5 +205,6 @@ namespace Drop
 			"Buy One Sneak Peak",
 			"Buy A Forever Cache"
 		};
+		#endregion
 	}
 }

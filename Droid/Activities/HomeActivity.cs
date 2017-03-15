@@ -181,7 +181,7 @@ namespace Drop.Droid
 			if (virtualDropContent.ChildCount > 0)
 				virtualDropContent.RemoveAllViews();
 
-			var scale = 1 - distance / Constants.VISIBILITY_LIMITATIN_M;
+			var scale = 1 - distance / Constants.PURCHASE_DISTANCE;
 
 			if (scale <= 0)
 				return;
@@ -239,7 +239,7 @@ namespace Drop.Droid
 				pointB.Longitude = drop.Location_Lnt;
 				var distanceToB = pointB.DistanceTo(location);
 
-				if (distanceToB < Constants.VISIBILITY_LIMITATIN_M)
+				if (distanceToB < Constants.PURCHASE_DISTANCE)
 					VisibleDrop(drop, distanceToB);
 			}
 		}

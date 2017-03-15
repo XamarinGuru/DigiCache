@@ -108,5 +108,57 @@ namespace Drop
 		public Uri ImageURL { get; internal set; }
 		public Uri VideoURL { get; internal set; }
 		public Uri IconURL { get; internal set; }
+
+		public bool IsVisibilityByUser()
+		{
+			bool isVisibilityByUser = false;
+			switch (Visibility)
+			{
+				case (int)Constants.VISIVILITY_TYPE.EVERYONE:
+					{
+						isVisibilityByUser = true;
+						break;
+					}
+				case (int)Constants.VISIVILITY_TYPE.ONLY_ME:
+					{
+						if (ParseUser.CurrentUser != null && Username == ParseUser.CurrentUser.Username)
+							isVisibilityByUser = true;
+						break;
+					}
+				case (int)Constants.VISIVILITY_TYPE.SPECIAL_USER:
+					{
+						if (ParseUser.CurrentUser != null)
+							isVisibilityByUser = true;
+						break;
+					}
+			}
+			return isVisibilityByUser;
+		}
+
+		public bool IsModifyByUser()
+		{
+			bool isModifyByUser = false;
+			switch (Modify)
+			{
+				case (int)Constants.VISIVILITY_TYPE.EVERYONE:
+					{
+						isModifyByUser = true;
+						break;
+					}
+				case (int)Constants.VISIVILITY_TYPE.ONLY_ME:
+					{
+						if (ParseUser.CurrentUser != null && Username == ParseUser.CurrentUser.Username)
+							isModifyByUser = true;
+						break;
+					}
+				case (int)Constants.VISIVILITY_TYPE.SPECIAL_USER:
+					{
+						if (ParseUser.CurrentUser != null)
+							isModifyByUser = true;
+						break;
+					}
+			}
+			return isModifyByUser;
+		}
 	}
 }

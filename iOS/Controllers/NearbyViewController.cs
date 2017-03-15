@@ -9,6 +9,7 @@ using CoreLocation;
 using System.Collections.Generic;
 using StoreKit;
 using Xamarin.InAppPurchase;
+using Parse;
 
 namespace Drop.iOS
 {
@@ -94,21 +95,27 @@ namespace Drop.iOS
 				for (int i = 0; i < mDrops.Count; i++)
 				{
 					var drop = mDrops[i];
-					var iconData = NSData.FromUrl(new NSUrl(drop.IconURL.ToString()));
-
-					InvokeOnMainThread(() =>
-					{
-						var marker = new Marker
-						{
-							Position = new CLLocationCoordinate2D(drop.Location_Lat, drop.Location_Lnt),
-							Map = mMapView,
-							Icon = UIImage.LoadFromData(iconData),
-							ZIndex = i
-						};
-					});
+					if (drop.IsVisibilityByUser())
+						AddDropInMap(drop, i);
 				}
 
 				HideLoadingView();
+			});
+		}
+
+		void AddDropInMap(ParseItem drop, int index)
+		{
+			var iconData = NSData.FromUrl(new NSUrl(drop.IconURL.ToString()));
+
+			InvokeOnMainThread(() =>
+			{
+				var marker = new Marker
+				{
+					Position = new CLLocationCoordinate2D(drop.Location_Lat, drop.Location_Lnt),
+					Map = mMapView,
+					Icon = UIImage.LoadFromData(iconData),
+					ZIndex = index
+				};
 			});
 		}
 
