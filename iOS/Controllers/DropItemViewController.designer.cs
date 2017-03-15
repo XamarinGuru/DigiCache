@@ -32,6 +32,10 @@ namespace Drop.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnExpiryDate { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnModifyEvery { get; set; }
 
         [Outlet]
@@ -168,7 +172,7 @@ namespace Drop.iOS
 
         [Action ("ActionNoExpiry:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ActionNoExpiry (UIKit.UISwitch sender);
+        partial void ActionNoExpiry (UIKit.UIButton sender);
 
         [Action ("ActionPassword:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -198,6 +202,11 @@ namespace Drop.iOS
             if (btnDropVideoSymbol != null) {
                 btnDropVideoSymbol.Dispose ();
                 btnDropVideoSymbol = null;
+            }
+
+            if (btnExpiryDate != null) {
+                btnExpiryDate.Dispose ();
+                btnExpiryDate = null;
             }
 
             if (btnModifyEvery != null) {

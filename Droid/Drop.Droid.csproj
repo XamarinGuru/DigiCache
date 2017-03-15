@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Drop.Droid</RootNamespace>
     <AssemblyName>Drop.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -17,6 +17,7 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidTlsProvider></AndroidTlsProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -223,7 +224,6 @@
     <AndroidResource Include="Resources\drawable\icon_video_sel.png" />
     <AndroidResource Include="Resources\drawable\icon_video_unsel.png" />
     <AndroidResource Include="Resources\drawable\icon_video.png" />
-    <AndroidResource Include="Resources\drawable\Splash.png" />
     <AndroidResource Include="Resources\values\style.axml" />
     <AndroidResource Include="Resources\layout\LoginActivity.axml" />
     <AndroidResource Include="Resources\layout\HomeActivity.axml" />
@@ -239,9 +239,28 @@
     <AndroidResource Include="Resources\layout\DropDetailLayout.axml" />
     <AndroidResource Include="Resources\drawable\item_colleps.axml" />
     <AndroidResource Include="Resources\layout\PlayVideoLayout.axml" />
-    <AndroidResource Include="Resources\drawable\appicon.png" />
     <AndroidResource Include="Resources\drawable\item_round_corner.axml" />
     <AndroidResource Include="Resources\layout\LiveCameraLayout.axml" />
+    <AndroidResource Include="Resources\drawable\Splash.png" />
+    <AndroidResource Include="Resources\drawable\AppIcon.png" />
+    <AndroidResource Include="Resources\drawable\icon_logo.png" />
+    <AndroidResource Include="Resources\drawable\icon_symbol_ano.png" />
+    <AndroidResource Include="Resources\drawable\icon_symbol_fb.png" />
+    <AndroidResource Include="Resources\drawable\bg_btn_white.png" />
+    <AndroidResource Include="Resources\drawable\bg_border_green.png" />
+    <AndroidResource Include="Resources\drawable\bg_btn_green.png" />
+    <AndroidResource Include="Resources\drawable\bg_info_box.png" />
+    <AndroidResource Include="Resources\drawable\bg_main_content.png" />
+    <AndroidResource Include="Resources\drawable\bg_popup_success.png" />
+    <AndroidResource Include="Resources\drawable\bg_popup.png" />
+    <AndroidResource Include="Resources\drawable\border_gray.png" />
+    <AndroidResource Include="Resources\drawable\icon_back.png" />
+    <AndroidResource Include="Resources\drawable\icon_cancel.png" />
+    <AndroidResource Include="Resources\drawable\icon_purchase.png" />
+    <AndroidResource Include="Resources\drawable\icon_seperator.png" />
+    <AndroidResource Include="Resources\drawable\icon_share.png" />
+    <AndroidResource Include="Resources\drawable\icon_star.png" />
+    <AndroidResource Include="Resources\drawable\icon_underline_green.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">

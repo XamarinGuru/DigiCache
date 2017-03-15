@@ -3,6 +3,8 @@ using UIKit;
 
 using Facebook.CoreKit;
 using Google.Maps;
+using Xamarin.InAppPurchase;
+using System.Diagnostics;
 
 namespace Drop.iOS
 {
@@ -14,6 +16,11 @@ namespace Drop.iOS
 		// class-level declarations
 
 		public static LocationHelper MyLocationHelper = new LocationHelper();
+
+		#region Public Properties
+		public static InAppPurchaseManager PurchaseManager = new InAppPurchaseManager();
+		#endregion
+
 
 		public override UIWindow Window
 		{
@@ -30,6 +37,133 @@ namespace Drop.iOS
 
 			Facebook.CoreKit.Settings.AppID = Constants.FACEBOOK_APP_ID;
 			Facebook.CoreKit.Settings.DisplayName = Constants.FACEBOOK_DISPLAY_NAME;
+
+			// In App Purchase Shared Secret Key
+			string value = Xamarin.InAppPurchase.Utilities.Security.Unify(
+				new string[] { "a93112ea75",
+					"e54da8803",
+					"482be33",
+					"32e1a9" },
+				new int[] { 0, 1, 2, 3 });
+
+			// Initialize the In App Purchase Manager
+
+#if SIMULATED
+			PurchaseManager.SimulateiTunesAppStore = true;
+#else
+			PurchaseManager.SimulateiTunesAppStore = false;
+#endif
+			PurchaseManager.PublicKey = value;
+
+			//PurchaseManager.ApplicationUserName = "Digicache";
+
+			// Warn user that the store is not available
+			if (PurchaseManager.CanMakePayments)
+			{
+				//Alert 
+				Debug.WriteLine("Xamarin.InAppBilling: User can make payments to iTunes App Store.");
+			}
+			else
+			{
+				//Display Alert Dialog Box
+				using (var alert = new UIAlertView("Xamarin.InAppBilling", "Sorry but you cannot make purchases from the In App Billing store. Please try again later.", null, "OK", null))
+				{
+					alert.Show();
+				}
+
+			}
+
+			// Warn user if the Purchase Manager is unable to connect to
+			// the network.
+			PurchaseManager.NoInternetConnectionAvailable += () =>
+			{
+				//Display Alert Dialog Box
+				using (var alert = new UIAlertView("Xamarin.InAppBilling", "No open internet connection is available.", null, "OK", null))
+				{
+					alert.Show();
+				}
+			};
+
+			// Show any invalid product queries
+			PurchaseManager.ReceivedInvalidProducts += (productIDs) =>
+			{
+				// Display any invalid product IDs to the console
+				Debug.WriteLine("The following IDs were rejected by the iTunes App Store:");
+				foreach (string ID in productIDs)
+				{
+					Debug.WriteLine(ID);
+				}
+				Debug.WriteLine(" ");
+			};
+
+			// Report the results of the user restoring previous purchases
+			PurchaseManager.InAppPurchasesRestored += (count) =>
+			{
+				// Anything restored?
+				if (count == 0)
+				{
+					// No, inform user
+					using (var alert = new UIAlertView("Xamarin.InAppPurchase", "No products were available to be restored from the iTunes App Store.", null, "OK", null))
+					{
+						alert.Show();
+					}
+				}
+				else
+				{
+					// Yes, inform user
+					using (var alert = new UIAlertView("Xamarin.InAppPurchase", string.Format("{0} {1} restored from the iTunes App Store.", count, (count > 1) ? "products were" : "product was"), null, "OK", null))
+					{
+						alert.Show();
+					}
+				}
+			};
+
+			// Report miscellanous processing errors
+			PurchaseManager.InAppPurchaseProcessingError += (message) =>
+			{
+				//Display Alert Dialog Box
+				using (var alert = new UIAlertView("Xamarin.InAppPurchase", message, null, "OK", null))
+				{
+					alert.Show();
+				}
+			};
+
+			// Report any issues with persistence
+			PurchaseManager.InAppProductPersistenceError += (message) =>
+			{
+				using (var alert = new UIAlertView("Xamarin.InAppPurchase", message, null, "OK", null))
+				{
+					alert.Show();
+				}
+			};
+
+			// Setup automatic purchase persistance and load any previous purchases
+			PurchaseManager.AutomaticPersistenceType = InAppPurchasePersistenceType.LocalFile;
+			PurchaseManager.PersistenceFilename = "AtomicData";
+			PurchaseManager.ShuffleProductsOnPersistence = false;
+			PurchaseManager.RestoreProducts();
+
+#if SIMULATED
+			// Ask the iTunes App Store to return information about available In App Products for sale
+			PurchaseManager.QueryInventory (new string[] { 
+				"DropDistantCache",
+				"NoExpiryDrop",
+				"OpenDistantCache"
+			});
+
+			// Setup the list of simulated purchases to restore when doing a simulated restore of pruchases
+			// from the iTunes App Store
+			PurchaseManager.SimulatedRestoredPurchaseProducts = "OpenDistantCache";
+#else
+			// Ask the iTunes App Store to return information about available In App Products for sale
+			PurchaseManager.QueryInventory(new string[] {
+				"DropDistantCache",
+				"NoExpiryDrop",
+				"OpenDistantCache"
+			});
+#endif
+
+
 
 			return true;
 		}

@@ -16,23 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:id="@+id/relativeLayout1"
-            android:background="@drawable/bar_top"
             android:gravity="center_vertical">
             <ImageView
-                android:src="@drawable/btn_back"
+                android:src="@drawable/icon_back"
                 android:id="@+id/ActionBack"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginLeft="20dp" />
-            <TextView
-                android:text="Drop Item"
-                android:id="@+id/textView1"
-                android:textColor="#ff000000"
-                android:textSize="18dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp" />
         </RelativeLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -47,8 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/scrollView1"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:scrollIndicators="none">
                 <LinearLayout
                     android:orientation="vertical"
@@ -58,21 +48,14 @@
                     android:layout_height="match_parent"
                     android:id="@+id/contentView">
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/linearLayout4"
-                        android:layout_weight="1" />
-                    <LinearLayout
                         android:orientation="horizontal"
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="60dp"
                         android:id="@+id/ActionCollpseName"
-                        android:tag="1">
+                        android:tag="1"
+                        android:background="@drawable/bg_main_content">
                         <RelativeLayout
                             android:minWidth="25px"
                             android:minHeight="25px"
@@ -82,437 +65,368 @@
                             <LinearLayout
                                 android:orientation="horizontal"
                                 android:id="@+id/ActionLoginUsingFacebook"
-                                android:background="@drawable/bg_blue"
+                                android:background="@drawable/border_gray"
                                 android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView2"
                                     android:layout_weight="1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="15dp"
+                                    android:textSize="16dp"
                                     android:layout_marginLeft="10dp"
                                     android:text="Drop Item"
-                                    android:textStyle="bold" />
+                                    android:textStyle="normal"
+                                    android:textColor="#ff7f7f7f" />
                             </LinearLayout>
                             <ImageView
-                                android:src="@drawable/icon_minus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:src="@drawable/icon_plus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="10dp"
-                                android:tag="0" />
+                                android:tag="0"
+                                android:layout_marginBottom="15dp" />
                         </RelativeLayout>
                     </LinearLayout>
-                    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-                        android:orientation="vertical"
+                    <RelativeLayout
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
+                        android:layout_height="wrap_content"
                         android:id="@+id/viewName"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        tools:visibility="visible"
                         android:tag="0">
-                        <LinearLayout
-                            android:orientation="horizontal"
+                        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+                            android:orientation="vertical"
                             android:minWidth="25px"
                             android:minHeight="25px"
+                            android:id="@+id/viewName1"
+                            tools:visibility="visible"
+                            android:tag="0"
+                            android:background="@drawable/bg_info_box"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:id="@+id/linearLayout17"
-                            android:background="@drawable/bg_blue1"
-                            android:layout_marginBottom="3dp">
-                            <EditText
-                                android:id="@+id/txtName"
-                                android:textColor="#ffffffff"
-                                android:textSize="15dp"
-                                android:hint="Name this Drop"
-                                android:background="@android:color/transparent"
-                                android:singleLine="true"
-                                android:gravity="center_vertical"
-                                android:textStyle="bold"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:id="@+id/linearLayout10"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_blue1">
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:id="@+id/txtDescription"
-                                android:layout_margin="10dp"
-                                android:hint="Description of your drop"
-                                android:background="@android:color/transparent"
-                                android:textColor="#ffffffff"
-                                android:gravity="top" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/ActionItem"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Item to Drop"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:gravity="center"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp" />
-                            <ImageView
-                                android:src="@drawable/icon_text_unsel"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/btnDropTextSymbol"
-                                android:layout_weight="1"
-                                android:padding="5dp" />
-                            <ImageView
-                                android:src="@drawable/icon_image_unsel"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/btnDropImageSymbol"
-                                android:layout_weight="1"
-                                android:padding="5dp" />
-                            <ImageView
-                                android:src="@drawable/icon_video_unsel"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/btnDropVideoSymbol"
-                                android:layout_weight="1"
-                                android:padding="5dp" />
-                            <ImageView
-                                android:src="@drawable/icon_link_unsel"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/btnDropLinkSymbol"
-                                android:layout_weight="1"
-                                android:padding="5dp" />
-                            <ImageView
-                                android:src="@drawable/icon_plus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_marginLeft="10dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:id="@+id/linearLayout6" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/ActionCollpseIcon"
-                        android:tag="2">
-                        <RelativeLayout
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/ActionCollpseIcon"
-                            android:tag="1">
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="-5dp">
                             <LinearLayout
                                 android:orientation="horizontal"
-                                android:id="@+id/ActionLoginUsingFacebook"
-                                android:background="@drawable/bg_blue"
-                                android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/textView2"
-                                    android:layout_weight="1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="15dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:text="Choose an Icon for your drop"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                            <ImageView
-                                android:src="@drawable/icon_minus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="10dp"
-                                android:tag="1" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout xmlns:p3="http://schemas.android.com/tools"
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:id="@+id/viewICON"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        p3:visibility="visible"
-                        android:tag="1">
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <ImageView
-                                android:src="@drawable/icon_drop6"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon1"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="11" />
-                            <ImageView
-                                android:src="@drawable/icon_drop7"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon2"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="12" />
-                            <ImageView
-                                android:src="@drawable/icon_drop8"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon3"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="13" />
-                            <ImageView
-                                android:src="@drawable/icon_drop9"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon4"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="14" />
-                            <ImageView
-                                android:src="@drawable/icon_drop10"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon5"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="15" />
-                            <ImageView
-                                android:src="@drawable/icon_drop11"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon6"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="11" />
-                            <ImageView
-                                android:src="@drawable/icon_drop12"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon7"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="11" />
-                            <ImageView
-                                android:src="@drawable/icon_drop10"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon8"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="11" />
-                            <ImageView
-                                android:src="@drawable/icon_drop11"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/ActionDefaultIcon9"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:tag="11" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Custom Icons"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical" />
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/imgDropIcon"
-                                android:layout_marginLeft="10dp" />
-                            <ImageView
-                                android:src="@drawable/icon_plus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:id="@+id/imageView8"
-                                android:layout_marginLeft="10dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:id="@+id/linearLayout6" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/ActionCollpseLocation"
-                        android:tag="3">
-                        <RelativeLayout
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/relativeLayout2">
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:id="@+id/ActionLoginUsingFacebook"
-                                android:background="@drawable/bg_blue"
-                                android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/textView2"
-                                    android:layout_weight="1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="15dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:hint="Name this Drop"
-                                    android:text="Choose Location"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                            <ImageView
-                                android:src="@drawable/icon_minus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="10dp"
-                                android:tag="2" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout xmlns:p3="http://schemas.android.com/tools"
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:id="@+id/viewLocation"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        p3:visibility="visible"
-                        android:tag="2">
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/ActionCustomLocation"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Confirm on map"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical" />
-                            <LinearLayout
-                                android:orientation="vertical"
                                 android:minWidth="25px"
                                 android:minHeight="25px"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:id="@+id/linearLayout17">
+                                <TextView
+                                    android:text="Name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView7"
+                                    android:textColor="#ff000000"
+                                    android:gravity="bottom"
+                                    android:layout_marginLeft="10dp" />
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:minWidth="25px"
+                                    android:minHeight="25px"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/linearLayout18"
+                                    android:gravity="bottom"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="5dp">
+                                    <EditText
+                                        android:id="@+id/txtName"
+                                        android:textColor="#ff000000"
+                                        android:textSize="15dp"
+                                        android:background="@android:color/transparent"
+                                        android:singleLine="true"
+                                        android:gravity="center_vertical"
+                                        android:textStyle="normal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:id="@+id/linearLayout19"
+                                        android:background="@drawable/icon_underline_green" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:id="@+id/linearLayout17">
+                                <TextView
+                                    android:text="Description"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView7"
+                                    android:textColor="#ff000000"
+                                    android:gravity="bottom"
+                                    android:layout_marginLeft="10dp" />
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:minWidth="25px"
+                                    android:minHeight="25px"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/linearLayout18"
+                                    android:gravity="bottom"
+                                    android:layout_marginLeft="10dp"
+                                    android:paddingRight="5dp">
+                                    <EditText
+                                        android:id="@+id/txtDescription"
+                                        android:textColor="#ff000000"
+                                        android:textSize="15dp"
+                                        android:background="@android:color/transparent"
+                                        android:singleLine="true"
+                                        android:gravity="center_vertical"
+                                        android:textStyle="normal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:id="@+id/linearLayout19"
+                                        android:background="@drawable/icon_underline_green" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:id="@+id/ActionItem"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center_vertical"
+                                android:padding="10dp">
+                                <ImageView
+                                    android:src="@drawable/icon_text_unsel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/btnDropTextSymbol"
+                                    android:layout_weight="1"
+                                    android:padding="5dp" />
+                                <ImageView
+                                    android:src="@drawable/icon_image_unsel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/btnDropImageSymbol"
+                                    android:layout_weight="1"
+                                    android:padding="5dp" />
+                                <ImageView
+                                    android:src="@drawable/icon_video_unsel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/btnDropVideoSymbol"
+                                    android:layout_weight="1"
+                                    android:padding="5dp" />
+                                <ImageView
+                                    android:src="@drawable/icon_link_unsel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/btnDropLinkSymbol"
+                                    android:layout_weight="1"
+                                    android:padding="5dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/ActionCollpseIcon"
+                        android:tag="2"
+                        android:background="@drawable/bg_main_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/relativeLayout2">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:id="@+id/ActionLoginUsingFacebook"
+                                android:background="@drawable/border_gray"
+                                android:gravity="center_vertical"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:id="@+id/linearLayout12"
-                                android:layout_weight="0.5"
-                                android:gravity="center_vertical">
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
                                 <TextView
-                                    android:text="Lat: 0"
-                                    android:id="@+id/lblLocationLat"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="12dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:text="Log: 0"
-                                    android:id="@+id/lblLocationLog"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="12dp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView2"
+                                    android:layout_weight="1"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Choose an icon"
+                                    android:textStyle="normal"
+                                    android:textColor="#ff7f7f7f" />
                             </LinearLayout>
                             <ImageView
                                 android:src="@drawable/icon_plus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_marginLeft="10dp" />
-                        </LinearLayout>
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:tag="0"
+                                android:layout_marginBottom="15dp"
+                                android:id="@+id/imageView9" />
+                        </RelativeLayout>
                     </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
+                    <RelativeLayout
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:id="@+id/linearLayout6" />
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewICON"
+                        android:tag="1">
+                        <LinearLayout xmlns:p3="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/viewICON1"
+                            p3:visibility="visible"
+                            android:tag="1"
+                            android:background="@drawable/bg_info_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="-5dp">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical"
+                                android:padding="10dp">
+                                <ImageView
+                                    android:src="@drawable/icon_drop6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon1"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="11" />
+                                <ImageView
+                                    android:src="@drawable/icon_drop7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon2"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="12" />
+                                <ImageView
+                                    android:src="@drawable/icon_drop8"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon3"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="13" />
+                                <ImageView
+                                    android:src="@drawable/icon_drop9"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon4"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="14" />
+                                <ImageView
+                                    android:src="@drawable/icon_drop10"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon5"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="15" />
+                                <ImageView
+                                    android:src="@drawable/icon_drop11"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon6"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="11" />
+                                <ImageView
+                                    android:src="@drawable/icon_drop12"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon7"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="11" />
+                                <ImageView
+                                    android:src="@drawable/icon_drop10"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon8"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="11" />
+                                <ImageView
+                                    android:src="@drawable/icon_drop11"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/ActionDefaultIcon9"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:tag="11" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical"
+                                android:layout_marginLeft="10dp">
+                                <TextView
+                                    android:text="Custom Icons"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical" />
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/imgDropIcon"
+                                    android:layout_marginRight="20dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
                     <LinearLayout
                         android:orientation="horizontal"
                         android:minWidth="25px"
                         android:minHeight="25px"
+                        android:id="@+id/ActionCollpseLocation"
+                        android:tag="3"
+                        android:background="@drawable/bg_main_content"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/ActionCollpsePermission"
-                        android:tag="4">
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp">
                         <RelativeLayout
                             android:minWidth="25px"
                             android:minHeight="25px"
@@ -522,484 +436,664 @@
                             <LinearLayout
                                 android:orientation="horizontal"
                                 android:id="@+id/ActionLoginUsingFacebook"
-                                android:background="@drawable/bg_blue"
+                                android:background="@drawable/border_gray"
                                 android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="15dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:hint="Name this Drop"
-                                    android:text="Who can see this Drop"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                            <ImageView
-                                android:src="@drawable/icon_minus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="10dp"
-                                android:tag="3" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout xmlns:p3="http://schemas.android.com/tools"
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:id="@+id/viewPermission"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        p3:visibility="visible"
-                        android:tag="3">
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Everyone"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical" />
-                            <CheckBox
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:background="@drawable/item_CheckBox"
-                                android:id="@+id/ActionVisibilityEveryone"
-                                android:button="@null"
-                                android:checked="true"
-                                android:tag="0" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Only me"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical" />
-                            <CheckBox
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:background="@drawable/item_CheckBox"
-                                android:id="@+id/ActionVisibilityOnlyMe"
-                                android:button="@null"
-                                android:tag="1" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Specific User (Only in case of facebook login)"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical" />
-                            <CheckBox
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:background="@drawable/item_CheckBox"
-                                android:id="@+id/ActionVisibilitySpecificUser"
-                                android:button="@null"
-                                android:tag="2" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:id="@+id/linearLayout6" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/ActionCollpseModify"
-                        android:tag="5">
-                        <RelativeLayout
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/relativeLayout2">
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:id="@+id/ActionLoginUsingFacebook"
-                                android:background="@drawable/bg_blue"
-                                android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="15dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:hint="Name this Drop"
-                                    android:text="Who can modify this Drop"
-                                    android:textStyle="bold"
-                                    android:id="@+id/textView6" />
-                            </LinearLayout>
-                            <ImageView
-                                android:src="@drawable/icon_minus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="10dp"
-                                android:tag="3" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout xmlns:p3="http://schemas.android.com/tools"
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:id="@+id/viewModify"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        p3:visibility="visible"
-                        android:tag="3">
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Everyone"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical" />
-                            <CheckBox
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:background="@drawable/item_CheckBox"
-                                android:id="@+id/ActionModifyEveryone"
-                                android:button="@null"
-                                android:checked="true"
-                                android:tag="0" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Only me"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical" />
-                            <CheckBox
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:background="@drawable/item_CheckBox"
-                                android:id="@+id/ActionModifyOnlyMe"
-                                android:button="@null"
-                                android:tag="1" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="Specific User (Only in case of facebook login)"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical" />
-                            <CheckBox
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:background="@drawable/item_CheckBox"
-                                android:id="@+id/ActionModifySpecificUser"
-                                android:button="@null"
-                                android:tag="2" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:id="@+id/linearLayout6" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/ActionCollpsePassword"
-                        android:tag="6">
-                        <RelativeLayout
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/relativeLayout2">
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:id="@+id/ActionLoginUsingFacebook"
-                                android:background="@drawable/bg_blue"
-                                android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/textView2"
-                                    android:layout_weight="1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="15dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:hint="Name this Drop"
-                                    android:text="Password"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                            <ImageView
-                                android:src="@drawable/icon_minus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="10dp"
-                                android:tag="4" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout xmlns:p3="http://schemas.android.com/tools"
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:id="@+id/viewPassword"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        p3:visibility="visible"
-                        android:tag="4">
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="No"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:layout_marginRight="10dp"
-                                android:textSize="15dp"
-                                android:gravity="center_vertical" />
-                            <CheckBox
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:background="@drawable/item_CheckBox"
-                                android:id="@+id/ActionPassword"
-                                android:button="@null"
-                                android:checked="true" />
-                            <TextView
-                                android:text="Yes"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView4"
-                                android:textColor="#ffffffff"
-                                android:textSize="15dp"
-                                android:gravity="center_vertical"
-                                android:layout_marginLeft="10dp" />
-                            <EditText
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:id="@+id/txtPassword"
-                                android:background="@drawable/bg_pw"
-                                android:textColor="#ff000000"
-                                android:gravity="center_vertical"
-                                android:inputType="textPassword"
-                                android:singleLine="true"
-                                android:padding="10dp"
-                                android:layout_marginLeft="20dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:id="@+id/linearLayout6" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/ActionCollpseExpire"
-                        android:tag="7">
-                        <RelativeLayout
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/relativeLayout2">
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:id="@+id/ActionLoginUsingFacebook"
-                                android:background="@drawable/bg_blue"
-                                android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/textView2"
-                                    android:layout_weight="1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="15dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:hint="Name this Drop"
-                                    android:text="Drop expiry"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                            <ImageView
-                                android:src="@drawable/icon_minus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="10dp"
-                                android:tag="5" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout xmlns:p3="http://schemas.android.com/tools"
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:id="@+id/viewExpiry"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        p3:visibility="visible"
-                        android:tag="5">
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/bg_blue1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp">
-                            <TextView
-                                android:text="01/25/2017"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:id="@+id/textView5"
-                                android:background="@drawable/bg_pw"
-                                android:textColor="#ff000000"
-                                android:gravity="center"
-                                android:padding="10dp"
-                                android:layout_marginRight="30dp"
-                                android:layout_marginLeft="30dp" />
-                        </LinearLayout>
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView2"
+                                    android:layout_weight="1"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Choose location"
+                                    android:textStyle="normal"
+                                    android:textColor="#ff7f7f7f" />
+                            </LinearLayout>
+                            <ImageView
+                                android:src="@drawable/icon_plus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:tag="0"
+                                android:layout_marginBottom="15dp"
+                                android:id="@+id/imageView9" />
+                        </RelativeLayout>
                     </LinearLayout>
+                    <RelativeLayout
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewLocation"
+                        android:tag="2">
+                        <LinearLayout xmlns:p3="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/www"
+                            p3:visibility="visible"
+                            android:tag="2"
+                            android:background="@drawable/bg_info_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="-5dp">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:id="@+id/ActionCustomLocation"
+                                android:gravity="center_vertical"
+                                android:layout_marginLeft="10dp">
+                                <TextView
+                                    android:text="Confirm on map"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15dp"
+                                    android:gravity="center_vertical" />
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:minWidth="25px"
+                                    android:minHeight="25px"
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/linearLayout20"
+                                    android:background="@drawable/icon_seperator"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp" />
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:minWidth="25px"
+                                    android:minHeight="25px"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/linearLayout12"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginLeft="10dp">
+                                    <TextView
+                                        android:text="LAT: 0"
+                                        android:id="@+id/lblLocationLat"
+                                        android:textColor="#ff000000"
+                                        android:textSize="12dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:text="LONG: 0"
+                                        android:id="@+id/lblLocationLog"
+                                        android:textColor="#ff000000"
+                                        android:textSize="12dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/ActionCollpsePermission"
+                        android:tag="4"
+                        android:background="@drawable/bg_main_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/relativeLayout2">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:id="@+id/ActionLoginUsingFacebook"
+                                android:background="@drawable/border_gray"
+                                android:gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView2"
+                                    android:layout_weight="1"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Who can see this drop"
+                                    android:textStyle="normal"
+                                    android:textColor="#ff7f7f7f" />
+                            </LinearLayout>
+                            <ImageView
+                                android:src="@drawable/icon_plus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:tag="0"
+                                android:layout_marginBottom="15dp"
+                                android:id="@+id/imageView9" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewPermission"
+                        android:tag="3">
+                        <LinearLayout xmlns:p3="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/zzz"
+                            p3:visibility="visible"
+                            android:tag="3"
+                            android:background="@drawable/bg_info_box"
+                            android:paddingLeft="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="-5dp">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="Everyone"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical" />
+                                <CheckBox
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:background="@drawable/item_CheckBox"
+                                    android:id="@+id/ActionVisibilityEveryone"
+                                    android:button="@null"
+                                    android:checked="true"
+                                    android:tag="0"
+                                    android:layout_marginRight="20dp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical"
+                                android:padding="0dp">
+                                <TextView
+                                    android:text="Only me"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical" />
+                                <CheckBox
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:background="@drawable/item_CheckBox"
+                                    android:id="@+id/ActionVisibilityOnlyMe"
+                                    android:button="@null"
+                                    android:tag="1"
+                                    android:layout_marginRight="20dp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="Special user"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical" />
+                                <CheckBox
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:background="@drawable/item_CheckBox"
+                                    android:id="@+id/ActionVisibilitySpecificUser"
+                                    android:button="@null"
+                                    android:tag="2"
+                                    android:layout_marginRight="20dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/ActionCollpseModify"
+                        android:tag="5"
+                        android:background="@drawable/bg_main_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/relativeLayout2">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:id="@+id/ActionLoginUsingFacebook"
+                                android:background="@drawable/border_gray"
+                                android:gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView2"
+                                    android:layout_weight="1"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Who can modify this drop"
+                                    android:textStyle="normal"
+                                    android:textColor="#ff7f7f7f" />
+                            </LinearLayout>
+                            <ImageView
+                                android:src="@drawable/icon_plus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:tag="0"
+                                android:layout_marginBottom="15dp"
+                                android:id="@+id/imageView9" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewModify"
+                        android:tag="4">
+                        <LinearLayout xmlns:p3="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/zz"
+                            p3:visibility="visible"
+                            android:tag="3"
+                            android:background="@drawable/bg_info_box"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:layout_marginLeft="20dp">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:id="@+id/linearLayout11"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="Everyone"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15dp"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="1" />
+                                <CheckBox
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:background="@drawable/item_CheckBox"
+                                    android:id="@+id/ActionModifyEveryone"
+                                    android:button="@null"
+                                    android:checked="true"
+                                    android:tag="0" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="Only me"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical" />
+                                <CheckBox
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:background="@drawable/item_CheckBox"
+                                    android:id="@+id/ActionModifyOnlyMe"
+                                    android:button="@null"
+                                    android:tag="1" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:text="Special user"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical" />
+                                <CheckBox
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:background="@drawable/item_CheckBox"
+                                    android:id="@+id/ActionModifySpecificUser"
+                                    android:button="@null"
+                                    android:tag="2" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/ActionCollpsePassword"
+                        android:tag="6"
+                        android:background="@drawable/bg_main_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/relativeLayout2">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:id="@+id/ActionLoginUsingFacebook"
+                                android:background="@drawable/border_gray"
+                                android:gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView2"
+                                    android:layout_weight="1"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Who can modify this drop"
+                                    android:textStyle="normal"
+                                    android:textColor="#ff7f7f7f" />
+                            </LinearLayout>
+                            <ImageView
+                                android:src="@drawable/icon_plus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:tag="0"
+                                android:layout_marginBottom="15dp"
+                                android:id="@+id/imageView9" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewPassword"
+                        android:tag="5">
+                        <LinearLayout xmlns:p3="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/viewPasswordaa"
+                            p3:visibility="visible"
+                            android:tag="4"
+                            android:background="@drawable/bg_info_box"
+                            android:paddingLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="-5dp">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical"
+                                android:padding="10dp">
+                                <TextView
+                                    android:text="No"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:layout_marginRight="5dp"
+                                    android:textSize="15dp"
+                                    android:gravity="center_vertical" />
+                                <CheckBox
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:background="@drawable/item_CheckBox"
+                                    android:id="@+id/ActionPassword"
+                                    android:button="@null"
+                                    android:checked="true" />
+                                <TextView
+                                    android:text="Yes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:textSize="15dp"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="5dp" />
+                                <LinearLayout
+                                    android:orientation="vertical"
+                                    android:minWidth="25px"
+                                    android:minHeight="25px"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/linearLayout21"
+                                    android:layout_marginLeft="5dp"
+                                    android:gravity="bottom">
+                                    <EditText
+                                        android:id="@+id/txtPassword"
+                                        android:textColor="#ff000000"
+                                        android:gravity="center_vertical"
+                                        android:inputType="textPassword"
+                                        android:singleLine="true"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="35dp" />
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:minWidth="25px"
+                                        android:minHeight="25px"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:id="@+id/linearLayout22"
+                                        android:background="@drawable/icon_seperator" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/ActionCollpseExpire"
+                        android:tag="7"
+                        android:background="@drawable/bg_main_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp">
+                        <RelativeLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/relativeLayout2">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:id="@+id/ActionLoginUsingFacebook"
+                                android:background="@drawable/border_gray"
+                                android:gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginBottom="8dp">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView2"
+                                    android:layout_weight="1"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Drop expiry"
+                                    android:textStyle="normal"
+                                    android:textColor="#ff7f7f7f" />
+                            </LinearLayout>
+                            <ImageView
+                                android:src="@drawable/icon_plus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:tag="0"
+                                android:layout_marginBottom="15dp"
+                                android:id="@+id/imageView9" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewExpiry"
+                        android:tag="6">
+                        <LinearLayout xmlns:p3="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/viewExpiryaa"
+                            p3:visibility="visible"
+                            android:tag="5"
+                            android:background="@drawable/bg_info_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="-5dp">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:id="@+id/linearLayout11"
+                                android:gravity="center_vertical"
+                                android:padding="10dp">
+                                <TextView
+                                    android:text="01/25/2017"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView5"
+                                    android:background="@drawable/bg_pw"
+                                    android:textColor="#ff000000"
+                                    android:gravity="center"
+                                    android:padding="10dp"
+                                    android:layout_marginRight="30dp"
+                                    android:layout_marginLeft="30dp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:id="@+id/linearLayout23"
+                                android:gravity="center">
+                                <CheckBox
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:background="@drawable/item_CheckBox"
+                                    android:id="@+id/ActionPassword"
+                                    android:button="@null"
+                                    android:checked="true" />
+                                <TextView
+                                    android:text="No expiry date"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView4"
+                                    android:textColor="#ff000000"
+                                    android:textSize="15dp"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="5dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
                         android:minHeight="25px"
                         android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:id="@+id/linearLayout6" />
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:id="@+id/linearLayout6" />
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="60dp"
                         android:id="@+id/ActionDropItem"
-                        android:background="@drawable/bg_orange"
+                        android:background="@drawable/bg_btn_green"
                         android:gravity="center_vertical"
-                        android:tag="8">
+                        android:tag="8"
+                        android:fitsSystemWindows="false"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp">
                         <TextView
                             android:text="Drop Item"
                             android:id="@+id/textView2"
@@ -1010,136 +1104,6 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/ActionCollpseShare"
-                        android:layout_marginTop="20dp"
-                        android:tag="8">
-                        <RelativeLayout
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/relativeLayout2">
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:id="@+id/ActionLoginUsingFacebook"
-                                android:background="@drawable/bg_blue"
-                                android:gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/lblShare"
-                                    android:layout_weight="1"
-                                    android:textColor="#ffffffff"
-                                    android:textSize="15dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:hint="Name this Drop"
-                                    android:text="Share Drop Location"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                            <ImageView
-                                android:src="@drawable/icon_minus"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="10dp"
-                                android:tag="6" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout xmlns:p3="http://schemas.android.com/tools"
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:id="@+id/viewShare"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        p3:visibility="visible"
-                        android:tag="6">
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:id="@+id/linearLayout11"
-                            android:layout_marginTop="5dp"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            android:background="@drawable/bg_blue1">
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:minWidth="25px"
-                                android:minHeight="25px"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/linearLayout13"
-                                android:layout_weight="1">
-                                <ImageView
-                                    android:src="@drawable/icon_share_fb"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/ActionShareFB" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:minWidth="25px"
-                                android:minHeight="25px"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/linearLayout14"
-                                android:layout_weight="1">
-                                <ImageView
-                                    android:src="@drawable/icon_share_tw"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/ActionShareTW" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:minWidth="25px"
-                                android:minHeight="25px"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/linearLayout15"
-                                android:layout_weight="1">
-                                <ImageView
-                                    android:src="@drawable/icon_share_mail"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/ActionShareEM" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:minWidth="25px"
-                                android:minHeight="25px"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/linearLayout16"
-                                android:layout_weight="1">
-                                <ImageView
-                                    android:src="@drawable/icon_share_ins"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/ActionShareIN" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/linearLayout8"
-                        android:layout_weight="1.5" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

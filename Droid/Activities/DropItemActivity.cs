@@ -38,12 +38,9 @@ namespace Drop.Droid
 		ImageView imgDropIcon;
 
 		TextView lblLocationLat, lblLocationLog;
-		TextView lblShare;
 
 		CheckBox checkVisibilityEveryone, checkVisibilityOnlyMe, checkVisibilitySpecificUser;
 		CheckBox checkModifyEveryone, checkModifyOnlyMe, checkModifySpecificUser;
-
-		LinearLayout ActionCollpseShare;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -61,11 +58,12 @@ namespace Drop.Droid
 
 		private void SetUIVariablesAndActions()
 		{
-			controlInflater = LayoutInflater.From(BaseContext);
-			var viewControl = controlInflater.Inflate(Resource.Layout.DropItemActivity, null);
-			var layoutParamsControl = new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent);
-			this.AddContentView(viewControl, layoutParamsControl);
+			//controlInflater = LayoutInflater.From(BaseContext);
+			//var viewControl = controlInflater.Inflate(Resource.Layout.DropItemActivity, null);
+			//var layoutParamsControl = new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent);
+			//this.AddContentView(viewControl, layoutParamsControl);
 
+			SetContentView(Resource.Layout.DropItemActivity);
 			#region UI Variables
 			txtName = FindViewById<EditText>(Resource.Id.txtName);
 			txtDescription = FindViewById<EditText>(Resource.Id.txtDescription);
@@ -91,10 +89,6 @@ namespace Drop.Droid
 
 			btnActionItem = FindViewById<LinearLayout>(Resource.Id.ActionItem);
 
-			lblShare = FindViewById<TextView>(Resource.Id.lblShare);
-			lblShare.SetTextColor(Android.Graphics.Color.Gray);
-
-			ActionCollpseShare = FindViewById<LinearLayout>(Resource.Id.ActionCollpseShare);
 			#endregion
 
 			//Actions
@@ -105,9 +99,6 @@ namespace Drop.Droid
 			FindViewById<LinearLayout>(Resource.Id.ActionCollpsePassword).Click += ActionCollpse;
 			FindViewById<LinearLayout>(Resource.Id.ActionCollpseModify).Click += ActionCollpse;
 			FindViewById<LinearLayout>(Resource.Id.ActionCollpseExpire).Click += ActionCollpse;
-			FindViewById<LinearLayout>(Resource.Id.ActionCollpseShare).Click += ActionCollpse;
-
-			ActionCollpseShare.Enabled = false;
 
 			FindViewById(Resource.Id.ActionItem).Click += ActionItem;
 
@@ -123,11 +114,6 @@ namespace Drop.Droid
 
 			FindViewById(Resource.Id.ActionCustomLocation).Click += ActionCustomLocation;
 
-			FindViewById(Resource.Id.ActionShareFB).Click += ActionShare;
-			FindViewById(Resource.Id.ActionShareTW).Click += ActionShare;
-			FindViewById(Resource.Id.ActionShareEM).Click += ActionShare;
-			FindViewById(Resource.Id.ActionShareIN).Click += ActionShare;
-
 			checkVisibilityEveryone.Click += ActionVisibility;
 			checkVisibilityOnlyMe.Click += ActionVisibility;
 			checkVisibilitySpecificUser.Click += ActionVisibility;
@@ -140,14 +126,13 @@ namespace Drop.Droid
 			FindViewById<LinearLayout>(Resource.Id.ActionDropItem).Click += ActionDropItem;
 			FindViewById(Resource.Id.ActionBack).Click += ActionBack;
 
-			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewName));
-			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewICON));
-			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewLocation));
-			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPermission));
-			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewModify));
-			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPassword));
-			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewExpiry));
-			CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewShare));
+			CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewName));
+			CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewICON));
+			CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewLocation));
+			CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewPermission));
+			CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewModify));
+			CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewPassword));
+			CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewExpiry));
 
 			var contentView = FindViewById<LinearLayout>(Resource.Id.contentView);
 			var childs = GetAllChildren(contentView);
@@ -198,28 +183,25 @@ namespace Drop.Droid
 			switch (int.Parse(((LinearLayout)sender).Tag.ToString()))
 			{
 				case Constants.TAG_COLLEPS_NAME:
-					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewName));
+					CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewName));
 					break;
 				case Constants.TAG_COLLEPS_ICON:
-					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewICON));
+					CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewICON));
 					break;
 				case Constants.TAG_COLLEPS_LOCATION:
-					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewLocation));
+					CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewLocation));
 					break;
 				case Constants.TAG_COLLEPS_PERMISSION:
-					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPermission));
+					CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewPermission));
 					break;
 				case Constants.TAG_COLLEPS_MODIFY:
-					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewModify));
+					CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewModify));
 					break;
 				case Constants.TAG_COLLEPS_PASSWORD:
-					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewPassword));
+					CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewPassword));
 					break;
 				case Constants.TAG_COLLEPS_EXPIRY:
-					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewExpiry));
-					break;
-				case Constants.TAG_COLLEPS_SHARE:
-					CollepseAnimation(FindViewById<LinearLayout>(Resource.Id.viewShare));
+					CollepseAnimation(FindViewById<RelativeLayout>(Resource.Id.viewExpiry));
 					break;
 				default:
 					break;
@@ -242,8 +224,6 @@ namespace Drop.Droid
 			if (result == Constants.STR_STATUS_SUCCESS)
 			{
 				ShowMessageBox(null, Constants.STR_DROP_SUCCESS_MSG);
-				lblShare.SetTextColor(Android.Graphics.Color.White);
-				ActionCollpseShare.Enabled = true;
 			}
 			else
 			{
@@ -459,7 +439,7 @@ namespace Drop.Droid
 
 		#endregion
 
-		void CollepseAnimation(LinearLayout content)
+		void CollepseAnimation(RelativeLayout content)
 		{
 			if (content.Visibility.Equals(ViewStates.Gone))
 			{
@@ -484,7 +464,7 @@ namespace Drop.Droid
 			}
 		}
 
-		private ValueAnimator slideAnimator(int start, int end, LinearLayout content)
+		private ValueAnimator slideAnimator(int start, int end, RelativeLayout content)
 		{
 			ValueAnimator animator = ValueAnimator.OfInt(start, end);
 			animator.Update += (object sender, ValueAnimator.AnimatorUpdateEventArgs e) =>

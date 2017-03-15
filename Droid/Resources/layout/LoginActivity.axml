@@ -11,23 +11,6 @@
         android:layout_height="match_parent"
         android:id="@+id/linearLayout1">
         <LinearLayout
-            android:orientation="horizontal"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/linearLayout2"
-            android:background="@drawable/bar_top"
-            android:gravity="center">
-            <TextView
-                android:text="Drop Something"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView1"
-                android:textColor="#ff000000"
-                android:textSize="18dp" />
-        </LinearLayout>
-        <LinearLayout
             android:orientation="vertical"
             android:minWidth="25px"
             android:minHeight="25px"
@@ -41,7 +24,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:id="@+id/linearLayout4"
-                android:layout_weight="1" />
+                android:layout_weight="2"
+                android:gravity="center">
+                <ImageView
+                    android:src="@drawable/icon_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:id="@+id/imageView2" />
+            </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
@@ -56,17 +46,16 @@
                     android:id="@+id/ActionLoginUsingFacebook"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
-                    android:layout_marginTop="5dp"
                     android:background="@drawable/bg_blue"
                     android:gravity="center_vertical">
                     <ImageView
-                        android:src="@drawable/icon_lock"
+                        android:src="@drawable/icon_symbol_fb"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:id="@+id/imageView1"
                         android:layout_marginLeft="10dp" />
                     <TextView
-                        android:text="Sign-In Using Facebook"
+                        android:text="Facebook sign in"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView2"
@@ -94,27 +83,25 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:id="@+id/ActionLoginAnonymously"
-                    android:background="@drawable/bg_orange"
+                    android:background="@drawable/bg_btn_white"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="5dp"
                     android:layout_marginRight="40dp">
                     <ImageView
-                        android:src="@drawable/icon_smile"
+                        android:src="@drawable/icon_symbol_ano"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:id="@+id/imageView1"
                         android:layout_marginLeft="10dp" />
                     <TextView
-                        android:text="Sign-In Anonymously"
+                        android:text="Sign in anonymously"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView2"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
-                        android:textColor="#ffffffff"
                         android:textSize="15dp"
                         android:layout_marginLeft="-30dp" />
                 </LinearLayout>

@@ -17,23 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:orientation="horizontal"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:id="@+id/linearLayout2"
-                android:background="@drawable/bar_top"
-                android:gravity="center">
-                <TextView
-                    android:text="Drop Something"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView1"
-                    android:textColor="#ff000000"
-                    android:textSize="18dp" />
-            </LinearLayout>
-            <LinearLayout
                 android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
@@ -124,13 +107,7 @@
                                             android:id="@+id/ActionDropItem"
                                             android:layout_weight="1"
                                             android:gravity="center"
-                                            android:tag="1">
-                                            <ImageView
-                                                android:src="@drawable/btn_drop_item"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:id="@+id/imageView3" />
-                                        </LinearLayout>
+                                            android:tag="1" />
                                     </LinearLayout>
                                     <LinearLayout
                                         android:orientation="horizontal"
@@ -167,13 +144,7 @@
                                         android:layout_weight="2"
                                         android:gravity="center"
                                         android:baselineAligned="false"
-                                        android:tag="2">
-                                        <ImageView
-                                            android:src="@drawable/btn_drop_nearby"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/imageView4" />
-                                    </LinearLayout>
+                                        android:tag="2" />
                                     <LinearLayout
                                         android:orientation="horizontal"
                                         android:minWidth="25px"
@@ -214,13 +185,7 @@
                                             android:id="@+id/ActionDropSetting"
                                             android:layout_weight="1"
                                             android:gravity="center"
-                                            android:tag="3">
-                                            <ImageView
-                                                android:src="@drawable/icon_drop_setting"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:id="@+id/imageView5" />
-                                        </LinearLayout>
+                                            android:tag="3" />
                                         <LinearLayout
                                             android:orientation="horizontal"
                                             android:minWidth="25px"

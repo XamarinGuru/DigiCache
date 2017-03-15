@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Foundation;
+using Newtonsoft.Json;
 
 namespace Drop.iOS
 {

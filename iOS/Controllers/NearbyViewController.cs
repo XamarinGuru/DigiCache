@@ -7,6 +7,8 @@ using CoreGraphics;
 using System.Drawing;
 using CoreLocation;
 using System.Collections.Generic;
+using StoreKit;
+using Xamarin.InAppPurchase;
 
 namespace Drop.iOS
 {
@@ -27,8 +29,27 @@ namespace Drop.iOS
 			InitMapView();
 
 			GetDrops();
+
+			AppDelegate.PurchaseManager.InAppProductPurchased -= PurchaseSuccessCallback;
+			AppDelegate.PurchaseManager.InAppProductPurchased += PurchaseSuccessCallback;
 		}
 
+		#region in-app purchase
+		void PurchaseSuccessCallback(SKPaymentTransaction transaction, InAppProduct product)
+		{
+			if (product.ProductIdentifier == Constants.PURCHASE_ID[(int)Constants.PURCHASE_TYPE.VIEW])
+			{
+				ViewDropDetail();
+			}
+		}
+		void OpenPurchase()
+		{
+			InAppProduct product = AppDelegate.PurchaseManager.FindProduct(Constants.PURCHASE_ID[(int)Constants.PURCHASE_TYPE.DROP]);
+			AppDelegate.PurchaseManager.BuyProduct(product);
+		}
+		#endregion
+
+  		#region google map
 		public override void ViewWillLayoutSubviews()
 		{
 			if (mMapView != null && viewMapContent != null && viewMapContent.Window != null)
@@ -36,7 +57,20 @@ namespace Drop.iOS
 				RepaintMap();
 			}
 		}
+		public void RepaintMap()
+		{
+			foreach (var subview in viewMapContent.Subviews)
+			{
+				subview.RemoveFromSuperview();
+			}
 
+			viewMapContent.LayoutIfNeeded();
+			var width = viewMapContent.Frame.Width;
+			var height = viewMapContent.Frame.Height;
+			mMapView.Frame = new CGRect(0, 0, width, height);
+
+			viewMapContent.AddSubview(mMapView);
+		}
 		void InitMapView()
 		{
 			var lResult = LocationHelper.GetLocationResult();
@@ -47,6 +81,7 @@ namespace Drop.iOS
 			mMapView.Alpha = 0.8f;
 			mMapView.TappedMarker = ClickedDropItem;
 		}
+		#endregion
 
 		void GetDrops()
 		{
@@ -94,9 +129,7 @@ namespace Drop.iOS
 				}
 				else
 				{
-					DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
-					pvc.parseItem = mSelectedDrop;
-					NavigationController.PushViewController(pvc, true);
+					ViewDropDetail();
 				}
 			}
 			else {
@@ -106,39 +139,22 @@ namespace Drop.iOS
 			return true;
 		}
 
-		void OpenPurchase()
-		{
-			//DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
-			//pvc.parseItem = mSelectedDrop;
-			//NavigationController.PushViewController(pvc, true);
-		}
-
-		public void RepaintMap()
-		{
-			foreach (var subview in viewMapContent.Subviews)
-			{
-				subview.RemoveFromSuperview();
-			}
-
-			viewMapContent.LayoutIfNeeded();
-			var width = viewMapContent.Frame.Width;
-			var height = viewMapContent.Frame.Height;
-			mMapView.Frame = new CGRect(0, 0, width, height);
-
-			viewMapContent.AddSubview(mMapView);
-		}
-
 		void VerifyPassword(string text)
 		{
 			if (mSelectedDrop.Password == text)
 			{
-				DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
-				pvc.parseItem = mSelectedDrop;
-				NavigationController.PushViewController(pvc, true);
+				ViewDropDetail();
 			}
 			else {
 				ShowMessageBox(null, Constants.STR_INVALID_PASSWORD_TITLE);
 			}
+		}
+
+		void ViewDropDetail()
+		{
+			DropDetailViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_DETAIL) as DropDetailViewController;
+			pvc.parseItem = mSelectedDrop;
+			NavigationController.PushViewController(pvc, true);
 		}
     }
 }

@@ -4,18 +4,21 @@ using UIKit;
 using GalaSoft.MvvmLight.Helpers;
 using MobileCoreServices;
 using CoreLocation;
+using SDWebImage;
+using Xamarin.InAppPurchase;
+using StoreKit;
 
 namespace Drop.iOS
 {
     public partial class DropItemViewController : BaseViewController
 	{
-		private ItemModel ItemModel { get; set; }
+		public ItemModel ItemModel = new ItemModel();
 
 		private UIImagePickerController mMediaPicker;
 
 		public DropItemViewController(IntPtr handle) : base(handle, Constants.STR_iOS_VCNAME_ITEM)
 		{
-			ItemModel = new ItemModel();
+			//ItemModel = new ItemModel();
 		}
 
         public override void ViewDidLoad()
@@ -27,7 +30,41 @@ namespace Drop.iOS
 
 			SetInitialSettings();
 			SetInputBinding();
+
+			// Save connection
+			AppDelegate.PurchaseManager.InAppProductPurchased -= PurchaseSuccessCallback;
+			AppDelegate.PurchaseManager.InAppProductPurchased += PurchaseSuccessCallback;
 		}
+
+#region in-app purchase
+		void PurchaseSuccessCallback(SKPaymentTransaction transaction, InAppProduct product)
+		{
+			if (product.ProductIdentifier == Constants.PURCHASE_ID[(int)Constants.PURCHASE_TYPE.DROP])
+			{
+				CreateDrop(ItemModel.parseItem);
+			}
+			else if (product.ProductIdentifier == Constants.PURCHASE_ID[(int)Constants.PURCHASE_TYPE.EXPIRY])
+			{
+				SetNoExpiry();
+
+			}
+		}
+
+		void DropPurchase()
+		{
+			InAppProduct product = AppDelegate.PurchaseManager.FindProduct(Constants.PURCHASE_ID[(int)Constants.PURCHASE_TYPE.DROP]);
+			AppDelegate.PurchaseManager.BuyProduct(product);
+		}
+
+		void ExpiryPurchase()
+		{
+			InAppProduct product = AppDelegate.PurchaseManager.FindProduct(Constants.PURCHASE_ID[(int)Constants.PURCHASE_TYPE.EXPIRY]);
+			AppDelegate.PurchaseManager.BuyProduct(product);
+		}
+#endregion
+
+
+
 
 		public override void ViewWillAppear(bool animated)
 		{
@@ -69,7 +106,55 @@ namespace Drop.iOS
 
 			this.SetBinding(() => ItemModel.ExpiryDate, () => txtExpireDate.Text, BindingMode.OneWay);
 			this.SetBinding(() => txtExpireDate.Text, () => ItemModel.ExpiryDate, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
-			//this.SetBinding(() => mText, () => ItemModel.ExpiryDate, BindingMode.OneWay);
+
+			if (ItemModel.parseItem != null)
+			{
+				if (ItemModel.parseItem.IconURL != null)
+					imgDropIcon.SetImage(
+						url: new NSUrl(ItemModel.parseItem.IconURL.ToString()),
+						placeholder: UIImage.FromBundle("icon_vendor.jpg")
+					);
+
+				btnVisibleEvery.Selected = false;
+				btnVisibleMe.Selected = false;
+				btnVisibleSpecific.Selected = false;
+
+				switch (ItemModel.Visibility)
+				{
+					case 0:
+						btnVisibleEvery.Selected = true;
+						break;
+					case 1:
+						btnVisibleMe.Selected = true;
+						break;
+					case 2:
+						btnVisibleSpecific.Selected = true;
+						break;
+				}
+
+				btnModifyEvery.Selected = false;
+				btnModifyMe.Selected = false;
+				btnModifySpecific.Selected = false;
+
+				switch (ItemModel.Modify)
+				{
+					case 0:
+						btnModifyEvery.Selected = true;
+						break;
+					case 1:
+						btnModifyMe.Selected = true;
+						break;
+					case 2:
+						btnModifySpecific.Selected = true;
+						break;
+				}
+
+				if (ItemModel.ExpiryDate == Constants.STR_NO_EXPIRY)
+				{
+					txtExpireDate.Enabled = false;
+					btnExpiryDate.Selected = true;
+				}
+			}
 		}
 
 		#region Actions
@@ -179,16 +264,27 @@ namespace Drop.iOS
 				txtPassword.Text = string.Empty;
 		}
 
-		partial void ActionNoExpiry(UISwitch sender)
+		partial void ActionNoExpiry(UIButton sender)
 		{
-			//txtExpireDate.Enabled = sender.On;
-			//if (!sender.Selected)
-			//	txtExpireDate.Text = string.Empty;
-			if (sender.On)
+			if (sender.Selected)
+			{
+				txtExpireDate.Enabled = true;
+				txtExpireDate.Text = "";
+				sender.Selected = !sender.Selected;
+			}
+			else
 			{
 				PurchasePopUp pPopup = PurchasePopUp.Create(Constants.PURCHASE_TYPE.EXPIRY);
 				pPopup.PopUp(true, ExpiryPurchase);
 			}
+		}
+
+		void SetNoExpiry()
+		{
+			ItemModel.ExpiryDate = Constants.STR_NO_EXPIRY;
+			txtExpireDate.Text = Constants.STR_NO_EXPIRY;
+			txtExpireDate.Enabled = false;
+			btnExpiryDate.Selected = true;
 		}
 
 		partial void ActionDropItem(UIButton sender)
@@ -220,7 +316,11 @@ namespace Drop.iOS
 		{
 			ShowLoadingView(Constants.STR_LOADING);
 
-			var result = await ParseService.AddDropItem(dropData);
+			string result = "";
+			if (dropData._pObject == null)
+				result = await ParseService.AddDropItem(dropData);
+			else
+				result = await ParseService.UpdateFavorite(dropData);
 
 			HideLoadingView();
 
@@ -235,15 +335,7 @@ namespace Drop.iOS
 			}
 		}
 
-		void DropPurchase()
-		{
-			//throw new NotImplementedException();
-		}
 
-		void ExpiryPurchase()
-		{
-			
-		}
 
 		void ShareDropLocation()
 		{

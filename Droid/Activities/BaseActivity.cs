@@ -23,7 +23,7 @@ using AndroidHUD;
 namespace Drop.Droid
 {
 	[Activity(Label = "BaseActivity")]
-	public class BaseActivity : Activity, ISurfaceHolderCallback
+	public class BaseActivity : FragmentActivity, ISurfaceHolderCallback
 	{
 		string[] PermissionsCamera =
 		{
@@ -46,22 +46,22 @@ namespace Drop.Droid
 
 			surfaceView = FindViewById<SurfaceView>(Resource.Id.liveCamera);
 
-			CheckCalendarPermission();
+			CheckCameraPermission();
 		}
 
-		#region grant calendar access permission
-		private void CheckCalendarPermission()
+		#region grant Camera access permission
+		private void CheckCameraPermission()
 		{
 			if ((int)Build.VERSION.SdkInt < 23)
 			{
 				StartLiveCamera();
 			}
 			else {
-				RequestCalendarPermission();
+				RequestCameraPermission();
 
 			}
 		}
-		void RequestCalendarPermission()
+		void RequestCameraPermission()
 		{
 			const string cPermission = Manifest.Permission.Camera;
 			if (CheckSelfPermission(cPermission) == (int)Permission.Granted)
@@ -130,8 +130,6 @@ namespace Drop.Droid
 				var cameraId = FindBackCamera();
 				camera = Android.Hardware.Camera.Open(cameraId);
 				AddContentView(new View(this), new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent));
-
-
 			}
 			catch (Exception ex)
 			{

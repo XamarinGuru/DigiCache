@@ -1,30 +1,34 @@
 ﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Drop/Constants.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/BaseViewController.cs">
     <Files>
-      <File FileName="Drop/Constants.cs" Line="71" Column="80" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="243" Column="8" />
-      <File FileName="iOS/Controllers/NearbyViewController.cs" Line="114" Column="1" />
+      <File FileName="Drop/Constants.cs" Line="167" Column="4" />
+      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="268" Column="4" />
+      <File FileName="iOS/Controllers/BaseViewController.cs" Line="66" Column="15" />
+      <File FileName="Drop/Model/Item.cs" Line="30" Column="20" />
+      <File FileName="Drop/ParseService.cs" Line="133" Column="1" />
+      <File FileName="iOS/AppDelegate.cs" Line="159" Column="19" />
+      <File FileName="iOS/Controllers/NearbyViewController.cs" Line="141" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Drop" expanded="True">
             <Node name="Drop" expanded="True">
-              <Node name="Constants.cs" selected="True" />
+              <Node name="Model" expanded="True" />
             </Node>
+            <Node name="Drop.Droid" expanded="True" />
             <Node name="Drop.iOS" expanded="True">
-              <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Core" expanded="True" />
-              <Node name="ViewModel" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="BaseViewController.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Drop.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.ItemProperties.Drop.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.103:5555" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="297" column="1" />
@@ -36,5 +40,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.252427A2-616C-4126-A155-DFD2184662B6" />
+  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.588a0c4ca0db6bf2b5ac9a1a9456fdabb01e7629" />
 </Properties>

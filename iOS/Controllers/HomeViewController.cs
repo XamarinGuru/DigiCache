@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using CoreLocation;
 
 using SDWebImage;
+using Parse;
 
 namespace Drop.iOS
 {
@@ -17,17 +18,12 @@ namespace Drop.iOS
         {
         }
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
-
-			//dropContent.Transform = CGAffineTransform.MakeScale(0, 0);
-			//dropContent.Alpha = 0;
-		}
-
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
+
+			foreach (UIView view in virtualDropContent.Subviews)
+				view.RemoveFromSuperview();
 
 			GetDrops();
 		}
@@ -83,7 +79,14 @@ namespace Drop.iOS
 					pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_NEARBY);
 					break;
 				case Constants.TAG_DROP_SETTING:
-					pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_HOME);
+					{
+						if (ParseUser.CurrentUser == null)
+						{
+							ShowMessageBox(Constants.STR_INVALID_USERINFO, null);
+							return;
+						}
+						pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_FAVORITE);
+					}
 					break;
 				default:
 					break;
@@ -94,6 +97,9 @@ namespace Drop.iOS
 
 		void LocationUpdated(object sender, EventArgs e)
 		{
+			foreach (UIView view in virtualDropContent.Subviews)
+				view.RemoveFromSuperview();
+			
 			CLLocationsUpdatedEventArgs locArgs = e as CLLocationsUpdatedEventArgs;
 			var currentLocation = locArgs.Locations[locArgs.Locations.Length - 1];
 
@@ -105,38 +111,16 @@ namespace Drop.iOS
 				var distanceToB = pointB.DistanceFrom(currentLocation);
 
 				if (distanceToB < Constants.VISIBILITY_LIMITATIN_M)
-					VisibleDrop(drop, distanceToB);
+					VisibleDrop(drop, currentLocation);
 			}
 		}
 
-		void VisibleDrop(ParseItem drop, double distance)
+		void VisibleDrop(ParseItem drop, CLLocation cLocation)
 		{
-			foreach (UIView view in virtualDropContent.Subviews)
-				view.RemoveFromSuperview();
-			
-			var scale = 1 - distance / Constants.VISIBILITY_LIMITATIN_M;
+			var vDrop = VirtualDrop.Create();
+			vDrop.SetView(drop, cLocation, this);
 
-			if (scale <= 0)
-				return;
-
-			var vdropSize = Constants.VDROP_MAX_SIZE * scale;
-			var posX = View.Frame.Size.Width / 2 - vdropSize / 2;
-			var posY = View.Frame.Size.Height / 2 - vdropSize / 2;
-
-			var realDrop = new UIImageView(new CGRect(posX, posY, vdropSize, vdropSize));
-			realDrop.SetImage(
-				url: new NSUrl(drop.IconURL.ToString()),
-				placeholder: UIImage.FromBundle("icon_drop1.png")
-			);
-
-			realDrop.ContentMode = UIViewContentMode.ScaleAspectFill;
-
-			UILabel lblDistance = new UILabel(new CGRect(10, 100, 500, 100));
-			lblDistance.Text = distance.ToString();
-			lblDistance.TextColor = UIColor.Red;
-
-			virtualDropContent.AddSubview(realDrop);
-			virtualDropContent.AddSubview(lblDistance);
+			virtualDropContent.AddSubview(vDrop);
 		}
     }
 }

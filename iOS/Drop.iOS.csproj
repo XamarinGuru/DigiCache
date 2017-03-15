@@ -30,7 +30,7 @@
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>4640901f-da9c-47bd-abfb-8743fa54746a</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -85,7 +85,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>31eb488e-c24d-4756-bdeb-65a5cd17d6a6</CodesignProvision>
+    <CodesignProvision>14ae20cb-d60a-4a2a-84a7-2c9c341431cd</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -149,9 +149,11 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="ViewModel\PurchasePopUp.xib" />
     <InterfaceDefinition Include="ViewModel\SuccessPopUp.xib" />
+    <InterfaceDefinition Include="ViewModel\FavoritePopUp.xib" />
+    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="ViewModel\VirtualDrop.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -201,6 +203,22 @@
     <Compile Include="ViewModel\SuccessPopUp.designer.cs">
       <DependentUpon>SuccessPopUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\FavoritePopUp.cs" />
+    <Compile Include="ViewModel\FavoritePopUp.designer.cs">
+      <DependentUpon>FavoritePopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FavoriteViewController.cs" />
+    <Compile Include="Controllers\FavoriteViewController.designer.cs">
+      <DependentUpon>FavoriteViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\FavoriteCell.cs" />
+    <Compile Include="ViewModel\FavoriteCell.designer.cs">
+      <DependentUpon>FavoriteCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\VirtualDrop.cs" />
+    <Compile Include="ViewModel\VirtualDrop.designer.cs">
+      <DependentUpon>VirtualDrop.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">
@@ -234,16 +252,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Splash.png" />
-    <BundleResource Include="Resources\bg.png" />
-    <BundleResource Include="Resources\bar_top.png" />
     <BundleResource Include="Resources\icon_lock.png" />
     <BundleResource Include="Resources\icon_smile.png" />
     <BundleResource Include="Resources\bg_orange.png" />
-    <BundleResource Include="Resources\bg_blue.png" />
     <BundleResource Include="Resources\btn_drop_item.png" />
     <BundleResource Include="Resources\btn_drop_nearby.png" />
-    <BundleResource Include="Resources\bg_blue1.png" />
-    <BundleResource Include="Resources\bg_blue2.png" />
     <BundleResource Include="Resources\bg_bottom_orange.png" />
     <BundleResource Include="Resources\bg_textfield.png" />
     <BundleResource Include="Resources\bg_tool_button.png" />
@@ -303,7 +316,6 @@
     <BundleResource Include="Resources\border_gray.png" />
     <BundleResource Include="Resources\icon_star.png" />
     <BundleResource Include="Resources\bg_info_box.png" />
-    <BundleResource Include="Resources\bg_border_green.png" />
     <BundleResource Include="Resources\icon_seperator.png" />
     <BundleResource Include="Resources\icon_underline_green.png" />
     <BundleResource Include="Resources\bg_btn_purchase.png" />
@@ -312,6 +324,15 @@
     <BundleResource Include="Resources\bg_popup_success.png" />
     <BundleResource Include="Resources\icon_cancel.png" />
     <BundleResource Include="Resources\icon_share.png" />
+    <BundleResource Include="Resources\bg_popup_favorite.png" />
+    <BundleResource Include="Resources\icon_favorite_active.png" />
+    <BundleResource Include="Resources\icon_map.png" />
+    <BundleResource Include="Resources\icon_close.png" />
+    <BundleResource Include="Resources\bar_top.png" />
+    <BundleResource Include="Resources\bg_blue.png" />
+    <BundleResource Include="Resources\bg_blue1.png" />
+    <BundleResource Include="Resources\bg_blue2.png" />
+    <BundleResource Include="Resources\bg_border_green.png" />
   </ItemGroup>
   <Import Project="..\Drop\Drop.projitems" Label="Shared" Condition="Exists('..\Drop\Drop.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -99,8 +99,8 @@ namespace Drop
 				dropItem[Constants.STR_FIELD_VISIBILITY] = item.Visibility;
 				dropItem[Constants.STR_FIELD_MODIFY] = item.Modify;
 				dropItem[Constants.STR_FIELD_PASSWORD] = item.Password;
-				dropItem[Constants.STR_FIELD_EXPIRY] = item.ExpiryDate == "" || item.ExpiryDate == null ? DateTime.Now : DateTime.Parse(item.ExpiryDate);
-
+				dropItem[Constants.STR_FIELD_EXPIRY] = item.ExpiryDate;
+				dropItem[Constants.STR_FIELD_FAVORITE] = item.Favorite;
 				await dropItem.SaveAsync();
 			}
 			catch (Exception e)
@@ -111,7 +111,36 @@ namespace Drop
 			return Constants.STR_STATUS_SUCCESS;
 		}
 
-		public static IList<ParseItem> GetDropItems()
+		public static async Task<string> UpdateDrop(ParseItem item)
+		{
+			try
+			{
+				var dropItem = item._pObject;
+				dropItem[Constants.STR_FIELD_NAME] = item.Name;
+				dropItem[Constants.STR_FIELD_DESCRIPTION] = item.Description;
+				dropItem[Constants.STR_FIELD_TEXT] = item.Text;
+				dropItem[Constants.STR_FIELD_IMAGE] = item.Image == null ? null : new ParseFile(item.Image.fileName, item.Image.fileData);
+				dropItem[Constants.STR_FIELD_VIDEO] = item.Video == null ? null : new ParseFile(item.Video.fileName, item.Video.fileData);
+				dropItem[Constants.STR_FIELD_OTHER_LINK] = item.OtherLink;
+				dropItem[Constants.STR_FIELD_ICON] = item.Icon == null ? null : new ParseFile(item.Icon.fileName, item.Icon.fileData);
+				dropItem[Constants.STR_FIELD_LOCATION_LNT] = item.Location_Lnt;
+				dropItem[Constants.STR_FIELD_LOCATION_LAT] = item.Location_Lat;
+				dropItem[Constants.STR_FIELD_VISIBILITY] = item.Visibility;
+				dropItem[Constants.STR_FIELD_MODIFY] = item.Modify;
+				dropItem[Constants.STR_FIELD_PASSWORD] = item.Password;
+				dropItem[Constants.STR_FIELD_EXPIRY] = item.ExpiryDate;
+				dropItem[Constants.STR_FIELD_FAVORITE] = item.Favorite;
+				await dropItem.SaveAsync();
+			}
+			catch (Exception e)
+			{
+				return e.Message;
+			}
+
+			return Constants.STR_STATUS_SUCCESS;
+		}
+
+		public static List<ParseItem> GetDropItems()
 		{
 			List<ParseItem> results = new List<ParseItem>();
 			var query = ParseObject.GetQuery(Constants.STR_TABLE_DROP_ITEM).OrderBy("Name");
@@ -120,6 +149,8 @@ namespace Drop
 			{
 				var dropItem = new ParseItem();
 
+				dropItem._pObject = drop;
+				dropItem.ID = drop.ObjectId;
 				dropItem.Username = drop.Get<string>(Constants.STR_FIELD_USERID);
 				dropItem.Name = drop.Get<string>(Constants.STR_FIELD_NAME);
 				dropItem.Text = drop.Get<string>(Constants.STR_FIELD_TEXT);
@@ -127,8 +158,10 @@ namespace Drop
 				dropItem.Location_Lnt = drop.Get<double>(Constants.STR_FIELD_LOCATION_LNT);
 				dropItem.Location_Lat = drop.Get<double>(Constants.STR_FIELD_LOCATION_LAT);
 				dropItem.Visibility = drop.Get<int>(Constants.STR_FIELD_VISIBILITY);
-				//dropItem.Modify = drop.Get<int>(Constants.STR_FIELD_MODIFY);
+				dropItem.Modify = drop.Get<int>(Constants.STR_FIELD_MODIFY);
 				dropItem.Password = drop.Get<string>(Constants.STR_FIELD_PASSWORD);
+				dropItem.ExpiryDate = drop.Get<string>(Constants.STR_FIELD_EXPIRY);
+				dropItem.Favorite = drop.Get<string>(Constants.STR_FIELD_FAVORITE);
 
 				ParseFile imageObject = drop.Get<ParseFile>(Constants.STR_FIELD_IMAGE);
 				ParseFile videoObject = drop.Get<ParseFile>(Constants.STR_FIELD_VIDEO);
@@ -144,6 +177,22 @@ namespace Drop
 				}
 			}
 			return results;
+		}
+
+		public static async Task<string> UpdateFavorite(ParseItem item)
+		{
+			try
+			{
+				var dropItem = item._pObject;
+				dropItem[Constants.STR_FIELD_FAVORITE] = item.Favorite;
+				await dropItem.SaveAsync();
+			}
+			catch (Exception e)
+			{
+				return e.Message;
+			}
+
+			return Constants.STR_STATUS_SUCCESS;
 		}
 
 		public static bool IsVisibility(ParseItem drop)

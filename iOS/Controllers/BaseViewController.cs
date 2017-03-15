@@ -12,6 +12,8 @@ namespace Drop.iOS
 {
 	public partial class BaseViewController : UIViewController
 	{
+		public static Boolean isAttachedPurchaseCallbacks = false;
+
 		private AVCaptureSession captureSession;
 		private AVCaptureDeviceInput captureDeviceInput;
 		private AVCaptureStillImageOutput stillImageOutput;
@@ -58,9 +60,29 @@ namespace Drop.iOS
 		{
 			base.ViewDidLoad();
 
-			//await AuthorizeCameraUse();
-			//SetupLiveCameraStream();
+			if (!isAttachedPurchaseCallbacks)
+			{
+				isAttachedPurchaseCallbacks = true;
+				AttachToPurchaseManager();
+			}
+
+			await AuthorizeCameraUse();
+			SetupLiveCameraStream();
 		}
+
+		public void AttachToPurchaseManager()
+		{
+			AppDelegate.PurchaseManager.ReceivedValidProducts += (products) => { };
+			AppDelegate.PurchaseManager.InAppProductPurchaseUserCanceled += (transaction, product) =>
+			{
+				ShowMessageBox("Xamarin.InAppPurchase", String.Format("Attempt to purchase {0} has Cancelled: {1}", product.Title, transaction.Error.ToString()));
+			};
+			AppDelegate.PurchaseManager.InAppProductPurchaseFailed += (transaction, product) =>
+			{
+				ShowMessageBox("Xamarin.InAppPurchase", String.Format("Attempt to purchase {0} has failed: {1}", product.Title, transaction.Error.ToString()));
+			};
+		}
+
 		public override void ViewWillAppear(bool animated)
 		{
 			base.ViewWillAppear(animated);
@@ -212,11 +234,12 @@ namespace Drop.iOS
 			alertView.Show();
 		}
 
-		protected void SetDatePicker(UITextField field, UIDatePickerMode mode = UIDatePickerMode.Time, String format = "{0: MM/dd/yy}", bool futureDatesOnly = true, DateTime? minimumDateTime = null, bool changeOnEdit = false)
+		protected void SetDatePicker(UITextField field, UIDatePickerMode mode = UIDatePickerMode.Time, String format = "{0: d MMMM yyyy}", bool futureDatesOnly = true, DateTime? minimumDateTime = null, bool changeOnEdit = false)
 		{
 			UIDatePicker picker = new UIDatePicker();
 			picker.Mode = UIDatePickerMode.Date;
 
+			picker.MaximumDate = ToNSDate(DateTime.Now.AddYears(1));
 			if (minimumDateTime != null)
 			{
 				NSDate nsMinDateTime = ToNSDate((DateTime)minimumDateTime);
@@ -268,6 +291,7 @@ namespace Drop.iOS
 		private void updateSetupDateTimePicker(UITextField field, NSDate date, String format, object sender, EventArgs e, bool done = false)
 		{
 			var newDate = NSDateToDateTime(date);
+
 			var str = String.Format(format, newDate);
 
 			field.Text = str;

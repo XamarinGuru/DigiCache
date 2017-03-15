@@ -12,7 +12,6 @@ namespace Drop
 		public const string FACEBOOK_DISPLAY_NAME = "Drop";
 
 		public const string GOOGLE_MAP_API_KEY = "AIzaSyAiBwRUm_KZDv_sp3eI7F8hxkePqDTvY20";
-		public const string GOOGLE_AUTO_FILL_URL = "https://maps.googleapis.com/maps/api/place/autocomplete/json";
 
 		public static string[] FB_PERMISSIONS = new[] { "public_profile", "email" };
 
@@ -28,8 +27,9 @@ namespace Drop
 		public const string STR_LOGIN_LOADING = "Login...";
 
 		public const string STR_DROPS_LOADING = "Retreving nearby items...";
+		public const string STR_F_DROPS_LOADING = "Retreving favourite items...";
 
-		public const string STR_DROP_INVALID = "You should specify at least Name & Icon & Location to drop your item.";
+		public const string STR_DROP_INVALID = "You should specify at least Name & Icon & Location & Expiry date to drop your item.";
 		public const string STR_DROP_SUCCESS_MSG = "Item successfully dropped.";
 
 		public const string STR_ATTACH_TITLE = "Select Attach File Type...";
@@ -40,11 +40,19 @@ namespace Drop
 		public const string STR_VERIFY_PASSWORD_TITLE = "Require to access to this drop item.";
 		public const string STR_INVALID_PASSWORD_TITLE = "Invalid Password.";
 
+		public const string STR_INVALID_USERINFO = "Can't detect your info. You need to login with Facebook";
+
+		public const string STR_FAVORITE_ADDED = "Successfully added to your \nFavourites list.";
+		public const string STR_FAVORITE_DELETED = "Successfully removed from your \nFavourites list.";
+
+		public const string STR_NO_EXPIRY = "No Expiry Date";
+
 		//vc names
 		public const string STR_iOS_VCNAME_LOGIN = "LoginViewController";
 		public const string STR_iOS_VCNAME_HOME = "HomeViewController";
 		public const string STR_iOS_VCNAME_ITEM = "DropItemViewController";
 		public const string STR_iOS_VCNAME_NEARBY = "NearbyViewController";
+		public const string STR_iOS_VCNAME_FAVORITE = "FavoriteViewController";
 		public const string STR_iOS_VCNAME_DETAIL = "DropDetailViewController";
 		public const string STR_iOS_VCNAME_LOCATION = "DropLocationViewController";
 
@@ -112,6 +120,7 @@ namespace Drop
 		public const string STR_FIELD_MODIFY = "Modify";
 		public const string STR_FIELD_PASSWORD = "Password";
 		public const string STR_FIELD_EXPIRY = "Expiry";
+		public const string STR_FIELD_FAVORITE = "Favorite";
 
 		//defailt icon name
 		public const string STR_DEFAILT_ICON1 = "icon_drop1.png";
@@ -160,7 +169,15 @@ namespace Drop
 			EXPIRY
 		}
 
-		public const int PURCHASE_DISTANCE = 50;
+
+		public static string[] PURCHASE_ID = new string[]{
+			"DropDistantCache",
+			"OpenDistantCache",
+			"NoExpiryDrop"
+		};
+
+
+		public const int PURCHASE_DISTANCE = 300;
 		public static string[] PURCHASE_TITLE = new string[]{
 			"You're Too Far Away.",
 			"You're Too Far Away.",
