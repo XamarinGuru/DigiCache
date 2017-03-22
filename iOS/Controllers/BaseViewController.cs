@@ -66,8 +66,8 @@ namespace Drop.iOS
 				AttachToPurchaseManager();
 			}
 
-			//await AuthorizeCameraUse();
-			//SetupLiveCameraStream();
+			await AuthorizeCameraUse();
+			SetupLiveCameraStream();
 		}
 
 		public void AttachToPurchaseManager()

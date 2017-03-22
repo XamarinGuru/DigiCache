@@ -33,10 +33,9 @@ namespace Drop.Droid
 		SupportMapFragment _mapFragment;
 		GoogleMap _map = null;
 
-		AutoCompleteTextView txtSearchLocation;
-
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
+			Window.RequestFeature(WindowFeatures.NoTitle);
 			base.OnCreate(savedInstanceState);
 
 			SetContentView(Resource.Layout.DropLocationLayout);
@@ -45,8 +44,6 @@ namespace Drop.Droid
 
 			_mapFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.map);
 			_mapFragment.GetMapAsync(this);
-
-			txtSearchLocation = FindViewById<AutoCompleteTextView>(Resource.Id.txtSearchLocation);
 
 			FindViewById(Resource.Id.ActionConfirm).Click += delegate
 			{
@@ -142,20 +139,6 @@ namespace Drop.Droid
 			try
 			{
 				_currentLocation = cameraPos.Target;
-				var geo = new Geocoder(this);
-
-				var addresses = await geo.GetFromLocationAsync(_currentLocation.Latitude, _currentLocation.Longitude, 1);
-
-				Address addressList = addresses[0];
-
-				string formatedAddress = "";
-
-				for (var i = 0; i < addressList.MaxAddressLineIndex; i++)
-				{
-					formatedAddress += addressList.GetAddressLine(i) + " ";
-				}
-				txtSearchLocation.Text = formatedAddress;
-				txtSearchLocation.DismissDropDown();
 			}
 			catch
 			{

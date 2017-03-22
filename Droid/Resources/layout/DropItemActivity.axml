@@ -92,7 +92,8 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="10dp"
                                 android:tag="0"
-                                android:layout_marginBottom="15dp" />
+                                android:layout_marginBottom="15dp"
+                                android:id="@+id/imageView1" />
                         </RelativeLayout>
                     </LinearLayout>
                     <RelativeLayout
@@ -869,7 +870,7 @@
                                     android:layout_weight="1"
                                     android:textSize="16dp"
                                     android:layout_marginLeft="10dp"
-                                    android:text="Who can modify this drop"
+                                    android:text="Password"
                                     android:textStyle="normal"
                                     android:textColor="#ff7f7f7f" />
                             </LinearLayout>
@@ -926,8 +927,7 @@
                                     android:layout_height="35dp"
                                     android:background="@drawable/item_CheckBox"
                                     android:id="@+id/ActionPassword"
-                                    android:button="@null"
-                                    android:checked="true" />
+                                    android:button="@null" />
                                 <TextView
                                     android:text="Yes"
                                     android:layout_width="wrap_content"
@@ -1042,11 +1042,11 @@
                                 android:id="@+id/linearLayout11"
                                 android:gravity="center_vertical"
                                 android:padding="10dp">
-                                <TextView
+                                <EditText
                                     android:text="01/25/2017"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:id="@+id/textView5"
+                                    android:id="@+id/txtExpireDate"
                                     android:background="@drawable/bg_pw"
                                     android:textColor="#ff000000"
                                     android:gravity="center"
@@ -1066,9 +1066,8 @@
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
                                     android:background="@drawable/item_CheckBox"
-                                    android:id="@+id/ActionPassword"
-                                    android:button="@null"
-                                    android:checked="true" />
+                                    android:id="@+id/checkExpiryDate"
+                                    android:button="@null" />
                                 <TextView
                                     android:text="No expiry date"
                                     android:layout_width="wrap_content"

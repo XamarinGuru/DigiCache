@@ -1,8 +1,14 @@
 ﻿using System;
+
 namespace Drop
 {
 	public static class Constants
 	{
+		public static string[] IN_APP_BILLING_PUBLIC_KEY = new string[] { "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq5L+CBdav3roMmsX7Ah6iAsvsTuyws68JaYsnbWPvuzsXl+ivdNBWsADnsA7A+B0cb71F1eXrH8pQRD+6tk",
+					"kMTE4tFPjeaqitDEC0jImyFSN9iDYr2Sppzo1uaLIGfXKjT1Fmb/+6xSkBmq9PJKpKCwpzjyBqNICsykU6nbP+VS8EQR8B+fxcyQTUBiBCRNLGQRu1b55rNBBEXf8",
+					"UKjxNfUtn2ZgQdmq+DT/XPy7n/TmRBNvcwuiGPmAgGENxIpi/YulneoIvPSx8U0xXsPBRwdixcvwhbzdh5F7y5sQVyWbKCrtgrVkyrFNNj2dZKEFyp9Vl9G6gEK+",
+					"VIbgig1b/wIDAQAB" };
+		
 		public const string APP_NAME = "Drop";
 		public const string PARSE_APP_ID = "FsCghYDYIHRAorWAAWwNoDzxWV21nkXKziSuUV1w";
 		public const string PARSE_NET_KEY = "G8G0knLW7r1LH4lcMqWKLReWFYvZaGSpRgJLcJF0";

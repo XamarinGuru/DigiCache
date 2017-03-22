@@ -1,27 +1,14 @@
-﻿<Properties StartupConfiguration="{166DDDA8-C732-44E5-B573-42B53D976593}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Controllers/NearbyViewController.cs">
+﻿<Properties StartupConfiguration="{2CF83F4E-FEB9-4A0F-8AF1-BC4C277019FC}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Activities/BaseActivity.cs">
     <Files>
-      <File FileName="iOS/Controllers/DropDetailViewController.cs" Line="129" Column="4" />
-      <File FileName="iOS/Controllers/DropItemViewController.cs" Line="115" Column="27" />
-      <File FileName="iOS/Controllers/NearbyViewController.cs" Line="73" Column="40" />
+      <File FileName="Droid/Activities/HomeActivity.cs" Line="113" Column="14" />
+      <File FileName="Droid/Activities/BaseActivity.cs" Line="30" Column="15" />
+      <File FileName="Droid/Activities/DropLocationActivity.cs" Line="23" Column="183" />
+      <File FileName="Droid/Activities/LoginActivity.cs" Line="27" Column="36" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Drop" expanded="True">
-            <Node name="Drop.iOS" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="NearbyViewController.cs" selected="True" />
-              </Node>
-              <Node name="ViewModel" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Drop.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.56.103:5555" />
+  <MonoDevelop.Ide.ItemProperties.Drop.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.4df7bccb4f3d1123" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="297" column="1" />
@@ -29,9 +16,11 @@
       <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="285" column="35" />
       <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="271" column="1" />
       <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/NearbyActivity.cs" line="86" column="1" />
+      <Breakpoint file="/Volumes/working/Drop/Droid/Activities/HomeActivity.cs" relfile="Droid/Activities/HomeActivity.cs" line="273" column="1" />
+      <Breakpoint file="/Volumes/working/Drop/Droid/Activities/BaseActivity.cs" relfile="Droid/Activities/BaseActivity.cs" line="227" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.252427A2-616C-4126-A155-DFD2184662B6" />
+  <MonoDevelop.Ide.ItemProperties.Drop.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
 </Properties>

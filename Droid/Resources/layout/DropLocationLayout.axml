@@ -26,45 +26,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:id="@+id/relativeLayout1"
-                android:gravity="center_vertical"
-                android:background="@drawable/bar_top">
+                android:gravity="center_vertical">
                 <ImageView
-                    android:src="@drawable/btn_back"
+                    android:src="@drawable/icon_back"
                     android:id="@+id/ActionBack"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_marginLeft="20dp" />
-                <TextView
-                    android:text="Drop Item"
-                    android:id="@+id/textView1"
-                    android:textColor="#ff000000"
-                    android:textSize="18dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp" />
             </RelativeLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/linearLayout9"
-                android:background="#ffd0cbcb">
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:imeOptions="actionSearch"
-                    android:imeActionId="@+id/imeisearch"
-                    android:hint="Search or Position Map"
-                    android:id="@+id/txtSearchLocation"
-                    android:background="@android:color/transparent"
-                    android:inputType="text"
-                    android:textColor="#ff000000"
-                    android:textColorHint="#ff878787"
-                    android:paddingLeft="10dp" />
-            </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
                 android:minWidth="25px"
@@ -80,9 +49,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:id="@+id/linearLayout24"
-                    android:layout_margin="20dp"
                     android:layout_weight="5"
-                    android:clipChildren="true">
+                    android:clipChildren="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp">
                     <FrameLayout
                         android:id="@+id/map_place_box"
                         android:clickable="true"

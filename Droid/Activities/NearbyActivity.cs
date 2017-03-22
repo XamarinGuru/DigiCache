@@ -264,7 +264,7 @@ namespace Drop.Droid
 			}
 			else {
 				//MyInputDialog myDiag = MyInputDialog.newInstance(Constants.STR_VERIFY_PASSWORD_TITLE, VerifyPassword);
-				MyInputDialog myDiag = MyInputDialog.newInstance("Password?", VerifyPassword);
+				InputPopUp myDiag = InputPopUp.newInstance("Password?", VerifyPassword);
 				myDiag.Show(FragmentManager, "Diag");
 			}
 			return true;

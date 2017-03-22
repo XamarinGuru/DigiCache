@@ -353,7 +353,7 @@ namespace Drop.iOS
 				activityViewController.PopoverPresentationController.SourceView = View;
 				activityViewController.PopoverPresentationController.SourceRect = new CoreGraphics.CGRect((View.Bounds.Width / 2), (View.Bounds.Height / 4), 0, 0);
 			}
-			this.PresentViewController(activityViewController, true, Back);
+			this.PresentViewController(activityViewController, true, null);
 		}
 
 		void Back()

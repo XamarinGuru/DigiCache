@@ -142,6 +142,9 @@
     <Reference Include="UniversalImageLoader">
       <HintPath>..\Components\UniversalImageLoader-1.9.4.1\lib\android\UniversalImageLoader.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.InAppBilling">
+      <HintPath>..\Components\xamarin.inappbilling-2.2\lib\android\Xamarin.InAppBilling.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -154,9 +157,11 @@
     <Compile Include="Activities\NearbyActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Activities\DropLocationActivity.cs" />
-    <Compile Include="Dialogue\TimeFormatDialog.cs" />
+    <Compile Include="Dialogue\InputPopUp.cs" />
     <Compile Include="Activities\DropDetailActivity.cs" />
     <Compile Include="Activities\PlayVideoActivity.cs" />
+    <Compile Include="Dialogue\PurchasePopUp.cs" />
+    <Compile Include="Services\InAppBillingService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -261,6 +266,8 @@
     <AndroidResource Include="Resources\drawable\icon_share.png" />
     <AndroidResource Include="Resources\drawable\icon_star.png" />
     <AndroidResource Include="Resources\drawable\icon_underline_green.png" />
+    <AndroidResource Include="Resources\layout\item_PurchasePopUp.axml" />
+    <AndroidResource Include="Resources\drawable\bg_btn_purchase.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">
@@ -287,12 +294,17 @@
       <Version>1.9.4.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="xamarin.inappbilling">
+      <Version>2.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Activities\" />
     <Folder Include="Resources\Anim\" />
     <Folder Include="Dialogue\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="..\Drop\Drop.projitems" Label="Shared" Condition="Exists('..\Drop\Drop.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

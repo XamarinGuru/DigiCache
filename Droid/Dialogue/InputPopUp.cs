@@ -7,14 +7,14 @@ using Android.Widget;
 
 namespace Drop.Droid
 {
-	public class MyInputDialog : DialogFragment
+	public class InputPopUp : DialogFragment
 	{
 		Action<string> callback;
 		string title;
 
-		public static MyInputDialog newInstance(string title, Action<string> callback)
+		public static InputPopUp newInstance(string title, Action<string> callback)
 		{
-			MyInputDialog inputDialog = new MyInputDialog();
+			InputPopUp inputDialog = new InputPopUp();
 
 			inputDialog.callback = callback;
 			inputDialog.title = title;
@@ -22,7 +22,7 @@ namespace Drop.Droid
 			return inputDialog;
 		}
 
-		public MyInputDialog()
+		public InputPopUp()
 		{
 			// Required empty public constructor
 		}

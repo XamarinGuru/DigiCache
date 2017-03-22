@@ -21,5 +21,6 @@
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.READ_CALENDAR" />
 	<uses-permission android:name="android.permission.WRITE_CALENDAR" />
+	<uses-permission android:name="com.android.vending.BILLING" />
 	<application android:icon="@drawable/AppIcon" android:hardwareAccelerated="true" android:largeHeap="true" android:label="DigiCache"></application>
 </manifest>

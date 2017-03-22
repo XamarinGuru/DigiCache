@@ -27,7 +27,12 @@ namespace Drop.Droid
 	{
 		LayoutInflater controlInflater = null;
 
-		const int Location_Request_Code = 0;
+		readonly string[] PermissionsLocation =
+		{
+		  Manifest.Permission.AccessCoarseLocation,
+		  Manifest.Permission.AccessFineLocation
+		};
+		const int RequestLocationId = 0;
 
 		LocationManager _locationManager;
 
@@ -54,13 +59,7 @@ namespace Drop.Droid
 		{
 			base.OnResume();
 
-			string[] PermissionsLocation =
-			{
-				Manifest.Permission.AccessCoarseLocation,
-				Manifest.Permission.AccessFineLocation
-			};
-			//Explain to the user why we need to read the contacts
-			ActivityCompat.RequestPermissions(this, PermissionsLocation, Location_Request_Code);
+			CheckLocationPermission();
 		}
 
 		protected override void OnStop()
@@ -208,25 +207,50 @@ namespace Drop.Droid
 			realDrop.RequestLayout();
 		}
 
-		#region current location
-		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+		#region grant location service
+		private void CheckLocationPermission()
 		{
-			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-			switch (requestCode)
+			if ((int)Build.VERSION.SdkInt < 23)
 			{
-				case Location_Request_Code:
-					{
-						if (grantResults.Length > 0 && grantResults[0] == (int)Permission.Granted)
-						{
-							GetDrops();
-						}
-						else {
-							//SetMyLocationOnMap(false);
-						}
-						return;
-					}
+				GetDrops();
+			}
+			else
+			{
+				RequestLocationPermission();
 			}
 		}
+		void RequestLocationPermission()
+		{
+			const string permission = Manifest.Permission.AccessFineLocation;
+			if (CheckSelfPermission(permission) == (int)Permission.Granted)
+			{
+				GetDrops();
+				return;
+			}
+
+			if (ShouldShowRequestPermissionRationale(permission))
+			{
+				ShowMessageBox(null, "Location access is required to gaugo your sports.", "Cancel", new[] { "OK" }, SendingPermissionRequest);
+				return;
+			}
+			SendingPermissionRequest();
+		}
+
+		void SendingPermissionRequest()
+		{
+			ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId);
+		}
+
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+		{
+			if (requestCode == RequestLocationId && grantResults[0] == Permission.Granted)
+			{
+				GetDrops();
+			}
+		}
+
+
+		#endregion
 
 		public void OnLocationChanged(Location location)
 		{
@@ -275,7 +299,6 @@ namespace Drop.Droid
 		{
 		}
 
-		#endregion
 
 	}
 }

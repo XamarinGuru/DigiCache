@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using Android;
 using Android.App;
 using Android.Content;
@@ -20,11 +21,18 @@ using Android.Widget;
 
 using AndroidHUD;
 
+using Xamarin.InAppBilling;
+using Xamarin.InAppBilling.Utilities;
+
 namespace Drop.Droid
 {
 	[Activity(Label = "BaseActivity")]
 	public class BaseActivity : FragmentActivity, ISurfaceHolderCallback
 	{
+		public Product _selectedProduct;
+		public InAppBillingServiceConnection _serviceConnection;
+		public IList<Product> _products; // contains three items
+
 		string[] PermissionsCamera =
 		{
 			Manifest.Permission.Camera
@@ -42,11 +50,115 @@ namespace Drop.Droid
 			Window.RequestFeature(WindowFeatures.NoTitle);
 			base.OnCreate(savedInstanceState);
 
+			StartSetup();
+
 			SetContentView(Resource.Layout.LiveCameraLayout);
 
 			surfaceView = FindViewById<SurfaceView>(Resource.Id.liveCamera);
 
 			CheckCameraPermission();
+		}
+
+		protected override void OnDestroy()
+		{
+			// Are we attached to the Google Play Service?
+			if (_serviceConnection != null && _serviceConnection.Connected)
+			{
+				// Yes, disconnect
+				// _serviceConnection.Disconnect();
+				_serviceConnection.Disconnect();
+			}
+
+			// Call base method
+			base.OnDestroy();
+		}
+
+		private async Task GetInventory()
+		{
+			// Ask the open connection's billing handler to return a list of avilable products for the 
+			// given list of items.
+			// NOTE: We are asking for the Reserved Test Product IDs that allow you to test In-App
+			// Billing without actually making a purchase.
+			_products = await _serviceConnection.BillingHandler.QueryInventoryAsync(new List<string> {
+				"dropdistantcache",
+				"noexpirydrop",
+				"opendistantcache",
+				ReservedTestProductIDs.Canceled
+			}, ItemType.Product);
+
+			// Were any products returned?
+			if (_products == null)
+			{
+				// No, abort
+				return;
+			}
+		}
+
+
+		public void StartSetup()
+		{
+			// A Licensing and In-App Billing public key is required before an app can communicate with
+			// Google Play, however you DON'T want to store the key in plain text with the application.
+			// The Unify command provides a simply way to obfuscate the key by breaking it into two or
+			// or more parts, specifying the order to reassemlbe those parts and optionally providing
+			// a set of key/value pairs to replace in the final string. 
+			string value = Security.Unify(Constants.IN_APP_BILLING_PUBLIC_KEY, new int[] { 0, 1, 2, 3 });
+
+			// Create a new connection to the Google Play Service
+			_serviceConnection = new InAppBillingServiceConnection(this, value);
+			_serviceConnection.OnConnected += () =>
+			{
+				// Attach to the various error handlers to report issues
+				_serviceConnection.BillingHandler.OnGetProductsError += (int responseCode, Bundle ownedItems) =>
+				{
+					Console.WriteLine("Error getting products");
+				};
+
+				_serviceConnection.BillingHandler.OnInvalidOwnedItemsBundleReturned += (Bundle ownedItems) =>
+				{
+					Console.WriteLine("Invalid owned items bundle returned");
+				};
+
+				_serviceConnection.BillingHandler.OnProductPurchasedError += (int responseCode, string sku) =>
+				{
+					Console.WriteLine("Error purchasing item {0}", sku);
+				};
+
+				_serviceConnection.BillingHandler.OnPurchaseConsumedError += (int responseCode, string token) =>
+				{
+					Console.WriteLine("Error consuming previous purchase");
+				};
+
+				_serviceConnection.BillingHandler.InAppBillingProcesingError += (message) =>
+				{
+					Console.WriteLine("In app billing processing error {0}", message);
+				};
+
+				_serviceConnection.BillingHandler.OnProductPurchased += (int response, Purchase purchase, string purchaseData, string purchaseSignature) =>
+				{
+
+					AlertDialog.Builder alert = new AlertDialog.Builder(this);
+					alert.SetTitle("Your Operation successed!");
+					alert.SetMessage("Purchased drop --- .");
+					alert.SetPositiveButton("Ok", (senderAlert, args) =>
+					{
+						Toast.MakeText(this, "OK!", ToastLength.Short).Show();
+					});
+
+					alert.SetNegativeButton("Cancel", (senderAlert, args) =>
+					{
+						Toast.MakeText(this, "Cancelled!", ToastLength.Short).Show();
+					});
+
+					Dialog dialog = alert.Create();
+					dialog.Show();
+				};
+
+				GetInventory();
+			};
+
+			// Attempt to connect to the service
+			_serviceConnection.Connect();
 		}
 
 		#region grant Camera access permission
@@ -58,7 +170,6 @@ namespace Drop.Droid
 			}
 			else {
 				RequestCameraPermission();
-
 			}
 		}
 		void RequestCameraPermission()
@@ -184,16 +295,6 @@ namespace Drop.Droid
 			return cameraId;
 		}
 
-		protected override void OnResume()
-		{
-			base.OnResume();
-		}
-
-		protected override void OnDestroy()
-		{
-			base.OnDestroy();
-		}
-
 		public void ShowLoadingView(string title)
 		{
 			RunOnUiThread(() =>
@@ -217,6 +318,24 @@ namespace Drop.Droid
 			alert.SetMessage(message);
 			alert.SetCancelable(false);
 			alert.SetPositiveButton("OK", delegate { if (isFinish) Finish(); });
+			RunOnUiThread(() =>
+			{
+				alert.Show();
+			});
+		}
+
+		public void ShowMessageBox(string title, string message, string cancelButton, string[] otherButtons, Action successHandler)
+		{
+			alert = new AlertDialog.Builder(this);
+			alert.SetTitle(title);
+			alert.SetMessage(message);
+			alert.SetPositiveButton("Cancel", (senderAlert, args) =>
+			{
+			});
+			alert.SetNegativeButton("OK", (senderAlert, args) =>
+			{
+				successHandler();
+			});
 			RunOnUiThread(() =>
 			{
 				alert.Show();
@@ -267,6 +386,28 @@ namespace Drop.Droid
 
 			Bitmap newBitmap = Bitmap.CreateScaledBitmap(realImage, width, height, filter);
 			return newBitmap;
+		}
+
+		public long SetMaxDate(int months)
+		{
+			DateTime _dt_now = DateTime.Now;
+			DateTime _start = new DateTime(1970, 1, 1);
+			TimeSpan ts = (_dt_now - _start);
+
+			//Add Days to SetMax Days;
+			int noOfDays = ts.Days + months * 30;
+			return (long)(TimeSpan.FromDays(noOfDays).TotalMilliseconds);
+		}
+
+		public long SetMinDate()
+		{
+			DateTime _dt_now = DateTime.Now;
+			DateTime _start = new DateTime(1970, 1, 1);
+			TimeSpan ts = (_dt_now - _start);
+
+			//Add Days to SetMax Days;
+			int noOfDays = ts.Days;
+			return (long)(TimeSpan.FromDays(noOfDays).TotalMilliseconds);
 		}
 	}
 }

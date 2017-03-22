@@ -18,11 +18,21 @@ using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Plugin.Media;
 
+using Xamarin.InAppBilling;
+using Xamarin.InAppBilling.Utilities;
+
 namespace Drop.Droid
 {
 	[Activity(Label = "DropItemActivity")]
-	public class DropItemActivity : BaseActivity, ActivityCompat.IOnRequestPermissionsResultCallback
+	public class DropItemActivity : BaseActivity, ActivityCompat.IOnRequestPermissionsResultCallback, ILocationListener
 	{
+		//public Product _selectedProduct;
+		//public InAppBillingServiceConnection _serviceConnection;
+		//public IList<Product> _products; // contains three items
+
+
+		LocationManager _locationManager;
+
 		LayoutInflater controlInflater = null;
 
 		const int Location_Request_Code = 0;
@@ -32,7 +42,7 @@ namespace Drop.Droid
 
 		LinearLayout btnActionItem;
 
-		EditText txtName, txtDescription, txtPassword;
+		EditText txtName, txtDescription, txtPassword, txtExpireDate;
 
 		ImageView btnDropTextSymbol, btnDropImageSymbol, btnDropVideoSymbol, btnDropLinkSymbol;
 		ImageView imgDropIcon;
@@ -41,12 +51,15 @@ namespace Drop.Droid
 
 		CheckBox checkVisibilityEveryone, checkVisibilityOnlyMe, checkVisibilitySpecificUser;
 		CheckBox checkModifyEveryone, checkModifyOnlyMe, checkModifySpecificUser;
+		CheckBox checkExpiryDate;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 
 			//SetContentView(Resource.Layout.DropItemActivity);
+
+			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
 
 			CrossMedia.Current.Initialize();
 
@@ -55,19 +68,34 @@ namespace Drop.Droid
 			SetUIVariablesAndActions();
 			SetInputBinding();
 		}
+		protected override void OnDestroy()
+		{
+			// Are we attached to the Google Play Service?
+			if (_serviceConnection != null)
+			{
+				// Yes, disconnect
+				// _serviceConnection.Disconnect();
+				_serviceConnection.Disconnect();
+			}
+
+			// Call base method
+			base.OnDestroy();
+		}
+
 
 		private void SetUIVariablesAndActions()
 		{
-			//controlInflater = LayoutInflater.From(BaseContext);
-			//var viewControl = controlInflater.Inflate(Resource.Layout.DropItemActivity, null);
-			//var layoutParamsControl = new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent);
-			//this.AddContentView(viewControl, layoutParamsControl);
+			controlInflater = LayoutInflater.From(BaseContext);
+			var viewControl = controlInflater.Inflate(Resource.Layout.DropItemActivity, null);
+			var layoutParamsControl = new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent);
+			this.AddContentView(viewControl, layoutParamsControl);
 
-			SetContentView(Resource.Layout.DropItemActivity);
+			//SetContentView(Resource.Layout.DropItemActivity);
 			#region UI Variables
 			txtName = FindViewById<EditText>(Resource.Id.txtName);
 			txtDescription = FindViewById<EditText>(Resource.Id.txtDescription);
 			txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
+			txtExpireDate = FindViewById<EditText>(Resource.Id.txtExpireDate);
 
 			btnDropTextSymbol = FindViewById<ImageView>(Resource.Id.btnDropTextSymbol);
 			btnDropImageSymbol = FindViewById<ImageView>(Resource.Id.btnDropImageSymbol);
@@ -86,6 +114,8 @@ namespace Drop.Droid
 			checkModifyEveryone = FindViewById<CheckBox>(Resource.Id.ActionModifyEveryone);
 			checkModifyOnlyMe = FindViewById<CheckBox>(Resource.Id.ActionModifyOnlyMe);
 			checkModifySpecificUser = FindViewById<CheckBox>(Resource.Id.ActionModifySpecificUser);
+
+			checkExpiryDate = FindViewById<CheckBox>(Resource.Id.checkExpiryDate);
 
 			btnActionItem = FindViewById<LinearLayout>(Resource.Id.ActionItem);
 
@@ -114,6 +144,8 @@ namespace Drop.Droid
 
 			FindViewById(Resource.Id.ActionCustomLocation).Click += ActionCustomLocation;
 
+			txtExpireDate.Click += (o, e) => ShowDialog(1);
+
 			checkVisibilityEveryone.Click += ActionVisibility;
 			checkVisibilityOnlyMe.Click += ActionVisibility;
 			checkVisibilitySpecificUser.Click += ActionVisibility;
@@ -123,6 +155,8 @@ namespace Drop.Droid
 			checkModifySpecificUser.Click += ActionModify;
 
 			FindViewById(Resource.Id.ActionPassword).Click += ActionPassword;
+			checkExpiryDate.Click += ActionNoExpiry;
+
 			FindViewById<LinearLayout>(Resource.Id.ActionDropItem).Click += ActionDropItem;
 			FindViewById(Resource.Id.ActionBack).Click += ActionBack;
 
@@ -144,6 +178,26 @@ namespace Drop.Droid
 				}
 			}
 		}
+
+		protected override Dialog OnCreateDialog(int id)
+		{
+			DatePickerDialog dialog = new DatePickerDialog(this, CallbackExpiry, DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+			dialog.DatePicker.MaxDate = SetMaxDate(12);
+			dialog.DatePicker.MinDate = SetMinDate();
+			return dialog;
+		}
+
+		void CallbackExpiry(object sender, DatePickerDialog.DateSetEventArgs e)
+		{
+			txtExpireDate.Text = e.Date.ToString("d MMMM yyyy");
+		}
+
+		//private void TimePickerCallback(object sender, TimePickerDialog.TimeSetEventArgs e)
+		//{
+		//	String AM_PM = e.HourOfDay < 12 ? "AM" : "PM";
+		//	m_txtFlightTime.Text = e.HourOfDay + ":" + e.Minute + " " + AM_PM;
+		//	Facade.Instance.CurrentRide.PickUpFlightTime = m_txtFlightTime.Text;
+		//}
 
 		List<View> GetAllChildren(View view)
 		{
@@ -174,6 +228,61 @@ namespace Drop.Droid
 			this.SetBinding(() => ItemModel.Description, () => txtDescription.Text, BindingMode.TwoWay);
 
 			this.SetBinding(() => ItemModel.Password, () => txtPassword.Text, BindingMode.TwoWay);
+
+			this.SetBinding(() => ItemModel.ExpiryDate, () => txtExpireDate.Text, BindingMode.TwoWay);
+			//this.SetBinding(() => txtExpireDate.Text, () => ItemModel.ExpiryDate, BindingMode.OneWay).ObserveSourceEvent("ValueChanged");
+
+			//if (ItemModel.parseItem != null)
+			//{
+			//	if (ItemModel.parseItem.IconURL != null)
+			//	{
+			//		imgDropIcon.SetImage(
+			//			url: new NSUrl(ItemModel.parseItem.IconURL.ToString()),
+			//			placeholder: UIImage.FromBundle("icon_vendor.jpg")
+			//		);
+			//		ItemModel.Icon = ByteDataFromImage(MaxResizeImage(UIImage.LoadFromData(NSData.FromUrl(new NSUrl(ItemModel.parseItem.IconURL.ToString())))));
+			//	}
+
+			//	btnVisibleEvery.Selected = false;
+			//	btnVisibleMe.Selected = false;
+			//	btnVisibleSpecific.Selected = false;
+
+			//	switch (ItemModel.Visibility)
+			//	{
+			//		case 0:
+			//			btnVisibleEvery.Selected = true;
+			//			break;
+			//		case 1:
+			//			btnVisibleMe.Selected = true;
+			//			break;
+			//		case 2:
+			//			btnVisibleSpecific.Selected = true;
+			//			break;
+			//	}
+
+			//	btnModifyEvery.Selected = false;
+			//	btnModifyMe.Selected = false;
+			//	btnModifySpecific.Selected = false;
+
+			//	switch (ItemModel.Modify)
+			//	{
+			//		case 0:
+			//			btnModifyEvery.Selected = true;
+			//			break;
+			//		case 1:
+			//			btnModifyMe.Selected = true;
+			//			break;
+			//		case 2:
+			//			btnModifySpecific.Selected = true;
+			//			break;
+			//	}
+
+			//	if (ItemModel.ExpiryDate == Constants.STR_NO_EXPIRY)
+			//	{
+			//		txtExpireDate.Enabled = false;
+			//		btnExpiryDate.Selected = true;
+			//	}
+			//}
 		}
 
 
@@ -207,29 +316,6 @@ namespace Drop.Droid
 					break;
 			}
 		}
-		async void ActionDropItem(object sender, EventArgs e)
-		{
-			if (!ItemModel.IsValidDrop())
-			{
-				ShowMessageBox(null, Constants.STR_DROP_INVALID);
-				return;
-			}
-
-			ShowLoadingView(Constants.STR_LOADING);
-
-			var result = await ParseService.AddDropItem(ItemModel.parseItem);
-
-			HideLoadingView();
-
-			if (result == Constants.STR_STATUS_SUCCESS)
-			{
-				ShowMessageBox(null, Constants.STR_DROP_SUCCESS_MSG);
-			}
-			else
-			{
-				ShowMessageBox(null, result);
-			}
-		}
 
 		void ActionItem(object sender, EventArgs e)
 		{
@@ -250,7 +336,7 @@ namespace Drop.Droid
 			switch (e.Item.ItemId)
 			{
 				case Constants.INDEX_ANDROID_TEXT:
-					MyInputDialog dropTextDialog = MyInputDialog.newInstance(Constants.STR_ATTACH_TEXT_TITLE, SetDropText);
+					InputPopUp dropTextDialog = InputPopUp.newInstance(Constants.STR_ATTACH_TEXT_TITLE, SetDropText);
 					dropTextDialog.Show(FragmentManager, "Diag");
 					break;
 				case Constants.INDEX_ANDROID_IMAGE_FROM_LIBRARY:
@@ -266,7 +352,7 @@ namespace Drop.Droid
 					SelectAttachFile("camera", "video");
 					break;
 				case Constants.INDEX_ANDROID_OTHER:
-					MyInputDialog dropLinkDialog = MyInputDialog.newInstance(Constants.STR_ATTACH_OTHER_TITLE, SetOtherLink);
+					InputPopUp dropLinkDialog = InputPopUp.newInstance(Constants.STR_ATTACH_OTHER_TITLE, SetOtherLink);
 					dropLinkDialog.Show(FragmentManager, "Diag");
 					break;
 			}
@@ -342,7 +428,7 @@ namespace Drop.Droid
 				}
 
 				var fileName = "Video_" + DateTime.Now.ToString("dd-mm-yy_hh-mm-ss") + ".mp4";
-				
+
 				ItemModel.Video = new MediaFile(fileName, fileBytes1);
 
 				btnDropVideoSymbol.SetImageResource(Resource.Drawable.icon_video_sel);
@@ -367,10 +453,17 @@ namespace Drop.Droid
 			base.OnActivityResult(requestCode, resultCode, data);
 			if (resultCode == Result.Ok)
 			{
-				ItemModel.Location_Lat = data.GetDoubleExtra("Latitude", Constants.LOCATION_AUSTRALIA[0]);
-				ItemModel.Location_Lnt = data.GetDoubleExtra("Longitude", Constants.LOCATION_AUSTRALIA[1]);
-				lblLocationLat.Text = "Lat: " + ItemModel.Location_Lat.ToString("F2");
-				lblLocationLog.Text = "Log: " + ItemModel.Location_Lnt.ToString("F2");
+				if (requestCode == HomeFragment_Id)
+				{
+					ItemModel.Location_Lat = data.GetDoubleExtra("Latitude", Constants.LOCATION_AUSTRALIA[0]);
+					ItemModel.Location_Lnt = data.GetDoubleExtra("Longitude", Constants.LOCATION_AUSTRALIA[1]);
+					lblLocationLat.Text = "Lat: " + ItemModel.Location_Lat.ToString("F6");
+					lblLocationLog.Text = "Log: " + ItemModel.Location_Lnt.ToString("F6");
+				}
+				else
+				{
+					_serviceConnection.BillingHandler.HandleActivityResult(requestCode, resultCode, data);
+				}
 			}
 		}
 
@@ -403,6 +496,78 @@ namespace Drop.Droid
 				txtPassword.Text = string.Empty;
 		}
 
+		void ActionNoExpiry(object sender, EventArgs e)
+		{
+			if (!checkExpiryDate.Checked)
+			{
+				txtExpireDate.Enabled = true;
+				txtExpireDate.Text = "";
+				//checkExpiryDate.Checked = false;
+			}
+			else
+			{
+				PurchasePopUp myDiag = PurchasePopUp.newInstance(Constants.PURCHASE_TYPE.EXPIRY, ExpiryPurchase);
+				myDiag.Show(FragmentManager, "Diag");
+			}
+		}
+
+		void SetNoExpiry()
+		{
+			ItemModel.ExpiryDate = Constants.STR_NO_EXPIRY;
+			txtExpireDate.Text = Constants.STR_NO_EXPIRY;
+			txtExpireDate.Enabled = false;
+			checkExpiryDate.Checked = true;
+		}
+
+		void ActionDropItem(object sender, EventArgs e)
+		{
+			if (!ItemModel.IsValidDrop())
+			{
+				ShowMessageBox(null, Constants.STR_DROP_INVALID);
+				return;
+			}
+
+			Location cLocation = GetGPSLocation();
+
+			Location dLocation = new Location("");
+			dLocation.Latitude = ItemModel.Location_Lat;
+			dLocation.Longitude = ItemModel.Location_Lnt;
+
+			var distance = dLocation.DistanceTo(cLocation);
+
+			if (distance > Constants.PURCHASE_DISTANCE)
+			{
+				PurchasePopUp myDiag = PurchasePopUp.newInstance(Constants.PURCHASE_TYPE.DROP, DropPurchase);
+				myDiag.Show(FragmentManager, "Diag");
+				return;
+			}
+
+			CreateDrop(ItemModel.parseItem);
+		}
+
+		async void CreateDrop(ParseItem dropData)
+		{
+			ShowLoadingView(Constants.STR_LOADING);
+
+			string result = "";
+			if (dropData._pObject == null)
+				result = await ParseService.AddDropItem(dropData);
+			else
+				result = await ParseService.UpdateDrop(dropData);
+
+			HideLoadingView();
+
+			if (result == Constants.STR_STATUS_SUCCESS)
+			{
+				//SuccessPopUp cpuv = SuccessPopUp.Create();
+				//cpuv.PopUp(true, ShareDropLocation, Back);
+			}
+			else
+			{
+				ShowMessageBox(null, result);
+			}
+		}
+
 		void ActionShare(object sender, EventArgs e)
 		{
 			Bitmap bitmap = BitmapFactory.DecodeByteArray(ItemModel.Icon.fileData, 0, ItemModel.Icon.fileData.Length);
@@ -424,7 +589,7 @@ namespace Drop.Droid
 			var dropContent = string.Format("Drop Name:\n" + ItemModel.Name + "\n\n" +
 											"Drop Description:\n" + ItemModel.Description + "\n\n" +
 											"Drop Location:\n http://maps.google.com/?ll={0},{1}", ItemModel.Location_Lat, ItemModel.Location_Lnt);
-			
+
 			sharingIntent.PutExtra(Intent.ExtraText, dropContent);
 			sharingIntent.PutExtra(Intent.ExtraStream, imageUri);
 			sharingIntent.AddFlags(ActivityFlags.GrantReadUriPermission);
@@ -452,7 +617,8 @@ namespace Drop.Droid
 				ValueAnimator mAnimator = slideAnimator(0, content.MeasuredHeight, content);
 				mAnimator.Start();
 			}
-			else {
+			else
+			{
 				int finalHeight = content.Height;
 
 				ValueAnimator mAnimator = slideAnimator(finalHeight, 0, content);
@@ -475,6 +641,91 @@ namespace Drop.Droid
 				content.LayoutParameters = layoutParams;
 			};
 			return animator;
+		}
+
+		#region location 
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+		{
+			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+			switch (requestCode)
+			{
+				case Location_Request_Code:
+					{
+						if (grantResults.Length > 0 && grantResults[0] == (int)Permission.Granted)
+						{
+							//SetMyLocationOnMap(true);
+						}
+						else
+						{
+							//SetMyLocationOnMap(false);
+						}
+						return;
+					}
+			}
+		}
+
+		public void OnLocationChanged(Location location)
+		{
+		}
+
+		public void OnProviderDisabled(string provider)
+		{
+			using (var alert = new AlertDialog.Builder(this))
+			{
+				alert.SetTitle("Please enable GPS");
+				alert.SetMessage("Enable GPS in order to get your current location.");
+
+				alert.SetPositiveButton("Enable", (senderAlert, args) =>
+				{
+					Intent intent = new Intent(global::Android.Provider.Settings.ActionLocationSourceSettings);
+					StartActivity(intent);
+				});
+
+				alert.SetNegativeButton("Continue", (senderAlert, args) =>
+				{
+					alert.Dispose();
+				});
+
+				Dialog dialog = alert.Create();
+				dialog.Show();
+			}
+		}
+
+		public void OnProviderEnabled(string provider)
+		{
+		}
+
+		public void OnStatusChanged(string provider, Availability status, Bundle extras)
+		{
+		}
+
+		private Location GetGPSLocation()
+		{
+			_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
+			Location currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
+			_locationManager.RemoveUpdates(this);
+
+			if (currentLocation == null)
+			{
+				currentLocation.Latitude = Constants.LOCATION_AUSTRALIA[0];
+				currentLocation.Longitude = Constants.LOCATION_AUSTRALIA[1];
+			}
+			return currentLocation;
+		}
+		#endregion
+
+		void DropPurchase()
+		{
+			_selectedProduct = _products[(int)Constants.PURCHASE_TYPE.DROP];
+			if (_selectedProduct != null)
+				_serviceConnection.BillingHandler.BuyProduct(_selectedProduct);
+		}
+
+		void ExpiryPurchase()
+		{
+			_selectedProduct = _products[(int)Constants.PURCHASE_TYPE.EXPIRY];
+			if (_selectedProduct != null)
+				_serviceConnection.BillingHandler.BuyProduct(_selectedProduct);
 		}
 	}
 }
