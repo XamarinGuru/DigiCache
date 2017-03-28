@@ -1,14 +1,11 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using Android;
 using Android.Animation;
 using Android.App;
 using Android.Content;
-using Android.Content.PM;
 using Android.Locations;
 using Android.OS;
-using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using Parse;
@@ -17,23 +14,14 @@ using UniversalImageLoader.Core;
 namespace Drop.Droid
 {
 	[Activity(Label = "HomeActivity")]
-	public class HomeActivity : BaseActivity, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback
+	public class HomeActivity : BaseActivity
 	{
-		readonly string[] PermissionsLocation =
-		{
-		  Manifest.Permission.AccessCoarseLocation,
-		  Manifest.Permission.AccessFineLocation
-		};
-		const int RequestLocationId = 0;
-
-		LocationManager _locationManager;
-
 		ImageView aniBgView;
 		LinearLayout aniContentView;
 
 		int nInitialAniviewHeight;
 
-		private IList<ParseItem> mDrops;
+		IList<ParseItem> mDrops;
 
 		RelativeLayout virtualDropContent;
 
@@ -43,34 +31,13 @@ namespace Drop.Droid
 
 			SetContentView(Resource.Layout.HomeActivity);
 
-			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
+			LocationResultPermissionCallback = GetDrops;
+			LocationChangedCallback = OnLocationChangedCallback;
 
 			var config = ImageLoaderConfiguration.CreateDefault(ApplicationContext);
 			ImageLoader.Instance.Init(config);
 
 			InitUISettings();
-		}
-
-		protected override void OnResume()
-		{
-			base.OnResume();
-
-			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
-			_textureView.SurfaceTextureListener = this;
-		}
-
-		protected override void OnStart()
-		{
-			base.OnStart();
-
-			CheckLocationPermission();
-		}
-
-		protected override void OnStop()
-		{
-			base.OnStop();
-
-			_locationManager.RemoveUpdates(this);
 		}
 
 		private void InitUISettings()
@@ -183,57 +150,12 @@ namespace Drop.Droid
 			return animator;
 		}
 
-
-
-		#region grant location service
-		private void CheckLocationPermission()
-		{
-			if ((int)Build.VERSION.SdkInt < 23)
-			{
-				GetDrops();
-			}
-			else
-			{
-				RequestLocationPermission();
-			}
-		}
-		void RequestLocationPermission()
-		{
-			const string permission = Manifest.Permission.AccessFineLocation;
-			if (CheckSelfPermission(permission) == (int)Permission.Granted)
-			{
-				GetDrops();
-				return;
-			}
-
-			if (ShouldShowRequestPermissionRationale(permission))
-			{
-				ShowMessageBox(null, "Location access is required to gaugo your sports.", "Cancel", new[] { "OK" }, SendingPermissionRequest);
-				return;
-			}
-			SendingPermissionRequest();
-		}
-
-		void SendingPermissionRequest()
-		{
-			ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId);
-		}
-
-		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-		{
-			if (requestCode == RequestLocationId && grantResults[0] == Permission.Granted)
-			{
-				GetDrops();
-			}
-		}
-
-
-		#endregion
-
-		public void OnLocationChanged(Location location)
+		void OnLocationChangedCallback(Location location)
 		{
 			if (virtualDropContent.ChildCount > 0)
 				virtualDropContent.RemoveAllViews();
+
+			if (location == null) return;
 			
 			for (int i = 0; i < mDrops.Count; i++)
 			{
@@ -326,38 +248,5 @@ namespace Drop.Droid
 			return radian * 180 / Math.PI;
 		}
 		#endregion
-
-		public void OnProviderDisabled(string provider)
-		{
-			using (var alert = new AlertDialog.Builder(this))
-			{
-				alert.SetTitle("Please enable GPS");
-				alert.SetMessage("Enable GPS in order to get your current location.");
-
-				alert.SetPositiveButton("Enable", (senderAlert, args) =>
-				{
-					Intent intent = new Intent(global::Android.Provider.Settings.ActionLocationSourceSettings);
-					StartActivity(intent);
-				});
-
-				alert.SetNegativeButton("Continue", (senderAlert, args) =>
-				{
-					alert.Dispose();
-				});
-
-				Dialog dialog = alert.Create();
-				dialog.Show();
-			}
-		}
-
-		public void OnProviderEnabled(string provider)
-		{
-		}
-
-		public void OnStatusChanged(string provider, Availability status, Bundle extras)
-		{
-		}
-
-
 	}
 }

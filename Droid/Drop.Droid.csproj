@@ -163,6 +163,7 @@
     <Compile Include="Dialogue\PurchasePopUp.cs" />
     <Compile Include="Services\InAppBillingService.cs" />
     <Compile Include="Activities\FavoriteActivity.cs" />
+    <Compile Include="Adapter\FavoriteAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -270,6 +271,10 @@
     <AndroidResource Include="Resources\layout\item_PurchasePopUp.axml" />
     <AndroidResource Include="Resources\drawable\bg_btn_purchase.png" />
     <AndroidResource Include="Resources\layout\VirtualDrop.axml" />
+    <AndroidResource Include="Resources\layout\FavoriteLayout.axml" />
+    <AndroidResource Include="Resources\layout\ItemFavorite.axml" />
+    <AndroidResource Include="Resources\drawable\icon_close.png" />
+    <AndroidResource Include="Resources\drawable\icon_map.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">
@@ -307,6 +312,7 @@
     <Folder Include="Resources\Anim\" />
     <Folder Include="Dialogue\" />
     <Folder Include="Services\" />
+    <Folder Include="Adapter\" />
   </ItemGroup>
   <Import Project="..\Drop\Drop.projitems" Label="Shared" Condition="Exists('..\Drop\Drop.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -2,41 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using Android.Animation;
 using Android.App;
 using Android.Content;
-using Android.Content.PM;
 using Android.Graphics;
 using Android.Locations;
 using Android.OS;
-using Android.Runtime;
-using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Plugin.Media;
 
-using Xamarin.InAppBilling;
-using Xamarin.InAppBilling.Utilities;
-
 namespace Drop.Droid
 {
 	[Activity(Label = "DropItemActivity")]
-	public class DropItemActivity : BaseActivity, ActivityCompat.IOnRequestPermissionsResultCallback, ILocationListener
+	public class DropItemActivity : BaseActivity
 	{
-		//public Product _selectedProduct;
-		//public InAppBillingServiceConnection _serviceConnection;
-		//public IList<Product> _products; // contains three items
-
-
-		LocationManager _locationManager;
-
-		const int Location_Request_Code = 0;
 		const int HomeFragment_Id = 0;
 
-		private ItemModel ItemModel { get; set; }
+		ItemModel ItemModel { get; set; }
 
 		LinearLayout btnActionItem;
 
@@ -57,22 +41,12 @@ namespace Drop.Droid
 
 			SetContentView(Resource.Layout.DropItemActivity);
 
-			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
-
 			CrossMedia.Current.Initialize();
 
 			ItemModel = new ItemModel();
 
 			SetUIVariablesAndActions();
 			SetInputBinding();
-		}
-
-		protected override void OnResume()
-		{
-			base.OnResume();
-
-			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
-			_textureView.SurfaceTextureListener = this;
 		}
 
 		protected override void OnDestroy()
@@ -644,76 +618,7 @@ namespace Drop.Droid
 			return animator;
 		}
 
-		#region location 
-		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-		{
-			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-			switch (requestCode)
-			{
-				case Location_Request_Code:
-					{
-						if (grantResults.Length > 0 && grantResults[0] == (int)Permission.Granted)
-						{
-							//SetMyLocationOnMap(true);
-						}
-						else
-						{
-							//SetMyLocationOnMap(false);
-						}
-						return;
-					}
-			}
-		}
 
-		public void OnLocationChanged(Location location)
-		{
-		}
-
-		public void OnProviderDisabled(string provider)
-		{
-			using (var alert = new AlertDialog.Builder(this))
-			{
-				alert.SetTitle("Please enable GPS");
-				alert.SetMessage("Enable GPS in order to get your current location.");
-
-				alert.SetPositiveButton("Enable", (senderAlert, args) =>
-				{
-					Intent intent = new Intent(global::Android.Provider.Settings.ActionLocationSourceSettings);
-					StartActivity(intent);
-				});
-
-				alert.SetNegativeButton("Continue", (senderAlert, args) =>
-				{
-					alert.Dispose();
-				});
-
-				Dialog dialog = alert.Create();
-				dialog.Show();
-			}
-		}
-
-		public void OnProviderEnabled(string provider)
-		{
-		}
-
-		public void OnStatusChanged(string provider, Availability status, Bundle extras)
-		{
-		}
-
-		private Location GetGPSLocation()
-		{
-			_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
-			Location currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
-			_locationManager.RemoveUpdates(this);
-
-			if (currentLocation == null)
-			{
-				currentLocation.Latitude = Constants.LOCATION_AUSTRALIA[0];
-				currentLocation.Longitude = Constants.LOCATION_AUSTRALIA[1];
-			}
-			return currentLocation;
-		}
-		#endregion
 
 		void DropPurchase()
 		{

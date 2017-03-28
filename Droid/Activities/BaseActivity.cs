@@ -18,24 +18,38 @@ using Xamarin.InAppBilling;
 using Xamarin.InAppBilling.Utilities;
 
 using Camera = Android.Hardware.Camera;
+using Android.Locations;
+using Android.Content;
 
 namespace Drop.Droid
 {
 	[Activity(Label = "BaseActivity")]
-	public class BaseActivity : FragmentActivity, TextureView.ISurfaceTextureListener
+	public class BaseActivity : FragmentActivity, TextureView.ISurfaceTextureListener, ILocationListener
 	{
+		readonly string[] PermissionsCamera =
+		{
+			Manifest.Permission.Camera
+		};
+		readonly string[] PermissionsLocation =
+		{
+		  Manifest.Permission.AccessCoarseLocation,
+		  Manifest.Permission.AccessFineLocation
+		};
+
+		const int RequestCameraId = 0;
+		const int RequestLocationId = 1;
+
+		public LocationManager _locationManager;
+
+		public Action LocationResultPermissionCallback = null;
+		public Action<Location> LocationChangedCallback = null;
+
 		public Camera _camera;
 		public TextureView _textureView;
 
 		public Product _selectedProduct;
 		public InAppBillingServiceConnection _serviceConnection;
 		public IList<Product> _products; // contains three items
-
-		string[] PermissionsCamera =
-		{
-			Manifest.Permission.Camera
-		};
-		const int RequestCameraId = 0;
 
 		AlertDialog.Builder alert;
 
@@ -44,7 +58,14 @@ namespace Drop.Droid
 			Window.RequestFeature(WindowFeatures.NoTitle);
 			base.OnCreate(savedInstanceState);
 
+			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
+
 			StartSetup();
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
 
 			CheckCameraPermission();
 		}
@@ -64,56 +85,9 @@ namespace Drop.Droid
 			}
 		}
 
-		public void OnSurfaceTextureAvailable(SurfaceTexture surface, int w, int h)
-		{
-			_camera = Camera.Open();
 
-			_textureView.LayoutParameters = new RelativeLayout.LayoutParams(w, h);
 
-			try
-			{
-				_camera.SetPreviewTexture(surface);
-				_camera.StartPreview();
-
-			}
-			catch (Java.IO.IOException ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-		}
-
-		public void OnSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height)
-		{
-		}
-
-		public void OnSurfaceTextureUpdated(SurfaceTexture surface)
-		{
-			if (_camera != null)
-			{
-				try
-				{
-					var display = this.WindowManager.DefaultDisplay;
-					if (display.Rotation == SurfaceOrientation.Rotation0)
-						_camera.SetDisplayOrientation(90);
-					else
-						_camera.SetDisplayOrientation(180);
-					_camera.StartPreview();
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine(ex.Message);
-				}
-			}
-		}
-
-		public bool OnSurfaceTextureDestroyed(SurfaceTexture surface)
-		{
-			//_camera.StopPreview();
-			//_camera.Release();
-
-			return true;
-		}
-
+		#region in-app billing
 		private async Task GetInventory()
 		{
 			// Ask the open connection's billing handler to return a list of avilable products for the 
@@ -134,7 +108,6 @@ namespace Drop.Droid
 				return;
 			}
 		}
-
 
 		public void StartSetup()
 		{
@@ -201,16 +174,21 @@ namespace Drop.Droid
 			// Attempt to connect to the service
 			_serviceConnection.Connect();
 		}
+		#endregion
 
-		#region grant Camera access permission
-		private void CheckCameraPermission()
+		#region grant Camera & Location access permission
+		public void CheckCameraPermission()
 		{
 			if ((int)Build.VERSION.SdkInt < 23)
 			{
 				StartLiveCamera();
+
+				if (LocationResultPermissionCallback != null)
+					LocationResultPermissionCallback();
 			}
 			else {
 				RequestCameraPermission();
+				RequestLocationPermission();
 			}
 		}
 		void RequestCameraPermission()
@@ -224,31 +202,56 @@ namespace Drop.Droid
 
 			if (ShouldShowRequestPermissionRationale(cPermission))
 			{
-				AlertDialog.Builder alert = new AlertDialog.Builder(this);
-				alert.SetTitle("");
-				alert.SetMessage("Camera access is required to show live camera.");
-				alert.SetPositiveButton("Cancel", (senderAlert, args) =>
-				{
-				});
-				alert.SetNegativeButton("OK", (senderAlert, args) =>
-				{
-					ActivityCompat.RequestPermissions(this, PermissionsCamera, RequestCameraId);
-				});
-				RunOnUiThread(() =>
-				{
-					alert.Show();
-				});
-
+				ShowMessageBox(null, "Camera access is required to show live camera.", "Cancel", new[] { "OK" }, SendingCameraPermissionRequest);
 				return;
 			}
 
+			SendingCameraPermissionRequest();
+		}
+		void RequestLocationPermission()
+		{
+			const string permission = Manifest.Permission.AccessFineLocation;
+			if (CheckSelfPermission(permission) == (int)Permission.Granted)
+			{
+				if (LocationResultPermissionCallback != null)
+					LocationResultPermissionCallback();
+				
+				return;
+			}
+			
+			if (ShouldShowRequestPermissionRationale(permission))
+			{
+				ShowMessageBox(null, "Location access is required to determine your location for drops.", "Cancel", new[] { "OK" }, SendingPermissionRequest);
+				return;
+			}
+			SendingPermissionRequest();
+		}
+		void SendingCameraPermissionRequest()
+		{
 			ActivityCompat.RequestPermissions(this, PermissionsCamera, RequestCameraId);
+		}
+		void SendingPermissionRequest()
+		{
+			ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId);
 		}
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
 		{
+			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 			switch (requestCode)
 			{
+				case RequestLocationId:
+					{
+						if (grantResults.Length > 0 && grantResults[0] == (int)Permission.Granted)
+						{
+							if (LocationResultPermissionCallback != null)
+								LocationResultPermissionCallback();
+						}
+						else
+						{
+						}
+					}
+					break;
 				case RequestCameraId:
 					{
 						if (grantResults[0] == Permission.Granted)
@@ -263,11 +266,125 @@ namespace Drop.Droid
 			}
 		}
 
-		void StartLiveCamera()
+
+		#endregion
+
+		#region location 
+		public void OnProviderDisabled(string provider)
 		{
-			//_textureView.SurfaceTextureListener = this;
+			using (var alert = new AlertDialog.Builder(this))
+			{
+				alert.SetTitle("Please enable GPS");
+				alert.SetMessage("Enable GPS in order to get your current location.");
+
+				alert.SetPositiveButton("Enable", (senderAlert, args) =>
+				{
+					Intent intent = new Intent(global::Android.Provider.Settings.ActionLocationSourceSettings);
+					StartActivity(intent);
+				});
+
+				alert.SetNegativeButton("Continue", (senderAlert, args) =>
+				{
+					alert.Dispose();
+				});
+
+				Dialog dialog = alert.Create();
+				dialog.Show();
+			}
+		}
+
+		public void OnLocationChanged(Location location)
+		{
+			if (LocationChangedCallback != null)
+				LocationChangedCallback(location);
+		}
+		public void OnProviderEnabled(string provider){}
+		public void OnStatusChanged(string provider, Availability status, Bundle extras){}
+		#endregion
+		#region camera
+		public void OnSurfaceTextureAvailable(SurfaceTexture surface, int w, int h)
+		{
+			_camera = Camera.Open();
+
+			_textureView.LayoutParameters = new RelativeLayout.LayoutParams(w, h);
+
+			try
+			{
+				_camera.SetPreviewTexture(surface);
+				_camera.StartPreview();
+
+			}
+			catch (Java.IO.IOException ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+		}
+
+		public void OnSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height)
+		{
+		}
+
+		public void OnSurfaceTextureUpdated(SurfaceTexture surface)
+		{
+			if (_camera != null)
+			{
+				try
+				{
+					var display = this.WindowManager.DefaultDisplay;
+					if (display.Rotation == SurfaceOrientation.Rotation0)
+						_camera.SetDisplayOrientation(90);
+					else
+						_camera.SetDisplayOrientation(180);
+					_camera.StartPreview();
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+			}
+		}
+
+		public bool OnSurfaceTextureDestroyed(SurfaceTexture surface)
+		{
+			return true;
 		}
 		#endregion
+
+
+
+		void StartLiveCamera()
+		{
+			if (this.Class.Name == "SplashActivity") return;
+
+			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
+			_textureView.SurfaceTextureListener = this;
+		}
+
+		public Location GetGPSLocation()
+		{
+			Location currentLocation = null;
+			if (_locationManager.IsProviderEnabled(LocationManager.GpsProvider))
+			{
+				_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
+				currentLocation = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider);
+				_locationManager.RemoveUpdates(this);
+			}
+			else if (_locationManager.IsProviderEnabled(LocationManager.NetworkProvider))
+			{
+				_locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 2000, 1, this);
+				currentLocation = _locationManager.GetLastKnownLocation(LocationManager.NetworkProvider);
+				_locationManager.RemoveUpdates(this);
+			}
+
+			if (currentLocation == null)
+			{
+				currentLocation = new Location("");
+				currentLocation.Latitude = Constants.LOCATION_AUSTRALIA[0];
+				currentLocation.Longitude = Constants.LOCATION_AUSTRALIA[1];
+			}
+			return currentLocation;
+		}
+
 
 
 

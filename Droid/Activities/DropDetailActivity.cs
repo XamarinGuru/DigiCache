@@ -1,16 +1,11 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Parse;
 
@@ -30,14 +25,6 @@ namespace Drop.Droid
 			SetContentView(Resource.Layout.DropDetailLayout);
 
 			InitUISettings();
-		}
-
-		protected override void OnResume()
-		{
-			base.OnResume();
-
-			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
-			_textureView.SurfaceTextureListener = this;
 		}
 
 		void InitUISettings()

@@ -8,7 +8,7 @@ namespace Drop.iOS
 {
 	public partial class FavoriteViewController : BaseViewController
     {
-		private List<ParseItem> mfDrops = new List<ParseItem>();
+		List<ParseItem> mfDrops = new List<ParseItem>();
 
 		public FavoriteViewController(IntPtr handle) : base(handle, Constants.STR_iOS_VCNAME_FAVORITE)
 		{
@@ -54,7 +54,7 @@ namespace Drop.iOS
 			});
 		}
 
-		private async void RemoveCallBack(ParseItem drop)
+		async void RemoveCallBack(ParseItem drop)
 		{
 			ItemModel ItemModel = new ItemModel();
 			ItemModel.parseItem = drop;
@@ -74,7 +74,7 @@ namespace Drop.iOS
 			GetFavoriteDrops();
 		}
 
-		private void MapCallBack(ParseItem drop)
+		void MapCallBack(ParseItem drop)
 		{
 			UIViewController pvc = GetVCWithIdentifier(Constants.STR_iOS_VCNAME_NEARBY);
 			NavigationController.PushViewController(pvc, true);
@@ -84,8 +84,8 @@ namespace Drop.iOS
 
 		class FavoritesTableViewSource : UITableViewSource
 		{
-			private List<ParseItem> favorites;
-			private FavoriteViewController favoriteVC;
+			List<ParseItem> favorites;
+			FavoriteViewController favoriteVC;
 
 			public FavoritesTableViewSource(List<ParseItem> favorites, FavoriteViewController favoriteVC)
 			{

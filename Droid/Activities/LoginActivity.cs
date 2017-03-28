@@ -4,7 +4,6 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Org.Json;
 using Xamarin.Facebook;
@@ -28,14 +27,6 @@ namespace Drop.Droid
 
 			InitUISettings();
 			InitFBSettings();
-		}
-
-		protected override void OnResume()
-		{
-			base.OnResume();
-
-			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
-			_textureView.SurfaceTextureListener = this;
 		}
 
 		void InitUISettings()
@@ -108,7 +99,6 @@ namespace Drop.Droid
 		{
 			var mainActivity = new Intent(this, typeof(HomeActivity));
 			StartActivity(mainActivity);
-			Finish();
 		}
 
 
