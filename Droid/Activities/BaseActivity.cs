@@ -1,34 +1,32 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Android;
 using Android.App;
-using Android.Content;
-using Android.Content.PM;
-using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.OS;
-using Android.Runtime;
-using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
+using Android.Content.PM;
+using Android.Graphics;
+using Android.Support.V4.App;
 
 using AndroidHUD;
 
 using Xamarin.InAppBilling;
 using Xamarin.InAppBilling.Utilities;
 
+using Camera = Android.Hardware.Camera;
+
 namespace Drop.Droid
 {
 	[Activity(Label = "BaseActivity")]
-	public class BaseActivity : FragmentActivity, ISurfaceHolderCallback
+	public class BaseActivity : FragmentActivity, TextureView.ISurfaceTextureListener
 	{
+		public Camera _camera;
+		public TextureView _textureView;
+
 		public Product _selectedProduct;
 		public InAppBillingServiceConnection _serviceConnection;
 		public IList<Product> _products; // contains three items
@@ -39,10 +37,6 @@ namespace Drop.Droid
 		};
 		const int RequestCameraId = 0;
 
-		Android.Hardware.Camera camera;
-		SurfaceView surfaceView;
-		ISurfaceHolder surfaceHolder;
-
 		AlertDialog.Builder alert;
 
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -52,25 +46,72 @@ namespace Drop.Droid
 
 			StartSetup();
 
-			SetContentView(Resource.Layout.LiveCameraLayout);
-
-			surfaceView = FindViewById<SurfaceView>(Resource.Id.liveCamera);
-
 			CheckCameraPermission();
 		}
 
-		protected override void OnDestroy()
+		protected override void OnPause()
 		{
-			// Are we attached to the Google Play Service?
-			if (_serviceConnection != null && _serviceConnection.Connected)
-			{
-				// Yes, disconnect
-				// _serviceConnection.Disconnect();
-				_serviceConnection.Disconnect();
-			}
+			base.OnPause();
 
-			// Call base method
-			base.OnDestroy();
+			try
+			{
+				_camera.StopPreview();
+				_camera.Release();
+			}
+			catch(Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+		}
+
+		public void OnSurfaceTextureAvailable(SurfaceTexture surface, int w, int h)
+		{
+			_camera = Camera.Open();
+
+			_textureView.LayoutParameters = new RelativeLayout.LayoutParams(w, h);
+
+			try
+			{
+				_camera.SetPreviewTexture(surface);
+				_camera.StartPreview();
+
+			}
+			catch (Java.IO.IOException ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+		}
+
+		public void OnSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height)
+		{
+		}
+
+		public void OnSurfaceTextureUpdated(SurfaceTexture surface)
+		{
+			if (_camera != null)
+			{
+				try
+				{
+					var display = this.WindowManager.DefaultDisplay;
+					if (display.Rotation == SurfaceOrientation.Rotation0)
+						_camera.SetDisplayOrientation(90);
+					else
+						_camera.SetDisplayOrientation(180);
+					_camera.StartPreview();
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+			}
+		}
+
+		public bool OnSurfaceTextureDestroyed(SurfaceTexture surface)
+		{
+			//_camera.StopPreview();
+			//_camera.Release();
+
+			return true;
 		}
 
 		private async Task GetInventory()
@@ -224,76 +265,12 @@ namespace Drop.Droid
 
 		void StartLiveCamera()
 		{
-			Window.SetFormat(Android.Graphics.Format.Unknown);
-			//surfaceView = FindViewById<SurfaceView>(Resource.Id.liveCamera);
-			surfaceHolder = surfaceView.Holder;
-			surfaceHolder.AddCallback(this);
-			surfaceHolder.SetType(SurfaceType.PushBuffers);
+			//_textureView.SurfaceTextureListener = this;
 		}
 		#endregion
 
-		#region ISurfaceHolderCallback
 
-		public async void SurfaceCreated(ISurfaceHolder holder)
-		{
-			try
-			{
-				var cameraId = FindBackCamera();
-				camera = Android.Hardware.Camera.Open(cameraId);
-				AddContentView(new View(this), new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent));
-			}
-			catch (Exception ex)
-			{
 
-			}
-		}
-		public void SurfaceChanged(ISurfaceHolder holder, [GeneratedEnum] Android.Graphics.Format format, int width, int height)
-		{
-			if (camera != null)
-			{
-				try
-				{
-					camera.SetPreviewDisplay(surfaceHolder);
-
-					var display = this.WindowManager.DefaultDisplay;
-					if (display.Rotation == SurfaceOrientation.Rotation0)
-						camera.SetDisplayOrientation(90);
-					else
-						camera.SetDisplayOrientation(180);
-					camera.StartPreview();
-				}
-				catch (Exception ex)
-				{
-					Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
-				}
-			}
-		}
-		public void SurfaceDestroyed(ISurfaceHolder holder)
-		{
-			if (camera != null)
-			{
-				camera.Release();
-			}
-
-			camera = null;
-		}
-		#endregion
-
-		int FindBackCamera()
-		{
-			int cameraId = -1;
-			for (int i = 0; i < Android.Hardware.Camera.NumberOfCameras; i++)
-			{
-				Android.Hardware.Camera.CameraInfo info = new Android.Hardware.Camera.CameraInfo();
-				Android.Hardware.Camera.GetCameraInfo(i, info);
-				if (info.Facing == Android.Hardware.Camera.CameraInfo.CameraFacingBack)
-				{
-					cameraId = i;
-					break;
-				}
-			}
-			return cameraId;
-		}
 
 		public void ShowLoadingView(string title)
 		{

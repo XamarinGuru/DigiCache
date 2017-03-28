@@ -2415,122 +2415,131 @@ namespace Drop.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0c0079
-			public const int ActionBack = 2131492985;
+			// aapt resource value: 0x7f0c007b
+			public const int ActionBack = 2131492987;
 			
-			// aapt resource value: 0x7f0c00e1
-			public const int ActionClose = 2131493089;
+			// aapt resource value: 0x7f0c00e3
+			public const int ActionClose = 2131493091;
 			
-			// aapt resource value: 0x7f0c00c5
-			public const int ActionCollpseExpire = 2131493061;
+			// aapt resource value: 0x7f0c00c7
+			public const int ActionCollpseExpire = 2131493063;
 			
-			// aapt resource value: 0x7f0c009b
-			public const int ActionCollpseIcon = 2131493019;
+			// aapt resource value: 0x7f0c009d
+			public const int ActionCollpseIcon = 2131493021;
 			
-			// aapt resource value: 0x7f0c00ab
-			public const int ActionCollpseLocation = 2131493035;
+			// aapt resource value: 0x7f0c00ac
+			public const int ActionCollpseLocation = 2131493036;
 			
-			// aapt resource value: 0x7f0c00b8
-			public const int ActionCollpseModify = 2131493048;
+			// aapt resource value: 0x7f0c00ba
+			public const int ActionCollpseModify = 2131493050;
 			
-			// aapt resource value: 0x7f0c008e
-			public const int ActionCollpseName = 2131493006;
+			// aapt resource value: 0x7f0c008f
+			public const int ActionCollpseName = 2131493007;
 			
-			// aapt resource value: 0x7f0c00be
-			public const int ActionCollpsePassword = 2131493054;
+			// aapt resource value: 0x7f0c00c0
+			public const int ActionCollpsePassword = 2131493056;
 			
-			// aapt resource value: 0x7f0c00b2
-			public const int ActionCollpsePermission = 2131493042;
+			// aapt resource value: 0x7f0c00b4
+			public const int ActionCollpsePermission = 2131493044;
 			
-			// aapt resource value: 0x7f0c00d5
-			public const int ActionConfirm = 2131493077;
+			// aapt resource value: 0x7f0c00d4
+			public const int ActionConfirm = 2131493076;
 			
-			// aapt resource value: 0x7f0c00ae
-			public const int ActionCustomLocation = 2131493038;
-			
-			// aapt resource value: 0x7f0c00a0
-			public const int ActionDefaultIcon1 = 2131493024;
+			// aapt resource value: 0x7f0c00af
+			public const int ActionCustomLocation = 2131493039;
 			
 			// aapt resource value: 0x7f0c00a1
-			public const int ActionDefaultIcon2 = 2131493025;
+			public const int ActionDefaultIcon1 = 2131493025;
 			
 			// aapt resource value: 0x7f0c00a2
-			public const int ActionDefaultIcon3 = 2131493026;
+			public const int ActionDefaultIcon2 = 2131493026;
 			
 			// aapt resource value: 0x7f0c00a3
-			public const int ActionDefaultIcon4 = 2131493027;
+			public const int ActionDefaultIcon3 = 2131493027;
 			
 			// aapt resource value: 0x7f0c00a4
-			public const int ActionDefaultIcon5 = 2131493028;
+			public const int ActionDefaultIcon4 = 2131493028;
 			
 			// aapt resource value: 0x7f0c00a5
-			public const int ActionDefaultIcon6 = 2131493029;
+			public const int ActionDefaultIcon5 = 2131493029;
 			
 			// aapt resource value: 0x7f0c00a6
-			public const int ActionDefaultIcon7 = 2131493030;
+			public const int ActionDefaultIcon6 = 2131493030;
 			
 			// aapt resource value: 0x7f0c00a7
-			public const int ActionDefaultIcon8 = 2131493031;
+			public const int ActionDefaultIcon7 = 2131493031;
 			
 			// aapt resource value: 0x7f0c00a8
-			public const int ActionDefaultIcon9 = 2131493032;
+			public const int ActionDefaultIcon8 = 2131493032;
 			
-			// aapt resource value: 0x7f0c00cb
-			public const int ActionDropItem = 2131493067;
+			// aapt resource value: 0x7f0c00a9
+			public const int ActionDefaultIcon9 = 2131493033;
 			
-			// aapt resource value: 0x7f0c00db
-			public const int ActionDropNearby = 2131493083;
+			// aapt resource value: 0x7f0c00cd
+			public const int ActionDropItem = 2131493069;
 			
-			// aapt resource value: 0x7f0c00dc
-			public const int ActionDropSetting = 2131493084;
-			
-			// aapt resource value: 0x7f0c008c
-			public const int ActionGotoLink = 2131493004;
+			// aapt resource value: 0x7f0c00dd
+			public const int ActionDropNearby = 2131493085;
 			
 			// aapt resource value: 0x7f0c00de
-			public const int ActionHome = 2131493086;
+			public const int ActionDropSetting = 2131493086;
 			
-			// aapt resource value: 0x7f0c0096
-			public const int ActionItem = 2131493014;
+			// aapt resource value: 0x7f0c0101
+			public const int ActionEventDetail = 2131493121;
 			
-			// aapt resource value: 0x7f0c00ee
-			public const int ActionLoginAnonymously = 2131493102;
+			// aapt resource value: 0x7f0c008c
+			public const int ActionFavorite = 2131493004;
 			
-			// aapt resource value: 0x7f0c0084
-			public const int ActionLoginUsingFacebook = 2131492996;
+			// aapt resource value: 0x7f0c00e1
+			public const int ActionHome = 2131493089;
 			
-			// aapt resource value: 0x7f0c00bb
-			public const int ActionModifyEveryone = 2131493051;
-			
-			// aapt resource value: 0x7f0c00bc
-			public const int ActionModifyOnlyMe = 2131493052;
-			
-			// aapt resource value: 0x7f0c00bd
-			public const int ActionModifySpecificUser = 2131493053;
-			
-			// aapt resource value: 0x7f0c00c1
-			public const int ActionPassword = 2131493057;
-			
-			// aapt resource value: 0x7f0c008b
-			public const int ActionPlayVideo = 2131493003;
-			
-			// aapt resource value: 0x7f0c00e5
-			public const int ActionPurchase = 2131493093;
-			
-			// aapt resource value: 0x7f0c00b5
-			public const int ActionVisibilityEveryone = 2131493045;
-			
-			// aapt resource value: 0x7f0c00b6
-			public const int ActionVisibilityOnlyMe = 2131493046;
-			
-			// aapt resource value: 0x7f0c00b7
-			public const int ActionVisibilitySpecificUser = 2131493047;
-			
-			// aapt resource value: 0x7f0c00fd
-			public const int Video = 2131493117;
+			// aapt resource value: 0x7f0c0098
+			public const int ActionItem = 2131493016;
 			
 			// aapt resource value: 0x7f0c00f0
-			public const int action0 = 2131493104;
+			public const int ActionLoginAnonymously = 2131493104;
+			
+			// aapt resource value: 0x7f0c0086
+			public const int ActionLoginUsingFacebook = 2131492998;
+			
+			// aapt resource value: 0x7f0c00bd
+			public const int ActionModifyEveryone = 2131493053;
+			
+			// aapt resource value: 0x7f0c0089
+			public const int ActionModifyItems = 2131493001;
+			
+			// aapt resource value: 0x7f0c00be
+			public const int ActionModifyOnlyMe = 2131493054;
+			
+			// aapt resource value: 0x7f0c00bf
+			public const int ActionModifySpecificUser = 2131493055;
+			
+			// aapt resource value: 0x7f0c00c3
+			public const int ActionPassword = 2131493059;
+			
+			// aapt resource value: 0x7f0c00e7
+			public const int ActionPurchase = 2131493095;
+			
+			// aapt resource value: 0x7f0c0084
+			public const int ActionSaveFile = 2131492996;
+			
+			// aapt resource value: 0x7f0c008b
+			public const int ActionShareDropLocation = 2131493003;
+			
+			// aapt resource value: 0x7f0c00b7
+			public const int ActionVisibilityEveryone = 2131493047;
+			
+			// aapt resource value: 0x7f0c00b8
+			public const int ActionVisibilityOnlyMe = 2131493048;
+			
+			// aapt resource value: 0x7f0c00b9
+			public const int ActionVisibilitySpecificUser = 2131493049;
+			
+			// aapt resource value: 0x7f0c00ff
+			public const int Video = 2131493119;
+			
+			// aapt resource value: 0x7f0c00f2
+			public const int action0 = 2131493106;
 			
 			// aapt resource value: 0x7f0c005d
 			public const int action_bar = 2131492957;
@@ -2556,8 +2565,8 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c005e
 			public const int action_context_bar = 2131492958;
 			
-			// aapt resource value: 0x7f0c00f4
-			public const int action_divider = 2131493108;
+			// aapt resource value: 0x7f0c00f6
+			public const int action_divider = 2131493110;
 			
 			// aapt resource value: 0x7f0c0002
 			public const int action_menu_divider = 2131492866;
@@ -2610,17 +2619,17 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0030
 			public const int box_count = 2131492912;
 			
-			// aapt resource value: 0x7f0c0098
-			public const int btnDropImageSymbol = 2131493016;
-			
 			// aapt resource value: 0x7f0c009a
-			public const int btnDropLinkSymbol = 2131493018;
+			public const int btnDropImageSymbol = 2131493018;
 			
-			// aapt resource value: 0x7f0c0097
-			public const int btnDropTextSymbol = 2131493015;
+			// aapt resource value: 0x7f0c009c
+			public const int btnDropLinkSymbol = 2131493020;
 			
 			// aapt resource value: 0x7f0c0099
-			public const int btnDropVideoSymbol = 2131493017;
+			public const int btnDropTextSymbol = 2131493017;
+			
+			// aapt resource value: 0x7f0c009b
+			public const int btnDropVideoSymbol = 2131493019;
 			
 			// aapt resource value: 0x7f0c0031
 			public const int button = 2131492913;
@@ -2628,8 +2637,8 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0047
 			public const int buttonPanel = 2131492935;
 			
-			// aapt resource value: 0x7f0c00f1
-			public const int cancel_action = 2131493105;
+			// aapt resource value: 0x7f0c00f3
+			public const int cancel_action = 2131493107;
 			
 			// aapt resource value: 0x7f0c0070
 			public const int cancel_button = 2131492976;
@@ -2637,17 +2646,14 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0035
 			public const int center = 2131492917;
 			
-			// aapt resource value: 0x7f0c0086
-			public const int checkBox1 = 2131492998;
-			
-			// aapt resource value: 0x7f0c00ca
-			public const int checkExpiryDate = 2131493066;
+			// aapt resource value: 0x7f0c00cc
+			public const int checkExpiryDate = 2131493068;
 			
 			// aapt resource value: 0x7f0c0055
 			public const int checkbox = 2131492949;
 			
-			// aapt resource value: 0x7f0c00f7
-			public const int chronometer = 2131493111;
+			// aapt resource value: 0x7f0c00f9
+			public const int chronometer = 2131493113;
 			
 			// aapt resource value: 0x7f0c0029
 			public const int collapseActionView = 2131492905;
@@ -2682,8 +2688,8 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c004d
 			public const int contentPanel = 2131492941;
 			
-			// aapt resource value: 0x7f0c008d
-			public const int contentView = 2131493005;
+			// aapt resource value: 0x7f0c0083
+			public const int contentView = 2131492995;
 			
 			// aapt resource value: 0x7f0c0053
 			public const int custom = 2131492947;
@@ -2706,8 +2712,8 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0039
 			public const int display_always = 2131492921;
 			
-			// aapt resource value: 0x7f0c00e0
-			public const int dropContent = 2131493088;
+			// aapt resource value: 0x7f0c00d5
+			public const int dropContent = 2131493077;
 			
 			// aapt resource value: 0x7f0c005f
 			public const int edit_query = 2131492959;
@@ -2715,8 +2721,8 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0026
 			public const int end = 2131492902;
 			
-			// aapt resource value: 0x7f0c00fc
-			public const int end_padder = 2131493116;
+			// aapt resource value: 0x7f0c00fe
+			public const int end_padder = 2131493118;
 			
 			// aapt resource value: 0x7f0c0041
 			public const int expand_activities_button = 2131492929;
@@ -2736,8 +2742,8 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0045
 			public const int icon = 2131492933;
 			
-			// aapt resource value: 0x7f0c00d4
-			public const int iconMyLocation = 2131493076;
+			// aapt resource value: 0x7f0c00d3
+			public const int iconMyLocation = 2131493075;
 			
 			// aapt resource value: 0x7f0c000f
 			public const int icon_only = 2131492879;
@@ -2748,23 +2754,26 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0042
 			public const int image = 2131492930;
 			
-			// aapt resource value: 0x7f0c0090
-			public const int imageView1 = 2131493008;
+			// aapt resource value: 0x7f0c0088
+			public const int imageView1 = 2131493000;
 			
-			// aapt resource value: 0x7f0c00ed
-			public const int imageView2 = 2131493101;
+			// aapt resource value: 0x7f0c00ef
+			public const int imageView2 = 2131493103;
 			
-			// aapt resource value: 0x7f0c009c
-			public const int imageView9 = 2131493020;
+			// aapt resource value: 0x7f0c008a
+			public const int imageView9 = 2131493002;
 			
-			// aapt resource value: 0x7f0c00aa
-			public const int imgDropIcon = 2131493034;
+			// aapt resource value: 0x7f0c00ab
+			public const int imgDropIcon = 2131493035;
 			
-			// aapt resource value: 0x7f0c007e
-			public const int imgImage = 2131492990;
+			// aapt resource value: 0x7f0c0103
+			public const int imgIcon = 2131493123;
 			
-			// aapt resource value: 0x7f0c00fb
-			public const int info = 2131493115;
+			// aapt resource value: 0x7f0c007f
+			public const int imgImage = 2131492991;
+			
+			// aapt resource value: 0x7f0c00fd
+			public const int info = 2131493117;
 			
 			// aapt resource value: 0x7f0c0033
 			public const int inline = 2131492915;
@@ -2775,29 +2784,32 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c003b
 			public const int large = 2131492923;
 			
-			// aapt resource value: 0x7f0c00e7
-			public const int lblBtnTitle = 2131493095;
+			// aapt resource value: 0x7f0c00e9
+			public const int lblBtnTitle = 2131493097;
 			
-			// aapt resource value: 0x7f0c00e3
-			public const int lblDescription1 = 2131493091;
+			// aapt resource value: 0x7f0c00e5
+			public const int lblDescription1 = 2131493093;
 			
-			// aapt resource value: 0x7f0c00e4
-			public const int lblDescription2 = 2131493092;
+			// aapt resource value: 0x7f0c00e6
+			public const int lblDescription2 = 2131493094;
 			
-			// aapt resource value: 0x7f0c00b0
-			public const int lblLocationLat = 2131493040;
+			// aapt resource value: 0x7f0c0102
+			public const int lblDistance = 2131493122;
 			
-			// aapt resource value: 0x7f0c00b1
-			public const int lblLocationLog = 2131493041;
+			// aapt resource value: 0x7f0c00b2
+			public const int lblLocationLat = 2131493042;
+			
+			// aapt resource value: 0x7f0c00b3
+			public const int lblLocationLog = 2131493043;
+			
+			// aapt resource value: 0x7f0c007c
+			public const int lblName = 2131492988;
 			
 			// aapt resource value: 0x7f0c0080
-			public const int lblName = 2131492992;
+			public const int lblText = 2131492992;
 			
-			// aapt resource value: 0x7f0c0081
-			public const int lblText = 2131492993;
-			
-			// aapt resource value: 0x7f0c00e2
-			public const int lblTitle = 2131493090;
+			// aapt resource value: 0x7f0c00e4
+			public const int lblTitle = 2131493092;
 			
 			// aapt resource value: 0x7f0c0036
 			public const int left = 2131492918;
@@ -2805,53 +2817,56 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0014
 			public const int light = 2131492884;
 			
-			// aapt resource value: 0x7f0c00f5
-			public const int line1 = 2131493109;
+			// aapt resource value: 0x7f0c00f7
+			public const int line1 = 2131493111;
 			
-			// aapt resource value: 0x7f0c00f9
-			public const int line3 = 2131493113;
+			// aapt resource value: 0x7f0c00fb
+			public const int line3 = 2131493115;
 			
-			// aapt resource value: 0x7f0c0077
-			public const int linearLayout1 = 2131492983;
+			// aapt resource value: 0x7f0c0079
+			public const int linearLayout1 = 2131492985;
 			
-			// aapt resource value: 0x7f0c0088
-			public const int linearLayout10 = 2131493000;
+			// aapt resource value: 0x7f0c00dc
+			public const int linearLayout10 = 2131493084;
 			
-			// aapt resource value: 0x7f0c009f
-			public const int linearLayout11 = 2131493023;
+			// aapt resource value: 0x7f0c00a0
+			public const int linearLayout11 = 2131493024;
 			
-			// aapt resource value: 0x7f0c007f
-			public const int linearLayout12 = 2131492991;
-			
-			// aapt resource value: 0x7f0c0089
-			public const int linearLayout13 = 2131493001;
-			
-			// aapt resource value: 0x7f0c00da
-			public const int linearLayout14 = 2131493082;
+			// aapt resource value: 0x7f0c00b1
+			public const int linearLayout12 = 2131493041;
 			
 			// aapt resource value: 0x7f0c00d9
-			public const int linearLayout15 = 2131493081;
+			public const int linearLayout13 = 2131493081;
+			
+			// aapt resource value: 0x7f0c00db
+			public const int linearLayout14 = 2131493083;
+			
+			// aapt resource value: 0x7f0c00da
+			public const int linearLayout15 = 2131493082;
 			
 			// aapt resource value: 0x7f0c0092
 			public const int linearLayout17 = 2131493010;
 			
-			// aapt resource value: 0x7f0c0093
-			public const int linearLayout18 = 2131493011;
-			
 			// aapt resource value: 0x7f0c0094
-			public const int linearLayout19 = 2131493012;
+			public const int linearLayout18 = 2131493012;
 			
-			// aapt resource value: 0x7f0c00af
-			public const int linearLayout20 = 2131493039;
+			// aapt resource value: 0x7f0c0096
+			public const int linearLayout19 = 2131493014;
 			
-			// aapt resource value: 0x7f0c00c2
-			public const int linearLayout21 = 2131493058;
+			// aapt resource value: 0x7f0c007d
+			public const int linearLayout2 = 2131492989;
+			
+			// aapt resource value: 0x7f0c00b0
+			public const int linearLayout20 = 2131493040;
 			
 			// aapt resource value: 0x7f0c00c4
-			public const int linearLayout22 = 2131493060;
+			public const int linearLayout21 = 2131493060;
 			
-			// aapt resource value: 0x7f0c00c9
-			public const int linearLayout23 = 2131493065;
+			// aapt resource value: 0x7f0c00c6
+			public const int linearLayout22 = 2131493062;
+			
+			// aapt resource value: 0x7f0c00cb
+			public const int linearLayout23 = 2131493067;
 			
 			// aapt resource value: 0x7f0c00ce
 			public const int linearLayout24 = 2131493070;
@@ -2859,23 +2874,23 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c00d0
 			public const int linearLayout25 = 2131493072;
 			
-			// aapt resource value: 0x7f0c007b
-			public const int linearLayout3 = 2131492987;
+			// aapt resource value: 0x7f0c007e
+			public const int linearLayout3 = 2131492990;
 			
-			// aapt resource value: 0x7f0c007d
-			public const int linearLayout4 = 2131492989;
-			
-			// aapt resource value: 0x7f0c0082
-			public const int linearLayout5 = 2131492994;
-			
-			// aapt resource value: 0x7f0c00dd
-			public const int linearLayout6 = 2131493085;
+			// aapt resource value: 0x7f0c0081
+			public const int linearLayout4 = 2131492993;
 			
 			// aapt resource value: 0x7f0c00df
-			public const int linearLayout7 = 2131493087;
+			public const int linearLayout5 = 2131493087;
 			
-			// aapt resource value: 0x7f0c00e6
-			public const int linearLayout8 = 2131493094;
+			// aapt resource value: 0x7f0c00e0
+			public const int linearLayout6 = 2131493088;
+			
+			// aapt resource value: 0x7f0c00e2
+			public const int linearLayout7 = 2131493090;
+			
+			// aapt resource value: 0x7f0c00e8
+			public const int linearLayout8 = 2131493096;
 			
 			// aapt resource value: 0x7f0c00d8
 			public const int linearLayout9 = 2131493080;
@@ -2886,17 +2901,17 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0044
 			public const int list_item = 2131492932;
 			
-			// aapt resource value: 0x7f0c00e8
-			public const int liveCamera = 2131493096;
+			// aapt resource value: 0x7f0c00ea
+			public const int liveCamera = 2131493098;
+			
+			// aapt resource value: 0x7f0c00ed
+			public const int loadingImage = 2131493101;
 			
 			// aapt resource value: 0x7f0c00eb
-			public const int loadingImage = 2131493099;
+			public const int loadingProgressBar = 2131493099;
 			
-			// aapt resource value: 0x7f0c00e9
-			public const int loadingProgressBar = 2131493097;
-			
-			// aapt resource value: 0x7f0c00ec
-			public const int loadingProgressWheel = 2131493100;
+			// aapt resource value: 0x7f0c00ee
+			public const int loadingProgressWheel = 2131493102;
 			
 			// aapt resource value: 0x7f0c00d2
 			public const int map = 2131493074;
@@ -2904,11 +2919,11 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c00cf
 			public const int map_place_box = 2131493071;
 			
-			// aapt resource value: 0x7f0c00f3
-			public const int media_actions = 2131493107;
+			// aapt resource value: 0x7f0c00f5
+			public const int media_actions = 2131493109;
 			
-			// aapt resource value: 0x7f0c00ef
-			public const int messenger_send_button = 2131493103;
+			// aapt resource value: 0x7f0c00f1
+			public const int messenger_send_button = 2131493105;
 			
 			// aapt resource value: 0x7f0c0027
 			public const int middle = 2131492903;
@@ -2949,20 +2964,20 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0057
 			public const int radio = 2131492951;
 			
-			// aapt resource value: 0x7f0c0078
-			public const int relativeLayout1 = 2131492984;
+			// aapt resource value: 0x7f0c007a
+			public const int relativeLayout1 = 2131492986;
 			
-			// aapt resource value: 0x7f0c0083
-			public const int relativeLayout2 = 2131492995;
+			// aapt resource value: 0x7f0c0085
+			public const int relativeLayout2 = 2131492997;
 			
-			// aapt resource value: 0x7f0c00d3
-			public const int relativeLayout3 = 2131493075;
+			// aapt resource value: 0x7f0c008e
+			public const int relativeLayout3 = 2131493006;
 			
 			// aapt resource value: 0x7f0c00d1
 			public const int relativeLayout4 = 2131493073;
 			
-			// aapt resource value: 0x7f0c00cc
-			public const int relativeLayout5 = 2131493068;
+			// aapt resource value: 0x7f0c0077
+			public const int relativeLayout5 = 2131492983;
 			
 			// aapt resource value: 0x7f0c0037
 			public const int right = 2131492919;
@@ -2982,8 +2997,8 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c004f
 			public const int scrollView = 2131492943;
 			
-			// aapt resource value: 0x7f0c007c
-			public const int scrollView1 = 2131492988;
+			// aapt resource value: 0x7f0c0082
+			public const int scrollView1 = 2131492994;
 			
 			// aapt resource value: 0x7f0c0061
 			public const int search_badge = 2131492961;
@@ -3051,11 +3066,14 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c0010
 			public const int standard = 2131492880;
 			
-			// aapt resource value: 0x7f0c00f2
-			public const int status_bar_latest_event_content = 2131493106;
+			// aapt resource value: 0x7f0c00f4
+			public const int status_bar_latest_event_content = 2131493108;
 			
 			// aapt resource value: 0x7f0c0068
 			public const int submit_area = 2131492968;
+			
+			// aapt resource value: 0x7f0c008d
+			public const int symbolFavorite = 2131493005;
 			
 			// aapt resource value: 0x7f0c0018
 			public const int tabMode = 2131492888;
@@ -3063,35 +3081,32 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c000e
 			public const int terrain = 2131492878;
 			
-			// aapt resource value: 0x7f0c00fa
-			public const int text = 2131493114;
+			// aapt resource value: 0x7f0c00fc
+			public const int text = 2131493116;
 			
-			// aapt resource value: 0x7f0c00f8
-			public const int text2 = 2131493112;
+			// aapt resource value: 0x7f0c00fa
+			public const int text2 = 2131493114;
 			
 			// aapt resource value: 0x7f0c0050
 			public const int textSpacerNoButtons = 2131492944;
 			
-			// aapt resource value: 0x7f0c007a
-			public const int textView1 = 2131492986;
+			// aapt resource value: 0x7f0c0087
+			public const int textView2 = 2131492999;
 			
-			// aapt resource value: 0x7f0c008f
-			public const int textView2 = 2131493007;
+			// aapt resource value: 0x7f0c00aa
+			public const int textView4 = 2131493034;
 			
-			// aapt resource value: 0x7f0c00a9
-			public const int textView4 = 2131493033;
+			// aapt resource value: 0x7f0c0093
+			public const int textView7 = 2131493011;
 			
-			// aapt resource value: 0x7f0c008a
-			public const int textView7 = 2131493002;
+			// aapt resource value: 0x7f0c00ec
+			public const int textViewStatus = 2131493100;
 			
-			// aapt resource value: 0x7f0c00ea
-			public const int textViewStatus = 2131493098;
+			// aapt resource value: 0x7f0c0078
+			public const int textureCamera = 2131492984;
 			
-			// aapt resource value: 0x7f0c00cd
-			public const int textureCamera = 2131493069;
-			
-			// aapt resource value: 0x7f0c00f6
-			public const int time = 2131493110;
+			// aapt resource value: 0x7f0c00f8
+			public const int time = 2131493112;
 			
 			// aapt resource value: 0x7f0c0046
 			public const int title = 2131492934;
@@ -3105,17 +3120,17 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c004a
 			public const int topPanel = 2131492938;
 			
+			// aapt resource value: 0x7f0c0097
+			public const int txtDescription = 2131493015;
+			
+			// aapt resource value: 0x7f0c00ca
+			public const int txtExpireDate = 2131493066;
+			
 			// aapt resource value: 0x7f0c0095
-			public const int txtDescription = 2131493013;
+			public const int txtName = 2131493013;
 			
-			// aapt resource value: 0x7f0c00c8
-			public const int txtExpireDate = 2131493064;
-			
-			// aapt resource value: 0x7f0c0085
-			public const int txtName = 2131492997;
-			
-			// aapt resource value: 0x7f0c00c3
-			public const int txtPassword = 2131493059;
+			// aapt resource value: 0x7f0c00c5
+			public const int txtPassword = 2131493061;
 			
 			// aapt resource value: 0x7f0c002f
 			public const int unknown = 2131492911;
@@ -3126,41 +3141,41 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c001e
 			public const int useLogo = 2131492894;
 			
-			// aapt resource value: 0x7f0c00fe
-			public const int videoView = 2131493118;
+			// aapt resource value: 0x7f0c0100
+			public const int videoView = 2131493120;
 			
-			// aapt resource value: 0x7f0c00c6
-			public const int viewExpiry = 2131493062;
+			// aapt resource value: 0x7f0c00c8
+			public const int viewExpiry = 2131493064;
 			
-			// aapt resource value: 0x7f0c00c7
-			public const int viewExpiryaa = 2131493063;
-			
-			// aapt resource value: 0x7f0c009d
-			public const int viewICON = 2131493021;
+			// aapt resource value: 0x7f0c00c9
+			public const int viewExpiryaa = 2131493065;
 			
 			// aapt resource value: 0x7f0c009e
-			public const int viewICON1 = 2131493022;
+			public const int viewICON = 2131493022;
 			
-			// aapt resource value: 0x7f0c00ac
-			public const int viewLocation = 2131493036;
+			// aapt resource value: 0x7f0c009f
+			public const int viewICON1 = 2131493023;
 			
-			// aapt resource value: 0x7f0c00b9
-			public const int viewModify = 2131493049;
+			// aapt resource value: 0x7f0c00ad
+			public const int viewLocation = 2131493037;
 			
-			// aapt resource value: 0x7f0c0087
-			public const int viewName = 2131492999;
+			// aapt resource value: 0x7f0c00bb
+			public const int viewModify = 2131493051;
+			
+			// aapt resource value: 0x7f0c0090
+			public const int viewName = 2131493008;
 			
 			// aapt resource value: 0x7f0c0091
 			public const int viewName1 = 2131493009;
 			
-			// aapt resource value: 0x7f0c00bf
-			public const int viewPassword = 2131493055;
+			// aapt resource value: 0x7f0c00c1
+			public const int viewPassword = 2131493057;
 			
-			// aapt resource value: 0x7f0c00c0
-			public const int viewPasswordaa = 2131493056;
+			// aapt resource value: 0x7f0c00c2
+			public const int viewPasswordaa = 2131493058;
 			
-			// aapt resource value: 0x7f0c00b3
-			public const int viewPermission = 2131493043;
+			// aapt resource value: 0x7f0c00b5
+			public const int viewPermission = 2131493045;
 			
 			// aapt resource value: 0x7f0c0011
 			public const int wide = 2131492881;
@@ -3171,14 +3186,14 @@ namespace Drop.Droid
 			// aapt resource value: 0x7f0c001f
 			public const int wrap_content = 2131492895;
 			
-			// aapt resource value: 0x7f0c00ad
-			public const int www = 2131493037;
+			// aapt resource value: 0x7f0c00ae
+			public const int www = 2131493038;
 			
-			// aapt resource value: 0x7f0c00ba
-			public const int zz = 2131493050;
+			// aapt resource value: 0x7f0c00bc
+			public const int zz = 2131493052;
 			
-			// aapt resource value: 0x7f0c00b4
-			public const int zzz = 2131493044;
+			// aapt resource value: 0x7f0c00b6
+			public const int zzz = 2131493046;
 			
 			static Id()
 			{
@@ -3400,6 +3415,9 @@ namespace Drop.Droid
 			
 			// aapt resource value: 0x7f04003a
 			public const int support_simple_spinner_dropdown_item = 2130968634;
+			
+			// aapt resource value: 0x7f04003b
+			public const int VirtualDrop = 2130968635;
 			
 			static Layout()
 			{

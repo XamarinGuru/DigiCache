@@ -45,5 +45,5 @@ using Android;
 [assembly: UsesFeature("android.hardware.camera.flash", Required = false)]
 
 [assembly: UsesFeature(GLESVersion = 0x00020000, Required = true)]
-[assembly: MetaData("com.google.android.maps.v2.API_KEY", Value = "AIzaSyAoSP1REiI0C1YkBy8rsp9jQcACsPTOxdI")]
+[assembly: MetaData("com.google.android.maps.v2.API_KEY", Value = "AIzaSyB-_phc3PuA2ON536rkhNvDGxgdTNFq6Hg")]
 

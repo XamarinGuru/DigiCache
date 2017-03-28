@@ -33,8 +33,6 @@ namespace Drop.Droid
 
 		LocationManager _locationManager;
 
-		LayoutInflater controlInflater = null;
-
 		const int Location_Request_Code = 0;
 		const int HomeFragment_Id = 0;
 
@@ -57,7 +55,7 @@ namespace Drop.Droid
 		{
 			base.OnCreate(savedInstanceState);
 
-			//SetContentView(Resource.Layout.DropItemActivity);
+			SetContentView(Resource.Layout.DropItemActivity);
 
 			_locationManager = GetSystemService(Context.LocationService) as LocationManager;
 
@@ -68,6 +66,15 @@ namespace Drop.Droid
 			SetUIVariablesAndActions();
 			SetInputBinding();
 		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+
+			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
+			_textureView.SurfaceTextureListener = this;
+		}
+
 		protected override void OnDestroy()
 		{
 			// Are we attached to the Google Play Service?
@@ -85,12 +92,6 @@ namespace Drop.Droid
 
 		private void SetUIVariablesAndActions()
 		{
-			controlInflater = LayoutInflater.From(BaseContext);
-			var viewControl = controlInflater.Inflate(Resource.Layout.DropItemActivity, null);
-			var layoutParamsControl = new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent);
-			this.AddContentView(viewControl, layoutParamsControl);
-
-			//SetContentView(Resource.Layout.DropItemActivity);
 			#region UI Variables
 			txtName = FindViewById<EditText>(Resource.Id.txtName);
 			txtDescription = FindViewById<EditText>(Resource.Id.txtDescription);

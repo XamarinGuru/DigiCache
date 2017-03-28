@@ -162,6 +162,7 @@
     <Compile Include="Activities\PlayVideoActivity.cs" />
     <Compile Include="Dialogue\PurchasePopUp.cs" />
     <Compile Include="Services\InAppBillingService.cs" />
+    <Compile Include="Activities\FavoriteActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -268,6 +269,7 @@
     <AndroidResource Include="Resources\drawable\icon_underline_green.png" />
     <AndroidResource Include="Resources\layout\item_PurchasePopUp.axml" />
     <AndroidResource Include="Resources\drawable\bg_btn_purchase.png" />
+    <AndroidResource Include="Resources\layout\VirtualDrop.axml" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="parse">

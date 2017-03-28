@@ -1,30 +1,20 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Android;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Android.Graphics;
 using Android.Locations;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Views;
-using Android.Widget;
 
 namespace Drop.Droid
 {
 	[Activity(Label = "DropLocationActivity")]
-	public class DropLocationActivity : FragmentActivity, TextureView.ISurfaceTextureListener, IOnMapReadyCallback, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback
+	public class DropLocationActivity : BaseActivity, TextureView.ISurfaceTextureListener, IOnMapReadyCallback, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback
 	{
-		Android.Hardware.Camera _camera;
-		TextureView textureCamera;
-
 		const int Location_Request_Code = 0;
 
 		LatLng _currentLocation;
@@ -62,49 +52,14 @@ namespace Drop.Droid
 				base.OnBackPressed();
 				OverridePendingTransition(Resource.Animation.fromRight, Resource.Animation.toLeft);
 			};
-
-			textureCamera = FindViewById<TextureView>(Resource.Id.textureCamera);
-			textureCamera.SurfaceTextureListener = this;
 		}
 
-		public void OnSurfaceTextureAvailable(SurfaceTexture surface, int w, int h)
+		protected override void OnResume()
 		{
-			_camera = Android.Hardware.Camera.Open();
+			base.OnResume();
 
-			textureCamera.LayoutParameters = new RelativeLayout.LayoutParams(w, h);
-
-			try
-			{
-				_camera.SetPreviewTexture(surface);
-
-				var display = this.WindowManager.DefaultDisplay;
-				if (display.Rotation == SurfaceOrientation.Rotation0)
-					_camera.SetDisplayOrientation(90);
-				else
-					_camera.SetDisplayOrientation(180);
-
-				_camera.StartPreview();
-
-			}
-			catch (Java.IO.IOException ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-		}
-
-		public void OnSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height)
-		{
-		}
-
-		public void OnSurfaceTextureUpdated(SurfaceTexture surface)
-		{
-		}
-		public bool OnSurfaceTextureDestroyed(SurfaceTexture surface)
-		{
-			_camera.StopPreview();
-			_camera.Release();
-
-			return true;
+			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
+			_textureView.SurfaceTextureListener = this;
 		}
 
 		#region google map
@@ -134,15 +89,9 @@ namespace Drop.Droid
 			}
 		}
 
-		public async void DragMapPinProcess(CameraPosition cameraPos)
+		public void DragMapPinProcess(CameraPosition cameraPos)
 		{
-			try
-			{
-				_currentLocation = cameraPos.Target;
-			}
-			catch
-			{
-			}
+			_currentLocation = cameraPos.Target;
 		}
 
 		private void SetMyLocationOnMap()

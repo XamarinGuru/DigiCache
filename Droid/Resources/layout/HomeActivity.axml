@@ -11,6 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/relativeLayout4">
+        <TextureView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textureCamera" />
         <LinearLayout
             android:orientation="vertical"
             android:id="@+id/linearLayout1"
@@ -48,6 +52,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:clipChildren="true">
+                            <RelativeLayout
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/dropContent"
+                                android:layout_above="@+id/aniBgView" />
                             <ImageView
                                 android:id="@+id/aniBgView"
                                 android:scaleType="fitCenter"
@@ -243,12 +254,5 @@
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
-        <RelativeLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/dropContent"
-            android:gravity="center" />
     </RelativeLayout>
 </LinearLayout>

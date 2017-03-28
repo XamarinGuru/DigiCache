@@ -17,7 +17,7 @@ namespace Drop
 		public const string FACEBOOK_APP_ID = "249022678854174";
 		public const string FACEBOOK_DISPLAY_NAME = "Drop";
 
-		public const string GOOGLE_MAP_API_KEY = "AIzaSyAiBwRUm_KZDv_sp3eI7F8hxkePqDTvY20";
+		public const string GOOGLE_MAP_API_KEY = "AIzaSyB-_phc3PuA2ON536rkhNvDGxgdTNFq6Hg";
 
 		public static string[] FB_PERMISSIONS = new[] { "public_profile", "email" };
 

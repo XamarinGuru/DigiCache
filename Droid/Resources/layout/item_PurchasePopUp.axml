@@ -100,14 +100,6 @@
                     android:minHeight="25px"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/linearLayout10"
-                    android:layout_weight="0.5" />
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
                     android:id="@+id/linearLayout8"
                     android:layout_weight="1"
                     android:gravity="center">
@@ -123,23 +115,16 @@
                     android:minHeight="25px"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/linearLayout10"
-                    android:layout_weight="1" />
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
                     android:id="@+id/linearLayout9"
                     android:layout_weight="5"
                     android:gravity="center_vertical">
                     <TextView
                         android:text="Buy A Forever Cache"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/lblBtnTitle"
-                        android:textColor="#ffffffff" />
+                        android:textColor="#ffffffff"
+                        android:gravity="center" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

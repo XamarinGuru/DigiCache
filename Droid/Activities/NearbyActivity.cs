@@ -23,11 +23,8 @@ using Java.Net;
 namespace Drop.Droid
 {
 	[Activity(Label = "NearbyActivity")]
-	public class NearbyActivity : FragmentActivity, TextureView.ISurfaceTextureListener, IOnMapReadyCallback, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback, GoogleMap.IOnMarkerClickListener
+	public class NearbyActivity : BaseActivity, TextureView.ISurfaceTextureListener, IOnMapReadyCallback, ILocationListener, ActivityCompat.IOnRequestPermissionsResultCallback, GoogleMap.IOnMarkerClickListener
 	{
-		Android.Hardware.Camera _camera;
-		TextureView textureCamera;
-
 		const int Location_Request_Code = 0;
 
 		LocationManager _locationManager;
@@ -58,48 +55,14 @@ namespace Drop.Droid
 				base.OnBackPressed();
 				OverridePendingTransition(Resource.Animation.fromRight, Resource.Animation.toLeft);
 			};
-
-			textureCamera = FindViewById<TextureView>(Resource.Id.textureCamera);
-			textureCamera.SurfaceTextureListener = this;
-		}
-		public void OnSurfaceTextureAvailable(SurfaceTexture surface, int w, int h)
-		{
-			_camera = Android.Hardware.Camera.Open();
-
-			textureCamera.LayoutParameters = new RelativeLayout.LayoutParams(w, h);
-
-			try
-			{
-				_camera.SetPreviewTexture(surface);
-
-				var display = this.WindowManager.DefaultDisplay;
-				if (display.Rotation == SurfaceOrientation.Rotation0)
-					_camera.SetDisplayOrientation(90);
-				else
-					_camera.SetDisplayOrientation(180);
-				
-				_camera.StartPreview();
-
-			}
-			catch (Java.IO.IOException ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
 		}
 
-		public void OnSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height)
+		protected override void OnResume()
 		{
-		}
+			base.OnResume();
 
-		public void OnSurfaceTextureUpdated(SurfaceTexture surface)
-		{
-		}
-		public bool OnSurfaceTextureDestroyed(SurfaceTexture surface)
-		{
-			_camera.StopPreview();
-			_camera.Release();
-
-			return true;
+			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
+			_textureView.SurfaceTextureListener = this;
 		}
 
 		void GetDrops()
@@ -117,26 +80,48 @@ namespace Drop.Droid
 				for (int i = 0; i < mDrops.Count; i++)
 				{
 					var drop = mDrops[i];
+					if (drop.IsVisibilityByUser())
+						AddDropInMap(drop, i);
 
-					MarkerOptions markerOpt = new MarkerOptions();
-					markerOpt.SetPosition(new LatLng(drop.Location_Lat, drop.Location_Lnt));
+					//MarkerOptions markerOpt = new MarkerOptions();
+					//markerOpt.SetPosition(new LatLng(drop.Location_Lat, drop.Location_Lnt));
 
-					var metrics = Resources.DisplayMetrics;
-					var wScreen = metrics.WidthPixels;
+					//var metrics = Resources.DisplayMetrics;
+					//var wScreen = metrics.WidthPixels;
 					                       
-					Bitmap bmp = GetImageBitmapFromUrl(drop.IconURL.ToString());
-					Bitmap newBitmap = scaleDown(bmp, wScreen / 15, true);
-					markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+					//Bitmap bmp = GetImageBitmapFromUrl(drop.IconURL.ToString());
+					//Bitmap newBitmap = scaleDown(bmp, wScreen / 15, true);
+					//markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
 
-					RunOnUiThread(() =>
-					{
-						var marker = _map.AddMarker(markerOpt);
-						dropIDs.Add(marker.Id);
+					//RunOnUiThread(() =>
+					//{
+					//	var marker = _map.AddMarker(markerOpt);
+					//	dropIDs.Add(marker.Id);
 
-					});
+					//});
 				}
 
 				HideLoadingView();
+			});
+		}
+
+		void AddDropInMap(ParseItem drop, int index)
+		{
+			MarkerOptions markerOpt = new MarkerOptions();
+			markerOpt.SetPosition(new LatLng(drop.Location_Lat, drop.Location_Lnt));
+
+			var metrics = Resources.DisplayMetrics;
+			var wScreen = metrics.WidthPixels;
+
+			Bitmap bmp = GetImageBitmapFromUrl(drop.IconURL.ToString());
+			Bitmap newBitmap = scaleDown(bmp, wScreen / 15, true);
+			markerOpt.SetIcon(BitmapDescriptorFactory.FromBitmap(newBitmap));
+
+			RunOnUiThread(() =>
+			{
+				var marker = _map.AddMarker(markerOpt);
+				dropIDs.Add(marker.Id);
+
 			});
 		}
 
@@ -257,12 +242,24 @@ namespace Drop.Droid
 
 			if (mSelectedDrop.Password == string.Empty || mSelectedDrop.Password == null)
 			{
-				var nextActivity = new Intent(this, typeof(DropDetailActivity));
-				Global.selectedDrop = mSelectedDrop;
-				StartActivity(nextActivity);
-				OverridePendingTransition(Resource.Animation.fromLeft, Resource.Animation.toRight);
+				var location = GetGPSLocation();
+				Location pointB = new Location("");
+				pointB.Latitude = mSelectedDrop.Location_Lat;
+				pointB.Longitude = mSelectedDrop.Location_Lnt;
+				var distanceToB = pointB.DistanceTo(location);
+
+				if (distanceToB > Constants.PURCHASE_DISTANCE)
+				{
+					PurchasePopUp myDiag = PurchasePopUp.newInstance(Constants.PURCHASE_TYPE.VIEW, OpenPurchase);
+					myDiag.Show(FragmentManager, "Diag");
+				}
+				else
+				{
+					ViewDropDetail();
+				}
 			}
-			else {
+			else
+			{
 				//MyInputDialog myDiag = MyInputDialog.newInstance(Constants.STR_VERIFY_PASSWORD_TITLE, VerifyPassword);
 				InputPopUp myDiag = InputPopUp.newInstance("Password?", VerifyPassword);
 				myDiag.Show(FragmentManager, "Diag");
@@ -284,63 +281,19 @@ namespace Drop.Droid
 			}
 		}
 
-		void ShowLoadingView(string title)
+		void ViewDropDetail()
 		{
-			RunOnUiThread(() =>
-			{
-				AndHUD.Shared.Show(this, title, -1, MaskType.Black);
-			});
+			var nextActivity = new Intent(this, typeof(DropDetailActivity));
+			Global.selectedDrop = mSelectedDrop;
+			StartActivity(nextActivity);
+			OverridePendingTransition(Resource.Animation.fromLeft, Resource.Animation.toRight);
 		}
 
-		void HideLoadingView()
+		void OpenPurchase()
 		{
-			RunOnUiThread(() =>
-			{
-				AndHUD.Shared.Dismiss(this);
-			});
+			_selectedProduct = _products[(int)Constants.PURCHASE_TYPE.VIEW];
+			if (_selectedProduct != null)
+				_serviceConnection.BillingHandler.BuyProduct(_selectedProduct);
 		}
-
-		public void ShowMessageBox(string title, string message, bool isFinish = false)
-		{
-			AlertDialog.Builder alert = new AlertDialog.Builder(this);
-			alert.SetTitle(title);
-			alert.SetMessage(message);
-			alert.SetCancelable(false);
-			alert.SetPositiveButton("OK", delegate { if (isFinish) Finish(); });
-			RunOnUiThread(() =>
-			{
-				alert.Show();
-			});
-		}
-
-		#region get map icon
-		protected Bitmap GetImageBitmapFromUrl(string url)
-		{
-			Bitmap imageBitmap = null;
-
-			using (var webClient = new WebClient())
-			{
-				var imageBytes = webClient.DownloadData(url);
-				if (imageBytes != null && imageBytes.Length > 0)
-				{
-					imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
-				}
-			}
-
-			return imageBitmap;
-		}
-
-		public static Bitmap scaleDown(Bitmap realImage, float maxImageSize, bool filter)
-		{
-			float ratio = Math.Min((float)maxImageSize / realImage.Width, (float)maxImageSize / realImage.Height);
-			int width = (int)Math.Round((float)ratio * realImage.Width);
-			int height = (int)Math.Round((float)ratio * realImage.Height);
-
-			Bitmap newBitmap = Bitmap.CreateScaledBitmap(realImage, width, height, filter);
-			return newBitmap;
-		}
-
-
-		#endregion
 	}
 }

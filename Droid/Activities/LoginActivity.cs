@@ -1,20 +1,12 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
-using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Drop;
 using Org.Json;
-using Plugin.Share;
 using Xamarin.Facebook;
 using Xamarin.Facebook.Login;
 
@@ -28,25 +20,26 @@ namespace Drop.Droid
 	{
 		ICallbackManager callbackManager;
 
-		LayoutInflater controlInflater = null;
-
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 
-			//SetContentView(Resource.Layout.LoginActivity);
-			InitUISettings();
+			SetContentView(Resource.Layout.LoginActivity);
 
+			InitUISettings();
 			InitFBSettings();
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+
+			_textureView = FindViewById<TextureView>(Resource.Id.textureCamera);
+			_textureView.SurfaceTextureListener = this;
 		}
 
 		void InitUISettings()
 		{
-			controlInflater = LayoutInflater.From(BaseContext);
-			var viewControl = controlInflater.Inflate(Resource.Layout.LoginActivity, null);
-			var layoutParamsControl = new ActionBar.LayoutParams(ActionBar.LayoutParams.MatchParent, ActionBar.LayoutParams.MatchParent);
-			this.AddContentView(viewControl, layoutParamsControl);
-
 			FindViewById<LinearLayout>(Resource.Id.ActionLoginUsingFacebook).Click += ActionLoginUsingFacebook;
 			FindViewById<LinearLayout>(Resource.Id.ActionLoginAnonymously).Click += ActionLoginAnonymously;
 		}
@@ -95,7 +88,6 @@ namespace Drop.Droid
 			GraphRequest graphRequest = GraphRequest.NewMeRequest(token, requestCallback);
 			graphRequest.Parameters = requestParams;
 			graphRequest.ExecuteAsync();
-
 		}
 
 		private async void ParseLogin(User user)
@@ -116,6 +108,7 @@ namespace Drop.Droid
 		{
 			var mainActivity = new Intent(this, typeof(HomeActivity));
 			StartActivity(mainActivity);
+			Finish();
 		}
 
 
@@ -126,7 +119,7 @@ namespace Drop.Droid
 			LoginManager.Instance.LogInWithReadPermissions(this, Constants.FB_PERMISSIONS);
 		}
 
-		async void ActionLoginAnonymously(object sender, EventArgs e)
+		void ActionLoginAnonymously(object sender, EventArgs e)
 		{
 			ParseService.Logout();
 			GoToHomeVC();
