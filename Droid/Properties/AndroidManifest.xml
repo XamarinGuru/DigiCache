@@ -26,5 +26,5 @@
 <!--	<uses-feature android:name="android.hardware.camera" />-->
 <!--<uses-feature android:name="android.hardware.camera.autofocus" />-->
 	
-	<application android:icon="@drawable/AppIcon" android:hardwareAccelerated="true" android:largeHeap="true" android:label="DigiCache"></application>
+	<application android:icon="@drawable/AppIcon" android:debuggable="false" android:hardwareAccelerated="true" android:largeHeap="true" android:label="DigiCache"></application>
 </manifest>

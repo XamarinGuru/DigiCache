@@ -8,7 +8,7 @@ using Plugin.CurrentActivity;
 namespace Drop.Droid
 {
 	//You can specify additional application information in this attribute
-    [Application(Debuggable = true)]
+    [Application(Debuggable = false)]
 	public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)

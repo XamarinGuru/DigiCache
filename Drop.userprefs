@@ -1,16 +1,12 @@
 ﻿<Properties StartupConfiguration="{2CF83F4E-FEB9-4A0F-8AF1-BC4C277019FC}|Default">
   <MonoDevelop.Ide.Workbench>
-    <FloatingWindows>
-      <FloatingWindow WindowId="1" X="0" Y="237" Width="788" Height="635">
-        <Files>
-          <File FileName="iOS/Controllers/FavoriteViewController.cs" Line="81" Column="4" />
-          <File FileName="iOS/ViewModel/FavoriteCell.cs" Line="50" Column="26" />
-        </Files>
-      </FloatingWindow>
-    </FloatingWindows>
+    <Files>
+      <File FileName="Droid/MainApplication.cs" Line="11" Column="36" />
+      <File FileName="Droid/Properties/AndroidManifest.xml" Line="29" Column="74" />
+    </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Drop.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.4df7bccb4f3d1123" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.ItemProperties.Drop.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.SelectDevice" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Volumes/Untitled/Drop/Droid/Activities/HomeActivity.cs" line="297" column="1" />
